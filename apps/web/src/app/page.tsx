@@ -252,29 +252,28 @@ export default function Home() {
           }}
         />
         <div className="relative z-10">
-          {/* Header Content - Centered */}
-          <div className="mx-auto mb-16 max-w-7xl px-4 text-center">
+          <div className="mx-auto max-w-7xl px-4 text-center">
             <h2 className="mb-4 font-bold text-4xl text-[#050a30]">
               Testimonials
             </h2>
             <div className="mx-auto mb-4 h-1 w-24 bg-[#d9d9d9]" />
-            <p className="mx-auto mb-0 max-w-2xl text-[#718096] text-lg">
+            <p className="mx-auto mb-16 max-w-2xl text-[#718096] text-lg">
               Hear what our students have to say about their transformative
               journey.
             </p>
-          </div>
 
-          {/* Testimonial Cards with Marquee - Full Width */}
-          <Marquee className="w-full [--duration:60s]" pauseOnHover>
-            {testimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                name={testimonial.name}
-                quote={testimonial.quote}
-                school={testimonial.school}
-              />
-            ))}
-          </Marquee>
+            {/* Testimonial Cards with Marquee */}
+            <Marquee className="[--duration:60s]" pauseOnHover>
+              {testimonials.map((testimonial) => (
+                <TestimonialCard
+                  key={testimonial.id}
+                  name={testimonial.name}
+                  quote={testimonial.quote}
+                  school={testimonial.school}
+                />
+              ))}
+            </Marquee>
+          </div>
         </div>
       </section>
 

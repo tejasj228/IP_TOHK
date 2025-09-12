@@ -202,13 +202,3 @@ div:has(> div.relative) {
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .animate-marquee {
-    animation: marquee var(--duration) infinite linear;
-  }
-  
-  .animate-marquee-vertical {
-    animation: marquee-vertical var(--duration) linear infinite;
-  }
-}
