@@ -4,6 +4,7 @@ import Image from "next/image";
 import imageBg from "@/assets/image.png";
 import Quotation from "@/assets/quotations.png";
 import mapImage from "@/assets/mapmap.png";
+import tohLogo from "@/assets/toh-logo.jpg";
 import { Marquee } from "@/components/magicui/marquee";
 import { Button } from "@/components/ui/button";
 import tohkLogo from "@/assets/tohk.jpg";
@@ -387,19 +388,8 @@ export default function Home() {
             <p className="mx-auto mb-1 sm:mb-12 lg:mb-16 max-w-2xl text-[#718096] text-lg">
               Bootcamp editions and partner schools across key cities.
             </p>
-            <div className="mt-4 sm:mt-6 lg:mt-8 flex justify-center">
-              {/* India map image */}
-              <div className="relative w-[900px] h-[600px] max-w-full">
-                <Image
-                  src={mapImage}
-                  alt="Map of YCB's impact across India"
-                  fill
-                  className="object-contain"
-                  priority
-                  quality={100}
-                  sizes="(max-width: 800px) 100vw, 800px"
-                />
-              </div>
+            <div className="mt-8">
+              <WorldMap lineColor="#FFD700" />
             </div>
           </div>
         </div>
