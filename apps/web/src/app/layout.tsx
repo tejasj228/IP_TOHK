@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`${epilogue.variable} font-sans antialiased`}>
         <Providers>
           <Header />
-          {children}
+            {children}
         </Providers>
       </body>
     </html>

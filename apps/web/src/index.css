@@ -18,53 +18,6 @@ body {
   }
 }
 
-/* Force header to be transparent */
-header,
-[data-component="header"],
-.header {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Target the Header component specifically */
-div[class*="grid"] > div:first-child,
-div[class*="grid-rows"] > div:first-child {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Target any div with relative positioning that might be the header */
-div.relative {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Make the first grid row (header area) transparent */
-.grid-rows-\[auto_1fr\] > div:first-child {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Target the exact grid structure from layout.tsx */
-div[class*="grid grid-rows-[auto_1fr]"] > div:first-child,
-div[class*="grid-rows-[auto_1fr]"] > div:first-child {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Nuclear option - make all potential header containers transparent */
-div:has(> div.relative) {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Specific YCB header classes */
-.ycb-header,
-.ycb-header-content {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -201,4 +154,111 @@ div:has(> div.relative) {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Force opaque backgrounds for important cards where global transparency rules may apply */
+.force-bg {
+  background-color: #071036 !important;
+  background: #071036 !important;
+  color: inherit;
+}
+
+/* Smooth hover and interaction utilities */
+.smooth-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Button hover effects */
+.btn-primary-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary-hover:hover::before {
+  left: 100%;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Link hover effects */
+.link-hover {
+  position: relative;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
