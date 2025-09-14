@@ -7,6 +7,16 @@ import mapImage from "@/assets/mapmap.png";
 import { Marquee } from "@/components/magicui/marquee";
 import { Button } from "@/components/ui/button";
 import tohkLogo from "@/assets/tohk.jpg";
+import { useState, useEffect } from "react";
+
+// Hero slider images from Unsplash
+const heroImages = [
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+];
 
 // Testimonial data
 const testimonials = [
@@ -57,30 +67,30 @@ const TestimonialCard = ({
   name: string;
   school: string;
 }) => (
-  <div className="relative mx-2 h-[280px] w-[620px] flex-shrink-0 overflow-clip card-hover">
+  <div className="relative mx-2 h-[220px] w-[480px] sm:h-[280px] sm:w-[620px] flex-shrink-0 overflow-clip card-hover">
     {/* Card Background */}
     <div className="absolute inset-0 rounded-[12px] bg-[#f6f6f6] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1)] transition-all duration-300" />
 
     {/* Profile Image - positioned left */}
-    <div className="absolute top-8 left-8 size-[74px] rounded-full border-[3px] border-[gold] bg-[#d9d9d9] hover-scale transition-all duration-300" />
+    <div className="absolute top-4 sm:top-8 left-4 sm:left-8 size-[60px] sm:size-[74px] rounded-full border-[3px] border-[gold] bg-[#d9d9d9] hover-scale transition-all duration-300" />
 
     {/* Name and School Container */}
-    <div className="absolute top-[45px] left-[130px] text-left">
-      <h4 className="mb-1 font-bold text-[#1a365d] text-[20px] leading-[24px] transition-colors duration-300">
+    <div className="absolute top-[30px] sm:top-[45px] left-[80px] sm:left-[130px] text-left">
+      <h4 className="mb-1 font-bold text-[#1a365d] text-[16px] sm:text-[20px] leading-[20px] sm:leading-[24px] transition-colors duration-300">
         {name}
       </h4>
-      <p className="font-normal text-[#718096] text-[16px] leading-[20px] transition-colors duration-300">
+      <p className="font-normal text-[#718096] text-[14px] sm:text-[16px] leading-[18px] sm:leading-[20px] transition-colors duration-300">
         {school}
       </p>
     </div>
 
     {/* Quote Container */}
-    <div className="relative mx-auto mt-[136px] max-w-[465px] px-8">
+    <div className="relative mx-auto mt-[100px] sm:mt-[136px] max-w-[360px] sm:max-w-[465px] px-4 sm:px-8">
       {/* Opening Quotation Mark */}
-      <div className="-left-[40px] -top-[31px] absolute">
+      <div className="-left-[25px] sm:-left-[40px] -top-[20px] sm:-top-[31px] absolute">
         <Image
           alt=""
-          className="h-[62px] w-[62px]"
+          className="h-[40px] w-[40px] sm:h-[62px] sm:w-[62px]"
           height={62}
           src={Quotation}
           width={62}
@@ -88,15 +98,15 @@ const TestimonialCard = ({
       </div>
 
       {/* Quote Text */}
-      <p className="text-center font-normal text-[#2d3748] text-[16px] leading-[24.32px]">
+      <p className="text-center font-normal text-[#2d3748] text-[14px] sm:text-[16px] leading-[20px] sm:leading-[24.32px]">
         {quote}
       </p>
 
       {/* Closing Quotation Mark */}
-      <div className="-right-[40px] -bottom-[31px] absolute scale-x-[-1] scale-y-[-1]">
+      <div className="-right-[25px] sm:-right-[40px] -bottom-[20px] sm:-bottom-[31px] absolute scale-x-[-1] scale-y-[-1]">
         <Image
           alt=""
-          className="h-[62px] w-[62px]"
+          className="h-[40px] w-[40px] sm:h-[62px] sm:w-[62px]"
           height={62}
           src={Quotation}
           width={62}
@@ -107,6 +117,19 @@ const TestimonialCard = ({
 );
 
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative overflow-x-hidden">
       {/* Skip to main content */}
@@ -115,57 +138,85 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section id="hero-section" className="relative h-screen overflow-hidden bg-[#050a30]">
-        {/* Background image with proper fallback */}
-        <div
-          className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: `url(${imageBg.src})`,
-          }}
-        />
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#000000d9] from-[29.808%] via-[#20202080] via-[74.038%] to-[#1514143d] opacity-[0.86]" />
+      <section id="hero-section" className="relative min-h-screen overflow-hidden bg-[#050a30]">
+        {/* Background image slider */}
+        <div className="absolute inset-0">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-center bg-cover bg-no-repeat transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Enhanced gradient overlay - darker on left, lighter on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#000000e6] from-[0%] via-[#000000cc] via-[35%] to-[#00000066] to-[70%] opacity-90" />
+        
+        {/* Additional overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#00000040] via-transparent to-[#00000040]" />
 
-        <div className="relative z-10 mx-auto h-full max-w-7xl px-4">
-          <div className="grid h-full grid-cols-1 items-center gap-8 lg:grid-cols-2">
-            {/* Left Content */}
-            <div className="pt-20 -ml-4 sm:-ml-8 md:-ml-12 lg:-ml-16 xl:-ml-24 2xl:-ml-32">
-              {/* Youth Changemaker Bootcamp Badge */}
-              <div className="mb-8 w-fit rounded-full bg-[gold] px-9 py-4">
-                <span className="font-bold text-[#1a365d] text-lg">
-                  Young Changemaker Bootcamp
-                </span>
+        <div className="relative z-10 mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-full min-h-screen items-center">
+            <div className="grid w-full grid-cols-1 gap-8 py-20 lg:grid-cols-2 lg:py-32">
+              {/* Left Content */}
+              <div className="flex flex-col justify-center space-y-4 sm:space-y-6 lg:space-y-8">
+                {/* Youth Changemaker Bootcamp Badge */}
+                <div className="w-fit rounded-full bg-[gold] px-4 py-2 sm:px-6 sm:py-3 lg:px-9 lg:py-4">
+                  <span className="font-bold text-[#1a365d] text-sm sm:text-base lg:text-lg">
+                    Young Changemaker Bootcamp
+                  </span>
+                </div>
+
+                {/* Main Heading */}
+                <h1 className="font-bold text-white tracking-[0.01em] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-6xl">
+                  Equip young people with a{" "}
+                  <span className="text-[gold]">changemaking mindset.</span>
+                </h1>
+
+                {/* Short description */}
+                <p className="max-w-2xl text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed tracking-[0.005em]">
+                  A one-week, residential bootcamp where high-schoolers learn to identify real-world
+                  problems, design solutions, and lead with empathy—through hands-on projects,
+                  mentorship, and a national peer network.
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                  <Button
+                    className="h-10 sm:h-12 w-full sm:w-auto rounded-[12px] bg-[gold] px-6 sm:px-8 py-2 sm:py-3 font-bold text-[#1a365d] text-sm sm:text-[14px] leading-[22.4px] hover:bg-[gold]/90 btn-primary-hover hover:shadow-lg hover:-translate-y-1 transition-all duration-300 hover-glow"
+                    size="lg"
+                  >
+                    Apply
+                  </Button>
+                  <Button
+                    className="h-10 sm:h-12 w-full sm:w-auto rounded-[12px] border-2 border-white bg-[rgba(0,0,0,0.43)] px-6 sm:px-8 py-2 sm:py-3 font-bold text-[#f2f2f2] text-sm sm:text-[14px] leading-[22.4px] hover:bg-white/10 smooth-hover hover:border-[gold] hover:text-[gold] hover:-translate-y-1"
+                    size="lg"
+                    variant="outline"
+                  >
+                    Learn More
+                  </Button>
+                </div>
               </div>
-
-              {/* Main Heading */}
-
-              <h1 className="mb-4 font-bold text-3xl text-white md:text-4xl lg:text-6xl tracking-[0.01em]">
-                Equip young people with a{" "}
-                <span className="text-[gold]">changemaking mindset.</span>
-              </h1>
-
-              {/* Short description */}
-              <p className="mb-8 max-w-2xl text-white/80 text-lg leading-relaxed tracking-[0.005em]">
-                A one-week, residential bootcamp where high-schoolers learn to identify real-world
-                problems, design solutions, and lead with empathy—through hands-on projects,
-                mentorship, and a national peer network.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Button
-                  className="h-12 rounded-[12px] bg-[gold] px-8 py-3 font-bold text-[#1a365d] text-[14px] leading-[22.4px] hover:bg-[gold]/90 btn-primary-hover hover:shadow-lg hover:-translate-y-1 transition-all duration-300 hover-glow"
-                  size="lg"
-                >
-                  Apply
-                </Button>
-                <Button
-                  className="h-12 rounded-[12px] border-2 border-white bg-[rgba(0,0,0,0.43)] px-8 py-3 font-bold text-[#f2f2f2] text-[14px] leading-[22.4px] hover:bg-white/10 smooth-hover hover:border-[gold] hover:text-[gold] hover:-translate-y-1"
-                  size="lg"
-                  variant="outline"
-                >
-                  Learn More
-                </Button>
+              
+              {/* Slider Indicators */}
+              <div className="hidden lg:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 space-x-2 z-20">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex 
+                        ? 'bg-[gold] shadow-lg' 
+                        : 'bg-white/50 hover:bg-white/70'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -197,9 +248,9 @@ export default function Home() {
               <div className="mx-auto mt-4 h-1 w-24 bg-[gold]" />
             </div>
 
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
+            <div className="grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-2 items-center">
               {/* Left side - Image */}
-              <div className="relative h-[400px] rounded-2xl overflow-hidden">
+              <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden">
                 <Image
                   src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                   alt="Students collaborating"
@@ -209,9 +260,9 @@ export default function Home() {
               </div>
 
               {/* Right side - Content */}
-              <div className="h-[400px] flex flex-col justify-between">
-                <div>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              <div className="flex flex-col justify-between space-y-6 sm:space-y-8">
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
                     The Young Changemakers Bootcamp is a one-week, intensive residential program for
                     <span className="text-[gold] font-semibold"> high-school students </span>
                     across India (grades 9-12). We equip young people with
@@ -219,39 +270,39 @@ export default function Home() {
                     leadership skills </span>
                     through hands-on, interdisciplinary learning.
                   </p>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
                     Our program combines interactive workshops, real-world projects, and mentorship from industry experts to create a transformative learning experience. Students work in diverse teams to tackle pressing social challenges while developing crucial 21st-century skills.
                   </p>
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   {/* Cities */}
-                  <div className="rounded-xl p-6 shadow-lg border force-bg relative overflow-hidden hover-lift hover-glow smooth-hover" style={{ borderColor: 'rgba(255,215,0,0.15)' }}>
+                  <div className="rounded-xl p-4 sm:p-6 shadow-lg border force-bg relative overflow-hidden hover-lift hover-glow smooth-hover" style={{ borderColor: 'rgba(255,215,0,0.15)' }}>
                     {/* solid inner layer to fully obscure background grid */}
                     <div aria-hidden className="absolute inset-0 bg-[#071036]" style={{ zIndex: 0 }} />
-                    <div className="relative z-10">
-                      <h3 className="font-bold text-4xl text-[gold] mb-2 transition-all duration-300">9</h3>
+                    <div className="relative z-10 text-center sm:text-left">
+                      <h3 className="font-bold text-3xl sm:text-4xl text-[gold] mb-1 sm:mb-2 transition-all duration-300">9</h3>
                       <p className="text-gray-300 text-sm">Cities</p>
                     </div>
                   </div>
 
                   {/* Partner Schools */}
-                  <div className="rounded-xl p-6 shadow-lg border force-bg relative overflow-hidden hover-lift hover-glow smooth-hover" style={{ borderColor: 'rgba(255,215,0,0.15)' }}>
+                  <div className="rounded-xl p-4 sm:p-6 shadow-lg border force-bg relative overflow-hidden hover-lift hover-glow smooth-hover" style={{ borderColor: 'rgba(255,215,0,0.15)' }}>
                     {/* solid inner layer to fully obscure background grid */}
                     <div aria-hidden className="absolute inset-0 bg-[#071036]" style={{ zIndex: 0 }} />
-                    <div className="relative z-10">
-                      <h3 className="font-bold text-4xl text-[gold] mb-2 transition-all duration-300">25+</h3>
+                    <div className="relative z-10 text-center sm:text-left">
+                      <h3 className="font-bold text-3xl sm:text-4xl text-[gold] mb-1 sm:mb-2 transition-all duration-300">25+</h3>
                       <p className="text-gray-300 text-sm">Partner Schools</p>
                     </div>
                   </div>
 
                   {/* Students */}
-                  <div className="rounded-xl p-6 shadow-lg border force-bg relative overflow-hidden hover-lift hover-glow smooth-hover" style={{ borderColor: 'rgba(255,215,0,0.15)' }}>
+                  <div className="rounded-xl p-4 sm:p-6 shadow-lg border force-bg relative overflow-hidden hover-lift hover-glow smooth-hover" style={{ borderColor: 'rgba(255,215,0,0.15)' }}>
                     {/* solid inner layer to fully obscure background grid */}
                     <div aria-hidden className="absolute inset-0 bg-[#071036]" style={{ zIndex: 0 }} />
-                    <div className="relative z-10">
-                      <h3 className="font-bold text-4xl text-[gold] mb-2 transition-all duration-300">500+</h3>
+                    <div className="relative z-10 text-center sm:text-left">
+                      <h3 className="font-bold text-3xl sm:text-4xl text-[gold] mb-1 sm:mb-2 transition-all duration-300">500+</h3>
                       <p className="text-gray-300 text-sm">Students Impacted</p>
                     </div>
                   </div>
@@ -260,9 +311,9 @@ export default function Home() {
             </div>
 
             {/* Read More Button */}
-            <div className="mt-16 flex justify-center">
+            <div className="mt-12 sm:mt-16 flex justify-center">
               <Button
-                className="h-12 rounded-[12px] border-2 border-[gold] bg-transparent px-8 py-3 font-bold text-[gold] text-[14px] leading-[22.4px] hover:bg-[gold] hover:text-[#050a30] transition-all duration-300 group flex items-center gap-2 hover:-translate-y-1 hover:shadow-lg hover-glow"
+                className="h-10 sm:h-12 w-full sm:w-auto max-w-sm rounded-[12px] border-2 border-[gold] bg-transparent px-6 sm:px-8 py-2 sm:py-3 font-bold text-[gold] text-sm sm:text-[14px] leading-[22.4px] hover:bg-[gold] hover:text-[#050a30] transition-all duration-300 group flex items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover-glow"
                 size="lg"
                 variant="outline"
               >
@@ -525,9 +576,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-[#050a30] py-16 text-white">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4 md:text-left">
             {/* Column 1 - Brand */}
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center md:items-start">
               <div className="flex items-center space-x-3">
                 <Image
                   src={tohkLogo}
@@ -649,13 +700,13 @@ export default function Home() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <a
-                    className="transition-colors hover:text-[gold]"
+                    className="transition-colors hover:text-[gold] break-all"
                     href="mailto:ycbootcamp@taleofhumankind.org"
                   >
                     ycbootcamp@taleofhumankind.org
                   </a>
                 </li>
-                <li className="flex items-center space-x-2">
+                <li className="flex items-center justify-center md:justify-start space-x-2">
                   <div className="h-4 w-4 rounded bg-[#d9d9d9]" />
                   <a
                     className="transition-colors hover:text-[gold]"
