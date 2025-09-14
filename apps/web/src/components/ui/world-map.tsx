@@ -98,15 +98,15 @@ export default function WorldMap({
       <div className="w-full max-w-4xl">
         <div className="relative w-full">
           {/* Responsive container with aspect ratio */}
-          <div className="relative aspect-[4/3] w-full">
-            <IndiaMap
-              hoverColor="#ddd6fe"
-              mapColor="#e5e7eb"
-              size={"100%" as unknown as number}
-              strokeColor="#9ca3af"
-              strokeWidth={1}
-              type="select-single"
-            />
+          <div className="pointer-events-none">
+              <IndiaMap
+                hoverColor="#ddd6fe"
+                mapColor="#e5e7eb"
+                size={"100%" as unknown as number}
+                strokeColor="#9ca3af"
+                strokeWidth={1}
+                type="select-single"
+              />
 
             {/* Overlay SVG for dots and animations */}
             <svg
