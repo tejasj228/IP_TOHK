@@ -249,14 +249,50 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-2 items-center">
-              {/* Left side - Image */}
+              {/* Left side - Image Collage */}
               <div className="relative h-[300px] sm:h-[400px] rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                  alt="Students collaborating"
-                  fill
-                  className="object-cover"
-                />
+                {/* 2x2 Grid of Images */}
+                <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
+                  {/* Top Left - Students working together */}
+                  <div className="relative overflow-hidden rounded-lg">
+                    <Image
+                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      alt="Students collaborating"
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  
+                  {/* Top Right - Workshop/presentation */}
+                  <div className="relative overflow-hidden rounded-lg">
+                    <Image
+                      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      alt="Workshop presentation"
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  
+                  {/* Bottom Left - Innovation/tech */}
+                  <div className="relative overflow-hidden rounded-lg">
+                    <Image
+                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      alt="Innovation and technology"
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  
+                  {/* Bottom Right - Team building */}
+                  <div className="relative overflow-hidden rounded-lg">
+                    <Image
+                      src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                      alt="Team building activities"
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Right side - Content */}
