@@ -3,6 +3,7 @@
 import Image from "next/image";
 import imageBg from "@/assets/image.png";
 import Quotation from "@/assets/quotations.png";
+import tohLogo from "@/assets/toh-logo.jpg";
 import { Marquee } from "@/components/magicui/marquee";
 import { Button } from "@/components/ui/button";
 import WorldMap from "@/components/ui/world-map";
@@ -213,27 +214,7 @@ export default function Home() {
               Bootcamp editions and partner schools across key cities.
             </p>
             <div className="mt-8">
-              <WorldMap
-                dots={[
-                  {
-                    start: { lat: 28.7041, lng: 77.1025 },
-                    end: { lat: 19.076, lng: 72.8777 },
-                  }, // Delhi to Mumbai
-                  {
-                    start: { lat: 19.076, lng: 72.8777 },
-                    end: { lat: 12.9716, lng: 77.5946 },
-                  }, // Mumbai to Bangalore
-                  {
-                    start: { lat: 12.9716, lng: 77.5946 },
-                    end: { lat: 22.5726, lng: 88.3639 },
-                  }, // Bangalore to Kolkata
-                  //   {
-                  //     start: { lat: 22.5726, lng: 88.3639 },
-                  //     end: { lat: 28.7041, lng: 77.1025 },
-                  //   }, // Kolkata to Delhi
-                ]}
-                lineColor="gold"
-              />
+              <WorldMap lineColor="#FFD700" />
             </div>
           </div>
         </div>
@@ -284,7 +265,11 @@ export default function Home() {
             {/* Column 1 - Brand */}
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="h-12 w-12 rounded-full bg-[#d9d9d9]" />
+                <Image
+                  alt="TOH Logo"
+                  className="h-12 w-12 rounded-full"
+                  src={tohLogo}
+                />
                 <div>
                   <h3 className="font-bold text-2xl">TOH</h3>
                   <p className="text-sm">Youth Changemaker Bootcamp</p>

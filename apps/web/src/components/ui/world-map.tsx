@@ -1,7 +1,6 @@
 "use client";
 
-import DottedMap from "dotted-map";
-import Image from "next/image";
+import IndiaMap from "@react-map/india";
 import { useRef } from "react";
 
 type MapProps = {
@@ -17,217 +16,207 @@ export default function WorldMap({
   lineColor = "#0ea5e9",
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const mapWidth = 60;
-  const mapHeight = 60;
-  const map = new DottedMap({
-    width: mapWidth,
-    height: mapHeight,
-    grid: "diagonal",
-    countries: ["IND"],
-  });
 
-  const svgMap = map.getSVG({
-    radius: 0.22,
-    color: "#00000040",
-    shape: "circle",
-    backgroundColor: "transparent",
-  });
+  // Define locations for dots on the India map
+  const locations = [
+    // Major cities coordinates
+    { id: "delhi", lat: 28.6139, lng: 77.209, name: "Delhi" },
+    { id: "mumbai", lat: 19.076, lng: 72.8777, name: "Mumbai" },
+    { id: "bangalore", lat: 12.9716, lng: 77.5946, name: "Bangalore" },
+    { id: "chennai", lat: 13.0827, lng: 80.2707, name: "Chennai" },
+    { id: "kolkata", lat: 22.5726, lng: 88.3639, name: "Kolkata" },
+    { id: "hyderabad", lat: 17.385, lng: 78.4867, name: "Hyderabad" },
+    { id: "pune", lat: 18.5204, lng: 73.8567, name: "Pune" },
+  ];
 
-  const projectPoint = (lat: number, lng: number) => {
-    // Manual projection for India coordinates
-    // India bounds: lat 8-37, lng 68-97
-    const indiaBounds = {
-      north: 37.1,
-      south: 8,
-      east: 97.4,
-      west: 68.1,
-    };
+  // Constants for fallback projection
+  const FALLBACK_SCALE = 80;
+  const FALLBACK_OFFSET = 10;
+  const COORDINATE_SCALE = 100;
 
-    const x =
-      ((lng - indiaBounds.west) / (indiaBounds.east - indiaBounds.west)) *
-      mapWidth;
-    const y =
-      ((indiaBounds.north - lat) / (indiaBounds.north - indiaBounds.south)) *
-      mapHeight;
+  // Constants for label positioning
+  const LABEL_OFFSET_LEFT_SHORT = -18;
+  const LABEL_OFFSET_LEFT_MEDIUM = -15;
+  const LABEL_OFFSET_RIGHT_SHORT = 10;
+  const LABEL_OFFSET_RIGHT_LONG = 15;
+  const LABEL_OFFSET_NONE = 0;
 
-    return { x, y };
+  // Label positioning configuration for each city
+  const cityLabelConfig: { [key: string]: { x: number; y: number } } = {
+    delhi: { x: LABEL_OFFSET_RIGHT_LONG, y: LABEL_OFFSET_NONE },
+    mumbai: { x: LABEL_OFFSET_RIGHT_SHORT, y: LABEL_OFFSET_NONE },
+    bangalore: { x: LABEL_OFFSET_LEFT_SHORT, y: LABEL_OFFSET_NONE },
+    chennai: { x: LABEL_OFFSET_RIGHT_LONG, y: LABEL_OFFSET_NONE },
+    kolkata: { x: LABEL_OFFSET_RIGHT_SHORT, y: LABEL_OFFSET_NONE },
+    hyderabad: { x: LABEL_OFFSET_RIGHT_LONG, y: LABEL_OFFSET_NONE },
+    pune: { x: LABEL_OFFSET_LEFT_MEDIUM, y: LABEL_OFFSET_NONE },
   };
 
-  //   const createCurvedPath = (
-  //     start: { x: number; y: number },
-  //     end: { x: number; y: number }
-  //   ) => {
-  //     const midX = (start.x + end.x) / 2;
-  //     const midY = Math.min(start.y, end.y) - 50;
-  //     return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
-  //   };
+  const projectPoint = (lat: number, lng: number) => {
+    // Manual coordinate mapping based on visual positioning for @react-map/india
+    // This approach uses empirical positioning rather than mathematical projection
+
+    const cityPositionMap: { [key: string]: { x: number; y: number } } = {
+      // Coordinates as percentage of the 100x100 viewBox
+      "28.6139,77.209": { x: 30, y: 27 }, // Delhi
+      "19.076,72.8777": { x: 17, y: 60 }, // Mumbai
+      "12.9716,77.5946": { x: 32, y: 80 }, // Bangalore
+      "13.0827,80.2707": { x: 40, y: 82 }, // Chennai
+      "22.5726,88.3639": { x: 69, y: 47 }, // Kolkata
+      "17.385,78.4867": { x: 36, y: 65 }, // Hyderabad
+      "18.5204,73.8567": { x: 20, y: 63 }, // Pune
+    };
+
+    const key = `${lat},${lng}`;
+    const coords = cityPositionMap[key];
+
+    if (coords) {
+      return coords;
+    }
+
+    // Fallback to mathematical projection for custom coordinates
+    const indiaBounds = {
+      north: 37.0,
+      south: 8.0,
+      east: 97.0,
+      west: 68.0,
+    };
+
+    const normalizedX =
+      (lng - indiaBounds.west) / (indiaBounds.east - indiaBounds.west);
+    const normalizedY =
+      (indiaBounds.north - lat) / (indiaBounds.north - indiaBounds.south);
+
+    return {
+      x: normalizedX * FALLBACK_SCALE + FALLBACK_OFFSET,
+      y: normalizedY * FALLBACK_SCALE + FALLBACK_OFFSET,
+    };
+  };
+
   return (
-    <div className="relative w-full rounded-lg bg-white font-sans dark:bg-black">
-      <Image
-        alt="india map"
-        className="pointer-events-none h-auto w-full select-none"
-        draggable={false}
-        height={mapHeight}
-        src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        width={mapWidth}
-      />
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full select-none"
-        ref={svgRef}
-        viewBox={`0 0 ${mapWidth} ${mapHeight}`}
-      >
-        <title>India Map</title>
+    <div className="relative flex w-full justify-center rounded-lg bg-white font-sans">
+      <div className="w-full max-w-4xl">
+        <div className="relative w-full">
+          {/* Responsive container with aspect ratio */}
+          <div className="relative aspect-[4/3] w-full">
+            <IndiaMap
+              hoverColor="#ddd6fe"
+              mapColor="#e5e7eb"
+              size={"100%" as unknown as number}
+              strokeColor="#9ca3af"
+              strokeWidth={1}
+              type="select-single"
+            />
 
-        {/* Jammu region dots to match existing map dots */}
-        {[
-          { lat: 36.22, lng: 73.6 }, // Top left center
-          { lat: 36.22, lng: 74.1 }, // Top left upper
-          { lat: 36.22, lng: 74.6 }, // Top left Jammu
-          { lat: 36.22, lng: 75.1 }, // Top left center
-          { lat: 36.22, lng: 75.6 }, // Top left upper
-          { lat: 36.22, lng: 76.1 }, // Top left Jammu
-          { lat: 36.22, lng: 76.6 }, // Top left center
-          { lat: 36.65, lng: 72.9 }, // Top left upper
-          { lat: 36.65, lng: 73.4 }, // Top left Jammu
-          { lat: 36.65, lng: 73.9 }, // Top left center
-          { lat: 36.65, lng: 74.4 }, // Top left upper
-          { lat: 36.65, lng: 74.9 }, // Top left Jammu
-          { lat: 37.09, lng: 72.7 },
-          { lat: 37.09, lng: 73.2 }, // Top left upper
-          { lat: 37.09, lng: 73.7 }, // Top left Jammu
-          { lat: 37.09, lng: 74.2 }, // Top left center
-          { lat: 37.09, lng: 74.7 }, // Top left upper
+            {/* Overlay SVG for dots and animations */}
+            <svg
+              className="pointer-events-none absolute inset-0 h-full w-full select-none"
+              preserveAspectRatio="xMidYMid meet"
+              ref={svgRef}
+              viewBox={`0 0 ${COORDINATE_SCALE} ${COORDINATE_SCALE}`}
+            >
+              <title>India Map with Locations</title>
 
-          { lat: 35.45, lng: 79.1 }, // Top left Jammu
-          { lat: 35.85, lng: 78.85 }, // Top left Jammu
-          { lat: 36.25, lng: 78.6 }, // Top left Jammu
-          { lat: 36.25, lng: 79.1 }, // Top left Jammu
-          { lat: 36.65, lng: 78.4 }, // Top left Jammu
-          { lat: 36.65, lng: 78.9 }, // Top left center
-          { lat: 36.65, lng: 79.4 }, // Top left upper
-          { lat: 37.05, lng: 77.7 }, // Top left Jammu
-          { lat: 37.05, lng: 78.2 }, // Top left Jammu
-          { lat: 37.05, lng: 78.7 }, // Top left upper
-          { lat: 37.05, lng: 79.2 }, // Top left Jammu
-          { lat: 37.05, lng: 79.7 },
-        ].map((jammuDot, i) => {
-          const point = projectPoint(jammuDot.lat, jammuDot.lng);
-          return (
-            <g key={`jammu-${i}`}>
-              <circle cx={point.x} cy={point.y} fill="#00000040" r="0.22" />
-            </g>
-          );
-        })}
+              {/* Render location dots */}
+              {locations.map((location) => {
+                const point = projectPoint(location.lat, location.lng);
+                const labelOffset = cityLabelConfig[location.id] || {
+                  x: LABEL_OFFSET_RIGHT_SHORT,
+                  y: LABEL_OFFSET_NONE,
+                };
 
-        {/* {dots.map((dot, i) => {
-          const startPoint = projectPoint(dot.start.lat, dot.start.lng);
-          const endPoint = projectPoint(dot.end.lat, dot.end.lng);
-          return (
-            <g key={`path-group-${i}`}>
-              <motion.path
-                animate={{
-                  pathLength: 1,
-                }}
-                // d={createCurvedPath(startPoint, endPoint)}
-                // fill="none"
-                // initial={{
-                //   pathLength: 0,
-                // }}
-                // key={`start-upper-${i}`}
-                // stroke="url(#path-gradient)"
-                // strokeWidth="1"
-                // transition={{
-                //   duration: 1,
-                //   delay: 0.5 * i,
-                //   ease: "easeOut",
-                // }}
-              />
-            </g>
-          );
-        })} */}
+                return (
+                  <g key={location.id}>
+                    <circle
+                      cx={point.x}
+                      cy={point.y}
+                      fill={lineColor}
+                      r="0.8"
+                      stroke="white"
+                      strokeWidth="0.3"
+                    />
+                    <circle
+                      cx={point.x}
+                      cy={point.y}
+                      fill={lineColor}
+                      opacity="0.5"
+                      r="0.8"
+                    >
+                      <animate
+                        attributeName="r"
+                        begin="0s"
+                        dur="2s"
+                        from="0.8"
+                        repeatCount="indefinite"
+                        to="2.5"
+                      />
+                      <animate
+                        attributeName="opacity"
+                        begin="0s"
+                        dur="2s"
+                        from="0.5"
+                        repeatCount="indefinite"
+                        to="0"
+                      />
+                    </circle>
 
-        <defs>
-          <linearGradient id="path-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
-            <stop offset="0%" stopColor="white" stopOpacity="0" />
-            <stop offset="5%" stopColor={lineColor} stopOpacity="1" />
-            <stop offset="95%" stopColor={lineColor} stopOpacity="1" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-        </defs>
+                    {/* Dotted line from dot to label */}
+                    <line
+                      stroke="#374151"
+                      strokeDasharray="0.3 0.3"
+                      strokeWidth="0.2"
+                      x1={point.x}
+                      x2={point.x + labelOffset.x}
+                      y1={point.y}
+                      y2={point.y + labelOffset.y}
+                    />
 
-        {dots.map((dot, i) => (
-          <g key={`points-group-${i}`}>
-            <g key={`start-${i}`}>
-              <circle
-                cx={projectPoint(dot.start.lat, dot.start.lng).x}
-                cy={projectPoint(dot.start.lat, dot.start.lng).y}
-                fill={lineColor}
-                r="1"
-                stroke="white"
-                strokeWidth="1"
-              />
-              <circle
-                cx={projectPoint(dot.start.lat, dot.start.lng).x}
-                cy={projectPoint(dot.start.lat, dot.start.lng).y}
-                fill={lineColor}
-                opacity="0.5"
-                r="1"
-              >
-                <animate
-                  attributeName="r"
-                  begin="0s"
-                  dur="1.5s"
-                  from="0"
-                  repeatCount="indefinite"
-                  to="4"
-                />
-                <animate
-                  attributeName="opacity"
-                  begin="0s"
-                  dur="1.5s"
-                  from="0.5"
-                  repeatCount="indefinite"
-                  to="0"
-                />
-              </circle>
-            </g>
-            <g key={`end-${i}`}>
-              <circle
-                cx={projectPoint(dot.end.lat, dot.end.lng).x}
-                cy={projectPoint(dot.end.lat, dot.end.lng).y}
-                fill={lineColor}
-                r="1"
-                stroke="white"
-                strokeWidth="1"
-              />
-              <circle
-                cx={projectPoint(dot.end.lat, dot.end.lng).x}
-                cy={projectPoint(dot.end.lat, dot.end.lng).y}
-                fill={lineColor}
-                opacity="0.5"
-                r="1"
-              >
-                <animate
-                  attributeName="r"
-                  begin="0s"
-                  dur="1.5s"
-                  from="0"
-                  repeatCount="indefinite"
-                  to="4"
-                />
-                <animate
-                  attributeName="opacity"
-                  begin="0s"
-                  dur="1.5s"
-                  from="0.5"
-                  repeatCount="indefinite"
-                  to="0"
-                />
-              </circle>
-            </g>
-          </g>
-        ))}
-      </svg>
+                    {/* City name label */}
+                    <text
+                      className="pointer-events-none select-none"
+                      fill="#374151"
+                      fontSize="1.8"
+                      fontWeight="600"
+                      textAnchor={labelOffset.x < 0 ? "end" : "start"}
+                      x={point.x + labelOffset.x}
+                      y={point.y + labelOffset.y}
+                    >
+                      {location.name}
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* Render custom dots from props */}
+              {dots.map((dot) => {
+                const startPoint = projectPoint(dot.start.lat, dot.start.lng);
+                const endPoint = projectPoint(dot.end.lat, dot.end.lng);
+                const dotKey = `${dot.start.lat}-${dot.start.lng}-${dot.end.lat}-${dot.end.lng}`;
+                return (
+                  <g key={dotKey}>
+                    <circle
+                      cx={startPoint.x}
+                      cy={startPoint.y}
+                      fill={lineColor}
+                      r="0.6"
+                      stroke="white"
+                      strokeWidth="0.2"
+                    />
+                    <circle
+                      cx={endPoint.x}
+                      cy={endPoint.y}
+                      fill={lineColor}
+                      r="0.6"
+                      stroke="white"
+                      strokeWidth="0.2"
+                    />
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
