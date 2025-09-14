@@ -67,30 +67,30 @@ const TestimonialCard = ({
   name: string;
   school: string;
 }) => (
-  <div className="relative mx-2 h-[220px] w-[480px] sm:h-[280px] sm:w-[620px] flex-shrink-0 overflow-clip card-hover">
+  <div className="relative mx-2 h-[180px] w-[320px] sm:h-[220px] sm:w-[480px] md:h-[280px] md:w-[620px] flex-shrink-0 overflow-clip card-hover">
     {/* Card Background */}
     <div className="absolute inset-0 rounded-[12px] bg-[#f6f6f6] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1)] transition-all duration-300" />
 
     {/* Profile Image - positioned left */}
-    <div className="absolute top-4 sm:top-8 left-4 sm:left-8 size-[60px] sm:size-[74px] rounded-full border-[3px] border-[gold] bg-[#d9d9d9] hover-scale transition-all duration-300" />
+    <div className="absolute top-3 left-3 size-[50px] sm:top-4 sm:left-4 sm:size-[60px] md:top-8 md:left-8 md:size-[74px] rounded-full border-[3px] border-[gold] bg-[#d9d9d9] hover-scale transition-all duration-300" />
 
     {/* Name and School Container */}
-    <div className="absolute top-[30px] sm:top-[45px] left-[80px] sm:left-[130px] text-left">
-      <h4 className="mb-1 font-bold text-[#1a365d] text-[16px] sm:text-[20px] leading-[20px] sm:leading-[24px] transition-colors duration-300">
+    <div className="absolute top-[20px] left-[75px] sm:top-[30px] sm:left-[80px] md:top-[45px] md:left-[130px] text-left">
+      <h4 className="mb-1 font-bold text-[#1a365d] text-[14px] sm:text-[16px] md:text-[20px] leading-[16px] sm:leading-[20px] md:leading-[24px] transition-colors duration-300">
         {name}
       </h4>
-      <p className="font-normal text-[#718096] text-[14px] sm:text-[16px] leading-[18px] sm:leading-[20px] transition-colors duration-300">
+      <p className="font-normal text-[#718096] text-[12px] sm:text-[14px] md:text-[16px] leading-[14px] sm:leading-[18px] md:leading-[20px] transition-colors duration-300">
         {school}
       </p>
     </div>
 
     {/* Quote Container */}
-    <div className="relative mx-auto mt-[100px] sm:mt-[136px] max-w-[360px] sm:max-w-[465px] px-4 sm:px-8">
+    <div className="relative mx-auto mt-[80px] sm:mt-[100px] md:mt-[136px] max-w-[280px] sm:max-w-[360px] md:max-w-[465px] px-3 sm:px-4 md:px-8">
       {/* Opening Quotation Mark */}
-      <div className="-left-[25px] sm:-left-[40px] -top-[20px] sm:-top-[31px] absolute">
+      <div className="-left-[20px] -top-[15px] sm:-left-[25px] sm:-top-[20px] md:-left-[40px] md:-top-[31px] absolute">
         <Image
           alt=""
-          className="h-[40px] w-[40px] sm:h-[62px] sm:w-[62px]"
+          className="h-[30px] w-[30px] sm:h-[40px] sm:w-[40px] md:h-[62px] md:w-[62px]"
           height={62}
           src={Quotation}
           width={62}
@@ -98,15 +98,15 @@ const TestimonialCard = ({
       </div>
 
       {/* Quote Text */}
-      <p className="text-center font-normal text-[#2d3748] text-[14px] sm:text-[16px] leading-[20px] sm:leading-[24.32px]">
+      <p className="text-center font-normal text-[#2d3748] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24.32px]">
         {quote}
       </p>
 
       {/* Closing Quotation Mark */}
-      <div className="-right-[25px] sm:-right-[40px] -bottom-[20px] sm:-bottom-[31px] absolute scale-x-[-1] scale-y-[-1]">
+      <div className="-right-[20px] -bottom-[15px] sm:-right-[25px] sm:-bottom-[20px] md:-right-[40px] md:-bottom-[31px] absolute scale-x-[-1] scale-y-[-1]">
         <Image
           alt=""
-          className="h-[40px] w-[40px] sm:h-[62px] sm:w-[62px]"
+          className="h-[30px] w-[30px] sm:h-[40px] sm:w-[40px] md:h-[62px] md:w-[62px]"
           height={62}
           src={Quotation}
           width={62}
@@ -340,7 +340,7 @@ export default function Home() {
       </section>
 
       {/* Our Network Section */}
-      <section className="relative w-full bg-white py-20">
+      <section className="relative w-full bg-white py-8 sm:py-16 lg:py-20">
         {/* Content */}
         <div className="relative z-10">
           <div className="mx-auto max-w-7xl px-4 text-center bg-white">
@@ -348,10 +348,10 @@ export default function Home() {
               Impact across India
             </h2>
             <div className="mx-auto mb-4 h-1 w-24 bg-[#d9d9d9]" />
-            <p className="mx-auto mb-16 max-w-2xl text-[#718096] text-lg">
+            <p className="mx-auto mb-1 sm:mb-12 lg:mb-16 max-w-2xl text-[#718096] text-lg">
               Bootcamp editions and partner schools across key cities.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-4 sm:mt-6 lg:mt-8 flex justify-center">
               {/* India map image */}
               <div className="relative w-[900px] h-[600px] max-w-full">
                 <Image
@@ -579,20 +579,19 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4 md:text-left">
             {/* Column 1 - Brand */}
             <div className="space-y-4 flex flex-col items-center md:items-start">
-              <div className="flex items-center space-x-3">
-                <Image
-                  src={tohkLogo}
-                  alt="TOHK logo"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-full object-cover"
-                  priority
-                />
-                <div>
-                  <h3 className="font-bold text-2xl">TOH</h3>
-                  <p className="text-sm">Young Changemaker Bootcamp</p>
-                </div>
-              </div>
+              {/* TOHK Logo at top */}
+              <Image
+                src={tohkLogo}
+                alt="TOHK logo"
+                width={64}
+                height={64}
+                className="h-16 w-16 rounded-full object-cover"
+                priority
+              />
+              {/* TOH title below logo */}
+              <h3 className="font-bold text-2xl">TOH</h3>
+              {/* YCB subtitle below TOH */}
+              <p className="text-sm text-white/80">Young Changemaker Bootcamp</p>
             </div>
 
             {/* Column 2 - Program */}
