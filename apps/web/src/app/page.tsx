@@ -433,7 +433,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8">
-              <WorldMap lineColor="#FFD700" />
+              <WorldMap/>
             </div>
           </div>
         </div>
