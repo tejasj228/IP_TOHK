@@ -170,16 +170,18 @@ export default function Home() {
               {/* Left Content */}
               <div className="flex flex-col justify-center space-y-4 sm:space-y-6 lg:space-y-8">
                 {/* Youth Changemaker Bootcamp Badge */}
-                <div className="w-fit rounded-full bg-[gold] px-4 py-2 sm:px-6 sm:py-3 lg:px-9 lg:py-4">
+                {/* <div className="w-fit rounded-full bg-[gold] px-4 py-2 sm:px-6 sm:py-3 lg:px-9 lg:py-4">
                   <span className="font-bold text-[#1a365d] text-sm sm:text-base lg:text-lg">
                     Young Changemaker Bootcamp
                   </span>
-                </div>
+                </div> */}
 
                 {/* Main Heading */}
-                <h1 className="font-bold text-2xl text-white leading-tight tracking-[0.01em] sm:text-3xl md:text-4xl lg:text-6xl">
+                <h1 className="font-bold text-3xl text-white md:text-4xl lg:text-6xl">
                   Equip young people with a{" "}
-                  <span className="text-[gold]">changemaking mindset.</span>
+                  <span className="text-[gold] italic">
+                    changemaking mindset.
+                  </span>
                 </h1>
 
                 {/* Short description */}
@@ -193,18 +195,18 @@ export default function Home() {
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                   <Button
-                    className="btn-primary-hover hover:-translate-y-1 hover-glow h-10 w-full rounded-[12px] bg-[gold] px-6 py-2 font-bold text-[#1a365d] text-sm leading-[22.4px] transition-all duration-300 hover:bg-[gold]/90 hover:shadow-lg sm:h-12 sm:w-auto sm:px-8 sm:py-3 sm:text-[14px]"
+                    className="btn-primary-hover hover:-translate-y-1 hover-glow h-12 w-fit rounded-[12px] bg-[gold] px-8 py-3 font-bold text-[#1a365d] text-base leading-[22.4px] transition-all duration-300 hover:bg-[gold]/90 hover:shadow-lg sm:h-14 sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
                     size="lg"
                   >
                     Apply
                   </Button>
-                  <Button
+                  {/* <Button
                     className="smooth-hover hover:-translate-y-1 h-10 w-full rounded-[12px] border-2 border-white bg-[rgba(0,0,0,0.43)] px-6 py-2 font-bold text-[#f2f2f2] text-sm leading-[22.4px] hover:border-[gold] hover:bg-white/10 hover:text-[gold] sm:h-12 sm:w-auto sm:px-8 sm:py-3 sm:text-[14px]"
                     size="lg"
                     variant="outline"
                   >
                     Learn More
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
 
@@ -230,18 +232,16 @@ export default function Home() {
       </section>
 
       {/* About YCB Section */}
-      <section className="relative w-full bg-[#050a30] py-20">
-        {/* Base navy background */}
-        <div className="absolute inset-0 bg-[#050a30]" />
-        {/* Grid Background with lighter navy */}
+      <section className="relative w-full overflow-hidden bg-white py-20">
+        {/* Dual Gradient Overlay Background */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(80, 100, 160, 0.25) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(80, 100, 160, 0.25) 1px, transparent 1px)
+              linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px)
             `,
-            backgroundSize: "40px 40px",
+            backgroundSize: "48px 48px, 48px 48px, 100% 100%, 100% 100%",
           }}
         />
 
@@ -250,7 +250,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4">
             {/* Section Title */}
             <div className="mb-12 text-center">
-              <h2 className="font-bold text-4xl text-white">About YCB</h2>
+              <h2 className="font-bold text-4xl text-[#050a30]">About YCB</h2>
               <div className="mx-auto mt-4 h-1 w-24 bg-[gold]" />
             </div>
 
@@ -304,7 +304,7 @@ export default function Home() {
               {/* Right side - Content */}
               <div className="flex flex-col justify-between space-y-6 sm:space-y-8">
                 <div className="space-y-4 sm:space-y-6">
-                  <p className="text-base text-gray-300 leading-relaxed sm:text-lg">
+                  <p className="text-base text-gray-700 leading-relaxed sm:text-lg">
                     The Young Changemakers Bootcamp is a one-week, intensive
                     residential program for
                     <span className="font-semibold text-[gold]">
@@ -319,7 +319,7 @@ export default function Home() {
                     </span>
                     through hands-on, interdisciplinary learning.
                   </p>
-                  <p className="text-base text-gray-300 leading-relaxed sm:text-lg">
+                  <p className="text-base text-gray-700 leading-relaxed sm:text-lg">
                     Our program combines interactive workshops, real-world
                     projects, and mentorship from industry experts to create a
                     transformative learning experience. Students work in diverse
@@ -327,75 +327,14 @@ export default function Home() {
                     crucial 21st-century skills.
                   </p>
                 </div>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
-                  {/* Cities */}
-                  <div
-                    className="force-bg hover-lift hover-glow smooth-hover relative overflow-hidden rounded-xl border p-4 shadow-lg sm:p-6"
-                    style={{ borderColor: "rgba(255,215,0,0.15)" }}
-                  >
-                    {/* solid inner layer to fully obscure background grid */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-[#071036]"
-                      style={{ zIndex: 0 }}
-                    />
-                    <div className="relative z-10 text-center sm:text-left">
-                      <h3 className="mb-1 font-bold text-3xl text-[gold] transition-all duration-300 sm:mb-2 sm:text-4xl">
-                        9
-                      </h3>
-                      <p className="text-gray-300 text-sm">Cities</p>
-                    </div>
-                  </div>
-
-                  {/* Partner Schools */}
-                  <div
-                    className="force-bg hover-lift hover-glow smooth-hover relative overflow-hidden rounded-xl border p-4 shadow-lg sm:p-6"
-                    style={{ borderColor: "rgba(255,215,0,0.15)" }}
-                  >
-                    {/* solid inner layer to fully obscure background grid */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-[#071036]"
-                      style={{ zIndex: 0 }}
-                    />
-                    <div className="relative z-10 text-center sm:text-left">
-                      <h3 className="mb-1 font-bold text-3xl text-[gold] transition-all duration-300 sm:mb-2 sm:text-4xl">
-                        25+
-                      </h3>
-                      <p className="text-gray-300 text-sm">Partner Schools</p>
-                    </div>
-                  </div>
-
-                  {/* Students */}
-                  <div
-                    className="force-bg hover-lift hover-glow smooth-hover relative overflow-hidden rounded-xl border p-4 shadow-lg sm:p-6"
-                    style={{ borderColor: "rgba(255,215,0,0.15)" }}
-                  >
-                    {/* solid inner layer to fully obscure background grid */}
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 bg-[#071036]"
-                      style={{ zIndex: 0 }}
-                    />
-                    <div className="relative z-10 text-center sm:text-left">
-                      <h3 className="mb-1 font-bold text-3xl text-[gold] transition-all duration-300 sm:mb-2 sm:text-4xl">
-                        500+
-                      </h3>
-                      <p className="text-gray-300 text-sm">Students Impacted</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Read More Button */}
             <div className="mt-12 flex justify-center sm:mt-16">
               <Button
-                className="group hover:-translate-y-1 hover-glow flex h-10 w-full max-w-sm items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-transparent px-6 py-2 font-bold text-[gold] text-sm leading-[22.4px] transition-all duration-300 hover:bg-[gold] hover:text-[#050a30] hover:shadow-lg sm:h-12 sm:w-auto sm:px-8 sm:py-3 sm:text-[14px]"
+                className="group hover:-translate-y-1 hover-glow flex h-10 w-fit max-w-sm items-center justify-center gap-2 rounded-[12px] border-2 border-[#050a30] bg-[#050a30] px-6 py-2 font-bold text-sm text-white leading-[22.4px] transition-all duration-300 hover:border-[gold] hover:bg-[gold] hover:text-[#050a30] hover:shadow-lg sm:h-12 sm:w-auto sm:px-8 sm:py-3 sm:text-[14px]"
                 size="lg"
-                variant="outline"
               >
                 Read More About YCB
                 <svg
@@ -432,6 +371,67 @@ export default function Home() {
             <p className="mx-auto mb-1 max-w-2xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
               Bootcamp editions and partner schools across key cities.
             </p>
+
+            {/* Stats Grid */}
+            <div className="mx-auto mb-12 flex max-w-4xl flex-wrap justify-center gap-4 sm:grid sm:grid-cols-3 sm:gap-6 lg:mb-16">
+              {/* Cities */}
+              <div
+                className="force-bg hover-lift hover-glow smooth-hover relative w-32 overflow-hidden rounded-xl border p-4 shadow-lg sm:w-auto sm:p-6"
+                style={{ borderColor: "rgba(255,215,0,0.15)" }}
+              >
+                {/* solid inner layer with white background */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-white"
+                  style={{ zIndex: 0 }}
+                />
+                <div className="relative z-10 text-center">
+                  <h3 className="mb-1 font-bold text-3xl text-[gold] transition-all duration-300 sm:mb-2 sm:text-4xl">
+                    9
+                  </h3>
+                  <p className="text-gray-600 text-sm">Cities</p>
+                </div>
+              </div>
+
+              {/* Partner Schools */}
+              <div
+                className="force-bg hover-lift hover-glow smooth-hover relative w-32 overflow-hidden rounded-xl border p-4 shadow-lg sm:w-auto sm:p-6"
+                style={{ borderColor: "rgba(255,215,0,0.15)" }}
+              >
+                {/* solid inner layer with white background */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-white"
+                  style={{ zIndex: 0 }}
+                />
+                <div className="relative z-10 text-center">
+                  <h3 className="mb-1 font-bold text-3xl text-[gold] transition-all duration-300 sm:mb-2 sm:text-4xl">
+                    25+
+                  </h3>
+                  <p className="text-gray-600 text-sm">Partner Schools</p>
+                </div>
+              </div>
+
+              {/* Students */}
+              <div
+                className="force-bg hover-lift hover-glow smooth-hover relative w-32 overflow-hidden rounded-xl border p-4 shadow-lg sm:w-auto sm:p-6"
+                style={{ borderColor: "rgba(255,215,0,0.15)" }}
+              >
+                {/* solid inner layer with white background */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-white"
+                  style={{ zIndex: 0 }}
+                />
+                <div className="relative z-10 text-center">
+                  <h3 className="mb-1 font-bold text-3xl text-[gold] transition-all duration-300 sm:mb-2 sm:text-4xl">
+                    500+
+                  </h3>
+                  <p className="text-gray-600 text-sm">Students Impacted</p>
+                </div>
+              </div>
+            </div>
+
             <div className="mt-8">
               <WorldMap lineColor="#FFD700" />
             </div>

@@ -1,22 +1,42 @@
 "use client";
 
 import IndiaMap from "@react-map/india";
-import { useRef } from "react";
+// import { useRef } from "react";  // Commented out since SVG is disabled
 
-type MapProps = {
-  dots?: Array<{
-    start: { lat: number; lng: number; label?: string };
-    end: { lat: number; lng: number; label?: string };
-  }>;
-  lineColor?: string;
-};
+// type MapProps = {  // Commented out since SVG is disabled
+//   dots?: Array<{
+//     start: { lat: number; lng: number; label?: string };
+//     end: { lat: number; lng: number; label?: string };
+//   }>;
+//   lineColor?: string;
+// };
 
-export default function WorldMap({
-  dots = [],
-  lineColor = "#0ea5e9",
-}: MapProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
+export default function WorldMap(
+  // props: MapProps  // Commented out since SVG is disabled
+) {
+  // const svgRef = useRef<SVGSVGElement>(null);  // Commented out since SVG is disabled
 
+  // States where YCB has reached - these will be precolored in dark blue (#050a30)
+  const reachedStates = [
+    "Delhi",
+    "Maharashtra",
+    "Karnataka",
+    "Tamil Nadu",
+    "West Bengal",
+    "Telangana",
+    "Rajasthan",
+    "Gujarat",
+    "Uttar Pradesh",
+  ];
+
+  // Create cityColors object for precolored states
+  const stateColors: { [key: string]: string } = {};
+  for (const state of reachedStates) {
+    stateColors[state] = "#050a30"; // Dark blue from footer
+  }
+
+  // COMMENTED OUT: All SVG-related variables and functions since SVG overlay is disabled
+  /*
   // Define locations for dots on the India map
   const locations = [
     // Major cities coordinates
@@ -56,7 +76,7 @@ export default function WorldMap({
     // Manual coordinate mapping based on visual positioning for @react-map/india
     // This approach uses empirical positioning rather than mathematical projection
 
-    const cityPositionMap: { [key: string]: { x: number; y: number } } = {
+    const coordinateMapping: { [key: string]: { x: number; y: number } } = {
       // Coordinates as percentage of the 100x100 viewBox
       "28.6139,77.209": { x: 30, y: 27 }, // Delhi
       "19.076,72.8777": { x: 17, y: 60 }, // Mumbai
@@ -68,7 +88,7 @@ export default function WorldMap({
     };
 
     const key = `${lat},${lng}`;
-    const coords = cityPositionMap[key];
+    const coords = coordinateMapping[key];
 
     if (coords) {
       return coords;
@@ -92,23 +112,28 @@ export default function WorldMap({
       y: normalizedY * FALLBACK_SCALE + FALLBACK_OFFSET,
     };
   };
+  */
 
   return (
     <div className="relative flex w-full justify-center rounded-lg bg-white font-sans">
       <div className="w-full max-w-4xl">
         <div className="relative w-full">
           {/* Responsive container with aspect ratio */}
-          <div className="pointer-events-none">
-              <IndiaMap
-                hoverColor="#ddd6fe"
-                mapColor="#e5e7eb"
-                size={"100%" as unknown as number}
-                strokeColor="#9ca3af"
-                strokeWidth={1}
-                type="select-single"
-              />
+          <div>
+            <IndiaMap
+              cityColors={stateColors}
+              hints={true}
+              hoverColor="#FFD602"
+              mapColor="#e5e7eb"
+              selectColor="#0ea5e9"
+              size={"100%" as unknown as number}
+              strokeColor="white"
+              strokeWidth={1}
+              type="select-single"
+            />
 
-            {/* Overlay SVG for dots and animations */}
+            {/* Overlay SVG for dots and animations - COMMENTED OUT */}
+            {/*
             <svg
               className="pointer-events-none absolute inset-0 h-full w-full select-none"
               preserveAspectRatio="xMidYMid meet"
@@ -118,6 +143,7 @@ export default function WorldMap({
               <title>India Map with Locations</title>
 
               {/* Render location dots */}
+            {/*
               {locations.map((location) => {
                 const point = projectPoint(location.lat, location.lng);
                 const labelOffset = cityLabelConfig[location.id] || {
@@ -161,6 +187,7 @@ export default function WorldMap({
                     </circle>
 
                     {/* Dotted line from dot to label */}
+            {/*
                     <line
                       stroke="#374151"
                       strokeDasharray="0.3 0.3"
@@ -172,6 +199,7 @@ export default function WorldMap({
                     />
 
                     {/* City name label */}
+            {/*
                     <text
                       className="pointer-events-none select-none"
                       fill="#374151"
@@ -188,6 +216,7 @@ export default function WorldMap({
               })}
 
               {/* Render custom dots from props */}
+            {/*
               {dots.map((dot) => {
                 const startPoint = projectPoint(dot.start.lat, dot.start.lng);
                 const endPoint = projectPoint(dot.end.lat, dot.end.lng);
@@ -214,6 +243,7 @@ export default function WorldMap({
                 );
               })}
             </svg>
+            */}
           </div>
         </div>
       </div>

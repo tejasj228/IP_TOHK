@@ -5,8 +5,11 @@
 
 @theme {
   --font-sans:
-    var(--font-epilogue), "Inter", "Geist", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    var(--font-satoshi), "Satoshi", "Inter", "Geist", ui-sans-serif, system-ui,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-heading:
+    var(--font-newsreader), "Newsreader", "Times New Roman", serif;
 }
 
 html,
@@ -121,28 +124,22 @@ body {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --animate-marquee:
-    marquee var(--duration) infinite linear;
-  --animate-marquee-vertical:
-    marquee-vertical var(--duration) linear infinite;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform:
-    translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform:
-    translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform:
-    translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform:
-    translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
 }
@@ -154,13 +151,40 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-newsreader), "Newsreader", "Times New Roman", serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+  }
 }
 
 /* Force opaque backgrounds for important cards where global transparency rules may apply */
 .force-bg {
   background-color: #071036 !important;
-  background: #071036 !important;
   color: inherit;
+}
+
+/* Font utility classes */
+.font-heading {
+  font-family: var(--font-newsreader), "Newsreader", "Times New Roman", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
+.font-body {
+  font-family:
+    var(--font-satoshi), "Satoshi", "Inter", "Geist", ui-sans-serif, system-ui,
+    sans-serif;
 }
 
 /* Smooth hover and interaction utilities */
@@ -169,12 +193,16 @@ body {
 }
 
 .hover-lift {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .hover-scale {
@@ -201,13 +229,18 @@ body {
 }
 
 .btn-primary-hover::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s;
 }
 
@@ -233,7 +266,7 @@ body {
 }
 
 .link-hover::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;

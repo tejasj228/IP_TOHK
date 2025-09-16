@@ -1,14 +1,72 @@
 import type { Metadata } from "next";
-import { Epilogue } from "next/font/google";
+import { Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import "../index.css";
 import Header from "@/components/header";
 import Providers from "@/components/providers";
 
-const epilogue = Epilogue({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-epilogue",
+  variable: "--font-newsreader",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400"],
+});
+
+const satoshi = localFont({
+  src: [
+    {
+      path: "../fonts/Satoshi-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Satoshi-LightItalic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Satoshi-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Satoshi-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Satoshi-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Satoshi-MediumItalic.woff2",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Satoshi-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Satoshi-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Satoshi-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Satoshi-BlackItalic.woff2",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,10 +81,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${epilogue.variable} font-sans antialiased`}>
+      <body
+        className={`${newsreader.variable} ${satoshi.variable} font-sans antialiased`}
+      >
         <Providers>
           <Header />
-            {children}
+          {children}
         </Providers>
       </body>
     </html>
