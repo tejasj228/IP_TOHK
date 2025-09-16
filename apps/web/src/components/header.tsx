@@ -66,7 +66,7 @@ export default function Header() {
           {/* Logo */}
           <div className="relative z-70 flex h-full items-center justify-center overflow-hidden">
             <Link
-              className="smooth-hover flex items-center justify-center hover:scale-105"
+              className="smooth-hover flex items-center justify-center hover:scale-105 mt-3"
               href="/"
             >
               <Image

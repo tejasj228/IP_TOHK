@@ -115,7 +115,7 @@ export default function WorldMap(
   */
 
   return (
-    <div className="relative flex w-full justify-center rounded-lg bg-white font-sans">
+    <div className="relative flex w-full justify-center rounded-lg bg-transparent font-sans">
       <div className="w-full max-w-4xl">
         <div className="relative w-full">
           {/* Responsive container with aspect ratio */}
