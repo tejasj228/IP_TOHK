@@ -12,27 +12,29 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const heroSection = document.querySelector("#hero-section");
-    if (!heroSection) return;
+    // Observe the start of the "Impact across India" section instead of hero
+    const impactSentinel = document.querySelector("#impact-sentinel");
+    if (!impactSentinel) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsScrolled(!entry.isIntersecting);
+        // Turn header navy when the Impact section enters the viewport
+        setIsScrolled(entry.isIntersecting);
       },
       {
         threshold: 0,
-        rootMargin: "-80px 0px 0px 0px", // Adjust based on header height
+        rootMargin: "-80px 0px 0px 0px", // matches header height for precise trigger
       }
     );
 
-    observer.observe(heroSection);
+    observer.observe(impactSentinel);
     // Fallback: also listen to scroll to handle cases where IntersectionObserver
     // may behave differently across environments (or during rapid resizes).
     const onScroll = () => {
-      const heroRect = heroSection.getBoundingClientRect();
-      // If the bottom of the hero is above the header height (80px), consider it scrolled
+      const rect = (impactSentinel as HTMLElement).getBoundingClientRect();
+      // If the top of the Impact section passes the header, switch to navy
       const headerHeight = 80; // keep in sync with header height
-      setIsScrolled(heroRect.bottom <= headerHeight);
+      setIsScrolled(rect.top <= headerHeight);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -58,7 +60,7 @@ export default function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#050a30] shadow-lg"
+            ? "bg-soft-dark shadow-lg"
             : "border-white/10 border-b bg-black/20 backdrop-blur-lg backdrop-saturate-150"
         }`}
       >
@@ -189,7 +191,7 @@ export default function Header() {
 
       {/* Mobile Slide-out Menu */}
       <div
-        className={`fixed inset-y-0 left-0 z-60 w-80 transform bg-[#050a30] transition-transform duration-300 md:hidden ${
+        className={`fixed inset-y-0 left-0 z-60 w-80 transform bg-soft-dark transition-transform duration-300 md:hidden ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
