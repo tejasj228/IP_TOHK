@@ -17,6 +17,11 @@ interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
    */
   pauseOnHover?: boolean;
   /**
+   * Programmatically pause the animation
+   * @default false
+   */
+  paused?: boolean;
+  /**
    * Content to be displayed in the marquee
    */
   children: React.ReactNode;
@@ -36,6 +41,7 @@ export function Marquee({
   className,
   reverse = false,
   pauseOnHover = false,
+  paused = false,
   children,
   vertical = false,
   repeat = 4,
@@ -61,6 +67,7 @@ export function Marquee({
               "animate-marquee flex-row": !vertical,
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
+              "[animation-play-state:paused]": paused,
               "[animation-direction:reverse]": reverse,
             })}
             key={i}
