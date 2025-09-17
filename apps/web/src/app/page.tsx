@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Quotation from "@/assets/quotations.png";
 import tohkLogo from "@/assets/tohk.jpg";
 import { Marquee } from "@/components/magicui/marquee";
@@ -26,7 +26,7 @@ const NotificationBanner = () => {
       // Auto-hide after 15 seconds
       const hideTimer = setTimeout(() => {
         handleClose();
-      }, 16000); // 1 second delay + 15 seconds = 16 seconds total
+      }, 16_000); // 1 second delay + 15 seconds = 16 seconds total
 
       return () => {
         clearTimeout(showTimer);
@@ -45,26 +45,26 @@ const NotificationBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed top-4 right-4 z-50 max-w-sm transition-all duration-300 ${
-      isClosing 
-        ? 'translate-x-full opacity-0' 
-        : 'translate-x-0 opacity-100'
-    } sm:max-w-md lg:max-w-lg`}>
+    <div
+      className={`fixed top-4 right-4 z-50 max-w-sm transition-all duration-300 ${
+        isClosing ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"
+      } sm:max-w-md lg:max-w-lg`}
+    >
       <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-white/95 p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)] backdrop-blur">
         {/* Close button with larger hit area */}
         <button
-          onClick={handleClose}
-          className="absolute -top-1 -right-1 h-10 w-10 rounded-full p-2 text-gray-600 transition-all duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[gold]/50"
           aria-label="Close notification"
+          className="-top-1 -right-1 absolute h-10 w-10 rounded-full p-2 text-gray-600 transition-all duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[gold]/50"
+          onClick={handleClose}
         >
           <span className="flex h-full w-full items-center justify-center rounded-full">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              fill="none"
+              height="16"
+              stroke="currentColor"
               strokeWidth="2"
+              viewBox="0 0 24 24"
+              width="16"
             >
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
@@ -83,24 +83,27 @@ const NotificationBanner = () => {
 
           {/* Main message */}
           <p className="mb-3 text-gray-700 text-xs leading-relaxed sm:text-sm">
-            <span className="font-semibold text-[#050a30]">YCB Delhi Workshop</span> is coming this November! 
-            Join 200+ young changemakers for an intensive week of innovation, leadership, and 
-            real-world problem solving.
+            <span className="font-semibold text-[#050a30]">
+              YCB Delhi Workshop
+            </span>{" "}
+            is coming this November! Join 200+ young changemakers for an
+            intensive week of innovation, leadership, and real-world problem
+            solving.
           </p>
 
           {/* Action buttons */}
           <div className="flex flex-col gap-2 sm:flex-row">
-            <button 
-              className="flex-1 rounded-md bg-[gold] px-3 py-1.5 font-medium text-[#050a30] text-xs transition-all duration-200 hover:bg-[gold]/90 hover:scale-105 sm:text-sm"
+            <button
+              className="flex-1 rounded-md bg-[gold] px-3 py-1.5 font-medium text-[#050a30] text-xs transition-all duration-200 hover:scale-105 hover:bg-[gold]/90 sm:text-sm"
               onClick={() => {
                 // Add registration link logic here
-                window.open('#', '_blank');
+                window.open("#", "_blank");
                 handleClose();
               }}
             >
               Register Now
             </button>
-            <button 
+            <button
               className="flex-1 rounded-md border border-gray-200 px-3 py-1.5 font-medium text-gray-700 text-xs transition-all duration-200 hover:bg-gray-50 sm:text-sm"
               onClick={handleClose}
             >
@@ -110,10 +113,12 @@ const NotificationBanner = () => {
         </div>
 
         {/* Progress bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-100">
-          <div 
+        <div className="absolute right-0 bottom-0 left-0 h-1 bg-gray-100">
+          <div
             className="h-full w-full origin-left scale-x-0 bg-[gold] transition-transform duration-[15000ms] ease-linear"
-            style={{ transform: isVisible && !isClosing ? 'scaleX(1)' : 'scaleX(0)' }}
+            style={{
+              transform: isVisible && !isClosing ? "scaleX(1)" : "scaleX(0)",
+            }}
           />
         </div>
       </div>
@@ -122,14 +127,14 @@ const NotificationBanner = () => {
 };
 
 // Animated Counter Component
-const AnimatedCounter = ({ 
-  target, 
-  suffix = "", 
-  duration = 2000 
-}: { 
-  target: number; 
-  suffix?: string; 
-  duration?: number; 
+const AnimatedCounter = ({
+  target,
+  suffix = "",
+  duration = 2000,
+}: {
+  target: number;
+  suffix?: string;
+  duration?: number;
 }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -161,11 +166,11 @@ const AnimatedCounter = ({
     const updateCount = () => {
       const now = Date.now();
       const progress = Math.min((now - startTime) / duration, 1);
-      
+
       // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const easeOutQuart = 1 - (1 - progress) ** 4;
       const currentCount = Math.floor(easeOutQuart * target);
-      
+
       setCount(currentCount);
 
       if (progress < 1) {
@@ -180,8 +185,9 @@ const AnimatedCounter = ({
 
   return (
     <div ref={counterRef}>
-      <h3 className="mb-1 font-bold text-lg text-[gold] transition-all duration-300 sm:mb-2 sm:text-3xl lg:text-4xl">
-        {count}{suffix}
+      <h3 className="mb-1 font-bold text-[gold] text-lg transition-all duration-300 sm:mb-2 sm:text-3xl lg:text-4xl">
+        {count}
+        {suffix}
       </h3>
     </div>
   );
@@ -247,7 +253,7 @@ const TestimonialCard = ({
 }) => (
   <div className="card-hover relative mx-2 h-[180px] w-[320px] flex-shrink-0 overflow-clip sm:h-[220px] sm:w-[480px] md:h-[280px] md:w-[620px]">
     {/* Card Background with gradient */}
-    <div className="absolute inset-0 rounded-[12px] card-gradient-testimonial transition-all duration-300" />
+    <div className="card-gradient-testimonial absolute inset-0 rounded-[12px] transition-all duration-300" />
 
     {/* Profile Image - positioned left with gradient border */}
     <div className="hover-scale absolute top-3 left-3 size-[50px] rounded-full border-[3px] border-[gold] bg-gradient-to-br from-[#f9fafb] to-[#e5e7eb] transition-all duration-300 sm:top-4 sm:left-4 sm:size-[60px] md:top-8 md:left-8 md:size-[74px]" />
@@ -314,7 +320,7 @@ export default function Home() {
     <div className="relative overflow-x-hidden">
       {/* Notification Banner */}
       <NotificationBanner />
-      
+
       {/* Skip to main content */}
       <div className="sr-only absolute top-4 left-4 z-50 rounded bg-white px-4 py-2 text-black focus:not-sr-only">
         Skip to main content
@@ -350,7 +356,7 @@ export default function Home() {
           <div className="flex h-full min-h-screen items-center">
             <div className="w-full py-20 lg:py-32">
               {/* Left Content */}
-              <div className="flex flex-col justify-center space-y-4 sm:space-y-6 lg:space-y-8 max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+              <div className="flex max-w-2xl flex-col justify-center space-y-4 sm:space-y-6 lg:max-w-3xl lg:space-y-8 xl:max-w-4xl">
                 {/* Youth Changemaker Bootcamp Badge */}
                 {/* <div className="w-fit rounded-full bg-[gold] px-4 py-2 sm:px-6 sm:py-3 lg:px-9 lg:py-4">
                   <span className="font-bold text-[#1a365d] text-sm sm:text-base lg:text-lg">
@@ -359,15 +365,15 @@ export default function Home() {
                 </div> */}
 
                 {/* Main Heading */}
-                <h1 className="font-bold text-4xl text-white md:text-5xl lg:text-7xl leading-tight">
+                <h1 className="font-bold text-4xl text-white leading-tight md:text-5xl lg:text-7xl">
                   Equip young people with a{" "}
-                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent italic font-extrabold">
+                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text font-extrabold text-transparent italic">
                     changemaking mindset.
                   </span>
                 </h1>
 
                 {/* Short description */}
-                <p className="max-w-xl lg:max-w-2xl xl:max-w-3xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:text-xl">
+                <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
                   A one-week, residential bootcamp where high-schoolers learn to
                   identify real-world problems, design solutions, and lead with
                   empathy—through hands-on projects, mentorship, and a national
@@ -397,7 +403,7 @@ export default function Home() {
       </section>
 
       {/* About YCB Section */}
-  <section className="relative w-full overflow-hidden bg-soft-dark py-20">
+      <section className="relative w-full overflow-hidden bg-soft-dark py-20">
         {/* Optional subtle overlay pattern */}
         <div
           className="absolute inset-0 z-0 opacity-10"
@@ -416,15 +422,15 @@ export default function Home() {
             {/* Section Title */}
             <div className="mb-12 text-center">
               <h2 className="font-bold text-4xl text-white">About YCB</h2>
-              <div className="mx-auto mt-4 gradient-underline" />
+              <div className="gradient-underline mx-auto mt-4" />
             </div>
 
             <div className="grid grid-cols-1 items-stretch gap-8 sm:gap-12 lg:grid-cols-2">
               {/* Left side - Clean Single Image */}
-              <div className="relative h-[400px] overflow-hidden rounded-2xl sm:h-[500px] lg:h-[400px] group">
+              <div className="group relative h-[400px] overflow-hidden rounded-2xl sm:h-[500px] lg:h-[400px]">
                 {/* Subtle overlay for better text contrast */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#050a30]/20 via-transparent to-transparent rounded-2xl" />
-                
+                <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-br from-[#050a30]/20 via-transparent to-transparent" />
+
                 {/* Main image */}
                 <div className="relative h-full w-full">
                   <Image
@@ -433,10 +439,10 @@ export default function Home() {
                     fill
                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   />
-                  
+
                   {/* Simple corner badge */}
                   <div className="absolute bottom-6 left-6 z-20 rounded-lg bg-[gold] px-3 py-2 shadow-lg">
-                    <p className="font-bold text-[#050a30] text-sm"></p>
+                    <p className="font-bold text-[#050a30] text-sm" />
                   </div>
                 </div>
               </div>
@@ -468,26 +474,26 @@ export default function Home() {
                     crucial 21st-century skills.
                   </p>
                   <p className="text-base text-gray-300 leading-relaxed sm:text-lg">
-                    Through collaborative projects,
-                    expert mentorship, participants develop 
+                    Through collaborative projects, expert mentorship,
+                    participants develop
                     <span className="font-semibold text-[gold]">
                       {" "}
                       innovative solutions{" "}
                     </span>
-                    to real-world problems affecting their communities. 
+                    to real-world problems affecting their communities.
                   </p>
-                  <div className="flex items-center space-x-6 pt-2">
-                    
-                  </div>
+                  <div className="flex items-center space-x-6 pt-2"></div>
                 </div>
 
                 {/* Read More Button */}
-                <div className="flex justify-start mt-6 lg:mt-auto">
+                <div className="mt-6 flex justify-start lg:mt-auto">
                   <Button
-                    className="group hover:-translate-y-1 hover-glow flex h-10 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-4 py-2 font-bold text-[12px] text-[#050a30] leading-[20px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-12 sm:px-8 sm:py-3 sm:text-[14px] sm:leading-[22.4px]"
+                    className="group hover:-translate-y-1 hover-glow flex h-10 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-4 py-2 font-bold text-[#050a30] text-[12px] leading-[20px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-12 sm:px-8 sm:py-3 sm:text-[14px] sm:leading-[22.4px]"
                     size="lg"
                   >
-                    <span className="hidden sm:inline">Read More About YCB</span>
+                    <span className="hidden sm:inline">
+                      Read More About YCB
+                    </span>
                     <span className="sm:hidden">Read More</span>
                     <svg
                       className="transition-transform duration-300 group-hover:translate-x-2"
@@ -514,17 +520,17 @@ export default function Home() {
       </section>
 
       {/* Our Network Section */}
-      <section className="relative w-full section-gradient-light py-8 sm:py-16 lg:py-20">
+      <section className="section-gradient-light relative w-full py-8 sm:py-16 lg:py-20">
         {/* Optional radial spots overlay */}
-        <div className="radial-spots-light"></div>
-        
+        <div className="radial-spots-light" />
+
         {/* Content */}
         <div className="relative z-10">
           <div className="mx-auto max-w-7xl bg-transparent px-4 text-center">
             <h2 className="mb-4 font-bold text-4xl text-[#050a30]">
               Impact across <span className="gradient-text-gold">India</span>
             </h2>
-            <div className="mx-auto mb-4 gradient-underline" />
+            <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-1 max-w-2xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
               Bootcamp editions and partner schools across key cities.
             </p>
@@ -532,48 +538,44 @@ export default function Home() {
             {/* Stats Grid */}
             <div className="mx-auto mt-4 mb-12 flex max-w-4xl justify-center gap-2 sm:mt-6 sm:gap-6 lg:mb-16">
               {/* Cities */}
-              <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
-              >
+              <div className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter target={9} duration={1500} />
+                  <AnimatedCounter duration={1500} target={9} />
                   <p className="text-gray-600 text-xs sm:text-sm">Cities</p>
                 </div>
               </div>
 
               {/* Partner Schools */}
-              <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
-              >
+              <div className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter target={25} suffix="+" duration={2000} />
-                  <p className="text-gray-600 text-xs sm:text-sm">Partner Schools</p>
+                  <AnimatedCounter duration={2000} suffix="+" target={25} />
+                  <p className="text-gray-600 text-xs sm:text-sm">
+                    Partner Schools
+                  </p>
                 </div>
               </div>
 
               {/* Students */}
-              <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
-              >
+              <div className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter target={500} suffix="+" duration={2500} />
+                  <AnimatedCounter duration={2500} suffix="+" target={500} />
                   <p className="text-gray-600 text-xs sm:text-sm">Students</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
-              <WorldMap/>
+              <WorldMap />
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative w-full section-gradient-alt py-20">
+      <section className="section-gradient-alt relative w-full py-20">
         {/* Optional radial spots overlay */}
-        <div className="radial-spots-light"></div>
-        
+        <div className="radial-spots-light" />
+
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -589,7 +591,7 @@ export default function Home() {
             <h2 className="mb-4 font-bold text-4xl text-[#050a30]">
               Testimonials
             </h2>
-            <div className="mx-auto mb-4 gradient-underline" />
+            <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-16 max-w-2xl text-[#718096] text-lg">
               Hear what our students have to say about their transformative
               journey.
