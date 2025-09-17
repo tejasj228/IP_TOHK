@@ -27,7 +27,7 @@ const NotificationBanner = () => {
       // Auto-hide after 15 seconds
       const hideTimer = setTimeout(() => {
         handleClose();
-      }, 16000); // 1 second delay + 15 seconds = 16 seconds total
+      }, 16_000); // 1 second delay + 15 seconds = 16 seconds total
 
       return () => {
         clearTimeout(showTimer);
@@ -57,6 +57,8 @@ const NotificationBanner = () => {
           onClick={handleClose}
           className="absolute right-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-500 transition-all duration-200 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#050a30]/20"
           aria-label="Close notification"
+          className="-top-1 -right-1 absolute h-10 w-10 rounded-full p-2 text-gray-600 transition-all duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[gold]/50"
+          onClick={handleClose}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M18 6L6 18M6 6l12 12" />
@@ -104,14 +106,14 @@ const NotificationBanner = () => {
 };
 
 // Animated Counter Component
-const AnimatedCounter = ({ 
-  target, 
-  suffix = "", 
-  duration = 2000 
-}: { 
-  target: number; 
-  suffix?: string; 
-  duration?: number; 
+const AnimatedCounter = ({
+  target,
+  suffix = "",
+  duration = 2000,
+}: {
+  target: number;
+  suffix?: string;
+  duration?: number;
 }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -143,11 +145,11 @@ const AnimatedCounter = ({
     const updateCount = () => {
       const now = Date.now();
       const progress = Math.min((now - startTime) / duration, 1);
-      
+
       // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const easeOutQuart = 1 - (1 - progress) ** 4;
       const currentCount = Math.floor(easeOutQuart * target);
-      
+
       setCount(currentCount);
 
       if (progress < 1) {
@@ -162,8 +164,9 @@ const AnimatedCounter = ({
 
   return (
     <div ref={counterRef}>
-      <h3 className="mb-1 font-bold text-lg text-[gold] transition-all duration-300 sm:mb-2 sm:text-3xl lg:text-4xl">
-        {count}{suffix}
+      <h3 className="mb-1 font-bold text-[gold] text-lg transition-all duration-300 sm:mb-2 sm:text-3xl lg:text-4xl">
+        {count}
+        {suffix}
       </h3>
     </div>
   );
@@ -229,7 +232,7 @@ const TestimonialCard = ({
 }) => (
   <div className="card-hover relative mx-2 h-[200px] w-[320px] flex-shrink-0 overflow-clip sm:h-[260px] sm:w-[480px] md:h-[320px] md:w-[620px]">
     {/* Card Background with gradient */}
-    <div className="absolute inset-0 rounded-[12px] card-gradient-testimonial transition-all duration-300" />
+    <div className="card-gradient-testimonial absolute inset-0 rounded-[12px] transition-all duration-300" />
 
     {/* Profile Image - positioned left with gradient border */}
     <div className="hover-scale absolute top-3 left-3 size-[50px] rounded-full border-[3px] border-[gold] bg-gradient-to-br from-[#f9fafb] to-[#e5e7eb] transition-all duration-300 sm:top-4 sm:left-4 sm:size-[60px] md:top-8 md:left-8 md:size-[74px]" />
@@ -365,7 +368,7 @@ export default function Home() {
     <div className="relative overflow-x-hidden">
       {/* Notification Banner */}
       <NotificationBanner />
-      
+
       {/* Skip to main content */}
       <div className="sr-only absolute top-4 left-4 z-50 rounded bg-white px-4 py-2 text-black focus:not-sr-only">
         Skip to main content
@@ -427,15 +430,15 @@ export default function Home() {
                 </div> */}
 
                 {/* Main Heading */}
-                <h1 className="font-bold text-4xl text-white md:text-5xl lg:text-7xl leading-tight">
+                <h1 className="font-bold text-4xl text-white leading-tight md:text-5xl lg:text-7xl">
                   Equip young people with a{" "}
-                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent italic font-extrabold">
+                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text font-extrabold text-transparent italic">
                     changemaking mindset.
                   </span>
                 </h1>
 
                 {/* Short description */}
-                <p className="max-w-xl lg:max-w-2xl xl:max-w-3xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:text-xl">
+                <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
                   A one-week, residential bootcamp where high-schoolers learn to
                   identify real-world problems, design solutions, and lead with
                   empathy—through hands-on projects, mentorship, and a national
@@ -606,15 +609,15 @@ export default function Home() {
         {/* Sentinel used by header to know when to flip to navy */}
         <div id="impact-sentinel" className="absolute -top-20 h-1 w-1" aria-hidden />
         {/* Optional radial spots overlay */}
-        <div className="radial-spots-light"></div>
-        
+        <div className="radial-spots-light" />
+
         {/* Content */}
         <div className="relative z-10">
           <div className="mx-auto max-w-7xl bg-transparent px-4 text-center">
             <h2 className="mb-4 font-bold text-4xl text-[#050a30]">
               Impact across <span className="gradient-text-gold">India</span>
             </h2>
-            <div className="mx-auto mb-4 gradient-underline" />
+            <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-1 max-w-2xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
               Bootcamp editions and partner schools across key cities.
             </p>
@@ -622,38 +625,34 @@ export default function Home() {
             {/* Stats Grid */}
             <div className="mx-auto mt-4 mb-12 flex max-w-4xl justify-center gap-7 sm:mt-6 sm:gap-13 lg:mb-16">
               {/* Cities */}
-              <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
-              >
+              <div className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter target={9} duration={1500} />
+                  <AnimatedCounter duration={1500} target={9} />
                   <p className="text-gray-600 text-xs sm:text-sm">Cities</p>
                 </div>
               </div>
 
               {/* Partner Schools */}
-              <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
-              >
+              <div className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter target={25} suffix="+" duration={2000} />
-                  <p className="text-gray-600 text-xs sm:text-sm">Partner Schools</p>
+                  <AnimatedCounter duration={2000} suffix="+" target={25} />
+                  <p className="text-gray-600 text-xs sm:text-sm">
+                    Partner Schools
+                  </p>
                 </div>
               </div>
 
               {/* Students */}
-              <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
-              >
+              <div className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter target={500} suffix="+" duration={2500} />
+                  <AnimatedCounter duration={2500} suffix="+" target={500} />
                   <p className="text-gray-600 text-xs sm:text-sm">Students</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
-              <WorldMap/>
+              <WorldMap />
             </div>
           </div>
         </div>
@@ -662,8 +661,8 @@ export default function Home() {
   {/* Testimonials Section */}
   <section id="editions" className="relative w-full section-gradient-alt py-20">
         {/* Optional radial spots overlay */}
-        <div className="radial-spots-light"></div>
-        
+        <div className="radial-spots-light" />
+
         <div
           className="absolute inset-0 z-0"
           style={{
