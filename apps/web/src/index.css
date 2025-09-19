@@ -412,3 +412,52 @@ body {
 .animate-fade-in-up {
   animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* =============================== */
+/* Bold tracking for heading font  */
+/* =============================== */
+/*
+  Slightly loosen letter-spacing when the display/heading font is bold.
+  This targets:
+  - Elements using the `.font-heading` utility with bold/semibold
+  - Headings (h1–h6) that are bold, including nested strong/b
+  Normal (400) weights remain unchanged.
+*/
+:root {
+  --ycb-heading-bold-tracking: 0.05em; /* dialed back for better readability */
+}
+
+.font-heading.font-semibold,
+.font-heading.font-bold,
+.font-heading b,
+.font-heading strong,
+h1.font-semibold,
+h1.font-bold,
+h2.font-semibold,
+h2.font-bold,
+h3.font-semibold,
+h3.font-bold,
+h4.font-semibold,
+h4.font-bold,
+h5.font-semibold,
+h5.font-bold,
+h6.font-semibold,
+h6.font-bold,
+h1 b,
+h1 strong,
+h2 b,
+h2 strong,
+h3 b,
+h3 strong,
+h4 b,
+h4 strong,
+h5 b,
+h5 strong,
+h6 b,
+h6 strong,
+/* Header navigation bold text */
+nav .font-bold,
+header .font-bold,
+.link-hover.font-bold {
+  letter-spacing: var(--ycb-heading-bold-tracking);
+}
