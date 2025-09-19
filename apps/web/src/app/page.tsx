@@ -398,22 +398,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#00000040] via-transparent to-[#00000040]" />
 
         <div className="relative z-10 h-full px-4 sm:px-6 lg:px-12 xl:px-16">
-          {/* Navigation Arrows - desktop/tablet centered; hidden on mobile */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-4 top-1/2 z-30 hidden -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[gold] sm:left-6 lg:left-8 sm:p-3 md:inline-flex"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
-          
-          <button
-            onClick={goToNext}
-            className="absolute right-4 top-1/2 z-30 hidden -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[gold] sm:right-6 lg:right-8 sm:p-3 md:inline-flex"
-            aria-label="Next image"
-          >
-            <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
+          {/* Navigation Arrows - top-right (all screens), offset below fixed header on md+ */}
+          <div className="absolute right-4 top-3 z-50 flex gap-2 sm:top-4 md:top-24 lg:top-28 sm:right-6 lg:right-8 pointer-events-auto">
+            <button
+              onClick={goToPrevious}
+              className="rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[gold] sm:p-3"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
+            
+            <button
+              onClick={goToNext}
+              className="rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[gold] sm:p-3"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
+          </div>
 
           <div className="flex h-full min-h-screen items-center">
             <div className="w-full py-20 lg:py-32">
@@ -534,13 +536,6 @@ export default function Home() {
                 
                 {/* Darker overlay for video thumbnail - behind iframe with pointer-events-none */}
                 <div className="absolute inset-0 bg-black/50 rounded-2xl z-10 transition-opacity duration-300 group-hover:opacity-30 pointer-events-none" />
-                
-                {/* Optional overlay for branding - hidden when video is playing */}
-                <div className={`absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-30 rounded-lg bg-[gold] px-3 py-2 shadow-lg transition-opacity duration-300 ${
-                  isVideoPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                }`}>
-                  <p className="font-bold text-[#050a30] text-xs sm:text-sm">YCB Trailer</p>
-                </div>
               </div>
             </div>
 
@@ -623,31 +618,31 @@ export default function Home() {
             <div className="mx-auto mt-4 mb-12 flex max-w-4xl justify-center gap-7 sm:mt-6 sm:gap-13 lg:mb-16">
               {/* Cities */}
               <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
+                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30] border-2 border-[gold]"
               >
                 <div className="relative z-10 text-center">
                   <AnimatedCounter target={9} duration={1500} />
-                  <p className="text-gray-600 text-xs sm:text-sm">Cities</p>
+                  <p className="text-white font-bold text-xs sm:text-sm">Cities</p>
                 </div>
               </div>
 
               {/* Partner Schools */}
               <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
+                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30] border-2 border-[gold]"
               >
                 <div className="relative z-10 text-center">
                   <AnimatedCounter target={25} suffix="+" duration={2000} />
-                  <p className="text-gray-600 text-xs sm:text-sm">Partner Schools</p>
+                  <p className="text-white font-bold text-xs sm:text-sm">Partner Schools</p>
                 </div>
               </div>
 
               {/* Students */}
               <div
-                className="stats-card-gradient hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6"
+                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30] border-2 border-[gold]"
               >
                 <div className="relative z-10 text-center">
                   <AnimatedCounter target={500} suffix="+" duration={2500} />
-                  <p className="text-gray-600 text-xs sm:text-sm">Students</p>
+                  <p className="text-white font-bold text-xs sm:text-sm">Students</p>
                 </div>
               </div>
             </div>
@@ -684,8 +679,8 @@ export default function Home() {
               Hear what our students have to say about their transformative
               journey.
             </p>
-            {/* Pause/Play below heading, aligned to viewport right with small margin */}
-            <div className="-ml-[50vw] -mr-[50vw] mb-8 mt-4 flex w-[100vw] justify-end pr-4 sm:pr-6 lg:pr-10 relative left-[50%] right-[50%]">
+            {/* Pause/Play below heading, aligned to viewport right with small margin - only visible on mobile */}
+            <div className="-ml-[50vw] -mr-[50vw] mb-8 mt-4 flex w-[100vw] justify-end pr-4 sm:pr-6 lg:pr-10 relative left-[50%] right-[50%] md:hidden">
               <TestimonialsControls />
             </div>
 
@@ -1151,16 +1146,34 @@ function MobileSummaryControls({ iconOnly = false }: { iconOnly?: boolean }) {
 
 function TestimonialsMarquee({ className = "" }: { className?: string }) {
   const [paused, setPaused] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  
   useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768); // md breakpoint
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
     const handler = (e: Event) => {
       const detail = (e as CustomEvent<{ paused: boolean }>).detail;
       if (detail) setPaused(detail.paused);
     };
     window.addEventListener("ycb:toggle-testimonials-pause", handler as EventListener);
-    return () => window.removeEventListener("ycb:toggle-testimonials-pause", handler as EventListener);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsDesktop);
+      window.removeEventListener("ycb:toggle-testimonials-pause", handler as EventListener);
+    };
   }, []);
+  
   return (
-    <Marquee className={className} pauseOnHover={false} paused={paused}>
+    <Marquee 
+      className={className} 
+      pauseOnHover={isDesktop} 
+      paused={!isDesktop ? paused : false}
+    >
       {testimonials.map((testimonial) => (
         <TestimonialCard
           key={testimonial.id}
