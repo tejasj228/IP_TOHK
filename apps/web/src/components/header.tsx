@@ -11,7 +11,16 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
+  // Check if we're on the network page
+  const isNetworkPage = pathname === "/network";
+
   React.useEffect(() => {
+    // If we're on the network page, don't use the intersection observer
+    if (isNetworkPage) {
+      setIsScrolled(true); // Always use navy background on network page
+      return;
+    }
+
     // Observe the start of the "Impact across India" section instead of hero
     const impactSentinel = document.querySelector("#impact-sentinel");
     if (!impactSentinel) return;
@@ -45,15 +54,21 @@ export default function Header() {
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [isNetworkPage]);
 
-  const links = [
-    { to: "/", label: "Home" },
-    { to: "#about", label: "About YCB" },
-    { to: "#network", label: "Our Network" },
-    { to: "#editions", label: "Previous Editions" },
-    { to: "#featured", label: "Featured" },
-  ] as const;
+  type LinkConfig = {
+    to: string;
+    label: string;
+    isRoute: boolean;
+  };
+
+  const links: LinkConfig[] = [
+    { to: "/", label: "Home", isRoute: true },
+    { to: "#about", label: "About YCB", isRoute: false },
+    { to: "/network", label: "Our Network", isRoute: true },
+    { to: "#editions", label: "Previous Editions", isRoute: false },
+    { to: "#featured", label: "Featured", isRoute: false },
+  ];
 
   return (
     <>
@@ -85,26 +100,47 @@ export default function Header() {
           {/* Desktop Navigation - Hidden on mobile */}
           <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 hidden md:block">
             <nav className="flex items-center gap-4 text-lg lg:gap-6 xl:gap-8">
-              {links.map(({ to, label }) => {
+              {links.map(({ to, label, isRoute }) => {
                 const isActive =
                   pathname === to || (to !== "/" && pathname.startsWith(to));
-                return (
-                  <Link
-                    className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
-                      isActive ? "text-white" : "text-white/80 hover:text-white"
-                    }`}
-                    href={to}
-                    key={to}
-                  >
-                    {label}
-                    {isActive && (
-                      <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
-                    )}
-                    {!isActive && (
-                      <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
-                    )}
-                  </Link>
-                );
+                
+                if (isRoute) {
+                  return (
+                    <Link
+                      className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
+                        isActive ? "text-white" : "text-white/80 hover:text-white"
+                      }`}
+                      href={to as any}
+                      key={to}
+                    >
+                      {label}
+                      {isActive && (
+                        <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
+                      )}
+                      {!isActive && (
+                        <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
+                      )}
+                    </Link>
+                  );
+                } else {
+                  return (
+                    <a
+                      className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
+                        isActive ? "text-white" : "text-white/80 hover:text-white"
+                      }`}
+                      href={to}
+                      key={to}
+                    >
+                      {label}
+                      {isActive && (
+                        <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
+                      )}
+                      {!isActive && (
+                        <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
+                      )}
+                    </a>
+                  );
+                }
               })}
             </nav>
           </div>
@@ -216,21 +252,37 @@ export default function Header() {
 
           {/* Navigation Links */}
           <nav className="flex flex-col space-y-6">
-            {links.map(({ to, label }) => {
+            {links.map(({ to, label, isRoute }) => {
               const isActive =
                 pathname === to || (to !== "/" && pathname.startsWith(to));
-              return (
-                <Link
-                  className={`font-semibold text-xl transition-colors ${
-                    isActive ? "text-[gold]" : "text-white hover:text-[gold]"
-                  }`}
-                  href={to}
-                  key={to}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              );
+              
+              if (isRoute) {
+                return (
+                  <Link
+                    className={`font-semibold text-xl transition-colors ${
+                      isActive ? "text-[gold]" : "text-white hover:text-[gold]"
+                    }`}
+                    href={to as any}
+                    key={to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {label}
+                  </Link>
+                );
+              } else {
+                return (
+                  <a
+                    className={`font-semibold text-xl transition-colors ${
+                      isActive ? "text-[gold]" : "text-white hover:text-[gold]"
+                    }`}
+                    href={to}
+                    key={to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {label}
+                  </a>
+                );
+              }
             })}
           </nav>
 

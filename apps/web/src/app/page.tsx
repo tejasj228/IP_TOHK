@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState, useRef, type ElementType } from "react";
 import Quotation from "@/assets/quotations.png";
 import tohkLogo from "@/assets/tohk.jpg";
@@ -650,6 +651,22 @@ export default function Home() {
             <div className="mt-8">
               <WorldMap/>
             </div>
+
+            {/* View Our Network Button */}
+            <div className="mt-8 text-center">
+              <Button
+                asChild
+                className="btn-gold-gradient smooth-hover inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-[#050a30] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                <Link href="/network">
+                  View Our Network
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -961,7 +978,7 @@ export default function Home() {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="#network"
+                    href="/network"
                   >
                     Our Network
                   </a>
