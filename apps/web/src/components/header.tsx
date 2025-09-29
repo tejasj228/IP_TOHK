@@ -73,7 +73,7 @@ export default function Header() {
             >
               <Image
                 alt="YCB Logo"
-                className="h-28 w-auto object-contain lg:h-36 xl:h-40"
+                className="h-32 w-auto object-contain lg:h-38 xl:h-42"
                 height={112}
                 priority
                 src={ycbLogo}

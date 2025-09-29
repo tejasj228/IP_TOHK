@@ -542,14 +542,14 @@ export default function Home() {
             {/* Video Summary Section */}
             <div className="mb-12 sm:mb-16">
               {/* Summary Title (centered) + mobile pause/play below to the right */}
-              <div className="mb-6 sm:mb-10">
+              <div className="mb-8 sm:mb-10">
                 <div className="mx-auto max-w-6xl px-2 sm:px-0">
                   <div className="text-center">
                     <h3 className="mb-3 sm:mb-4 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">What You'll Discover</h3>
                     <p className="mx-auto max-w-3xl text-base text-gray-300 sm:text-lg lg:text-xl">Key highlights from our program overview</p>
                   </div>
                   {/* Pause/Play visible on mobile where marquee is used (icon-only) */}
-                  <div className="mt-10 flex justify-end md:hidden">
+                  <div className="mt-8 flex justify-end md:hidden">
                     <MobileSummaryControls iconOnly />
                   </div>
                 </div>
@@ -618,31 +618,31 @@ export default function Home() {
             <div className="mx-auto mt-4 mb-12 flex max-w-4xl justify-center gap-7 sm:mt-6 sm:gap-13 lg:mb-16">
               {/* Cities */}
               <div
-                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30] border-2 border-[gold]"
+                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30]"
               >
                 <div className="relative z-10 text-center">
                   <AnimatedCounter target={9} duration={1500} />
-                  <p className="text-white font-bold text-xs sm:text-sm">Cities</p>
+                  <p className="text-white text-xs sm:text-sm">Cities</p>
                 </div>
               </div>
 
               {/* Partner Schools */}
               <div
-                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30] border-2 border-[gold]"
+                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30]"
               >
                 <div className="relative z-10 text-center">
                   <AnimatedCounter target={25} suffix="+" duration={2000} />
-                  <p className="text-white font-bold text-xs sm:text-sm">Partner Schools</p>
+                  <p className="text-white text-xs sm:text-sm">Partner Schools</p>
                 </div>
               </div>
 
               {/* Students */}
               <div
-                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30] border-2 border-[gold]"
+                className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6 bg-[#050a30]"
               >
                 <div className="relative z-10 text-center">
                   <AnimatedCounter target={500} suffix="+" duration={2500} />
-                  <p className="text-white font-bold text-xs sm:text-sm">Students</p>
+                  <p className="text-white text-xs sm:text-sm">Students</p>
                 </div>
               </div>
             </div>

@@ -424,7 +424,7 @@ body {
   Normal (400) weights remain unchanged.
 */
 :root {
-  --ycb-heading-bold-tracking: 0.05em; /* dialed back for better readability */
+  --ycb-heading-bold-tracking: 0.025em; /* balanced letter spacing for optimal readability */
 }
 
 .font-heading.font-semibold,
