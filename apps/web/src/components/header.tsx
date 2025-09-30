@@ -15,9 +15,10 @@ export default function Header() {
   const isHomePage = pathname === "/";
   const isNetworkPage = pathname === "/network";
   const isAboutPage = pathname === "/about";
-  
+  const inEditionsPage = pathname === "/editions";
+
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isEditionsPage;
+  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || inEditionsPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -52,7 +53,7 @@ export default function Header() {
     );
 
     observer.observe(impactSentinel);
-    
+
     // Fallback: also listen to scroll to handle cases where IntersectionObserver
     // may behave differently across environments (or during rapid resizes).
     const onScroll = () => {
