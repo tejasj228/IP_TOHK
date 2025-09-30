@@ -13,10 +13,11 @@ export default function Header() {
 
   // Check if we're on the network page
   const isNetworkPage = pathname === "/network";
+  const isEditionsPage = pathname === "/editions";
 
   React.useEffect(() => {
     // If we're on the network page, don't use the intersection observer
-    if (isNetworkPage) {
+    if (isEditionsPage || isNetworkPage) {
       setIsScrolled(true); // Always use navy background on network page
       return;
     }
@@ -54,7 +55,7 @@ export default function Header() {
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
-  }, [isNetworkPage]);
+  }, [isNetworkPage, isEditionsPage]);
 
   type LinkConfig = {
     to: string;
@@ -66,7 +67,7 @@ export default function Header() {
     { to: "/", label: "Home", isRoute: true },
     { to: "#about", label: "About YCB", isRoute: false },
     { to: "/network", label: "Our Network", isRoute: true },
-    { to: "#editions", label: "Previous Editions", isRoute: false },
+    { to: "/editions", label: "Previous Editions", isRoute: true },
     { to: "#featured", label: "Featured", isRoute: false },
   ];
 
@@ -83,7 +84,7 @@ export default function Header() {
           {/* Logo */}
           <div className="relative z-70 flex h-full items-center justify-center overflow-hidden">
             <Link
-              className="smooth-hover flex items-center justify-center hover:scale-105 mt-3"
+              className="smooth-hover mt-3 flex items-center justify-center hover:scale-105"
               href="/"
             >
               <Image
@@ -103,12 +104,14 @@ export default function Header() {
               {links.map(({ to, label, isRoute }) => {
                 const isActive =
                   pathname === to || (to !== "/" && pathname.startsWith(to));
-                
+
                 if (isRoute) {
                   return (
                     <Link
                       className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
-                        isActive ? "text-white" : "text-white/80 hover:text-white"
+                        isActive
+                          ? "text-white"
+                          : "text-white/80 hover:text-white"
                       }`}
                       href={to as any}
                       key={to}
@@ -122,25 +125,24 @@ export default function Header() {
                       )}
                     </Link>
                   );
-                } else {
-                  return (
-                    <a
-                      className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
-                        isActive ? "text-white" : "text-white/80 hover:text-white"
-                      }`}
-                      href={to}
-                      key={to}
-                    >
-                      {label}
-                      {isActive && (
-                        <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
-                      )}
-                      {!isActive && (
-                        <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
-                      )}
-                    </a>
-                  );
                 }
+                return (
+                  <a
+                    className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
+                      isActive ? "text-white" : "text-white/80 hover:text-white"
+                    }`}
+                    href={to}
+                    key={to}
+                  >
+                    {label}
+                    {isActive && (
+                      <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
+                    )}
+                    {!isActive && (
+                      <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
+                    )}
+                  </a>
+                );
               })}
             </nav>
           </div>
@@ -255,7 +257,7 @@ export default function Header() {
             {links.map(({ to, label, isRoute }) => {
               const isActive =
                 pathname === to || (to !== "/" && pathname.startsWith(to));
-              
+
               if (isRoute) {
                 return (
                   <Link
@@ -269,20 +271,19 @@ export default function Header() {
                     {label}
                   </Link>
                 );
-              } else {
-                return (
-                  <a
-                    className={`font-semibold text-xl transition-colors ${
-                      isActive ? "text-[gold]" : "text-white hover:text-[gold]"
-                    }`}
-                    href={to}
-                    key={to}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {label}
-                  </a>
-                );
               }
+              return (
+                <a
+                  className={`font-semibold text-xl transition-colors ${
+                    isActive ? "text-[gold]" : "text-white hover:text-[gold]"
+                  }`}
+                  href={to}
+                  key={to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              );
             })}
           </nav>
 
