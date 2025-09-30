@@ -59,7 +59,7 @@ export default function Footer() {
               <li>
                 <a
                   className="transition-colors hover:text-[gold]"
-                  href="#featured"
+                  href="/featured"
                 >
                   Featured
                 </a>

@@ -16,9 +16,10 @@ export default function Header() {
   const isNetworkPage = pathname === "/network";
   const isAboutPage = pathname === "/about";
   const inEditionsPage = pathname === "/editions";
+  const inFeaturedPage = pathname === "/featured";
 
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || inEditionsPage;
+  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || inEditionsPage || inFeaturedPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -84,7 +85,7 @@ export default function Header() {
     { to: "/about", label: "About YCB", isRoute: true },
     { to: "/network", label: "Our Network", isRoute: true },
     { to: "/editions", label: "Previous Editions", isRoute: true },
-    { to: "#featured", label: "Featured", isRoute: false },
+    { to: "/featured", label: "Featured", isRoute: false },
   ];
 
   return (
