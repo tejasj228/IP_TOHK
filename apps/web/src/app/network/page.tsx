@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Users, Linkedin } from "lucide-react";
+import { Users } from "lucide-react";
 import tohkLogo from "@/assets/tohk.jpg";
 
 // Speakers & Mentors Data (influential people from various fields)
@@ -187,7 +187,7 @@ const NetworkPage = () => {
           }} />
         </div>
         
-        <div className="relative z-10 container mx-auto px-4 text-center">
+        <div className="relative z-10 w-full px-8 lg:px-16 xl:px-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[#050a30] mb-6">
             Our <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">Network</span>
           </h1>
@@ -199,7 +199,7 @@ const NetworkPage = () => {
       </section>
 
       {/* Navigation Sidebar */}
-      <div className="container mx-auto px-4">
+      <div className="w-full px-8 lg:px-16 xl:px-24">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}
           <div className="lg:w-64 flex-shrink-0">
@@ -214,8 +214,8 @@ const NetworkPage = () => {
                       : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30]"
                   }`}
                 >
-                  <Linkedin className="w-5 h-5" />
-                  Speakers & Mentors
+                  <Users className="w-5 h-5" />
+                  Past Mentors / Alumni
                 </button>
                 <button
                   onClick={() => setActiveTab("participants")}
@@ -226,7 +226,7 @@ const NetworkPage = () => {
                   }`}
                 >
                   <Users className="w-5 h-5" />
-                  Students & Participants
+                  Participants
                 </button>
               </div>
             </div>
@@ -237,10 +237,10 @@ const NetworkPage = () => {
             {activeTab === "speakers" && (
               <div className="space-y-8">
                 <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
-                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Speakers & Mentors</h2>
+                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Past Mentors / Alumni</h2>
                   <p className="text-gray-600 mb-8">Influential leaders, innovators, and changemakers inspiring our community</p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
                     {speakersData.map((speaker) => (
                       <div
                         key={speaker.id}
@@ -257,14 +257,6 @@ const NetworkPage = () => {
                           </h3>
                           <p className="text-sm text-[#FFD700] font-medium mb-1">{speaker.position}</p>
                           <p className="text-xs text-gray-500 mb-3">{speaker.organization}</p>
-                          <a
-                            href={speaker.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-8 h-8 bg-gradient-to-r from-[#050a30] to-[#1e40af] rounded-full text-white hover:scale-110 transition-all duration-200"
-                          >
-                            <Linkedin className="w-4 h-4" />
-                          </a>
                         </div>
                       </div>
                     ))}
@@ -276,8 +268,8 @@ const NetworkPage = () => {
             {activeTab === "participants" && (
               <div className="space-y-8">
                 <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
-                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Students & Participants</h2>
-                  <p className="text-gray-600 mb-8">Talented individuals who have been part of our bootcamp editions</p>
+                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Participants</h2>
+                  <p className="text-gray-600 mb-8">Past mentors, alumni, and talented individuals who have been part of our bootcamp editions</p>
                   
                   {/* Workshop Year Tabs */}
                   <div className="flex flex-wrap gap-2 mb-8 p-1 bg-gray-100 rounded-xl">
@@ -297,7 +289,7 @@ const NetworkPage = () => {
                   </div>
 
                   {/* Participants Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
                     {workshopData[selectedWorkshop as keyof typeof workshopData].map((participant, index) => (
                       <div
                         key={participant.id}

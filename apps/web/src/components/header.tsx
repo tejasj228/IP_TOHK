@@ -11,19 +11,34 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-  // Check if we're on the network page
+  // Check page types
+  const isHomePage = pathname === "/";
   const isNetworkPage = pathname === "/network";
+  const isAboutPage = pathname === "/about";
+  
+  // Pages that should always have navy header
+  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage;
 
   React.useEffect(() => {
-    // If we're on the network page, don't use the intersection observer
-    if (isNetworkPage) {
-      setIsScrolled(true); // Always use navy background on network page
+    // If we're on pages that should always have navy background
+    if (shouldAlwaysBeNavy) {
+      setIsScrolled(true);
       return;
     }
 
-    // Observe the start of the "Impact across India" section instead of hero
+    // Only use intersection observer on home page
+    if (!isHomePage) {
+      setIsScrolled(false); // Reset to transparent for other pages
+      return;
+    }
+
+    // Home page logic - observe the start of the "Impact across India" section
     const impactSentinel = document.querySelector("#impact-sentinel");
-    if (!impactSentinel) return;
+    if (!impactSentinel) {
+      // If sentinel not found, default to transparent
+      setIsScrolled(false);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -37,6 +52,7 @@ export default function Header() {
     );
 
     observer.observe(impactSentinel);
+    
     // Fallback: also listen to scroll to handle cases where IntersectionObserver
     // may behave differently across environments (or during rapid resizes).
     const onScroll = () => {
@@ -54,7 +70,7 @@ export default function Header() {
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
-  }, [isNetworkPage]);
+  }, [pathname, isHomePage, shouldAlwaysBeNavy]);
 
   type LinkConfig = {
     to: string;
@@ -64,7 +80,7 @@ export default function Header() {
 
   const links: LinkConfig[] = [
     { to: "/", label: "Home", isRoute: true },
-    { to: "#about", label: "About YCB", isRoute: false },
+    { to: "/about", label: "About YCB", isRoute: true },
     { to: "/network", label: "Our Network", isRoute: true },
     { to: "#editions", label: "Previous Editions", isRoute: false },
     { to: "#featured", label: "Featured", isRoute: false },
