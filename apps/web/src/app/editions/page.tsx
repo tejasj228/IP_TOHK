@@ -3,6 +3,7 @@
 import { Award, Calendar, ChevronDown, Lightbulb, Users } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 // Constants
 const SENTENCE_KEY_LENGTH = 15;
@@ -336,20 +337,27 @@ const EditionsPage = () => {
               </div>
 
               {/* Group Photo */}
-              <div className="relative h-64 overflow-hidden rounded-xl md:h-80">
-                <Image
-                  alt={`YCB ${currentEdition.year} Group Photo`}
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                  fill
-                  src={currentEdition.groupPhoto}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-4 py-2 backdrop-blur-sm">
-                  <p className="font-semibold text-[#050a30] text-sm">
-                    {currentEdition.theme}
-                  </p>
+              <BlurFade
+                delay={0.1}
+                duration={0.3}
+                inView
+                key={`group-photo-${selectedEdition}`}
+              >
+                <div className="relative h-64 overflow-hidden rounded-xl md:h-80">
+                  <Image
+                    alt={`YCB ${currentEdition.year} Group Photo`}
+                    className="object-cover transition-transform duration-300 hover:scale-105"
+                    fill
+                    src={currentEdition.groupPhoto}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-4 py-2 backdrop-blur-sm">
+                    <p className="font-semibold text-[#050a30] text-sm">
+                      {currentEdition.theme}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </BlurFade>
             </div>
 
             {/* Article Section */}
