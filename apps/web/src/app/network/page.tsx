@@ -2,6 +2,8 @@
 
 import { Linkedin, Users } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
+import tohkLogo from "@/assets/tohk.jpg";
 
 // Speakers & Mentors Data (influential people from various fields)
 const speakersData = [
@@ -334,13 +336,10 @@ const NetworkPage = () => {
             }}
           />
         </div>
-
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="mb-6 font-bold text-5xl text-[#050a30] md:text-6xl">
-            Our{" "}
-            <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
-              Network
-            </span>
+        
+        <div className="relative z-10 w-full px-8 lg:px-16 xl:px-24 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#050a30] mb-6">
+            Our <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">Network</span>
           </h1>
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FFA500]" />
           <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
@@ -351,8 +350,8 @@ const NetworkPage = () => {
       </section>
 
       {/* Navigation Sidebar */}
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="w-full px-8 lg:px-16 xl:px-24">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}
           <div className="flex-shrink-0 lg:w-64">
             <div className="sticky top-28 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg">
@@ -368,8 +367,8 @@ const NetworkPage = () => {
                   }`}
                   onClick={() => setActiveTab("speakers")}
                 >
-                  <Linkedin className="h-5 w-5" />
-                  Speakers & Mentors
+                  <Users className="w-5 h-5" />
+                  Past Mentors / Alumni
                 </button>
                 <button
                   className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left font-medium transition-all duration-200 ${
@@ -379,8 +378,8 @@ const NetworkPage = () => {
                   }`}
                   onClick={() => setActiveTab("participants")}
                 >
-                  <Users className="h-5 w-5" />
-                  Students & Participants
+                  <Users className="w-5 h-5" />
+                  Participants
                 </button>
               </div>
             </div>
@@ -390,16 +389,11 @@ const NetworkPage = () => {
           <div className="flex-1">
             {activeTab === "speakers" && (
               <div className="space-y-8">
-                <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
-                  <h2 className="mb-2 font-bold text-3xl text-[#050a30]">
-                    Speakers & Mentors
-                  </h2>
-                  <p className="mb-8 text-gray-600">
-                    Influential leaders, innovators, and changemakers inspiring
-                    our community
-                  </p>
-
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
+                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Past Mentors / Alumni</h2>
+                  <p className="text-gray-600 mb-8">Influential leaders, innovators, and changemakers inspiring our community</p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
                     {speakersData.map((speaker) => (
                       <div
                         className="group hover:-translate-y-1 rounded-xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 transition-all duration-300 hover:border-[#FFD700]/30 hover:shadow-xl"
@@ -417,20 +411,8 @@ const NetworkPage = () => {
                           <h3 className="mb-1 font-bold text-[#050a30] transition-colors group-hover:text-[#1e40af]">
                             {speaker.name}
                           </h3>
-                          <p className="mb-1 font-medium text-[#FFD700] text-sm">
-                            {speaker.position}
-                          </p>
-                          <p className="mb-3 text-gray-500 text-xs">
-                            {speaker.organization}
-                          </p>
-                          <a
-                            className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-[#050a30] to-[#1e40af] text-white transition-all duration-200 hover:scale-110"
-                            href={speaker.linkedin}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <Linkedin className="h-4 w-4" />
-                          </a>
+                          <p className="text-sm text-amber-500 font-medium mb-1">{speaker.position}</p>
+                          <p className="text-xs text-gray-500 mb-3">{speaker.organization}</p>
                         </div>
                       </div>
                     ))}
@@ -441,15 +423,10 @@ const NetworkPage = () => {
 
             {activeTab === "participants" && (
               <div className="space-y-8">
-                <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
-                  <h2 className="mb-2 font-bold text-3xl text-[#050a30]">
-                    Students & Participants
-                  </h2>
-                  <p className="mb-8 text-gray-600">
-                    Talented individuals who have been part of our bootcamp
-                    editions
-                  </p>
-
+                <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
+                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Participants</h2>
+                  <p className="text-gray-600 mb-8">Past mentors, alumni, and talented individuals who have been part of our bootcamp editions</p>
+                  
                   {/* Workshop Year Tabs */}
                   <div className="mb-8 flex flex-wrap gap-2 rounded-xl bg-gray-100 p-1">
                     {workshopYears.map((year) => (
@@ -468,10 +445,8 @@ const NetworkPage = () => {
                   </div>
 
                   {/* Participants Grid */}
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {workshopData[
-                      selectedWorkshop as keyof typeof workshopData
-                    ].map((participant, index) => (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+                    {workshopData[selectedWorkshop as keyof typeof workshopData].map((participant, index) => (
                       <div
                         className="group rounded-xl border border-gray-100 bg-gradient-to-br from-white to-blue-50/30 p-4 transition-all duration-300 hover:border-[#FFD700]/30 hover:shadow-lg"
                         key={participant.id}
@@ -487,11 +462,9 @@ const NetworkPage = () => {
                             <h4 className="truncate font-semibold text-[#050a30] transition-colors group-hover:text-[#1e40af]">
                               {participant.name}
                             </h4>
-                            <p className="truncate text-gray-500 text-sm">
-                              {participant.college}
-                            </p>
-                            <div className="mt-1 flex items-center gap-2">
-                              <span className="rounded bg-[#FFD700]/20 px-2 py-0.5 font-medium text-[#B8860B] text-xs">
+                            <p className="text-sm text-gray-500 truncate">{participant.college}</p>
+                            <div className="flex items-center gap-2 mt-1">
+                              <span className="px-2 py-0.5 bg-amber-100 text-amber-600 text-xs font-medium rounded">
                                 {participant.city}
                               </span>
                             </div>
