@@ -413,7 +413,7 @@ const AboutPage = () => {
                           <div className="flex-1 bg-white rounded-xl p-4 md:p-6 border border-gray-100 hover:shadow-lg transition-all duration-300">
                             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3 gap-2">
                               <h3 className="text-lg md:text-xl font-bold text-[#050a30]">{module.title}</h3>
-                              <span className="text-xs md:text-sm font-medium text-[#FFD700] bg-[#FFD700]/10 px-2 md:px-3 py-1 rounded-full self-start">
+                              <span className="text-xs md:text-sm font-medium text-amber-700 bg-amber-100 px-2 md:px-3 py-1 rounded-full self-start">
                                 {module.week}
                               </span>
                             </div>
@@ -571,7 +571,7 @@ const AboutPage = () => {
                           <div>
                             <h4 className="font-bold text-[#050a30]">{review.name}</h4>
                             <div className="text-sm text-gray-600">{review.role}</div>
-                            <div className="text-xs text-[#FFD700] font-medium">{review.batch}</div>
+                            <div className="text-xs text-amber-500 font-medium">{review.batch}</div>
                           </div>
                         </div>
                         

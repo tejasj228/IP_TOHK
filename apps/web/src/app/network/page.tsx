@@ -255,7 +255,7 @@ const NetworkPage = () => {
                           <h3 className="font-bold text-[#050a30] mb-1 group-hover:text-[#1e40af] transition-colors">
                             {speaker.name}
                           </h3>
-                          <p className="text-sm text-[#FFD700] font-medium mb-1">{speaker.position}</p>
+                          <p className="text-sm text-amber-500 font-medium mb-1">{speaker.position}</p>
                           <p className="text-xs text-gray-500 mb-3">{speaker.organization}</p>
                         </div>
                       </div>
@@ -305,7 +305,7 @@ const NetworkPage = () => {
                             </h4>
                             <p className="text-sm text-gray-500 truncate">{participant.college}</p>
                             <div className="flex items-center gap-2 mt-1">
-                              <span className="px-2 py-0.5 bg-[#FFD700]/20 text-[#B8860B] text-xs font-medium rounded">
+                              <span className="px-2 py-0.5 bg-amber-100 text-amber-600 text-xs font-medium rounded">
                                 {participant.city}
                               </span>
                             </div>
