@@ -351,10 +351,12 @@ const EditionsPage = () => {
                     src={currentEdition.groupPhoto}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-4 py-2 backdrop-blur-sm">
-                    <p className="font-semibold text-[#050a30] text-sm">
-                      {currentEdition.theme}
-                    </p>
+                  <div className="absolute bottom-4 left-4 max-w-[calc(100%-4rem)]">
+                    <div className="w-fit rounded-lg bg-white/90 px-3 py-2 backdrop-blur-sm">
+                      <p className="font-semibold text-[#050a30] text-sm leading-tight">
+                        {currentEdition.theme}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </BlurFade>
@@ -446,7 +448,7 @@ const EditionsPage = () => {
                   <p className="mb-4 text-gray-700 leading-relaxed">
                     {currentEdition.alumnus.description}
                   </p>
-                  <a
+                  {/*<a
                     className="inline-flex items-center gap-2 rounded-lg bg-soft-dark px-4 py-2 text-sm text-white transition-all duration-200 hover:bg-soft-dark/90"
                     href={currentEdition.alumnus.linkedin}
                     rel="noopener noreferrer"
@@ -454,7 +456,7 @@ const EditionsPage = () => {
                   >
                     <Users className="h-4 w-4" />
                     Connect on LinkedIn
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
