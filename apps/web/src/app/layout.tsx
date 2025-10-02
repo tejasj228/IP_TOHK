@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader } from "next/font/google";
 import localFont from "next/font/local";
 import "../index.css";
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Providers from "@/components/providers";
 
@@ -81,12 +82,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* <head>
+        <script
+          crossOrigin="anonymous"
+          src="//unpkg.com/react-scan/dist/auto.global.js"
+        />
+      </head> */}
       <body
         className={`${newsreader.variable} ${satoshi.variable} font-sans antialiased`}
       >
         <Providers>
           <Header />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>
