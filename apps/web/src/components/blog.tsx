@@ -54,8 +54,9 @@ const Blog8 = ({
 }: Blog8Props) => {
   return (
     <section className="py-7">
-      <div className="container flex flex-col items-center gap-16">
-        <div className="grid gap-y-10 sm:grid-cols-12 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center gap-16">
+          <div className="grid gap-y-10 sm:grid-cols-12 sm:gap-y-12 md:gap-y-16 lg:gap-y-20">
           {posts.map((post) => (
             <Card
               className="order-last border-0 bg-transparent shadow-none sm:order-first sm:col-span-12 lg:col-span-10 lg:col-start-2"
@@ -119,6 +120,7 @@ const Blog8 = ({
             </Card>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

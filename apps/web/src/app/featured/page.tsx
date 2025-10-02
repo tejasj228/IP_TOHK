@@ -106,15 +106,15 @@ const FeaturedPage = () => {
           />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="mb-6 font-bold text-5xl text-[#050a30] md:text-6xl">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="mb-6 font-bold text-4xl text-[#050a30] sm:text-5xl md:text-6xl">
             Featured{" "}
             <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
               Stories
             </span>
           </h1>
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FFA500]" />
-          <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
+          <p className="mx-auto max-w-3xl text-gray-600 text-lg leading-relaxed sm:text-xl">
             Dive into inspiring stories of change, innovation, and impact from
             our Young Changemaker community. Discover insights, strategies, and
             real-world solutions from the next generation of leaders.
@@ -124,9 +124,7 @@ const FeaturedPage = () => {
 
       {/* Blog Section */}
       <div className="pb-20">
-        <Blog8
-          posts={ycbBlogPosts}
-        />
+        <Blog8 posts={ycbBlogPosts} />
       </div>
     </div>
   );

@@ -15,16 +15,18 @@ export default function Header() {
   const isHomePage = pathname === "/";
   const isNetworkPage = pathname === "/network";
   const isAboutPage = pathname === "/about";
-  
+  const isEditionsPage = pathname === "/editions";
+  const isFeaturedPage = pathname === "/featured";
+
   // Legal pages that should always have navy header and no highlighting
-  const isLegalPage = pathname.startsWith("/privacy-notice") || 
-                     pathname.startsWith("/terms-of-use") || 
-                     pathname.startsWith("/code-of-conduct") || 
-                     pathname.startsWith("/safeguarding-policy") || 
+  const isLegalPage = pathname.startsWith("/privacy-notice") ||
+                     pathname.startsWith("/terms-of-use") ||
+                     pathname.startsWith("/code-of-conduct") ||
+                     pathname.startsWith("/safeguarding-policy") ||
                      pathname.startsWith("/tentative-calendar");
-  
+
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isLegalPage;
+  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isLegalPage || isEditionsPage || isFeaturedPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -59,7 +61,7 @@ export default function Header() {
     );
 
     observer.observe(impactSentinel);
-    
+
     // Fallback: also listen to scroll to handle cases where IntersectionObserver
     // may behave differently across environments (or during rapid resizes).
     const onScroll = () => {
@@ -89,8 +91,8 @@ export default function Header() {
     { to: "/", label: "Home", isRoute: true },
     { to: "/about", label: "About YCB", isRoute: true },
     { to: "/network", label: "Our Network", isRoute: true },
-    { to: "#editions", label: "Previous Editions", isRoute: false },
-    { to: "#featured", label: "Featured", isRoute: false },
+    { to: "/editions", label: "Previous Editions", isRoute: false },
+    { to: "/featured", label: "Featured", isRoute: false },
   ];
 
   return (
@@ -128,7 +130,7 @@ export default function Header() {
                 const isActive = !isLegalPage && (
                   pathname === to || (to !== "/" && pathname.startsWith(to))
                 );
-                
+
                 if (isRoute) {
                   return (
                     <Link
@@ -280,7 +282,7 @@ export default function Header() {
             {links.map(({ to, label, isRoute }) => {
               const isActive =
                 pathname === to || (to !== "/" && pathname.startsWith(to));
-              
+
               if (isRoute) {
                 return (
                   <Link
