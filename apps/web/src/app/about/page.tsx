@@ -35,7 +35,7 @@ const AboutPage = () => {
     | "faq"
   >("about");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [selectedFaqCategory, setSelectedFaqCategory] = useState<string>("Program Details");
+  const [selectedFaqCategory, setSelectedFaqCategory] = useState<FaqCategory>("About YCB");
 
   const navigationItems = [
     { id: "about", label: "About YCB", icon: BookOpen },
@@ -200,32 +200,87 @@ const AboutPage = () => {
     },
   ];
 
-  const faqData = [
-    {
-      question: "What makes YCB different from other programs?",
-      answer: "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact."
-    },
-    {
-      question: "Is the program conducted online or offline?",
-      answer: "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences."
-    },
-    {
-      question: "What kind of support is available during the program?",
-      answer: "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed."
-    },
-    {
-      question: "Can I participate if I'm working full-time?",
-      answer: "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals."
-    },
-    {
-      question: "What happens after completing the program?",
-      answer: "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves."
-    },
-    {
-      question: "Are there any prerequisites for applying?",
-      answer: "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds."
-    }
-  ];
+  const faqCategories = [
+    "About YCB",
+    "Eligibility & Dates", 
+    "Curriculum",
+    "Beyond the Curriculum",
+    "Fee & Financial Aid",
+    "Alumni Reviews"
+  ] as const;
+
+  type FaqCategory = typeof faqCategories[number];
+
+  const faqData: Record<FaqCategory, Array<{question: string; answer: string}>> = {
+    "About YCB": [
+      {
+        question: "What makes YCB different from other programs?",
+        answer: "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact."
+      },
+      {
+        question: "Is the program conducted online or offline?",
+        answer: "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences."
+      },
+      {
+        question: "What happens after completing the program?",
+        answer: "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves."
+      }
+    ],
+    "Eligibility & Dates": [
+      {
+        question: "Are there any prerequisites for applying?",
+        answer: "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds."
+      },
+      {
+        question: "Can I participate if I'm working full-time?",
+        answer: "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals."
+      },
+      {
+        question: "What are the age requirements?",
+        answer: "YCB is open to individuals aged 18-30 who are passionate about creating positive change. We believe this age range captures emerging leaders who are ready to take action and have the energy to drive meaningful impact."
+      }
+    ],
+    "Curriculum": [
+      {
+        question: "What kind of support is available during the program?",
+        answer: "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed."
+      },
+      {
+        question: "How are the projects structured?",
+        answer: "Projects are real-world challenges provided by partner organizations. You'll work in teams of 4-5 participants, guided by industry mentors, to develop practical solutions over the course of the program. Each project culminates in a presentation to stakeholders."
+      }
+    ],
+    "Beyond the Curriculum": [
+      {
+        question: "What networking opportunities are available?",
+        answer: "YCB provides extensive networking through monthly alumni meetups, industry expert sessions, partner organization visits, and our global online community. You'll connect with changemakers across sectors and geographies."
+      },
+      {
+        question: "Is there ongoing support after graduation?",
+        answer: "Yes! Alumni receive lifetime access to our network, quarterly check-ins with career counselors, funding opportunity alerts, collaboration platforms, and invitations to exclusive events and workshops."
+      }
+    ],
+    "Fee & Financial Aid": [
+      {
+        question: "What is the program fee?",
+        answer: "The program fee varies by location and format. We offer need-based scholarships covering up to 80% of costs. Financial assistance is available for deserving candidates who demonstrate passion and commitment."
+      },
+      {
+        question: "Are there payment plans available?",
+        answer: "Yes, we offer flexible payment plans including installment options and deferred payment for students. Our goal is to make the program accessible to passionate changemakers regardless of financial background."
+      }
+    ],
+    "Alumni Reviews": [
+      {
+        question: "How do alumni stay connected?",
+        answer: "Our alumni network is active through monthly meetups, online forums, collaborative projects, and mentorship programs. Many alumni also return as mentors and guest speakers for current participants."
+      },
+      {
+        question: "What career opportunities are available to alumni?",
+        answer: "Alumni have access to exclusive job boards, startup opportunities, government positions, and NGO roles. Our career services team also provides ongoing support for career transitions and advancement."
+      }
+    ]
+  };
 
   const alumniReviews = [
     {
@@ -233,7 +288,6 @@ const AboutPage = () => {
       batch: "YCB 2024",
       role: "Founder, EcoSolutions India",
       review: "YCB transformed my understanding of climate action. The mentorship and real projects gave me the confidence to start my own environmental consultancy.",
-      rating: 5,
       image: "PS"
     },
     {
@@ -241,7 +295,6 @@ const AboutPage = () => {
       batch: "YCB 2023",
       role: "Climate Policy Analyst",
       review: "The network I built through YCB has been invaluable. I'm now working with the government on climate policy, thanks to connections made during the program.",
-      rating: 5,
       image: "AP"
     },
     {
@@ -249,8 +302,35 @@ const AboutPage = () => {
       batch: "YCB 2024",
       role: "Social Entrepreneur",
       review: "YCB didn't just teach me about climate change - it gave me the tools and network to actually make a difference. My startup now impacts 10,000+ farmers.",
-      rating: 5,
       image: "MS"
+    },
+    {
+      name: "Rahul Kumar",
+      batch: "YCB 2023",
+      role: "Sustainability Consultant",
+      review: "The hands-on projects and real-world experience I gained through YCB were game-changing. I now lead sustainability initiatives for Fortune 500 companies.",
+      image: "RK"
+    },
+    {
+      name: "Ananya Joshi",
+      batch: "YCB 2024",
+      role: "Green Tech Innovator",
+      review: "YCB's emphasis on innovation and technology helped me develop a clean energy solution that's now being implemented across rural communities.",
+      image: "AJ"
+    },
+    {
+      name: "Vikram Mehta",
+      batch: "YCB 2023",
+      role: "Impact Investment Analyst",
+      review: "The program opened my eyes to the intersection of finance and social impact. I now help direct millions in funding toward sustainable development projects.",
+      image: "VM"
+    },
+    {
+      name: "Kavya Reddy",
+      batch: "YCB 2024",
+      role: "Community Development Lead",
+      review: "YCB taught me that change starts at the grassroots level. I'm now leading community-driven initiatives that have transformed 50+ villages.",
+      image: "KR"
     }
   ];
 
@@ -779,33 +859,9 @@ const AboutPage = () => {
                           </div>
                         </div>
                         
-                        <div className="flex gap-1 mb-3">
-                          {renderStars(review.rating)}
-                        </div>
-                        
                         <p className="text-gray-600 text-sm italic">"{review.review}"</p>
                       </div>
                     ))}
-                  </div>
-                  
-                  {/* Overall Statistics */}
-                  <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">4.9/5</div>
-                      <div className="text-sm text-gray-600">Average Rating</div>
-                    </div>
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">98%</div>
-                      <div className="text-sm text-gray-600">Would Recommend</div>
-                    </div>
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">85%</div>
-                      <div className="text-sm text-gray-600">Career Impact</div>
-                    </div>
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">92%</div>
-                      <div className="text-sm text-gray-600">Still Connected</div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -818,54 +874,88 @@ const AboutPage = () => {
                   <h2 className="text-3xl font-bold text-[#050a30] mb-6">Frequently Asked Questions</h2>
                   <p className="text-gray-600 mb-8">Got questions? We've got answers. Click on any question to expand.</p>
                   
-                  <div className="space-y-4">
-                    {faqData.map((faq, index) => (
-                      <div key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-                        <button
-                          className="flex w-full items-center justify-between p-6 text-left transition-colors duration-200 hover:bg-gray-50"
-                          onClick={() =>
-                            setExpandedFaq(expandedFaq === index ? null : index)
-                          }
-                        >
-                          <h3 className="pr-4 font-semibold text-[#050a30]">
-                            {faq.question}
-                          </h3>
-                          {expandedFaq === index ? (
-                            <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-500" />
-                          ) : (
-                            <ChevronRight className="h-5 w-5 flex-shrink-0 text-gray-500" />
-                          )}
-                        </button>
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    {/* Category Sidebar */}
+                    <div className="lg:w-64 flex-shrink-0">
+                      <div className="bg-white rounded-xl border border-gray-100 p-4">
+                        <h3 className="font-semibold text-[#050a30] mb-4">Categories</h3>
+                        <div className="space-y-2">
+                          {faqCategories.map((category) => (
+                            <button
+                              key={category}
+                              onClick={() => {
+                                setSelectedFaqCategory(category);
+                                setExpandedFaq(null);
+                              }}
+                              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                                selectedFaqCategory === category
+                                  ? "bg-[#050a30] text-white"
+                                  : "text-gray-600 hover:bg-gray-50"
+                              }`}
+                            >
+                              {category}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* FAQ Content */}
+                    <div className="flex-1">
+                      <div className="space-y-4">
+                        {faqData[selectedFaqCategory]?.map((faq, index) => (
+                          <div key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
+                            <button
+                              className="flex w-full items-center justify-between p-6 text-left transition-colors duration-200 hover:bg-gray-50"
+                              onClick={() =>
+                                setExpandedFaq(expandedFaq === index ? null : index)
+                              }
+                            >
+                              <h3 className="pr-4 font-semibold text-[#050a30]">
+                                {faq.question}
+                              </h3>
+                              {expandedFaq === index ? (
+                                <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-500" />
+                              ) : (
+                                <ChevronRight className="h-5 w-5 flex-shrink-0 text-gray-500" />
+                              )}
+                            </button>
 
-                        {expandedFaq === index && (
-                          <div className="px-6 pb-6">
-                            <div className="mb-4 h-px w-full bg-gray-100" />
-                            <p className="text-gray-600 leading-relaxed">
-                              {faq.answer}
-                            </p>
+                            {expandedFaq === index && (
+                              <div className="px-6 pb-6">
+                                <div className="mb-4 h-px w-full bg-gray-100" />
+                                <p className="text-gray-600 leading-relaxed">
+                                  {faq.answer}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )) || (
+                          <div className="text-center py-8 text-gray-500">
+                            No FAQs available for this category.
                           </div>
                         )}
                       </div>
-                    ))}
+                    </div>
                   </div>
+                </div>
 
-                  {/* Contact for More Questions */}
-                  <div className="mt-8 rounded-xl border border-[#FFD700]/20 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6 text-center">
-                    <h3 className="mb-2 font-bold text-[#050a30]">
-                      Still have questions?
-                    </h3>
-                    <p className="mb-4 text-gray-600">
-                      We're here to help! Reach out to our team for personalized
-                      answers.
-                    </p>
-                    <a
-                      className="inline-flex items-center gap-2 rounded-xl bg-soft-dark px-6 py-3 font-medium text-white transition-all duration-200 hover:scale-105"
-                      href="mailto:ycbootcamp@taleofhumankind.org"
-                    >
-                      <MessageCircle className="h-5 w-5" />
-                      Contact Us
-                    </a>
-                  </div>
+                {/* Contact for More Questions */}
+                <div className="mt-8 rounded-xl border border-[#FFD700]/20 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6 text-center">
+                  <h3 className="mb-2 font-bold text-[#050a30]">
+                    Still have questions?
+                  </h3>
+                  <p className="mb-4 text-gray-600">
+                    We're here to help! Reach out to our team for personalized
+                    answers.
+                  </p>
+                  <a
+                    className="inline-flex items-center gap-2 rounded-xl bg-soft-dark px-6 py-3 font-medium text-white transition-all duration-200 hover:scale-105"
+                    href="mailto:ycbootcamp@taleofhumankind.org"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    Contact Us
+                  </a>
                 </div>
               </div>
             )}
