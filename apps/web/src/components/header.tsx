@@ -16,8 +16,15 @@ export default function Header() {
   const isNetworkPage = pathname === "/network";
   const isAboutPage = pathname === "/about";
   
+  // Legal pages that should always have navy header and no highlighting
+  const isLegalPage = pathname.startsWith("/privacy-notice") || 
+                     pathname.startsWith("/terms-of-use") || 
+                     pathname.startsWith("/code-of-conduct") || 
+                     pathname.startsWith("/safeguarding-policy") || 
+                     pathname.startsWith("/tentative-calendar");
+  
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage;
+  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isLegalPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -117,8 +124,10 @@ export default function Header() {
           <div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 hidden md:block">
             <nav className="flex items-center gap-4 text-lg lg:gap-6 xl:gap-8">
               {links.map(({ to, label, isRoute }) => {
-                const isActive =
-                  pathname === to || (to !== "/" && pathname.startsWith(to));
+                // Don't highlight any navigation items when on legal pages
+                const isActive = !isLegalPage && (
+                  pathname === to || (to !== "/" && pathname.startsWith(to))
+                );
                 
                 if (isRoute) {
                   return (

@@ -1017,7 +1017,7 @@ export default function Home() {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/privacy"
+                    href="/privacy-notice"
                   >
                     Privacy Notice
                   </a>
@@ -1025,7 +1025,7 @@ export default function Home() {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/terms"
+                    href="/terms-of-use"
                   >
                     Terms of Use
                   </a>
@@ -1033,7 +1033,7 @@ export default function Home() {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/conduct"
+                    href="/code-of-conduct"
                   >
                     Code of Conduct
                   </a>
@@ -1041,7 +1041,7 @@ export default function Home() {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/safeguarding"
+                    href="/safeguarding-policy"
                   >
                     Safeguarding Policy
                   </a>
@@ -1049,7 +1049,7 @@ export default function Home() {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/calendar"
+                    href="/tentative-calendar"
                   >
                     Tentative Calendar
                   </a>

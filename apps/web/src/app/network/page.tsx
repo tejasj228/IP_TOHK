@@ -187,7 +187,7 @@ const NetworkPage = () => {
           }} />
         </div>
         
-        <div className="relative z-10 w-full px-8 lg:px-16 xl:px-24 text-center">
+        <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[#050a30] mb-6">
             Our <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">Network</span>
           </h1>
@@ -199,10 +199,10 @@ const NetworkPage = () => {
       </section>
 
       {/* Navigation Sidebar */}
-      <div className="w-full px-8 lg:px-16 xl:px-24">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
           {/* Sidebar */}
-          <div className="lg:w-64 flex-shrink-0">
+          <div className="md:w-60 lg:w-64 flex-shrink-0">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sticky top-28">
               <h3 className="text-lg font-bold text-[#050a30] mb-4">Browse Network</h3>
               <div className="space-y-3">
@@ -215,7 +215,7 @@ const NetworkPage = () => {
                   }`}
                 >
                   <Users className="w-5 h-5" />
-                  Past Mentors / Alumni
+                  Past Mentors
                 </button>
                 <button
                   onClick={() => setActiveTab("participants")}
@@ -226,7 +226,7 @@ const NetworkPage = () => {
                   }`}
                 >
                   <Users className="w-5 h-5" />
-                  Participants
+                  Alumni
                 </button>
               </div>
             </div>
@@ -237,7 +237,7 @@ const NetworkPage = () => {
             {activeTab === "speakers" && (
               <div className="space-y-8">
                 <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
-                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Past Mentors / Alumni</h2>
+                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Past Mentors</h2>
                   <p className="text-gray-600 mb-8">Influential leaders, innovators, and changemakers inspiring our community</p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
@@ -268,8 +268,8 @@ const NetworkPage = () => {
             {activeTab === "participants" && (
               <div className="space-y-8">
                 <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
-                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Participants</h2>
-                  <p className="text-gray-600 mb-8">Past mentors, alumni, and talented individuals who have been part of our bootcamp editions</p>
+                  <h2 className="text-3xl font-bold text-[#050a30] mb-2">Alumni</h2>
+                  <p className="text-gray-600 mb-8">Former participants who have completed our bootcamp and are now making impact in their communities</p>
                   
                   {/* Workshop Year Tabs */}
                   <div className="flex flex-wrap gap-2 mb-8 p-1 bg-gray-100 rounded-xl">
@@ -406,7 +406,7 @@ const NetworkPage = () => {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/privacy"
+                    href="/privacy-notice"
                   >
                     Privacy Notice
                   </a>
@@ -414,7 +414,7 @@ const NetworkPage = () => {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/terms"
+                    href="/terms-of-use"
                   >
                     Terms of Use
                   </a>
@@ -422,7 +422,7 @@ const NetworkPage = () => {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/conduct"
+                    href="/code-of-conduct"
                   >
                     Code of Conduct
                   </a>
@@ -430,7 +430,7 @@ const NetworkPage = () => {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/safeguarding"
+                    href="/safeguarding-policy"
                   >
                     Safeguarding Policy
                   </a>
@@ -438,7 +438,7 @@ const NetworkPage = () => {
                 <li>
                   <a
                     className="transition-colors hover:text-[gold]"
-                    href="/calendar"
+                    href="/tentative-calendar"
                   >
                     Tentative Calendar
                   </a>

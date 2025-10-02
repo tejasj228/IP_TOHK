@@ -27,6 +27,7 @@ import tohkLogo from "@/assets/tohk.jpg";
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState<"about" | "eligibility" | "curriculum" | "beyond" | "aid" | "reviews" | "faq">("about");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [selectedFaqCategory, setSelectedFaqCategory] = useState<string>("Program Details");
 
   const navigationItems = [
     { id: "about", label: "About YCB", icon: BookOpen },
@@ -137,32 +138,64 @@ const AboutPage = () => {
     }
   ];
 
-  const faqData = [
-    {
-      question: "What makes YCB different from other programs?",
-      answer: "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact."
-    },
-    {
-      question: "Is the program conducted online or offline?",
-      answer: "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences."
-    },
-    {
-      question: "What kind of support is available during the program?",
-      answer: "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed."
-    },
-    {
-      question: "Can I participate if I'm working full-time?",
-      answer: "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals."
-    },
-    {
-      question: "What happens after completing the program?",
-      answer: "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves."
-    },
-    {
-      question: "Are there any prerequisites for applying?",
-      answer: "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds."
-    }
-  ];
+  const faqData = {
+    "Program Details": [
+      {
+        question: "What makes YCB different from other programs?",
+        answer: "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact."
+      },
+      {
+        question: "Is the program conducted online or offline?",
+        answer: "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences."
+      },
+      {
+        question: "What kind of support is available during the program?",
+        answer: "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed."
+      }
+    ],
+    "Application & Eligibility": [
+      {
+        question: "Are there any prerequisites for applying?",
+        answer: "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds."
+      },
+      {
+        question: "What is the age requirement for YCB?",
+        answer: "Participants must be between 18-25 years old and currently enrolled in college or recent graduates. We occasionally consider exceptional candidates slightly outside this age range."
+      },
+      {
+        question: "When do applications open and close?",
+        answer: "Applications typically open in January and close in March for the summer cohort. We also have a winter cohort with applications opening in August and closing in October. Follow our social media for exact dates."
+      }
+    ],
+    "Program Structure": [
+      {
+        question: "Can I participate if I'm working full-time?",
+        answer: "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals."
+      },
+      {
+        question: "How long is the program?",
+        answer: "YCB is a 12-week intensive program divided into modules covering foundation skills, climate science, innovation, entrepreneurship, leadership, and project implementation. The program concludes with a capstone project presentation."
+      },
+      {
+        question: "What is the typical schedule like?",
+        answer: "The program includes 3-4 hours of live sessions per week, self-paced learning modules, project work, and mentorship calls. Weekends often feature workshops, networking events, or field visits."
+      }
+    ],
+    "After Graduation": [
+      {
+        question: "What happens after completing the program?",
+        answer: "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves."
+      },
+      {
+        question: "Do you provide job placement assistance?",
+        answer: "Yes, we have partnerships with impact organizations, startups, and corporations committed to sustainability. Our career services team helps with resume building, interview preparation, and job matching."
+      },
+      {
+        question: "Can alumni continue to participate in YCB activities?",
+        answer: "Absolutely! Alumni are encouraged to mentor current participants, speak at events, collaborate on projects, and access our continued learning opportunities. Many become part of our extended teaching community."
+      }
+    ]
+  };
 
   const alumniReviews = [
     {
@@ -170,7 +203,6 @@ const AboutPage = () => {
       batch: "YCB 2024",
       role: "Founder, EcoSolutions India",
       review: "YCB transformed my understanding of climate action. The mentorship and real projects gave me the confidence to start my own environmental consultancy.",
-      rating: 5,
       image: "PS"
     },
     {
@@ -178,7 +210,6 @@ const AboutPage = () => {
       batch: "YCB 2023",
       role: "Climate Policy Analyst",
       review: "The network I built through YCB has been invaluable. I'm now working with the government on climate policy, thanks to connections made during the program.",
-      rating: 5,
       image: "AP"
     },
     {
@@ -186,8 +217,35 @@ const AboutPage = () => {
       batch: "YCB 2024",
       role: "Social Entrepreneur",
       review: "YCB didn't just teach me about climate change - it gave me the tools and network to actually make a difference. My startup now impacts 10,000+ farmers.",
-      rating: 5,
       image: "MS"
+    },
+    {
+      name: "Rahul Verma",
+      batch: "YCB 2023",
+      role: "Renewable Energy Consultant",
+      review: "The practical approach of YCB helped me understand how to implement sustainable solutions in real-world scenarios. I now lead solar energy projects across rural India.",
+      image: "RV"
+    },
+    {
+      name: "Sneha Gupta",
+      batch: "YCB 2022",
+      role: "Community Development Manager",
+      review: "YCB taught me that change starts at the grassroots level. I'm now working with local communities to build climate resilience and sustainable livelihoods.",
+      image: "SG"
+    },
+    {
+      name: "Karan Malhotra",
+      batch: "YCB 2023",
+      role: "Environmental Lawyer",
+      review: "The program's emphasis on policy and advocacy inspired me to pursue environmental law. I now represent communities affected by climate change.",
+      image: "KM"
+    },
+    {
+      name: "Ananya Krishnan",
+      batch: "YCB 2022",
+      role: "Sustainable Tech Developer",
+      review: "YCB showed me how technology can be a force for good. I'm now developing apps that help farmers adapt to climate change and improve their yields.",
+      image: "AK"
     }
   ];
 
@@ -213,7 +271,7 @@ const AboutPage = () => {
           }} />
         </div>
         
-        <div className="relative z-10 w-full px-8 lg:px-16 xl:px-24 text-center">
+        <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[#050a30] mb-6">
             About <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">YCB</span>
           </h1>
@@ -225,10 +283,10 @@ const AboutPage = () => {
       </section>
 
       {/* Main Content */}
-      <div className="w-full px-8 lg:px-16 xl:px-24">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
           {/* Sidebar */}
-          <div className="lg:w-64 flex-shrink-0">
+          <div className="md:w-60 lg:w-64 flex-shrink-0">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sticky top-28">
               <h3 className="text-lg font-bold text-[#050a30] mb-4">Explore YCB</h3>
               <div className="space-y-3">
@@ -575,33 +633,9 @@ const AboutPage = () => {
                           </div>
                         </div>
                         
-                        <div className="flex gap-1 mb-3">
-                          {renderStars(review.rating)}
-                        </div>
-                        
                         <p className="text-gray-600 text-sm italic">"{review.review}"</p>
                       </div>
                     ))}
-                  </div>
-                  
-                  {/* Overall Statistics */}
-                  <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">4.9/5</div>
-                      <div className="text-sm text-gray-600">Average Rating</div>
-                    </div>
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">98%</div>
-                      <div className="text-sm text-gray-600">Would Recommend</div>
-                    </div>
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">85%</div>
-                      <div className="text-sm text-gray-600">Career Impact</div>
-                    </div>
-                    <div className="text-center p-4 bg-white rounded-xl border border-gray-100">
-                      <div className="text-2xl font-bold text-[#050a30]">92%</div>
-                      <div className="text-sm text-gray-600">Still Connected</div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -612,10 +646,30 @@ const AboutPage = () => {
               <div className="space-y-8">
                 <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
                   <h2 className="text-3xl font-bold text-[#050a30] mb-6">Frequently Asked Questions</h2>
-                  <p className="text-gray-600 mb-8">Got questions? We've got answers. Click on any question to expand.</p>
+                  <p className="text-gray-600 mb-8">Got questions? We've got answers. Select a category and click on any question to expand.</p>
+                  
+                  {/* FAQ Categories */}
+                  <div className="flex flex-wrap gap-2 mb-8 p-1 bg-gray-100 rounded-xl">
+                    {Object.keys(faqData).map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          setSelectedFaqCategory(category);
+                          setExpandedFaq(null);
+                        }}
+                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                          selectedFaqCategory === category
+                            ? "bg-soft-dark text-white shadow-md"
+                            : "text-gray-600 hover:text-[#050a30] hover:bg-white"
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
                   
                   <div className="space-y-4">
-                    {faqData.map((faq, index) => (
+                    {faqData[selectedFaqCategory as keyof typeof faqData].map((faq, index) => (
                       <div key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
                         <button
                           onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
