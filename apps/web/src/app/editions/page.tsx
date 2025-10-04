@@ -1,22 +1,48 @@
 "use client";
 
-import { Award, Calendar, ChevronDown, Lightbulb, Users } from "lucide-react";
+import { Calendar, ChevronDown, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { Skiper } from "@/components/ui/skiper";
 
 // Constants
 const SENTENCE_KEY_LENGTH = 15;
+const PREVIEW_SENTENCES_COUNT = 3;
 
 // Mock data for different editions
 const editionsData = {
-  "YCB 2025": {
+  "Season 1": {
     year: "2025",
+    season: "Season 1",
     location: "Delhi",
     participants: 200,
+    dates: "15-22 March 2025",
     theme: "Innovation for Sustainable Future",
     groupPhoto:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Sustainable Innovation Workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Environmental Project Development",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Green Technology Demo",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Climate Action Planning",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Sustainability Presentation",
+      },
+    ],
     article: {
       title: "Transforming Ideas into Impact: YCB 2025",
       content:
@@ -39,13 +65,37 @@ const editionsData = {
       linkedin: "https://linkedin.com/in/arjun-malhotra",
     },
   },
-  "YCB 2024": {
+  "Season 2": {
     year: "2024",
+    season: "Season 2",
     location: "Mumbai",
     participants: 180,
+    dates: "10-17 August 2024",
     theme: "Youth Leadership in Digital Age",
     groupPhoto:
       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Digital Skills Workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Coding Bootcamp Session",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Tech Innovation Lab",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Digital Literacy Training",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "App Development Demo",
+      },
+    ],
     article: {
       title: "Empowering Digital Natives: YCB 2024 Journey",
       content:
@@ -68,13 +118,37 @@ const editionsData = {
       linkedin: "https://linkedin.com/in/kavya-jain",
     },
   },
-  "YCB 2023": {
+  "Season 3": {
     year: "2023",
+    season: "Season 3",
     location: "Bangalore",
     participants: 150,
+    dates: "20-27 May 2023",
     theme: "Social Entrepreneurship & Community Impact",
     groupPhoto:
       "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Social Enterprise Workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Community Impact Project",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Entrepreneurship Mentoring",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Business Model Canvas",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Pitch Competition",
+      },
+    ],
     article: {
       title: "Building Tomorrow's Social Entrepreneurs: YCB 2023",
       content:
@@ -97,13 +171,37 @@ const editionsData = {
       linkedin: "https://linkedin.com/in/tanvi-khanna",
     },
   },
-  "YCB 2022": {
+  "Season 4": {
     year: "2022",
+    season: "Season 4",
     location: "Chennai",
     participants: 120,
+    dates: "5-12 November 2022",
     theme: "Climate Action & Environmental Sustainability",
     groupPhoto:
       "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Climate Action Workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Environmental Conservation Project",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Renewable Energy Demo",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Beach Cleanup Initiative",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Green Innovation Lab",
+      },
+    ],
     article: {
       title: "Climate Warriors in Action: YCB 2022 Chronicles",
       content:
@@ -126,13 +224,37 @@ const editionsData = {
       linkedin: "https://linkedin.com/in/rohit-menon",
     },
   },
-  "YCB 2021": {
+  "Season 5": {
     year: "2021",
+    season: "Season 5",
     location: "Virtual (Delhi)",
     participants: 100,
+    dates: "12-19 September 2021",
     theme: "Resilience & Community Building in Crisis",
     groupPhoto:
       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Virtual Workshop Session",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Online Collaboration",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Digital Community Building",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Remote Mentorship",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Virtual Innovation Challenge",
+      },
+    ],
     article: {
       title: "United in Purpose: YCB 2021 Virtual Edition",
       content:
@@ -158,12 +280,13 @@ const editionsData = {
 };
 
 const EditionsPage = () => {
-  const [selectedEdition, setSelectedEdition] = useState("YCB 2025");
+  const [selectedSeason, setSelectedSeason] = useState("Season 1");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isArticleExpanded, setIsArticleExpanded] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const editionYears = Object.keys(editionsData);
+  const seasons = Object.keys(editionsData);
   const currentEdition =
-    editionsData[selectedEdition as keyof typeof editionsData];
+    editionsData[selectedSeason as keyof typeof editionsData];
 
   // Close dropdown when clicking outside or pressing escape
   useEffect(() => {
@@ -191,58 +314,51 @@ const EditionsPage = () => {
     };
   }, []);
 
+  // Reset article expansion when season changes
+  useEffect(() => {
+    setIsArticleExpanded(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSeason]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32 pb-12">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
+    <div className="relative overflow-x-hidden">
+      {/* Hero Section with Background Image */}
+      <section
+        className="relative min-h-screen overflow-hidden bg-[#050a30]"
+        id="hero-section"
+      >
+        {/* Background image */}
+        <div className="absolute inset-0">
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 bg-center bg-cover bg-no-repeat transition-opacity duration-1000"
             style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
-                             radial-gradient(circle at 75% 75%, #6366f1 2px, transparent 2px)`,
-              backgroundSize: "60px 60px",
+              backgroundImage: `url(${currentEdition.groupPhoto})`,
             }}
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="mb-6 font-bold text-4xl text-[#050a30] sm:text-5xl md:text-6xl">
-            Previous{" "}
-            <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
-              Editions
-            </span>
-          </h1>
-          <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FFA500]" />
-          <p className="mx-auto max-w-3xl text-gray-600 text-lg leading-relaxed sm:text-xl">
-            Explore the journey of Young Changemaker Bootcamp through the years.
-            Each edition has been a unique experience of learning, growth, and
-            impact.
-          </p>
-        </div>
-      </section>
+        {/* Enhanced gradient overlay - darker on left, lighter on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#000000e6] from-[0%] via-[#000000cc] via-[35%] to-[#00000066] to-[70%] opacity-90" />
 
-      {/* Main Content */}
-      <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row">
-          {/* Mobile Dropdown - visible only on smaller screens */}
-          <div className="lg:hidden">
+        {/* Additional overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#00000040] via-transparent to-[#00000040]" />
+
+        <div className="relative z-10 h-full px-4 sm:px-6 lg:px-12 xl:px-16">
+          {/* Season Selector - positioned below header on all screens */}
+          <div className="pointer-events-auto absolute top-24 right-4 z-50 sm:top-24 sm:right-6 md:top-24 lg:top-28 lg:right-8">
             <div className="relative" ref={dropdownRef}>
               <button
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="listbox"
-                aria-label="Select edition year"
-                className="flex w-full items-center justify-between rounded-xl bg-soft-dark px-4 py-3 text-left font-medium text-white shadow-lg transition-all duration-200 hover:bg-soft-dark/90 focus:outline-none focus:ring-2 focus:ring-soft-dark/20"
+                aria-label="Select season"
+                className="flex items-center gap-3 rounded-xl bg-white/90 px-4 py-2 font-medium text-[#050a30] shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/20 sm:px-6 sm:py-3"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 type="button"
               >
-                <div className="flex items-center gap-3">
-                  <Calendar className="h-5 w-5 text-white" />
-                  <span className="text-white">{selectedEdition}</span>
-                </div>
+                <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
+                <span className="text-sm sm:text-base">{selectedSeason}</span>
                 <ChevronDown
-                  className={`h-5 w-5 text-white/80 transition-transform duration-200 ${
+                  className={`h-4 w-4 transition-transform duration-200 sm:h-5 sm:w-5 ${
                     isDropdownOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -250,29 +366,29 @@ const EditionsPage = () => {
 
               {isDropdownOpen && (
                 <div
-                  aria-label="Edition years"
-                  className="absolute top-full left-0 z-50 mt-2 w-full rounded-xl border border-gray-200 bg-white shadow-lg"
+                  aria-label="Season options"
+                  className="absolute top-full right-0 z-50 mt-2 w-full min-w-[200px] rounded-xl border border-gray-200 bg-white shadow-lg"
                   role="listbox"
                 >
                   <div className="py-2">
-                    {editionYears.map((year) => (
+                    {seasons.map((season) => (
                       <button
-                        aria-selected={selectedEdition === year}
+                        aria-selected={selectedSeason === season}
                         className={`flex w-full items-center gap-3 px-4 py-3 text-left font-medium transition-all duration-200 ${
-                          selectedEdition === year
-                            ? "bg-soft-dark text-white shadow-lg"
-                            : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30]"
+                          selectedSeason === season
+                            ? "bg-[#050a30] text-white"
+                            : "text-gray-600 hover:bg-gray-100 hover:text-gray-800"
                         }`}
-                        key={year}
+                        key={season}
                         onClick={() => {
-                          setSelectedEdition(year);
+                          setSelectedSeason(season);
                           setIsDropdownOpen(false);
                         }}
                         role="option"
                         type="button"
                       >
                         <Calendar className="h-4 w-4" />
-                        {year}
+                        {season}
                       </button>
                     ))}
                   </div>
@@ -281,185 +397,239 @@ const EditionsPage = () => {
             </div>
           </div>
 
-          {/* Desktop Sidebar - visible only on larger screens */}
-          <div className="hidden flex-shrink-0 lg:block lg:w-64">
-            <div className="sticky top-28 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg">
-              <h3 className="mb-4 font-bold text-[#050a30] text-lg">
-                Browse Editions
-              </h3>
-              <div className="space-y-2">
-                {editionYears.map((year) => (
-                  <button
-                    className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left font-medium transition-all duration-200 ${
-                      selectedEdition === year
-                        ? "bg-soft-dark text-white shadow-lg"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30]"
-                    }`}
-                    key={year}
-                    onClick={() => setSelectedEdition(year)}
-                    type="button"
-                  >
-                    <Calendar className="h-5 w-5" />
-                    {year}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="flex-1 space-y-8">
-            {/* Edition Header */}
-            <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
-              <div className="mb-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-                <div>
-                  <h2 className="mb-2 font-bold text-3xl text-[#050a30]">
-                    YCB {currentEdition.year}
-                  </h2>
-                  <p className="text-gray-600 text-lg">
+          <div className="flex h-full min-h-screen items-center">
+            <div className="w-full py-20 lg:py-32">
+              {/* Left Content - moved slightly left to avoid button overlap */}
+              <BlurFade delay={0.4} key={`hero-content-${selectedSeason}`}>
+                <div className="ml-0 flex max-w-2xl flex-col justify-center space-y-4 sm:ml-4 sm:space-y-6 lg:ml-8 lg:max-w-3xl lg:space-y-8 xl:max-w-4xl">
+                  {/* Main Heading */}
+                  <h1 className="font-bold text-2xl text-white leading-tight md:text-3xl lg:text-5xl">
                     {currentEdition.theme}
-                  </p>
-                </div>
-                <div className="flex gap-6 text-center">
-                  <div>
-                    <div className="font-bold text-2xl text-[#FFD700]">
-                      {currentEdition.participants}
-                    </div>
-                    <div className="text-gray-600 text-sm">Participants</div>
-                  </div>
-                  <div>
-                    <div className="font-bold text-2xl text-[#FFD700]">
-                      {currentEdition.location}
-                    </div>
-                    <div className="text-gray-600 text-sm">Location</div>
-                  </div>
-                </div>
-              </div>
+                  </h1>
 
-              {/* Group Photo */}
-              <BlurFade
-                delay={0.1}
-                duration={0.3}
-                inView
-                key={`group-photo-${selectedEdition}`}
-              >
-                <div className="relative h-64 overflow-hidden rounded-xl md:h-80">
-                  <Image
-                    alt={`YCB ${currentEdition.year} Group Photo`}
-                    className="object-cover transition-transform duration-300 hover:scale-105"
-                    fill
-                    src={currentEdition.groupPhoto}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 max-w-[calc(100%-4rem)]">
-                    <div className="w-fit rounded-lg bg-white/90 px-3 py-2 backdrop-blur-sm">
-                      <p className="font-semibold text-[#050a30] text-sm leading-tight">
-                        {currentEdition.theme}
-                      </p>
+                  {/* Edition Stats */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 text-lg text-white">
+                      <MapPin className="h-6 w-6 text-[#FFD700]" />
+                      <span>{currentEdition.location}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-lg text-white">
+                      <Calendar className="h-6 w-6 text-[#FFD700]" />
+                      <span>{currentEdition.dates}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-lg text-white">
+                      <Users className="h-6 w-6 text-[#FFD700]" />
+                      <span>{currentEdition.participants} Participants</span>
                     </div>
                   </div>
                 </div>
               </BlurFade>
             </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Content Sections */}
+      <div className="relative w-full bg-[#f7fafc] py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="space-y-16">
             {/* Article Section */}
-            <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg">
-              <h3 className="mb-4 font-bold text-2xl text-[#050a30]">
-                {currentEdition.article.title}
-              </h3>
-              <div className="prose max-w-none text-gray-700 leading-relaxed">
-                {currentEdition.article.content
-                  .split(". ")
-                  .map((sentence, index, array) => (
-                    <span
-                      key={`sentence-${sentence.substring(0, SENTENCE_KEY_LENGTH).replace(/[^a-zA-Z0-9]/g, "-")}-${index}`}
-                    >
-                      {sentence}
-                      {index < array.length - 1 && ". "}
-                    </span>
-                  ))}
+            <BlurFade delay={0.2} key={`article-${selectedSeason}`}>
+              {/* Section Title */}
+              <div className="mb-8 text-center sm:mb-12">
+                <h2 className="font-bold text-4xl text-[#050a30]">
+                  {currentEdition.article.title}
+                </h2>
+                <div className="gradient-underline mx-auto mt-4" />
               </div>
-            </div>
 
-            {/* Idea for Change Section */}
-            <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-blue-50/30 p-8 shadow-lg">
-              <div className="mb-4 flex items-center gap-3">
-                <Lightbulb className="h-6 w-6 text-[#FFD700]" />
-                <h3 className="font-bold text-2xl text-[#050a30]">
-                  Featured Idea for Change
-                </h3>
-              </div>
-              <div className="mb-4">
-                <h4 className="mb-2 font-bold text-[#050a30] text-xl">
-                  {currentEdition.ideaForChange.title}
-                </h4>
-                <p className="mb-4 text-gray-700 leading-relaxed">
-                  {currentEdition.ideaForChange.description}
-                </p>
-                <div className="mb-4 rounded-lg bg-[#FFD700]/10 p-4">
-                  <p className="font-semibold text-[#B8860B]">
-                    Impact: {currentEdition.ideaForChange.impact}
-                  </p>
-                </div>
-                <div>
-                  <p className="mb-2 font-semibold text-gray-800">
-                    Founded by:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {currentEdition.ideaForChange.founders.map((founder) => (
-                      <span
-                        className="rounded-full bg-soft-dark px-3 py-1 text-sm text-white"
-                        key={`founder-${selectedEdition}-${founder.replace(/\s+/g, "-").toLowerCase()}`}
-                      >
-                        {founder}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+              <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg">
+                <div className="prose max-w-none text-gray-700 leading-relaxed">
+                  {(() => {
+                    const sentences =
+                      currentEdition.article.content.split(". ");
+                    const previewSentences = sentences.slice(
+                      0,
+                      PREVIEW_SENTENCES_COUNT
+                    );
+                    const remainingSentences = sentences.slice(
+                      PREVIEW_SENTENCES_COUNT
+                    );
 
-            {/* Featured Alumnus Section */}
-            <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-indigo-50/30 p-8 shadow-lg">
-              <div className="mb-6 flex items-center gap-3">
-                <Award className="h-6 w-6 text-[#FFD700]" />
-                <h3 className="font-bold text-2xl text-[#050a30]">
-                  Featured Alumnus
-                </h3>
-              </div>
-              <div className="flex flex-col gap-6 md:flex-row md:items-start">
-                <div className="flex-shrink-0">
-                  <div className="relative h-32 w-32 overflow-hidden rounded-full">
-                    <Image
-                      alt={currentEdition.alumnus.name}
-                      className="object-cover"
-                      fill
-                      src={currentEdition.alumnus.image}
-                    />
-                  </div>
+                    return (
+                      <>
+                        {previewSentences.map((sentence, index) => (
+                          <span
+                            key={`preview-sentence-${sentence.substring(0, SENTENCE_KEY_LENGTH).replace(/[^a-zA-Z0-9]/g, "-")}-${index}`}
+                          >
+                            {sentence}
+                            {index < previewSentences.length - 1 && ". "}
+                          </span>
+                        ))}
+                        {previewSentences.length > 0 && ". "}
+
+                        {isArticleExpanded &&
+                          remainingSentences.map((sentence, index) => (
+                            <span
+                              key={`remaining-sentence-${sentence.substring(0, SENTENCE_KEY_LENGTH).replace(/[^a-zA-Z0-9]/g, "-")}-${index}`}
+                            >
+                              {sentence}
+                              {index < remainingSentences.length - 1 && ". "}
+                            </span>
+                          ))}
+
+                        {!isArticleExpanded &&
+                          remainingSentences.length > 0 && (
+                            <span className="text-gray-500">...</span>
+                          )}
+                      </>
+                    );
+                  })()}
                 </div>
-                <div className="flex-1">
-                  <h4 className="mb-2 font-bold text-[#050a30] text-xl">
-                    {currentEdition.alumnus.name}
-                  </h4>
-                  <p className="mb-3 font-semibold text-[#FFD700]">
-                    {currentEdition.alumnus.achievement}
-                  </p>
-                  <p className="mb-4 text-gray-700 leading-relaxed">
-                    {currentEdition.alumnus.description}
-                  </p>
-                  {/*<a
-                    className="inline-flex items-center gap-2 rounded-lg bg-soft-dark px-4 py-2 text-sm text-white transition-all duration-200 hover:bg-soft-dark/90"
-                    href={currentEdition.alumnus.linkedin}
-                    rel="noopener noreferrer"
-                    target="_blank"
+
+                {/* Read More / Read Less Button */}
+                <div className="mt-6 flex justify-center">
+                  <button
+                    className="group hover:-translate-y-0.5 inline-flex items-center gap-2 rounded-lg bg-[#050a30] px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-[#050a30]/90 hover:shadow-lg"
+                    onClick={() => setIsArticleExpanded(!isArticleExpanded)}
+                    type="button"
                   >
-                    <Users className="h-4 w-4" />
-                    Connect on LinkedIn
-                  </a> */}
+                    {isArticleExpanded ? "Read Less" : "Read More"}
+                    <svg
+                      className={`h-4 w-4 transition-transform duration-200 ${isArticleExpanded ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <title>{isArticleExpanded ? "Collapse" : "Expand"}</title>
+                      <path
+                        d="M19 9l-7 7-7-7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
-            </div>
+            </BlurFade>
+            {/* Image Carousel Section */}
+            <BlurFade delay={0.3} key={`carousel-${selectedSeason}`}>
+              {/* Section Title */}
+              <div className="mb-8 text-center sm:mb-12">
+                <h2 className="font-bold text-4xl text-[#050a30]">
+                  Edition{" "}
+                  <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
+                    Gallery
+                  </span>
+                </h2>
+                <div className="gradient-underline mx-auto mt-4" />
+                <p className="mx-auto mt-6 max-w-2xl text-[#718096] text-lg">
+                  Capturing moments from {currentEdition.season} -{" "}
+                  {currentEdition.theme}
+                </p>
+              </div>
+
+              <Skiper images={currentEdition.galleryImages} />
+            </BlurFade>{" "}
+            {/* Featured Idea Section */}
+            <BlurFade delay={0.4} key={`idea-${selectedSeason}`}>
+              {/* Section Title */}
+              <div className="mb-8 text-center sm:mb-12">
+                <h2 className="font-bold text-4xl text-[#050a30]">
+                  Featured{" "}
+                  <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
+                    Idea for Change
+                  </span>
+                </h2>
+                <div className="gradient-underline mx-auto mt-4" />
+                <p className="mx-auto mt-6 max-w-2xl text-[#718096] text-lg">
+                  Innovative solutions born from {currentEdition.season}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-blue-50/30 p-8 shadow-lg">
+                <div className="mb-6">
+                  <h3 className="mb-4 font-bold text-2xl text-[#050a30]">
+                    {currentEdition.ideaForChange.title}
+                  </h3>
+                  <p className="mb-6 text-gray-700 text-lg leading-relaxed">
+                    {currentEdition.ideaForChange.description}
+                  </p>
+                  <div className="mb-6 rounded-lg bg-[#FFD700]/10 p-4">
+                    <p className="font-semibold text-[#B8860B] text-lg">
+                      Impact: {currentEdition.ideaForChange.impact}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="mb-3 font-semibold text-gray-800 text-lg">
+                      Founded by:
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {currentEdition.ideaForChange.founders.map((founder) => (
+                        <span
+                          className="rounded-full bg-[#050a30] px-4 py-2 text-white"
+                          key={`founder-${selectedSeason}-${founder.replace(/\s+/g, "-").toLowerCase()}`}
+                        >
+                          {founder}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </BlurFade>
+            {/* Featured Alumnus Section */}
+            <BlurFade delay={0.6} key={`alumnus-${selectedSeason}`}>
+              {/* Section Title */}
+              <div className="mb-8 text-center sm:mb-12">
+                <h2 className="font-bold text-4xl text-[#050a30]">
+                  Featured{" "}
+                  <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
+                    Alumnus
+                  </span>
+                </h2>
+                <div className="gradient-underline mx-auto mt-4" />
+                <p className="mx-auto mt-6 max-w-2xl text-[#718096] text-lg">
+                  Success stories from {currentEdition.season} participants
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-indigo-50/30 p-8 shadow-lg">
+                <div className="flex flex-col gap-8 md:flex-row md:items-start">
+                  <div className="flex-shrink-0">
+                    <div className="relative h-40 w-40 overflow-hidden rounded-full">
+                      <Image
+                        alt={currentEdition.alumnus.name}
+                        className="object-cover"
+                        fill
+                        src={currentEdition.alumnus.image}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="mb-3 font-bold text-2xl text-[#050a30]">
+                      {currentEdition.alumnus.name}
+                    </h3>
+                    <p className="mb-4 font-semibold text-[#FFD700] text-xl">
+                      {currentEdition.alumnus.achievement}
+                    </p>
+                    <p className="mb-6 text-gray-700 text-lg leading-relaxed">
+                      {currentEdition.alumnus.description}
+                    </p>
+                    <a
+                      className="inline-flex items-center gap-3 rounded-lg bg-[#050a30] px-6 py-3 text-white transition-all duration-200 hover:bg-[#050a30]/90"
+                      href={currentEdition.alumnus.linkedin}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <Users className="h-5 w-5" />
+                      Connect on LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </BlurFade>
           </div>
         </div>
       </div>
