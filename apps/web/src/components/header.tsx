@@ -19,14 +19,20 @@ export default function Header() {
   const isFeaturedPage = pathname === "/featured";
 
   // Legal pages that should always have navy header and no highlighting
-  const isLegalPage = pathname.startsWith("/privacy-notice") ||
-                     pathname.startsWith("/terms-of-use") ||
-                     pathname.startsWith("/code-of-conduct") ||
-                     pathname.startsWith("/safeguarding-policy") ||
-                     pathname.startsWith("/tentative-calendar");
+  const isLegalPage =
+    pathname.startsWith("/privacy-notice") ||
+    pathname.startsWith("/terms-of-use") ||
+    pathname.startsWith("/code-of-conduct") ||
+    pathname.startsWith("/safeguarding-policy") ||
+    pathname.startsWith("/tentative-calendar");
 
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isLegalPage || isEditionsPage || isFeaturedPage;
+  const shouldAlwaysBeNavy =
+    isNetworkPage ||
+    isAboutPage ||
+    isLegalPage ||
+    isEditionsPage ||
+    isFeaturedPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -108,16 +114,16 @@ export default function Header() {
           {/* Logo */}
           <div className="relative z-70 flex h-full items-center justify-center overflow-hidden">
             <Link
-              className="smooth-hover flex items-center justify-center hover:scale-105 mt-3"
+              className="smooth-hover mt-3 flex items-center justify-center hover:scale-105"
               href="/"
             >
               <Image
                 alt="YCB Logo"
-                className="h-32 w-auto object-contain lg:h-38 xl:h-42"
-                height={112}
+                className="h-24 w-auto object-contain lg:h-28 xl:h-32"
+                height={96}
                 priority
                 src={ycbLogo}
-                width={336}
+                width={288}
               />
             </Link>
           </div>
@@ -127,15 +133,17 @@ export default function Header() {
             <nav className="flex items-center gap-4 text-lg lg:gap-6 xl:gap-8">
               {links.map(({ to, label, isRoute }) => {
                 // Don't highlight any navigation items when on legal pages
-                const isActive = !isLegalPage && (
-                  pathname === to || (to !== "/" && pathname.startsWith(to))
-                );
+                const isActive =
+                  !isLegalPage &&
+                  (pathname === to || (to !== "/" && pathname.startsWith(to)));
 
                 if (isRoute) {
                   return (
                     <Link
                       className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
-                        isActive ? "text-white" : "text-white/80 hover:text-white"
+                        isActive
+                          ? "text-white"
+                          : "text-white/80 hover:text-white"
                       }`}
                       href={to as any}
                       key={to}
@@ -149,25 +157,24 @@ export default function Header() {
                       )}
                     </Link>
                   );
-                } else {
-                  return (
-                    <a
-                      className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
-                        isActive ? "text-white" : "text-white/80 hover:text-white"
-                      }`}
-                      href={to}
-                      key={to}
-                    >
-                      {label}
-                      {isActive && (
-                        <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
-                      )}
-                      {!isActive && (
-                        <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
-                      )}
-                    </a>
-                  );
                 }
+                return (
+                  <a
+                    className={`link-hover group relative font-bold text-[12px] leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[15px] xl:leading-[24.32px] ${
+                      isActive ? "text-white" : "text-white/80 hover:text-white"
+                    }`}
+                    href={to}
+                    key={to}
+                  >
+                    {label}
+                    {isActive && (
+                      <div className="-bottom-1 absolute h-0.5 w-full bg-[gold] transition-all duration-300" />
+                    )}
+                    {!isActive && (
+                      <div className="-bottom-1 absolute h-0.5 w-0 bg-[gold] transition-all duration-300 group-hover:w-full" />
+                    )}
+                  </a>
+                );
               })}
             </nav>
           </div>
@@ -296,20 +303,19 @@ export default function Header() {
                     {label}
                   </Link>
                 );
-              } else {
-                return (
-                  <a
-                    className={`font-semibold text-xl transition-colors ${
-                      isActive ? "text-[gold]" : "text-white hover:text-[gold]"
-                    }`}
-                    href={to}
-                    key={to}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {label}
-                  </a>
-                );
               }
+              return (
+                <a
+                  className={`font-semibold text-xl transition-colors ${
+                    isActive ? "text-[gold]" : "text-white hover:text-[gold]"
+                  }`}
+                  href={to}
+                  key={to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              );
             })}
           </nav>
 
