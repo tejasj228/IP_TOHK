@@ -17,6 +17,7 @@ export default function Header() {
   const isAboutPage = pathname === "/about";
   const isEditionsPage = pathname === "/editions";
   const isFeaturedPage = pathname === "/featured";
+  const isContactPage = pathname === "/contact";
 
   // Legal pages that should always have navy header and no highlighting
   const isLegalPage =
@@ -27,12 +28,7 @@ export default function Header() {
     pathname.startsWith("/tentative-calendar");
 
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy =
-    isNetworkPage ||
-    isAboutPage ||
-    isLegalPage ||
-    isEditionsPage ||
-    isFeaturedPage;
+  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isLegalPage || isEditionsPage || isFeaturedPage || isContactPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -99,6 +95,7 @@ export default function Header() {
     { to: "/network", label: "Our Network", isRoute: true },
     { to: "/editions", label: "Previous Editions", isRoute: false },
     { to: "/featured", label: "Featured", isRoute: false },
+    { to: "/contact", label: "Contact", isRoute: true },
   ];
 
   return (

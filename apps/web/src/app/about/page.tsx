@@ -21,21 +21,52 @@ import {
   Users,
 } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import tohkLogo from "@/assets/tohk.jpg";
 
 const AboutPage = () => {
-  const [activeTab, setActiveTab] = useState<
-    | "about"
-    | "eligibility"
-    | "curriculum"
-    | "beyond"
-    | "aid"
-    | "reviews"
-    | "faq"
-  >("about");
+  const [activeSection, setActiveSection] = useState<string>("about");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [selectedFaqCategory, setSelectedFaqCategory] = useState<FaqCategory>("About YCB");
+
+  // Scroll spy effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["about", "eligibility", "curriculum", "beyond", "aid", "reviews", "faq"];
+      const scrollPosition = window.scrollY + 200; // Offset for header
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 120; // Account for header
+      const targetPosition = element.offsetTop - headerHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   const navigationItems = [
     { id: "about", label: "About YCB", icon: BookOpen },
@@ -380,18 +411,16 @@ const AboutPage = () => {
               <h3 className="text-lg font-bold text-[#050a30] mb-4">Explore YCB</h3>
               <div className="space-y-3">
                 {navigationItems.map((item) => {
-                  const IconComponent = item.icon;
                   return (
                     <button
-                      className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left font-medium transition-all duration-200 ${
-                        activeTab === item.id
-                          ? "bg-soft-dark text-white shadow-lg"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30]"
+                      className={`flex w-full items-center rounded-xl px-0 py-3 text-left font-medium transition-all duration-200 ${
+                        activeSection === item.id
+                          ? "bg-soft-dark text-white shadow-lg px-4"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30] hover:px-4"
                       }`}
                       key={item.id}
-                      onClick={() => setActiveTab(item.id as any)}
+                      onClick={() => scrollToSection(item.id)}
                     >
-                      <IconComponent className="h-5 w-5" />
                       {item.label}
                     </button>
                   );
@@ -401,9 +430,9 @@ const AboutPage = () => {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1">
+          <div className="flex-1 space-y-16">
             {/* About YCB */}
-            {activeTab === "about" && (
+            <section id="about" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -506,10 +535,10 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            )}
+            </section>
 
             {/* Eligibility & Dates */}
-            {activeTab === "eligibility" && (
+            <section id="eligibility" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -597,10 +626,10 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            )}
+            </section>
 
             {/* Curriculum */}
-            {activeTab === "curriculum" && (
+            <section id="curriculum" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -658,10 +687,10 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            )}
+            </section>
 
             {/* Beyond the Curriculum */}
-            {activeTab === "beyond" && (
+            <section id="beyond" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -705,10 +734,10 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            )}
+            </section>
 
             {/* Fee & Financial Aid */}
-            {activeTab === "aid" && (
+            <section id="aid" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -822,10 +851,10 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            )}
+            </section>
 
             {/* Alumni Reviews */}
-            {activeTab === "reviews" && (
+            <section id="reviews" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -865,43 +894,37 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-            )}
+            </section>
 
             {/* FAQ */}
-            {activeTab === "faq" && (
+            <section id="faq" className="scroll-mt-32">
               <div className="space-y-8">
                 <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
                   <h2 className="text-3xl font-bold text-[#050a30] mb-6">Frequently Asked Questions</h2>
                   <p className="text-gray-600 mb-8">Got questions? We've got answers. Click on any question to expand.</p>
                   
-                  <div className="flex flex-col lg:flex-row gap-8">
-                    {/* Category Sidebar */}
-                    <div className="lg:w-64 flex-shrink-0">
-                      <div className="bg-white rounded-xl border border-gray-100 p-4">
-                        <h3 className="font-semibold text-[#050a30] mb-4">Categories</h3>
-                        <div className="space-y-2">
-                          {faqCategories.map((category) => (
-                            <button
-                              key={category}
-                              onClick={() => {
-                                setSelectedFaqCategory(category);
-                                setExpandedFaq(null);
-                              }}
-                              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
-                                selectedFaqCategory === category
-                                  ? "bg-[#050a30] text-white"
-                                  : "text-gray-600 hover:bg-gray-50"
-                              }`}
-                            >
-                              {category}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* FAQ Content */}
-                    <div className="flex-1">
+                  {/* Category Filter Tabs */}
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {faqCategories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          setSelectedFaqCategory(category);
+                          setExpandedFaq(null);
+                        }}
+                        className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                          selectedFaqCategory === category
+                            ? "bg-[#050a30] text-white shadow-lg"
+                            : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:text-[#050a30] hover:border-gray-300"
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                  
+                  {/* FAQ Content */}
+                  <div>
                       <div className="space-y-4">
                         {faqData[selectedFaqCategory]?.map((faq, index) => (
                           <div key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
@@ -938,7 +961,6 @@ const AboutPage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
 
                 {/* Contact for More Questions */}
                 <div className="mt-8 rounded-xl border border-[#FFD700]/20 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6 text-center">
@@ -958,7 +980,7 @@ const AboutPage = () => {
                   </a>
                 </div>
               </div>
-            )}
+            </section>
           </div>
         </div>
       </div>

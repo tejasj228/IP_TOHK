@@ -721,25 +721,28 @@ export default function Home() {
             </div>
 
             {/* View Our Network Button */}
-            <div className="mt-8 text-center">
+            <div className="flex justify-center mt-8">
               <Button
                 asChild
-                className="btn-gold-gradient smooth-hover hover:-translate-y-0.5 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-[#050a30] transition-all duration-200 hover:shadow-lg"
+                className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-6 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg"
+                size="lg"
               >
                 <Link href="/network">
                   View Our Network
                   <svg
-                    className="h-4 w-4"
+                    className="transition-transform duration-300 group-hover:translate-x-2"
                     fill="none"
+                    height="18"
                     stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="M5 12h14"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                    />
+                    <title>View Our Network</title>
+                    <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
                 </Link>
@@ -1007,6 +1010,34 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+            
+            {/* Centered View More Button */}
+            <div className="relative z-30 flex justify-center mt-16 pt-2">
+              <Button
+                asChild
+                className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-6 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg"
+                size="lg"
+              >
+                <Link href="/featured">
+                  <span className="hidden sm:inline">View More</span>
+                  <span className="sm:hidden">View More</span>
+                  <svg
+                    className="transition-transform duration-300 group-hover:translate-x-2"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    width="18"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

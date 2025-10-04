@@ -171,6 +171,7 @@ const workshopData = {
 const NetworkPage = () => {
   const [activeTab, setActiveTab] = useState<"speakers" | "participants">("speakers");
   const [selectedWorkshop, setSelectedWorkshop] = useState("YCB 2025");
+  const [showAllMentors, setShowAllMentors] = useState(false);
 
   const workshopYears = Object.keys(workshopData);
 
@@ -241,7 +242,7 @@ const NetworkPage = () => {
                   <p className="text-gray-600 mb-8">Influential leaders, innovators, and changemakers inspiring our community</p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-                    {speakersData.map((speaker) => (
+                    {(showAllMentors ? speakersData : speakersData.slice(0, 10)).map((speaker) => (
                       <div
                         key={speaker.id}
                         className="group bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-xl hover:border-[#FFD700]/30 transition-all duration-300 hover:-translate-y-1"
@@ -261,6 +262,32 @@ const NetworkPage = () => {
                       </div>
                     ))}
                   </div>
+                  
+                  {/* View More Button */}
+                  {!showAllMentors && speakersData.length > 10 && (
+                    <div className="flex justify-center mt-8">
+                      <button
+                        onClick={() => setShowAllMentors(true)}
+                        className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-6 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg"
+                      >
+                        View More
+                        <svg
+                          className="transition-transform duration-300 group-hover:translate-x-2"
+                          fill="none"
+                          height="18"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                          width="18"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
