@@ -25,6 +25,8 @@ export default function Header() {
     pathname.startsWith("/terms-of-use") ||
     pathname.startsWith("/code-of-conduct") ||
     pathname.startsWith("/safeguarding-policy") ||
+    pathname.startsWith("/refund-policy") ||
+    pathname.startsWith("/how-to-apply") ||
     pathname.startsWith("/tentative-calendar");
 
   // Pages that should always have navy header
@@ -182,51 +184,25 @@ export default function Header() {
               asChild
               className="btn-primary-hover hover:-translate-y-0.5 bg-white px-3 py-1.5 font-bold text-[#1a365d] text-xs transition-all duration-300 hover:bg-white/90 hover:shadow-lg lg:px-4 lg:py-2 lg:text-sm xl:px-6 xl:text-base"
             >
-              <Link href="/">Apply</Link>
+              <Link href="/how-to-apply">How to Apply</Link>
             </Button>
 
             <Button
-              className="smooth-hover h-8 w-8 rounded-full border border-white/20 bg-white/10 hover:scale-110 hover:bg-white/20 hover:shadow-lg lg:h-10 lg:w-10"
-              size="icon"
+              asChild
+              className="smooth-hover bg-[gold] hover:bg-[gold]/90 text-[#1a365d] font-bold px-3 py-1.5 text-xs lg:px-4 lg:py-2 lg:text-sm xl:px-6 xl:text-base hover:scale-105 transition-all duration-300"
             >
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/80 transition-all duration-300 lg:h-6 lg:w-6">
-                <svg
-                  className="h-3 w-3 text-gray-700 transition-transform duration-300 group-hover:scale-110 lg:h-4 lg:w-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <title>Profile</title>
-                  <path
-                    clipRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    fillRule="evenodd"
-                  />
-                </svg>
-              </div>
+              <Link href="/how-to-apply">Apply</Link>
             </Button>
           </div>
 
           {/* Mobile Profile Button and Hamburger Menu */}
           <div className="flex items-center gap-3 md:hidden">
-            {/* Mobile Profile Button */}
+            {/* Mobile Apply Button */}
             <Button
-              className="smooth-hover h-8 w-8 rounded-full border border-white/20 bg-white/10 hover:scale-110 hover:bg-white/20 hover:shadow-lg"
-              size="icon"
+              asChild
+              className="smooth-hover bg-[gold] hover:bg-[gold]/90 text-[#1a365d] font-bold px-3 py-1.5 text-xs hover:scale-105 transition-all duration-300"
             >
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/80 transition-all duration-300">
-                <svg
-                  className="h-3 w-3 text-gray-700 transition-transform duration-300 group-hover:scale-110"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <title>Profile</title>
-                  <path
-                    clipRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    fillRule="evenodd"
-                  />
-                </svg>
-              </div>
+              <Link href="/how-to-apply">Apply</Link>
             </Button>
 
             {/* Mobile Hamburger Menu Button */}
@@ -282,7 +258,7 @@ export default function Header() {
           </div>
 
           {/* Navigation Links */}
-          <nav className="flex flex-col space-y-6">
+          <nav className="flex flex-col space-y-6 text-center">
             {links.map(({ to, label, isRoute }) => {
               const isActive =
                 pathname === to || (to !== "/" && pathname.startsWith(to));
@@ -317,13 +293,13 @@ export default function Header() {
           </nav>
 
           {/* Mobile Action Buttons */}
-          <div className="mt-8 space-y-4">
+          <div className="mt-8 space-y-4 text-center">
             <Button
               asChild
-              className="w-full bg-[gold] font-bold text-[#1a365d] hover:bg-[gold]/90"
+              className="w-full bg-white font-bold text-[#1a365d] hover:bg-white/90"
             >
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                Apply
+              <Link href="/how-to-apply" onClick={() => setIsMobileMenuOpen(false)}>
+                How to Apply
               </Link>
             </Button>
           </div>

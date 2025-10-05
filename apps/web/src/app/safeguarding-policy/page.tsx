@@ -16,149 +16,329 @@ export default function SafeguardingPolicy() {
               Safeguarding Policy
             </h1>
             <p className="text-lg text-gray-600">
-              Our commitment to protecting and safeguarding all participants in our programs.
+              Protecting the safety, dignity, and wellbeing of every participant.
             </p>
           </div>
 
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            <div className="mb-8 rounded-lg bg-gray-50 p-6">
-              <h2 className="mb-4 text-2xl font-bold text-[#050a30]">Our Safeguarding Commitment</h2>
-              <p className="text-gray-700">
-                The Tale of Humankind and the Young Changemaker Bootcamp are committed to safeguarding and protecting the welfare of all participants, volunteers, and stakeholders. We believe that everyone has the right to be protected from harm and abuse, and we take this responsibility seriously.
-              </p>
-              <p className="mt-4 font-semibold text-gray-800">
-                This policy applies to all staff, volunteers, participants, and anyone acting on behalf of our organization.
-              </p>
+            <div className="mb-8 rounded-lg bg-gray-50 border p-6">
+              <h2 className="mb-4 text-2xl font-bold text-[#050a30]">
+                Young Changemakers Bootcamp – Safeguarding Policy
+              </h2>
+              <div className="flex gap-6 text-sm text-gray-600 mb-4">
+                <span><strong>Effective Date:</strong> [Insert Date]</span>
+                <span><strong>Last Updated:</strong> [Insert Date]</span>
+              </div>
             </div>
 
             <div className="space-y-8">
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Policy Statement</h3>
-                <p className="mb-4 text-gray-700">
-                  The Tale of Humankind is committed to:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Creating and maintaining a safe environment for all participants</li>
-                  <li>Promoting the welfare and protection of young people and vulnerable adults</li>
-                  <li>Responding appropriately to safeguarding concerns</li>
-                  <li>Ensuring all staff and volunteers understand their safeguarding responsibilities</li>
-                  <li>Working with partner organizations to promote best safeguarding practices</li>
-                  <li>Regular review and improvement of our safeguarding procedures</li>
-                </ul>
-              </section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  1. Scope and Purpose
+                </h3>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="mb-3 text-lg font-semibold text-[#050a30]">This policy applies to:</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• All students participating in YCB.</li>
+                      <li>• All mentors, staff, faculty, volunteers, and partners.</li>
+                      <li>• All external service providers (accommodation, food, travel, event venues).</li>
+                    </ul>
+                  </div>
 
-              <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Who This Policy Protects</h3>
-                <p className="mb-4 text-gray-700">
-                  This policy is designed to protect:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>All participants in YCB programs, particularly those under 18 years of age</li>
-                  <li>Young adults aged 18-25 who may be vulnerable</li>
-                  <li>Volunteers and staff members</li>
-                  <li>Any individual who may be at risk in connection with our activities</li>
-                </ul>
-              </section>
-
-              <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Types of Abuse</h3>
-                <p className="mb-4 text-gray-700">
-                  We recognize the following forms of abuse and will take action to prevent and respond to them:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li><strong>Physical abuse:</strong> Hitting, slapping, pushing, kicking, restraining, or otherwise causing physical harm</li>
-                  <li><strong>Sexual abuse:</strong> Any sexual activity with someone who cannot or does not consent</li>
-                  <li><strong>Emotional/psychological abuse:</strong> Humiliation, threats, intimidation, or other actions that cause psychological harm</li>
-                  <li><strong>Financial abuse:</strong> Theft, fraud, or misuse of someone's finances or resources</li>
-                  <li><strong>Neglect:</strong> Failure to provide adequate care, support, or supervision</li>
-                  <li><strong>Online abuse:</strong> Cyberbullying, online harassment, or inappropriate digital contact</li>
-                </ul>
-              </section>
-
-              <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Prevention Measures</h3>
-                <p className="mb-4 text-gray-700">
-                  We implement the following measures to prevent abuse:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Comprehensive background checks for all staff and volunteers</li>
-                  <li>Mandatory safeguarding training for all team members</li>
-                  <li>Clear guidelines for appropriate behavior and boundaries</li>
-                  <li>Regular supervision and support for staff and volunteers</li>
-                  <li>Safe recruitment practices and reference checks</li>
-                  <li>Clear reporting mechanisms and procedures</li>
-                  <li>Regular review of safeguarding arrangements</li>
-                </ul>
-              </section>
-
-              <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Recognizing Signs of Abuse</h3>
-                <p className="mb-4 text-gray-700">
-                  Warning signs may include:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Unexplained changes in behavior or personality</li>
-                  <li>Withdrawal from activities or social situations</li>
-                  <li>Signs of physical injury or neglect</li>
-                  <li>Inappropriate sexual behavior or knowledge</li>
-                  <li>Fear of specific individuals or situations</li>
-                  <li>Regression in behavior or development</li>
-                  <li>Poor academic or program performance</li>
-                  <li>Low self-esteem or confidence</li>
-                </ul>
-              </section>
-
-              <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Reporting Procedures</h3>
-                <p className="mb-4 text-gray-700">
-                  If you have concerns about someone's welfare:
-                </p>
-                <ol className="list-decimal space-y-2 pl-6 text-gray-700">
-                  <li><strong>Immediate danger:</strong> If someone is in immediate danger, contact emergency services (police: 100, ambulance: 108)</li>
-                  <li><strong>Report to Designated Safeguarding Officer:</strong> Contact our safeguarding officer immediately at safeguarding@taleofhumankind.com</li>
-                  <li><strong>Document concerns:</strong> Write down what you observed, heard, or were told as soon as possible</li>
-                  <li><strong>Maintain confidentiality:</strong> Only share information with those who need to know</li>
-                  <li><strong>Follow up:</strong> Ensure appropriate action has been taken</li>
-                </ol>
-              </section>
-
-              <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Contact Information</h3>
-                <div className="rounded-lg bg-blue-50 p-4">
-                  <h4 className="mb-2 font-bold text-[#050a30]">Designated Safeguarding Officer</h4>
-                  <p className="text-gray-700">Email: safeguarding@taleofhumankind.com</p>
-                  <p className="text-gray-700">Phone: [To be provided during programs]</p>
-                  
-                  <h4 className="mb-2 mt-4 font-bold text-[#050a30]">Alternative Contact</h4>
-                  <p className="text-gray-700">Director: director@taleofhumankind.com</p>
-                  
-                  <h4 className="mb-2 mt-4 font-bold text-[#050a30]">External Support</h4>
-                  <p className="text-gray-700">Childline India: 1098 (24/7 helpline)</p>
-                  <p className="text-gray-700">Women Helpline: 181</p>
+                  <div>
+                    <h4 className="mb-3 text-lg font-semibold text-[#050a30]">The purpose of this policy is to:</h4>
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
+                      <ul className="space-y-2 text-gray-700">
+                        <li>• Protect the safety, dignity, and wellbeing of every participant.</li>
+                        <li>• Establish roles and responsibilities for adults working with minors.</li>
+                        <li>• Provide clear procedures for preventing, reporting, and responding to safeguarding concerns.</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Training and Support</h3>
-                <p className="text-gray-700">
-                  All staff and volunteers receive regular training on safeguarding procedures, recognizing signs of abuse, and appropriate responses. We provide ongoing support and supervision to ensure everyone feels confident in their ability to keep participants safe.
-                </p>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  2. Principles of Safeguarding
+                </h3>
+                <div className="grid md:grid-cols-1 gap-4">
+                  <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                    <h4 className="font-bold text-red-700 mb-2">Zero Tolerance:</h4>
+                    <p className="text-gray-700 text-sm">No form of abuse, neglect, harassment, exploitation, or discrimination will be tolerated.</p>
+                  </div>
+                  <div className="bg-green-50 border-l-4 border-green-500 p-4">
+                    <h4 className="font-bold text-green-700 mb-2">Best Interests of the Child:</h4>
+                    <p className="text-gray-700 text-sm">All actions and decisions prioritize the welfare of participants.</p>
+                  </div>
+                  <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
+                    <h4 className="font-bold text-blue-700 mb-2">Transparency:</h4>
+                    <p className="text-gray-700 text-sm">Policies are communicated clearly to students, parents, and staff.</p>
+                  </div>
+                  <div className="bg-purple-50 border-l-4 border-purple-500 p-4">
+                    <h4 className="font-bold text-purple-700 mb-2">Confidentiality:</h4>
+                    <p className="text-gray-700 text-sm">Safeguarding information is shared only with those who need to know.</p>
+                  </div>
+                  <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
+                    <h4 className="font-bold text-amber-700 mb-2">Accountability:</h4>
+                    <p className="text-gray-700 text-sm">Every adult associated with YCB is individually responsible for upholding safeguarding standards.</p>
+                  </div>
+                </div>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Policy Review</h3>
-                <p className="text-gray-700">
-                  This policy is reviewed annually and updated as necessary to reflect best practices and legal requirements. The last review was conducted in October 2025.
-                </p>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  3. Designated Safeguarding Officer (DSO)
+                </h3>
+                <div className="bg-blue-50 border p-4 rounded-lg">
+                  <h4 className="font-bold text-[#050a30] mb-3">The appointed Safeguarding Officer for YCB is:</h4>
+                  <div className="mb-4">
+                    <p className="font-semibold text-gray-800">Ms. Ayushi Singhal</p>
+                    <p className="text-gray-700">Program Leader, Young Changemakers Bootcamp</p>
+                    <p className="text-gray-700">
+                      <strong>Email:</strong> <a href="mailto:ayushi@taleofhumankind.org" className="text-blue-600 hover:text-blue-800 underline">ayushi@taleofhumankind.org</a>
+                    </p>
+                  </div>
+                  <p className="text-gray-700 mb-2"><strong>All safeguarding concerns should be reported directly to the DSO.</strong></p>
+                  <div className="bg-amber-50 border-l-4 border-amber-500 p-3 mt-3">
+                    <p className="text-gray-700 text-sm">
+                      If the concern involves the DSO, it should be escalated to the Co-Founder, Tale of Humankind (Aniket Gupta) at <a href="mailto:aniket@taleofhumankind.org" className="text-blue-600 hover:text-blue-800 underline">aniket@taleofhumankind.org</a>.
+                    </p>
+                  </div>
+                </div>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Remember</h3>
-                <div className="rounded-lg bg-yellow-50 p-4">
-                  <p className="font-semibold text-gray-800">
-                    It is everyone's responsibility to safeguard and protect participants. If you have any concerns, no matter how small, please speak up. It is better to err on the side of caution.
-                  </p>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  4. Responsibilities
+                </h3>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="mb-3 text-lg font-semibold text-[#050a30]">
+                      Staff, Mentors, and Volunteers must:
+                    </h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Act as responsible role models at all times.</li>
+                      <li>• Maintain professional boundaries (no favoritism, gifts, or private relationships).</li>
+                      <li>• Avoid one-on-one unsupervised contact with participants; if unavoidable, ensure it is in a visible/public space.</li>
+                      <li>• Be mindful of language, jokes, gestures, and physical contact.</li>
+                      <li>• Complete mandatory safeguarding training before camp.</li>
+                      <li>• Undergo reference checks and, where feasible, police verification.</li>
+                      <li>• Report any concern immediately to the DSO.</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-3 text-lg font-semibold text-[#050a30]">
+                      Participants must:
+                    </h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Treat peers and staff with respect.</li>
+                      <li>• Avoid bullying, harassment, or exclusionary behavior.</li>
+                      <li>• Report any incident that makes them uncomfortable to staff or the DSO.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  5. Types of Harm Covered
+                </h3>
+                <p className="text-gray-700 mb-4">This policy protects against:</p>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border">
+                    <span className="font-bold text-red-600">Physical harm:</span>
+                    <span className="text-gray-700">Assault, unsafe conditions, neglect.</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border">
+                    <span className="font-bold text-orange-600">Emotional harm:</span>
+                    <span className="text-gray-700">Bullying, humiliation, exclusion, discrimination.</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border">
+                    <span className="font-bold text-purple-600">Sexual harm:</span>
+                    <span className="text-gray-700">Harassment, exploitation, inappropriate contact.</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border">
+                    <span className="font-bold text-blue-600">Neglect:</span>
+                    <span className="text-gray-700">Lack of proper care, attention, or supervision.</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border">
+                    <span className="font-bold text-green-600">Digital harm:</span>
+                    <span className="text-gray-700">Cyberbullying, online harassment, exposure to harmful content.</span>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  6. Reporting & Escalation Procedure
+                </h3>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-[#050a30]">6.1 Who Can Report:</h4>
+                    <p className="text-gray-700">Any participant, parent, staff member, mentor, volunteer, or visitor can raise a safeguarding concern.</p>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-[#050a30]">6.2 How to Report:</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Report verbally or in writing to the DSO or any YCB staff member.</li>
+                      <li>• Use confidential email: <a href="mailto:ayushi@taleofhumankind.org" className="text-blue-600 hover:text-blue-800 underline">ayushi@taleofhumankind.org</a></li>
+                      <li>• In emergencies, report directly to local authorities.</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-[#050a30]">6.3 Escalation Flow:</h4>
+                    <div className="bg-gray-50 border p-4 rounded-lg">
+                      <ol className="list-decimal space-y-2 pl-4 text-gray-700">
+                        <li>Concern raised → to DSO (Ayushi Singhal) immediately.</li>
+                        <li>DSO logs and investigates within 24 hours.</li>
+                        <li>Parents/guardians informed, unless doing so puts the child at greater risk.</li>
+                        <li><strong>Serious concerns</strong> (abuse, violence, sexual misconduct) escalated within 24 hours to:
+                          <ul className="list-disc pl-6 mt-2 space-y-1">
+                            <li>Local Police (under POCSO Act, 2012 for child protection), and/or</li>
+                            <li>Child Welfare Committee (CWC).</li>
+                          </ul>
+                        </li>
+                        <li>DSO updates Program Head and maintains confidential records.</li>
+                      </ol>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-[#050a30]">6.4 Assurance:</h4>
+                    <div className="bg-green-50 border-l-4 border-green-500 p-4">
+                      <ul className="space-y-1 text-gray-700">
+                        <li>• Reports are taken seriously.</li>
+                        <li>• No participant will face retaliation for raising concerns in good faith.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  7. Accommodation & Supervision
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Separate accommodations provided for male and female participants.</li>
+                  <li>• Curfews, roll calls, and daily attendance checks enforced.</li>
+                  <li>• Safe supervision ratios maintained (approx. 1 adult for every 10–12 students).</li>
+                  <li>• No visitors allowed in hostel rooms.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  8. Health & Medical Care
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Parents must disclose accurate health information and emergency contacts.</li>
+                  <li>• First aid kits and designated medical staff available on-site.</li>
+                  <li>• Emergency treatment may be arranged by staff; parents will be informed immediately.</li>
+                  <li>• Prescribed medicines must be handed to the medical supervisor with instructions.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  9. Mental & Emotional Wellbeing
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Staff trained to recognize signs of stress, anxiety, or homesickness.</li>
+                  <li>• Participants may approach staff or DSO for confidential support.</li>
+                  <li>• Peer-support groups and wellbeing sessions provided during camp.</li>
+                  <li>• Access to professional counseling will be facilitated if required.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  10. Online & Digital Safety
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Participants must follow responsible digital conduct (no inappropriate or harmful content).</li>
+                  <li>• No photos/videos may be taken or shared without consent.</li>
+                  <li>• YCB staff may monitor device use during sessions for safety reasons.</li>
+                  <li>• Cyberbullying or online harassment will be treated as a safeguarding violation.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  11. Confidential Handling of Safeguarding Records
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• All safeguarding reports will be documented and stored securely.</li>
+                  <li>• Access restricted only to the DSO and Program Head.</li>
+                  <li>• Records will be retained for 5 years or as legally required.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  12. Breach of Policy
+                </h3>
+                <p className="text-gray-700 mb-4">Violation of safeguarding standards will lead to strict action, including:</p>
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Verbal or written warning.</li>
+                    <li>• Restriction from activities.</li>
+                    <li>• Immediate dismissal from the program (no refund).</li>
+                    <li>• Notification to parents/guardians.</li>
+                    <li>• Referral to external authorities where required by law.</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  13. Parent & Guardian Engagement
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Parents will receive this Safeguarding Policy before the program.</li>
+                  <li>• Parents must sign an acknowledgment of understanding and consent.</li>
+                  <li>• Parents may contact the DSO directly with concerns.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  14. Review & Updates
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• This policy will be reviewed annually by TOH leadership.</li>
+                  <li>• Updates will reflect legal changes (e.g., amendments to POCSO Act or DPDP Act) and best practice standards.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  15. Contact for Safeguarding Concerns
+                </h3>
+                <div className="bg-gray-50 border p-6 rounded-lg">
+                  <div className="mb-4">
+                    <h4 className="font-bold text-[#050a30] mb-2">Designated Safeguarding Officer (DSO):</h4>
+                    <p className="text-gray-700">Ayushi Singhal – Program Leader, YCB</p>
+                    <p className="text-gray-700">
+                      <strong>Email:</strong> <a href="mailto:ayushi@taleofhumankind.org" className="text-blue-600 hover:text-blue-800 underline">ayushi@taleofhumankind.org</a>
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#050a30] mb-2">Alternate Contact:</h4>
+                    <p className="text-gray-700">Aniket Gupta – Co-Founder, Tale of Humankind</p>
+                    <p className="text-gray-700">
+                      <strong>Email:</strong> <a href="mailto:aniket@taleofhumankind.org" className="text-blue-600 hover:text-blue-800 underline">aniket@taleofhumankind.org</a>
+                    </p>
+                  </div>
                 </div>
               </section>
             </div>
