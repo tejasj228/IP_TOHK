@@ -30,10 +30,6 @@ import {
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import tohkLogo from "@/assets/tohk.jpg";
-import kickoffIcon from "./icons/kickoff.png";
-import exploringInnovationIcon from "./icons/exploring_innovation.png";
-import creativityIcon from "./icons/creativity.png";
-import ventureIcon from "./icons/venture.png";
 
 // Snapshots Slider Component
 const SnapshotsSlider = () => {
@@ -213,7 +209,7 @@ const AboutPage = () => {
       day: "Day 0",
       title: "Kickoff & Orientation",
       description: "Welcome, icebreakers, campus walk, and informal interaction with mentors & peers.",
-      icon: <Image src={kickoffIcon} alt="Kickoff" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: "�",
       color: "from-blue-400 to-blue-600",
     },
     {
@@ -227,21 +223,21 @@ const AboutPage = () => {
       day: "Day 2",
       title: "Exploring Innovation",
       description: "AI/ML & ChatGPT, cognitive psychology, design & innovation lab visit, 3D printing demo, entrepreneurship mindset, expressive art, Web 3.0, movie night.",
-      icon: <Image src={exploringInnovationIcon} alt="Exploring Innovation" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: "�",
       color: "from-purple-400 to-purple-600",
     },
     {
       day: "Day 3",
       title: "Creativity & Design Thinking",
       description: "Team formation, ideation with mentors, problem validation, design thinking, app/web basics, talent night.",
-      icon: <Image src={creativityIcon} alt="Creativity" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: "�",
       color: "from-orange-400 to-orange-600",
     },
     {
       day: "Day 4",
       title: "From Ideas to Ventures",
       description: "Product innovation, unique value proposition, financial basics, business plan prep, pitching practice, storytelling & photography workshop.",
-      icon: <Image src={ventureIcon} alt="Venture" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      icon: "�",
       color: "from-red-400 to-red-600",
     },
     {
@@ -289,39 +285,51 @@ const AboutPage = () => {
 
   const beyondCurriculumItems = [
     {
-      title: "Opportunities & Resources",
+      title: "Networking Events",
       description:
-        "Stay ahead even after camp",
-      icon: <Star className="h-8 w-8" />,
-      features: [
-        "Alumni receive curated opportunities — from contests and hackathons to workshops and global programs.",
-      ],
-    },
-    {
-      title: "Seed Grants & Support",
-      description:
-        "Ideas deserve a push",
-      icon: <Lightbulb className="h-8 w-8" />,
-      features: [
-        "Get access to micro-grants and resources to kickstart your changemaking projects in schools and communities.",
-      ],
-    },
-    {
-      title: "Mentorship & Internships",
-      description:
-        "Guidance from those who've done it",
-      icon: <Award className="h-8 w-8" />,
-      features: [
-        "Personalized mentorship, expert advice, and connections to internships with NGOs, startups, and impact-driven ventures.",
-      ],
-    },
-    {
-      title: "National Alumni Network",
-      description:
-        "A tribe of changemakers for life",
+        "Connect with industry leaders, fellow changemakers, and potential collaborators",
       icon: <Globe className="h-8 w-8" />,
       features: [
-        "Join a growing nationwide community of peers from diverse states and backgrounds, collaborating and inspiring each other long after the bootcamp.",
+        "Monthly meetups",
+        "Industry panels",
+        "Peer connections",
+        "Mentor matching",
+      ],
+    },
+    {
+      title: "Mentorship Program",
+      description:
+        "One-on-one guidance from experienced professionals and successful alumni",
+      icon: <Award className="h-8 w-8" />,
+      features: [
+        "Personal mentor",
+        "Career guidance",
+        "Project support",
+        "Long-term relationship",
+      ],
+    },
+    {
+      title: "Real Projects",
+      description:
+        "Work on actual challenges faced by NGOs, startups, and social enterprises",
+      icon: <Target className="h-8 w-8" />,
+      features: [
+        "Live projects",
+        "Real impact",
+        "Portfolio building",
+        "Client interaction",
+      ],
+    },
+    {
+      title: "Global Community",
+      description:
+        "Join a worldwide network of young changemakers creating positive impact",
+      icon: <Users className="h-8 w-8" />,
+      features: [
+        "Alumni network",
+        "Global chapters",
+        "Collaboration opportunities",
+        "Lifetime access",
       ],
     },
   ];
@@ -329,10 +337,10 @@ const AboutPage = () => {
   const faqCategories = [
     "About YCB",
     "Eligibility & Dates", 
-    "Curriculum & Experience",
-    "Logistics & Safety",
+    "Curriculum",
+    "Beyond the Curriculum",
     "Fee & Financial Aid",
-    "After the Bootcamp"
+    "Alumni Reviews"
   ] as const;
 
   type FaqCategory = typeof faqCategories[number];
@@ -366,7 +374,7 @@ const AboutPage = () => {
         answer: "YCB is open to individuals aged 18-30 who are passionate about creating positive change. We believe this age range captures emerging leaders who are ready to take action and have the energy to drive meaningful impact."
       }
     ],
-    "Curriculum & Experience": [
+    "Curriculum": [
       {
         question: "What kind of support is available during the program?",
         answer: "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed."
@@ -376,7 +384,7 @@ const AboutPage = () => {
         answer: "Projects are real-world challenges provided by partner organizations. You'll work in teams of 4-5 participants, guided by industry mentors, to develop practical solutions over the course of the program. Each project culminates in a presentation to stakeholders."
       }
     ],
-    "Logistics & Safety": [
+    "Beyond the Curriculum": [
       {
         question: "What networking opportunities are available?",
         answer: "YCB provides extensive networking through monthly alumni meetups, industry expert sessions, partner organization visits, and our global online community. You'll connect with changemakers across sectors and geographies."
@@ -396,7 +404,7 @@ const AboutPage = () => {
         answer: "Yes, we offer flexible payment plans including installment options and deferred payment for students. Our goal is to make the program accessible to passionate changemakers regardless of financial background."
       }
     ],
-    "After the Bootcamp": [
+    "Alumni Reviews": [
       {
         question: "How do alumni stay connected?",
         answer: "Our alumni network is active through monthly meetups, online forums, collaborative projects, and mentorship programs. Many alumni also return as mentors and guest speakers for current participants."
@@ -856,7 +864,8 @@ const AboutPage = () => {
                     Beyond the Curriculum
                   </h2>
                   <p className="mb-8 text-gray-600">
-                    YCB doesn't end after one week - it's just the beginning of your changemaking journey. We've built a support system to help you keep growing, experimenting, and leading long after the camp is over.
+                    YCB offers much more than just coursework - it's a complete
+                    ecosystem for your growth.
                   </p>
 
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -882,7 +891,7 @@ const AboutPage = () => {
                               className="flex items-center gap-2 text-gray-600 text-sm"
                               key={featureIndex}
                             >
-                              <ArrowRight className="h-4 w-4 text-[#050a30]" />
+                              <ArrowRight className="h-4 w-4 text-[#FFD700]" />
                               {feature}
                             </div>
                           ))}
@@ -899,121 +908,109 @@ const AboutPage = () => {
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
-                    Fee & Financial Aid
+                    Fee Structure & Financial Aid
                   </h2>
 
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    {/* Program Fee */}
-                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <div className="mb-4 flex items-center gap-3">
-                        <div className="text-2xl">💰</div>
-                        <h3 className="font-bold text-[#050a30] text-xl">Program Fee</h3>
+                  {/* Fee Structure */}
+                  <div className="mb-8">
+                    <h3 className="mb-4 font-bold text-[#050a30] text-xl">
+                      Program Fee
+                    </h3>
+                    <div className="rounded-xl border border-gray-100 bg-white p-6">
+                      <div className="mb-6 text-center">
+                        <div className="mb-2 font-bold text-4xl text-[#050a30]">
+                          ₹25,000
+                        </div>
+                        <div className="text-gray-600">
+                          Complete 12-week program
+                        </div>
+                        <div className="font-medium text-[#FFD700] text-sm">
+                          Early bird: ₹20,000 (Before Feb 15)
+                        </div>
                       </div>
-                      <p className="mb-4 text-gray-600 font-medium">Contribution towards the program:</p>
-                      
-                      <div className="space-y-4">
-                        <div className="rounded-lg bg-blue-50 p-4">
-                          <div className="font-bold text-[#050a30] text-2xl">₹15,500</div>
-                          <div className="text-gray-600 text-sm">Program Fee (includes meals during the program)</div>
+
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                        <div className="rounded-lg bg-gray-50 p-4 text-center">
+                          <div className="font-semibold text-[#050a30]">
+                            What's Included
+                          </div>
+                          <div className="mt-2 text-gray-600 text-sm">
+                            All learning materials, mentorship, project support,
+                            networking events, and certificate
+                          </div>
                         </div>
-                        
-                        <div className="text-center">
-                          <div className="text-gray-500 text-lg font-medium">+</div>
+                        <div className="rounded-lg bg-gray-50 p-4 text-center">
+                          <div className="font-semibold text-[#050a30]">
+                            Payment Plans
+                          </div>
+                          <div className="mt-2 text-gray-600 text-sm">
+                            3 installments available. No interest charged for
+                            early payment
+                          </div>
                         </div>
-                        
-                        <div className="rounded-lg bg-green-50 p-4">
-                          <div className="font-bold text-[#050a30] text-xl">₹12,000</div>
-                          <div className="text-gray-600 text-sm">Residence Fee (optional, includes stay & additional services)</div>
-                        </div>
-                        
-                        <div className="border-t pt-4">
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-xl">📌</span>
-                            <span className="text-gray-600"><strong>Application Fee:</strong> ₹500 (non-refundable)</span>
+                        <div className="rounded-lg bg-gray-50 p-4 text-center">
+                          <div className="font-semibold text-[#050a30]">
+                            Refund Policy
+                          </div>
+                          <div className="mt-2 text-gray-600 text-sm">
+                            Full refund within first week. 50% refund within
+                            first month
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    {/* What's Included */}
-                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">What's Included</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Program sessions, workshops & lab visits</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Meals for all participants (day-care & residential)</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Accommodation (for residential participants)</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Mentorship & guidance from experts</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Learning resources & material</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Local transfers (airport/railway pickups at fixed slots)</span>
+                  {/* Financial Aid */}
+                  <div>
+                    <h3 className="mb-4 font-bold text-[#050a30] text-xl">
+                      Financial Aid & Scholarships
+                    </h3>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="rounded-xl border border-gray-100 bg-white p-6">
+                        <h4 className="mb-3 font-bold text-[#050a30]">
+                          Need-Based Scholarships
+                        </h4>
+                        <p className="mb-4 text-gray-600 text-sm">
+                          Up to 100% fee waiver for deserving candidates based
+                          on financial need and merit.
+                        </p>
+                        <div className="text-gray-600 text-sm">
+                          <div className="mb-1 flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            Income certificate required
+                          </div>
+                          <div className="mb-1 flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            Academic transcripts
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            Statement of purpose
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Why We Charge a Fee */}
-                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">Why We Charge a Fee</h3>
-                      <p className="mb-4 text-gray-600 font-medium italic">Because meaningful programs need sustainability.</p>
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <Target className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Ensures participants are serious & committed to the experience</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Target className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Helps us keep the program high-quality but affordable</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Target className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Supports a scholarship pool, so that students from underserved backgrounds can attend with little or no cost</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Scholarships & Accessibility */}
-                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <div className="mb-4 flex items-center gap-3">
-                        <div className="text-2xl">🌟</div>
-                        <h3 className="font-bold text-[#050a30] text-xl">Scholarships & Accessibility</h3>
-                      </div>
-                      <p className="mb-4 text-gray-600 font-medium italic">Our commitment is inclusion.</p>
-                      
-                      <div className="space-y-4">
-                        <div className="rounded-lg bg-yellow-50 p-4">
-                          <div className="font-semibold text-[#050a30] mb-2">Need-based financial aid up to 100%</div>
-                          <div className="text-gray-600 text-sm">for students from underprivileged backgrounds</div>
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <div className="text-gray-700 font-medium text-sm">Requires supporting documents:</div>
-                          <div className="text-gray-600 text-sm pl-4">• Income certificate + short statement of need</div>
-                        </div>
-                        
-                        <div className="flex items-center gap-2 text-sm">
-                          <span className="text-xl">📅</span>
-                          <span className="text-gray-600"><strong>Deadline to apply:</strong> May 30, 2025</span>
-                        </div>
-                        
-                        <div className="rounded-lg bg-purple-50 p-4">
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-xl">✨</span>
-                            <span className="text-gray-700 font-medium">In past editions, over 30% of participants attended with partial or full scholarships.</span>
+                      <div className="rounded-xl border border-gray-100 bg-white p-6">
+                        <h4 className="mb-3 font-bold text-[#050a30]">
+                          Merit Scholarships
+                        </h4>
+                        <p className="mb-4 text-gray-600 text-sm">
+                          Partial scholarships for outstanding applicants with
+                          proven track record in social impact.
+                        </p>
+                        <div className="text-gray-600 text-sm">
+                          <div className="mb-1 flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            Portfolio of past work
+                          </div>
+                          <div className="mb-1 flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            Leadership experience
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            Community recommendations
                           </div>
                         </div>
                       </div>
@@ -1028,10 +1025,11 @@ const AboutPage = () => {
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
-                    What Our Alumni Say, in their own words
+                    What Our Alumni Say
                   </h2>
                   <p className="mb-8 text-gray-600">
-                    Hear from our alumni about how YCB shaped their journey and sparked their changemaking spirit.
+                    Hear from graduates who are now making impact across the
+                    globe.
                   </p>
 
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -1154,46 +1152,8 @@ const AboutPage = () => {
         </div>
       </div>
 
-      {/* Call to Action Section */}
-      <section className="relative w-full py-8 lg:py-12">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <div className="mb-8">
-            {/* Icon */}
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg">
-              <GraduationCap className="h-8 w-8 text-white" />
-            </div>
-            
-            {/* Heading */}
-            <h3 className="mb-4 font-bold text-3xl text-[#050a30] lg:text-4xl">
-              Ready to Begin Your Changemaking Journey?
-            </h3>
-            
-            {/* Description */}
-            <p className="mx-auto max-w-2xl text-lg text-[#718096] leading-relaxed">
-              Join the next cohort of young innovators and problem-solvers. Take the first step towards making a meaningful impact in your community and beyond.
-            </p>
-          </div>
-
-          {/* Apply Now Button */}
-          <div className="flex justify-center">
-            <a
-              href="/how-to-apply"
-              className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-3 rounded-[12px] border-2 border-[gold] bg-[gold] px-8 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-12 sm:py-4 sm:text-base lg:px-16 lg:py-5 lg:text-lg"
-            >
-              <span>Apply Now</span>
-              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-            </a>
-          </div>
-
-          {/* Additional Info */}
-          <p className="mt-6 text-sm text-gray-600">
-            Applications are open! Don't miss your chance to be part of YCB 2025.
-          </p>
-        </div>
-      </section>
-
       {/* Bottom Spacing */}
-      <div className="h-8" />
+      <div className="h-20" />
 
       {/* Floating Navigation for Mobile */}
       {showFloatingNav && (
@@ -1249,3 +1209,4 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+

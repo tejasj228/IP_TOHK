@@ -16,118 +16,220 @@ export default function CodeOfConduct() {
               Code of Conduct
             </h1>
             <p className="text-lg text-gray-600">
-              Our commitment to creating a safe, inclusive, and respectful environment for all.
+              Creating a safe, respectful, and meaningful experience for every participant.
             </p>
           </div>
 
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            <div className="mb-8 rounded-lg bg-gray-50 p-6">
-              <h2 className="mb-4 text-2xl font-bold text-[#050a30]">Our Commitment</h2>
-              <p className="text-gray-700">
-                The Young Changemaker Bootcamp is committed to providing a harassment-free experience for everyone, regardless of age, gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion, or technology choices.
+            <div className="mb-8 rounded-lg bg-gray-50 border p-6">
+              <h2 className="mb-4 text-2xl font-bold text-[#050a30]">
+                Young Changemakers Bootcamp – Code of Conduct
+              </h2>
+              <div className="flex gap-6 text-sm text-gray-600 mb-4">
+                <span><strong>Effective Date:</strong> [Insert Date]</span>
+                <span><strong>Last Updated:</strong> [Insert Date]</span>
+              </div>
+              <p className="text-gray-700 mb-4">
+                The Young Changemakers Bootcamp (YCB), organized by the Tale of Humankind Foundation, is a one-week residential and experiential program designed for high school students to develop empathy, creativity, collaboration, and leadership skills. To ensure a safe, respectful, and meaningful experience for every participant, faculty, mentor, volunteer, and partner, this Code of Conduct lays out the expectations, rules, and responsibilities for all.
               </p>
-              <p className="mt-4 font-semibold text-gray-800">
-                We do not tolerate harassment of participants in any form. Participants violating these rules may be sanctioned or expelled from the program at the discretion of the organizers.
-              </p>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
+                <p className="text-gray-700 mb-2"><strong>This Code applies to:</strong></p>
+                <ul className="list-disc space-y-1 pl-6 text-gray-700">
+                  <li>All student participants</li>
+                  <li>Mentors, tutors, volunteers, staff, and</li>
+                  <li>Partner organizations and institutions hosting YCB</li>
+                </ul>
+                <p className="text-gray-700 mt-3">
+                  <strong>By enrolling in YCB, participants and their parents/guardians agree to comply with this Code in full.</strong>
+                </p>
+              </div>
             </div>
 
             <div className="space-y-8">
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Expected Behavior</h3>
-                <p className="mb-4 text-gray-700">
-                  All participants, volunteers, speakers, and organizers are expected to:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Be respectful and inclusive in language and actions</li>
-                  <li>Respect differing viewpoints and experiences</li>
-                  <li>Accept constructive criticism gracefully</li>
-                  <li>Focus on what is best for the community</li>
-                  <li>Show empathy towards other community members</li>
-                  <li>Collaborate effectively and support fellow participants</li>
-                  <li>Maintain confidentiality when discussing sensitive topics</li>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  1. Respect and Integrity
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Treat everyone (fellow participants, mentors, staff, volunteers, campus personnel) with dignity, courtesy, and respect at all times.</li>
+                  <li>• Derogatory remarks, name-calling, bullying, or exclusion based on gender, religion, caste, economic background, or region will not be tolerated.</li>
+                  <li>• Always communicate truthfully and respectfully, even in disagreements.</li>
+                  <li>• Maintain the spirit of teamwork and empathy that YCB stands for.</li>
                 </ul>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Unacceptable Behavior</h3>
-                <p className="mb-4 text-gray-700">
-                  Harassment includes, but is not limited to:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Verbal comments that reinforce social structures of domination related to gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age, religion</li>
-                  <li>Sexual language and imagery in public spaces</li>
-                  <li>Deliberate intimidation, stalking, or following</li>
-                  <li>Harassing photography or recording</li>
-                  <li>Sustained disruption of talks or other events</li>
-                  <li>Inappropriate physical contact</li>
-                  <li>Unwelcome sexual attention</li>
-                  <li>Advocating for, or encouraging, any of the above behavior</li>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  2. Academic and Intellectual Honesty
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• All essays, assignments, projects, or prototypes submitted must be the participant's own original work.</li>
+                  <li>• Plagiarism (copying others' work without acknowledgment), fabrication of data, or presenting someone else's idea as your own is strictly prohibited.</li>
+                  <li>• Collaboration is encouraged, but credit must always be given to collaborators.</li>
+                </ul>
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mt-4">
+                  <p className="text-gray-700">
+                    <strong>Note:</strong> Participants found guilty of academic dishonesty may face dismissal from the program.
+                  </p>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  3. Collaboration and Teamwork
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• YCB emphasizes teamwork. Every participant must work constructively, inclusively, and fairly within their assigned groups.</li>
+                  <li>• Respect diverse perspectives, even if they differ from your own.</li>
+                  <li>• Share responsibilities equally; avoid putting unfair burden on teammates.</li>
+                  <li>• Resolve conflicts respectfully. If conflict persists, seek guidance from YCB staff or mentors instead of escalating.</li>
                 </ul>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Online Conduct</h3>
-                <p className="mb-4 text-gray-700">
-                  For online interactions and social media:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Maintain professionalism in all digital communications</li>
-                  <li>Respect privacy and confidentiality of fellow participants</li>
-                  <li>Avoid sharing inappropriate content or links</li>
-                  <li>Be mindful of cultural differences in online interactions</li>
-                  <li>Report any cyberbullying or online harassment immediately</li>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  4. Safety and Responsibility
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="mb-2 text-lg font-semibold text-[#050a30]">General Safety</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Participants must follow all safety rules of YCB and the host campus, including lab, hostel, and excursion safety guidelines.</li>
+                      <li>• Curfews must be strictly respected. Participants are not permitted to leave designated areas without prior permission.</li>
+                      <li>• Dangerous or prohibited items (weapons, firecrackers, lighters, sharp objects) are not allowed.</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-red-50 border-l-4 border-red-500 p-4">
+                    <h4 className="mb-2 text-lg font-semibold text-red-700">Prohibited Substances</h4>
+                    <p className="text-gray-700 mb-2">
+                      <strong>Strictly Forbidden:</strong> Alcohol, tobacco, vaping products, narcotics, and drugs are strictly forbidden. Possession or consumption will lead to immediate dismissal.
+                    </p>
+                    <p className="text-gray-700">
+                      <strong>Zero Tolerance:</strong> Any form of violence, aggressive behavior, or physical fights will result in removal from the program and parental notification.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  5. Digital and Social Media Conduct
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Use laptops, tablets, and phones responsibly. Devices should enhance, not distract from, learning.</li>
+                  <li>• Do not share offensive, inappropriate, violent, or sexually explicit content online or offline.</li>
+                  <li>• Respect others' privacy: Do not take photos or videos of anyone without their consent.</li>
+                  <li>• Sharing program recordings, teaching material, or confidential internal communication without permission is prohibited.</li>
                 </ul>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Enforcement</h3>
-                <p className="mb-4 text-gray-700">
-                  Participants asked to stop any harassing behavior are expected to comply immediately. If a participant engages in harassing behavior, the organizers may take any action they deem appropriate, including:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>Warning the offender</li>
-                  <li>Expulsion from the program without refund</li>
-                  <li>Banning from future events</li>
-                  <li>Reporting to appropriate authorities if necessary</li>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  6. Property and Facilities
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Treat all YCB property, hostel facilities, and partner-institution resources (classrooms, labs, equipment, library) with care.</li>
+                  <li>• Keep rooms, common areas, and learning spaces tidy and clean.</li>
+                  <li>• Theft, vandalism, graffiti, or intentional damage will result in strict penalties, including fines and dismissal.</li>
+                </ul>
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mt-4">
+                  <p className="text-gray-700">
+                    <strong>Financial Responsibility:</strong> Any damage caused will be charged to the responsible participant's family.
+                  </p>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  7. Attendance and Participation
+                </h3>
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                  <p className="text-gray-700">
+                    <strong>Immersive Program:</strong> YCB is a fully immersive program. Full attendance is mandatory at all workshops, lectures, field visits, and group activities.
+                  </p>
+                </div>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Punctuality is expected. Late arrivals disrupt the entire group and will be noted.</li>
+                  <li>• Participants must contribute actively to group discussions, brainstorming, and projects.</li>
+                  <li>• Absence is permitted only for valid medical or emergency reasons, with staff approval.</li>
                 </ul>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Reporting</h3>
-                <p className="mb-4 text-gray-700">
-                  If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of the organizing team immediately. You can report incidents:
-                </p>
-                <ul className="list-disc space-y-2 pl-6 text-gray-700">
-                  <li>In person to any organizer or volunteer</li>
-                  <li>By email to conduct@taleofhumankind.com</li>
-                  <li>Through our confidential reporting system</li>
-                  <li>By calling our dedicated helpline (to be provided during events)</li>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  8. Dress Code
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Participants are expected to dress neatly, modestly, and appropriately for an educational environment.</li>
+                  <li>• Revealing, offensive, or inappropriate clothing is not permitted.</li>
+                  <li>• Specific dress requirements may be announced for formal sessions, external visits, or lab activities (e.g., closed shoes, lab coats).</li>
                 </ul>
-                <p className="mt-4 text-gray-700">
-                  All reports will be handled with discretion and confidentiality. We will respect confidentiality requests for the purpose of protecting victims of abuse.
-                </p>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Scope</h3>
-                <p className="text-gray-700">
-                  This Code of Conduct applies to all YCB spaces, both online and offline. This includes workshops, networking events, social media platforms, email communications, and any other forum created by the program team which the community uses for communication.
-                </p>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  9. Disciplinary Measures
+                </h3>
+                <p className="text-gray-700 mb-4">Violations of this Code may result in one or more of the following:</p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-gray-50 p-4 rounded-lg border">
+                    <h4 className="font-bold text-[#050a30] mb-2">Progressive Measures:</h4>
+                    <ul className="text-gray-700 text-sm space-y-1">
+                      <li>• Verbal or written warnings</li>
+                      <li>• Temporary restriction from activities or facilities</li>
+                      <li>• Financial penalties for damage or misconduct</li>
+                    </ul>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg border">
+                    <h4 className="font-bold text-[#050a30] mb-2">Serious Violations:</h4>
+                    <ul className="text-gray-700 text-sm space-y-1">
+                      <li>• Immediate dismissal from the program without refund</li>
+                      <li>• Notification of parents/guardians</li>
+                      <li>• Referral to external authorities if serious legal violations occur</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mt-4">
+                  <p className="text-gray-700">
+                    <strong>Note:</strong> Discipline is applied with fairness, but YCB reserves the right to take immediate action for serious breaches to protect the safety and integrity of the program.
+                  </p>
+                </div>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Attribution</h3>
-                <p className="text-gray-700">
-                  This Code of Conduct is adapted from the Contributor Covenant, version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html and Conference Code of Conduct at http://confcodeofconduct.com/
-                </p>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  10. Commitment
+                </h3>
+                <p className="text-gray-700 mb-4">By applying to and attending YCB, participants and their parents/guardians agree to:</p>
+                <div className="bg-green-50 border-l-4 border-green-500 p-4">
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• <strong>Uphold this Code of Conduct</strong></li>
+                    <li>• <strong>Respect the community of changemakers</strong> they are part of</li>
+                    <li>• <strong>Contribute positively</strong>, and</li>
+                    <li>• <strong>Accept that participation in YCB is a privilege, not a right</strong></li>
+                  </ul>
+                </div>
               </section>
 
               <section>
-                <h3 className="mb-4 text-xl font-bold text-[#050a30]">Contact</h3>
-                <p className="text-gray-700">
-                  For questions about this Code of Conduct, please contact us at conduct@taleofhumankind.com
-                </p>
+                <h3 className="mb-4 text-xl font-bold text-[#050a30]">
+                  Contact & Reporting
+                </h3>
+                <div className="bg-gray-50 border p-6 rounded-lg">
+                  <p className="text-gray-700 mb-4">
+                    If you have concerns about conduct violations or need to report an incident, please contact:
+                  </p>
+                  <h4 className="font-bold text-[#050a30] mb-2">Young Changemakers Bootcamp (YCB)</h4>
+                  <p className="text-gray-700 mb-2">c/o Tale of Humankind Foundation</p>
+                  <p className="text-gray-700">
+                    <strong>Email:</strong> <a href="mailto:ycbootcamp@taleofhumankind.org" className="text-blue-600 hover:text-blue-800 underline">ycbootcamp@taleofhumankind.org</a>
+                  </p>
+                  <p className="text-gray-700 mt-3 text-sm">
+                    All reports will be handled with discretion and confidentiality.
+                  </p>
+                </div>
               </section>
             </div>
           </div>

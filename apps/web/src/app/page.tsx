@@ -7,10 +7,13 @@ import {
   ChevronRight,
   Heart,
   Lightbulb,
+  Mic,
   Pause,
   Play,
+  Search,
   Target,
   Users,
+  Wrench,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -317,34 +320,34 @@ export default function Home() {
   // Summary points data used in About YCB section
   const summaryPoints = [
     {
-      Icon: Users,
-      title: "Collaborative Learning",
-      desc: "Work with diverse teams of passionate changemakers from across India",
-    },
-    {
-      Icon: Target,
-      title: "Real-World Impact",
-      desc: "Address pressing social challenges with innovative, practical solutions",
+      Icon: Search,
+      title: "Problem-Solving in Action",
+      desc: "Spot challenges around you and learn how to break them down into opportunities for change.",
     },
     {
       Icon: Lightbulb,
       title: "Innovation & Creativity",
-      desc: "Develop entrepreneurial thinking and problem-solving skills",
+      desc: "Use design thinking to turn bold ideas into solutions that can make a real difference.",
+    },
+    {
+      Icon: Wrench,
+      title: "Hands-On Prototyping",
+      desc: "Don't just talk about ideas — build them, test them, and see them come alive.",
+    },
+    {
+      Icon: Mic,
+      title: "Communication & Pitching",
+      desc: "Find your voice and pitch your ideas with confidence to mentors, experts, and peers.",
+    },
+    {
+      Icon: Users,
+      title: "Collaboration & Leadership",
+      desc: "Work in diverse teams, share responsibilities, and practice leading with empathy and impact.",
     },
     {
       Icon: Heart,
-      title: "Community Building",
-      desc: "Build lasting connections with mentors and fellow participants",
-    },
-    {
-      Icon: Award,
-      title: "Leadership Development",
-      desc: "Enhance your leadership capabilities for the 21st century",
-    },
-    {
-      Icon: CheckCircle,
-      title: "Life-Changing Experience",
-      desc: "Transform your perspective and unlock your potential for positive change",
+      title: "Community & Friendships",
+      desc: "Connect with students from across India, celebrate diversity, and build friendships that last a lifetime.",
     },
   ] as const;
 
@@ -478,18 +481,18 @@ export default function Home() {
 
                 {/* Main Heading */}
                 <h1 className="font-bold text-4xl text-white leading-tight md:text-5xl lg:text-7xl">
-                  Equip young people with a{" "}
+                  This is where your{" "}
                   <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text font-extrabold text-transparent italic">
-                    changemaking mindset.
+                    journey of changemaking begins.
                   </span>
                 </h1>
 
                 {/* Short description */}
                 <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
-                  A one-week, residential bootcamp where high-schoolers learn to
-                  identify real-world problems, design solutions, and lead with
-                  empathy—through hands-on projects, mentorship, and a national
-                  peer network.
+                  A one-week residential program where high schoolers learn to spot
+                  real-world problems, design bold solutions, build prototypes, and
+                  pitch their ideas - all while making memories and friends that last
+                  a lifetime, guided by mentors and changemakers.
                 </p>
               </div>
 
@@ -606,7 +609,7 @@ export default function Home() {
                       What You'll Discover
                     </h3>
                     <p className="mx-auto max-w-3xl text-base text-gray-300 sm:text-lg lg:text-xl">
-                      Key highlights from our program overview
+                      More than a bootcamp — it's a journey that blends skills, community, and unforgettable experiences.
                     </p>
                   </div>
                   {/* Pause/Play visible on mobile where marquee is used (icon-only) */}
@@ -683,35 +686,35 @@ export default function Home() {
               Impact across <span className="gradient-text-gold">India</span>
             </h2>
             <div className="gradient-underline mx-auto mb-4" />
-            <p className="mx-auto mb-1 max-w-2xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
-              Bootcamp editions and partner schools across key cities.
+            <p className="mx-auto mb-1 max-w-4xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
+              Over the past five editions, the Young Changemakers Bootcamp has brought together over 220 alumni from 12+ states — from the hills of Sikkim to the deserts of Rajasthan, from Delhi's classrooms to the coasts of Tamil Nadu. These students didn't just attend a program — they built libraries in rural villages, started eco-clubs, improved sanitation facilities, and even pitched ideas that secured funding. What began as a bootcamp is now a growing nationwide network of young innovators, leaders, and changemakers.
             </p>
 
             {/* Stats Grid */}
             <div className="mx-auto mt-4 mb-12 flex max-w-4xl justify-center gap-7 sm:mt-6 sm:gap-13 lg:mb-16">
-              {/* Cities */}
+              {/* Alumni */}
               <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={1500} target={9} />
-                  <p className="text-white text-xs sm:text-sm">Cities</p>
+                  <AnimatedCounter duration={1500} suffix="+" target={220} />
+                  <p className="text-white text-xs sm:text-sm">Alumni</p>
                 </div>
               </div>
 
-              {/* Partner Schools */}
+              {/* Student Projects */}
               <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={2000} suffix="+" target={25} />
+                  <AnimatedCounter duration={2000} suffix="+" target={50} />
                   <p className="text-white text-xs sm:text-sm">
-                    Partner Schools
+                    Student Projects
                   </p>
                 </div>
               </div>
 
-              {/* Students */}
+              {/* Lives Impacted */}
               <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={2500} suffix="+" target={500} />
-                  <p className="text-white text-xs sm:text-sm">Students</p>
+                  <AnimatedCounter duration={2500} suffix="+" target={50000} />
+                  <p className="text-white text-xs sm:text-sm">Lives Impacted</p>
                 </div>
               </div>
             </div>
@@ -773,12 +776,11 @@ export default function Home() {
         <div className="relative z-10">
           <div className="mx-auto max-w-7xl text-center">
             <h2 className="mb-4 font-bold text-4xl text-[#050a30]">
-              Testimonials
+              What They Say About YCB
             </h2>
             <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-6 max-w-2xl text-[#718096] text-lg sm:mb-8 lg:mb-10">
-              Hear what our students have to say about their transformative
-              journey.
+              Hear from mentors, leaders, and participants who have experienced the energy of the Young Changemakers Bootcamp.
             </p>
             {/* Pause/Play below heading, aligned to viewport right with small margin - only visible on mobile */}
             <div className="-ml-[50vw] -mr-[50vw] relative right-[50%] left-[50%] mt-4 mb-8 flex w-[100vw] justify-end pr-4 sm:pr-6 md:hidden lg:pr-10">
@@ -799,10 +801,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4">
             {/* Section Title */}
             <div className="mb-12 text-center">
-              <h2 className="font-bold text-4xl text-[#050a30]">Featured</h2>
+              <h2 className="font-bold text-4xl text-[#050a30]">Alumni Stories</h2>
               <div className="gradient-underline mx-auto mt-4" />
               <p className="mx-auto mt-6 max-w-2xl text-[#718096] text-lg">
-                Some of the top stories from our featured Partners
+                Discover the projects, blogs, and voices of YCB alumni making a difference across India.
               </p>
             </div>
 
@@ -838,7 +840,7 @@ export default function Home() {
                     </p>
                     <div className="mt-auto">
                       <a
-                        className="link-hover group flex items-center gap-1 font-semibold text-[gold] transition-all duration-300 hover:text-[gold]/80"
+                        className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
                         href="/stories/ananya-gupta"
                       >
                         Read more{" "}
@@ -879,7 +881,7 @@ export default function Home() {
                   </p>
                   <div className="mt-auto">
                     <a
-                      className="link-hover group flex items-center gap-1 font-semibold text-[gold] transition-all duration-300 hover:text-[gold]/80"
+                      className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
                       href="/stories/rural-education"
                     >
                       Read more{" "}
@@ -919,7 +921,7 @@ export default function Home() {
                   </p>
                   <div className="mt-auto">
                     <a
-                      className="link-hover group flex items-center gap-1 font-semibold text-[gold] transition-all duration-300 hover:text-[gold]/80"
+                      className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
                       href="/stories/tech-for-change"
                     >
                       Read more{" "}
@@ -959,7 +961,7 @@ export default function Home() {
                   </p>
                   <div className="mt-auto">
                     <a
-                      className="link-hover group flex items-center gap-1 font-semibold text-[gold] transition-all duration-300 hover:text-[gold]/80"
+                      className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
                       href="/stories/green-campus"
                     >
                       Read more{" "}
@@ -999,7 +1001,7 @@ export default function Home() {
                   </p>
                   <div className="mt-auto">
                     <a
-                      className="link-hover group flex items-center gap-1 font-semibold text-[gold] transition-all duration-300 hover:text-[gold]/80"
+                      className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
                       href="/stories/mental-health"
                     >
                       Read more{" "}
