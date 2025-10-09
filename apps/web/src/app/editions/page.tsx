@@ -569,14 +569,79 @@ const editionsData = {
     name: "YCB 2025 – Future Leaders Summit",
     status: "upcoming",
     location: "Jaipur",
+    participants: 80,
+    states: 22,
+    schools: 60,
     expectedParticipants: 80,
     dates: "20-27 July 2025",
     tagline: "Building tomorrow's changemakers today.",
     theme: "Digital Innovation for Social Impact",
     registrationOpen: true,
+    groupPhoto:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     comingSoonImage:
       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    groupPhoto: "",
+
+    highlights: {
+      keynotes: ["Satya Nadella", "Priyanka Chopra", "Elon Musk"],
+      workshops: [
+        "Digital Innovation",
+        "AI for Social Good",
+        "Sustainable Tech",
+        "Youth Leadership",
+      ],
+      visits: ["Hawa Mahal", "IIT Jodhpur", "City Palace", "Startup Incubator"],
+      activities: [
+        "Tech Showcase",
+        "Rajasthani Cultural Night",
+        "Innovation Challenge",
+        "Leadership Summit",
+      ],
+    },
+
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Registration and welcome ceremony",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Digital innovation workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Future leaders collaboration",
+      },
+    ],
+
+    winningIdeas: [
+      {
+        title: "Coming Soon",
+        description: "Innovative solutions from YCB 2025 participants",
+        team: "Teams TBA",
+      },
+    ],
+
+    testimonials: [
+      {
+        quote: "Looking forward to an amazing experience at YCB 2025!",
+        author: "Participants",
+        location: "Pan India",
+      },
+    ],
+
+    impact: {
+      projectsStarted: 0,
+      clubsFormed: 0,
+      diversityStats: {
+        genderBalance: "Target: 50% female, 50% male",
+        ruralUrban: "Target: 45% rural, 55% urban",
+      },
+      initiatives: [
+        "Programs currently in progress",
+        "Results will be available post-summit",
+      ],
+    },
   },
 };
 
@@ -913,11 +978,7 @@ const EditionsPage = () => {
                     journeys. Participants had the privilege of learning from{" "}
                     {currentEdition.highlights.keynotes.slice(0, -1).join(", ")}{" "}
                     and{" "}
-                    {
-                      currentEdition.highlights.keynotes[
-                        currentEdition.highlights.keynotes.length - 1
-                      ]
-                    }
+                    {currentEdition.highlights.keynotes.at(-1)}
                     , each bringing unique perspectives on leadership,
                     innovation, and social impact. These sessions not only
                     provided valuable insights but also sparked meaningful
