@@ -20,13 +20,17 @@ export default function WorldMap(
   const reachedStates = [
     "Delhi",
     "Maharashtra",
-    "Karnataka",
+    "Haryana",
     "Tamil Nadu",
+    "Chandigarh",
+    "Rajasthan",
+    "Uttar Pradesh",
+    "Assam",
+    "Gujarat",
     "West Bengal",
     "Telangana",
-    "Rajasthan",
-    "Gujarat",
-    "Uttar Pradesh",
+    "Odisha",
+    "Sikkim",
   ];
 
   // Create cityColors object for precolored states

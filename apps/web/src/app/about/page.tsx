@@ -15,61 +15,55 @@ import {
   GraduationCap,
   Heart,
   Lightbulb,
-  MapPin,
   MessageCircle,
+  Mic,
+  Search,
   Star,
   Target,
   Users,
-  PartyPopper,
-  Search,
-  Rocket,
-  Palette,
-  Briefcase,
-  Mic,
 } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import tohkLogo from "@/assets/tohk.jpg";
-import kickoffIcon from "./icons/kickoff.png";
-import exploringInnovationIcon from "./icons/exploring_innovation.png";
+import { useEffect, useState } from "react";
 import creativityIcon from "./icons/creativity.png";
+import exploringInnovationIcon from "./icons/exploring_innovation.png";
+import kickoffIcon from "./icons/kickoff.png";
 import ventureIcon from "./icons/venture.png";
 
 // Snapshots Slider Component
 const SnapshotsSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const slides = [
     {
       title: "Workshop Session",
       gradient: "from-blue-100 to-purple-100",
-      description: "Interactive learning sessions with hands-on activities"
+      description: "Interactive learning sessions with hands-on activities",
     },
     {
       title: "Team Collaboration",
       gradient: "from-green-100 to-blue-100",
-      description: "Students working together on innovative solutions"
+      description: "Students working together on innovative solutions",
     },
     {
       title: "Prototype Building",
       gradient: "from-purple-100 to-pink-100",
-      description: "Creating tangible solutions to real-world problems"
+      description: "Creating tangible solutions to real-world problems",
     },
     {
       title: "Final Presentations",
       gradient: "from-orange-100 to-red-100",
-      description: "Showcasing innovative ideas to mentors and judges"
+      description: "Showcasing innovative ideas to mentors and judges",
     },
     {
       title: "Mentorship Sessions",
       gradient: "from-teal-100 to-cyan-100",
-      description: "One-on-one guidance from industry experts"
+      description: "One-on-one guidance from industry experts",
     },
     {
       title: "Innovation Labs",
       gradient: "from-yellow-100 to-orange-100",
-      description: "Exploring cutting-edge technologies and tools"
-    }
+      description: "Exploring cutting-edge technologies and tools",
+    },
   ];
 
   const nextSlide = () => {
@@ -86,25 +80,31 @@ const SnapshotsSlider = () => {
 
   return (
     <div className="mb-8">
-      <h3 className="mb-6 font-bold text-[#050a30] text-xl text-center">
+      <h3 className="mb-6 text-center font-bold text-[#050a30] text-xl">
         Snapshots from Past Editions
       </h3>
-      
+
       <div className="relative w-full">
         {/* Main Slider */}
         <div className="relative overflow-hidden rounded-2xl">
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {slides.map((slide, index) => (
-              <div key={index} className="w-full flex-shrink-0">
-                <div className={`group relative overflow-hidden bg-gradient-to-br ${slide.gradient} aspect-[16/9] transition-all duration-300`}>
+              <div className="w-full flex-shrink-0" key={index}>
+                <div
+                  className={`group relative overflow-hidden bg-gradient-to-br ${slide.gradient} aspect-[16/9] transition-all duration-300`}
+                >
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                    <h4 className="text-gray-800 text-xl md:text-2xl font-bold mb-2">{slide.title}</h4>
-                    <p className="text-gray-600 text-sm md:text-base max-w-md">{slide.description}</p>
+                    <h4 className="mb-2 font-bold text-gray-800 text-xl md:text-2xl">
+                      {slide.title}
+                    </h4>
+                    <p className="max-w-md text-gray-600 text-sm md:text-base">
+                      {slide.description}
+                    </p>
                   </div>
-                  <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/5"></div>
+                  <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/5" />
                 </div>
               </div>
             ))}
@@ -113,30 +113,30 @@ const SnapshotsSlider = () => {
 
         {/* Navigation Arrows */}
         <button
+          className="-translate-y-1/2 absolute top-1/2 left-4 rounded-full bg-white/80 p-2 text-gray-700 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white"
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 rounded-full p-2 transition-all duration-300 hover:scale-110 shadow-lg"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
-        
+
         <button
+          className="-translate-y-1/2 absolute top-1/2 right-4 rounded-full bg-white/80 p-2 text-gray-700 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white"
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-700 rounded-full p-2 transition-all duration-300 hover:scale-110 shadow-lg"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center space-x-2 mt-6">
+        <div className="mt-6 flex justify-center space-x-2">
           {slides.map((_, index) => (
             <button
+              className={`h-3 w-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? "scale-125 bg-[#050a30]"
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? 'bg-[#050a30] scale-125' 
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
             />
           ))}
         </div>
@@ -148,18 +148,29 @@ const SnapshotsSlider = () => {
 const AboutPage = () => {
   const [activeSection, setActiveSection] = useState<string>("about");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [selectedFaqCategory, setSelectedFaqCategory] = useState<FaqCategory>("About YCB");
+  const [selectedFaqCategory, setSelectedFaqCategory] =
+    useState<FaqCategory>("About YCB");
   const [showFloatingNav, setShowFloatingNav] = useState(false);
   const [isFloatingNavOpen, setIsFloatingNavOpen] = useState(false);
 
   // Scroll spy effect
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "eligibility", "curriculum", "beyond", "aid", "reviews", "faq"];
+      const sections = [
+        "about",
+        "eligibility",
+        "curriculum",
+        "beyond",
+        "aid",
+        "reviews",
+        "faq",
+      ];
       const scrollPosition = window.scrollY + 200; // Offset for header
 
       // Check if we should show floating nav (mobile only)
-      const heroSection = document.querySelector('.hero-section') as HTMLElement;
+      const heroSection = document.querySelector(
+        ".hero-section"
+      ) as HTMLElement;
       if (heroSection) {
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         setShowFloatingNav(window.scrollY > heroBottom + 100);
@@ -193,7 +204,7 @@ const AboutPage = () => {
       const targetPosition = element.offsetTop - headerHeight;
       window.scrollTo({
         top: targetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -212,55 +223,94 @@ const AboutPage = () => {
     {
       day: "Day 0",
       title: "Kickoff & Orientation",
-      description: "Welcome, icebreakers, campus walk, and informal interaction with mentors & peers.",
-      icon: <Image src={kickoffIcon} alt="Kickoff" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      description:
+        "Welcome, icebreakers, campus walk, and informal interaction with mentors & peers.",
+      icon: (
+        <Image
+          alt="Kickoff"
+          className="h-5 w-5 md:h-6 md:w-6"
+          height={24}
+          src={kickoffIcon}
+          width={24}
+        />
+      ),
       color: "from-blue-400 to-blue-600",
     },
     {
       day: "Day 1",
       title: "Spotting Problems That Matter",
-      description: "Intro to science & tech, changemaking for a better world, observation walks, drone demo, icebreaker games.",
+      description:
+        "Intro to science & tech, changemaking for a better world, observation walks, drone demo, icebreaker games.",
       icon: <Search className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-green-400 to-green-600",
     },
     {
       day: "Day 2",
       title: "Exploring Innovation",
-      description: "AI/ML & ChatGPT, cognitive psychology, design & innovation lab visit, 3D printing demo, entrepreneurship mindset, expressive art, Web 3.0, movie night.",
-      icon: <Image src={exploringInnovationIcon} alt="Exploring Innovation" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      description:
+        "AI/ML & ChatGPT, cognitive psychology, design & innovation lab visit, 3D printing demo, entrepreneurship mindset, expressive art, Web 3.0, movie night.",
+      icon: (
+        <Image
+          alt="Exploring Innovation"
+          className="h-5 w-5 md:h-6 md:w-6"
+          height={24}
+          src={exploringInnovationIcon}
+          width={24}
+        />
+      ),
       color: "from-purple-400 to-purple-600",
     },
     {
       day: "Day 3",
       title: "Creativity & Design Thinking",
-      description: "Team formation, ideation with mentors, problem validation, design thinking, app/web basics, talent night.",
-      icon: <Image src={creativityIcon} alt="Creativity" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      description:
+        "Team formation, ideation with mentors, problem validation, design thinking, app/web basics, talent night.",
+      icon: (
+        <Image
+          alt="Creativity"
+          className="h-5 w-5 md:h-6 md:w-6"
+          height={24}
+          src={creativityIcon}
+          width={24}
+        />
+      ),
       color: "from-orange-400 to-orange-600",
     },
     {
       day: "Day 4",
       title: "From Ideas to Ventures",
-      description: "Product innovation, unique value proposition, financial basics, business plan prep, pitching practice, storytelling & photography workshop.",
-      icon: <Image src={ventureIcon} alt="Venture" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />,
+      description:
+        "Product innovation, unique value proposition, financial basics, business plan prep, pitching practice, storytelling & photography workshop.",
+      icon: (
+        <Image
+          alt="Venture"
+          className="h-5 w-5 md:h-6 md:w-6"
+          height={24}
+          src={ventureIcon}
+          width={24}
+        />
+      ),
       color: "from-red-400 to-red-600",
     },
     {
       day: "Day 5",
       title: "The Big Pitch",
-      description: "My Idea for Change Competition, career guidance, interaction with faculty, mini farewell, sports, music & cultural night.",
+      description:
+        "My Idea for Change Competition, career guidance, interaction with faculty, mini farewell, sports, music & cultural night.",
       icon: <Mic className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-indigo-400 to-indigo-600",
     },
     {
       day: "Day 6",
       title: "Closing & Departure",
-      description: "Reflections, goodbyes, departure with new ideas and lifelong friendships.",
+      description:
+        "Reflections, goodbyes, departure with new ideas and lifelong friendships.",
       icon: <GraduationCap className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-pink-400 to-pink-600",
     },
   ];
 
-  const eligibilityData = [
+  const _eligibilityData = [
     {
       title: "Age Requirement",
       description: "18-25 years old",
@@ -290,8 +340,7 @@ const AboutPage = () => {
   const beyondCurriculumItems = [
     {
       title: "Opportunities & Resources",
-      description:
-        "Stay ahead even after camp",
+      description: "Stay ahead even after camp",
       icon: <Star className="h-8 w-8" />,
       features: [
         "Alumni receive curated opportunities — from contests and hackathons to workshops and global programs.",
@@ -299,8 +348,7 @@ const AboutPage = () => {
     },
     {
       title: "Seed Grants & Support",
-      description:
-        "Ideas deserve a push",
+      description: "Ideas deserve a push",
       icon: <Lightbulb className="h-8 w-8" />,
       features: [
         "Get access to micro-grants and resources to kickstart your changemaking projects in schools and communities.",
@@ -308,8 +356,7 @@ const AboutPage = () => {
     },
     {
       title: "Mentorship & Internships",
-      description:
-        "Guidance from those who've done it",
+      description: "Guidance from those who've done it",
       icon: <Award className="h-8 w-8" />,
       features: [
         "Personalized mentorship, expert advice, and connections to internships with NGOs, startups, and impact-driven ventures.",
@@ -317,8 +364,7 @@ const AboutPage = () => {
     },
     {
       title: "National Alumni Network",
-      description:
-        "A tribe of changemakers for life",
+      description: "A tribe of changemakers for life",
       icon: <Globe className="h-8 w-8" />,
       features: [
         "Join a growing nationwide community of peers from diverse states and backgrounds, collaborating and inspiring each other long after the bootcamp.",
@@ -328,84 +374,101 @@ const AboutPage = () => {
 
   const faqCategories = [
     "About YCB",
-    "Eligibility & Dates", 
+    "Eligibility & Dates",
     "Curriculum & Experience",
     "Logistics & Safety",
     "Fee & Financial Aid",
-    "After the Bootcamp"
+    "After the Bootcamp",
   ] as const;
 
-  type FaqCategory = typeof faqCategories[number];
+  type FaqCategory = (typeof faqCategories)[number];
 
-  const faqData: Record<FaqCategory, Array<{question: string; answer: string}>> = {
+  const faqData: Record<
+    FaqCategory,
+    Array<{ question: string; answer: string }>
+  > = {
     "About YCB": [
       {
         question: "What makes YCB different from other programs?",
-        answer: "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact."
+        answer:
+          "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact.",
       },
       {
         question: "Is the program conducted online or offline?",
-        answer: "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences."
+        answer:
+          "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences.",
       },
       {
         question: "What happens after completing the program?",
-        answer: "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves."
-      }
+        answer:
+          "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves.",
+      },
     ],
     "Eligibility & Dates": [
       {
         question: "Are there any prerequisites for applying?",
-        answer: "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds."
+        answer:
+          "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds.",
       },
       {
         question: "Can I participate if I'm working full-time?",
-        answer: "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals."
+        answer:
+          "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals.",
       },
       {
         question: "What are the age requirements?",
-        answer: "YCB is open to individuals aged 18-30 who are passionate about creating positive change. We believe this age range captures emerging leaders who are ready to take action and have the energy to drive meaningful impact."
-      }
+        answer:
+          "YCB is open to individuals aged 18-30 who are passionate about creating positive change. We believe this age range captures emerging leaders who are ready to take action and have the energy to drive meaningful impact.",
+      },
     ],
     "Curriculum & Experience": [
       {
         question: "What kind of support is available during the program?",
-        answer: "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed."
+        answer:
+          "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed.",
       },
       {
         question: "How are the projects structured?",
-        answer: "Projects are real-world challenges provided by partner organizations. You'll work in teams of 4-5 participants, guided by industry mentors, to develop practical solutions over the course of the program. Each project culminates in a presentation to stakeholders."
-      }
+        answer:
+          "Projects are real-world challenges provided by partner organizations. You'll work in teams of 4-5 participants, guided by industry mentors, to develop practical solutions over the course of the program. Each project culminates in a presentation to stakeholders.",
+      },
     ],
     "Logistics & Safety": [
       {
         question: "What networking opportunities are available?",
-        answer: "YCB provides extensive networking through monthly alumni meetups, industry expert sessions, partner organization visits, and our global online community. You'll connect with changemakers across sectors and geographies."
+        answer:
+          "YCB provides extensive networking through monthly alumni meetups, industry expert sessions, partner organization visits, and our global online community. You'll connect with changemakers across sectors and geographies.",
       },
       {
         question: "Is there ongoing support after graduation?",
-        answer: "Yes! Alumni receive lifetime access to our network, quarterly check-ins with career counselors, funding opportunity alerts, collaboration platforms, and invitations to exclusive events and workshops."
-      }
+        answer:
+          "Yes! Alumni receive lifetime access to our network, quarterly check-ins with career counselors, funding opportunity alerts, collaboration platforms, and invitations to exclusive events and workshops.",
+      },
     ],
     "Fee & Financial Aid": [
       {
         question: "What is the program fee?",
-        answer: "The program fee varies by location and format. We offer need-based scholarships covering up to 80% of costs. Financial assistance is available for deserving candidates who demonstrate passion and commitment."
+        answer:
+          "The program fee varies by location and format. We offer need-based scholarships covering up to 80% of costs. Financial assistance is available for deserving candidates who demonstrate passion and commitment.",
       },
       {
         question: "Are there payment plans available?",
-        answer: "Yes, we offer flexible payment plans including installment options and deferred payment for students. Our goal is to make the program accessible to passionate changemakers regardless of financial background."
-      }
+        answer:
+          "Yes, we offer flexible payment plans including installment options and deferred payment for students. Our goal is to make the program accessible to passionate changemakers regardless of financial background.",
+      },
     ],
     "After the Bootcamp": [
       {
         question: "How do alumni stay connected?",
-        answer: "Our alumni network is active through monthly meetups, online forums, collaborative projects, and mentorship programs. Many alumni also return as mentors and guest speakers for current participants."
+        answer:
+          "Our alumni network is active through monthly meetups, online forums, collaborative projects, and mentorship programs. Many alumni also return as mentors and guest speakers for current participants.",
       },
       {
         question: "What career opportunities are available to alumni?",
-        answer: "Alumni have access to exclusive job boards, startup opportunities, government positions, and NGO roles. Our career services team also provides ongoing support for career transitions and advancement."
-      }
-    ]
+        answer:
+          "Alumni have access to exclusive job boards, startup opportunities, government positions, and NGO roles. Our career services team also provides ongoing support for career transitions and advancement.",
+      },
+    ],
   };
 
   const alumniReviews = [
@@ -413,54 +476,61 @@ const AboutPage = () => {
       name: "Priya Sharma",
       batch: "YCB 2024",
       role: "Founder, EcoSolutions India",
-      review: "YCB transformed my understanding of climate action. The mentorship and real projects gave me the confidence to start my own environmental consultancy.",
-      image: "PS"
+      review:
+        "YCB transformed my understanding of climate action. The mentorship and real projects gave me the confidence to start my own environmental consultancy.",
+      image: "PS",
     },
     {
       name: "Arjun Patel",
       batch: "YCB 2023",
       role: "Climate Policy Analyst",
-      review: "The network I built through YCB has been invaluable. I'm now working with the government on climate policy, thanks to connections made during the program.",
-      image: "AP"
+      review:
+        "The network I built through YCB has been invaluable. I'm now working with the government on climate policy, thanks to connections made during the program.",
+      image: "AP",
     },
     {
       name: "Maya Singh",
       batch: "YCB 2024",
       role: "Social Entrepreneur",
-      review: "YCB didn't just teach me about climate change - it gave me the tools and network to actually make a difference. My startup now impacts 10,000+ farmers.",
-      image: "MS"
+      review:
+        "YCB didn't just teach me about climate change - it gave me the tools and network to actually make a difference. My startup now impacts 10,000+ farmers.",
+      image: "MS",
     },
     {
       name: "Rahul Kumar",
       batch: "YCB 2023",
       role: "Sustainability Consultant",
-      review: "The hands-on projects and real-world experience I gained through YCB were game-changing. I now lead sustainability initiatives for Fortune 500 companies.",
-      image: "RK"
+      review:
+        "The hands-on projects and real-world experience I gained through YCB were game-changing. I now lead sustainability initiatives for Fortune 500 companies.",
+      image: "RK",
     },
     {
       name: "Ananya Joshi",
       batch: "YCB 2024",
       role: "Green Tech Innovator",
-      review: "YCB's emphasis on innovation and technology helped me develop a clean energy solution that's now being implemented across rural communities.",
-      image: "AJ"
+      review:
+        "YCB's emphasis on innovation and technology helped me develop a clean energy solution that's now being implemented across rural communities.",
+      image: "AJ",
     },
     {
       name: "Vikram Mehta",
       batch: "YCB 2023",
       role: "Impact Investment Analyst",
-      review: "The program opened my eyes to the intersection of finance and social impact. I now help direct millions in funding toward sustainable development projects.",
-      image: "VM"
+      review:
+        "The program opened my eyes to the intersection of finance and social impact. I now help direct millions in funding toward sustainable development projects.",
+      image: "VM",
     },
     {
       name: "Kavya Reddy",
       batch: "YCB 2024",
       role: "Community Development Lead",
-      review: "YCB taught me that change starts at the grassroots level. I'm now leading community-driven initiatives that have transformed 50+ villages.",
-      image: "KR"
-    }
+      review:
+        "YCB taught me that change starts at the grassroots level. I'm now leading community-driven initiatives that have transformed 50+ villages.",
+      image: "KR",
+    },
   ];
 
-  const renderStars = (rating: number) => {
+  const _renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         className={`h-4 w-4 ${i < rating ? "fill-current text-yellow-400" : "text-gray-300"}`}
@@ -484,10 +554,13 @@ const AboutPage = () => {
             }}
           />
         </div>
-        
-        <div className="relative z-10 w-full px-8 lg:px-16 xl:px-24 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#050a30] mb-6">
-            About <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">YCB</span>
+
+        <div className="relative z-10 w-full px-8 text-center lg:px-16 xl:px-24">
+          <h1 className="mb-6 font-bold text-5xl text-[#050a30] md:text-6xl">
+            About{" "}
+            <span className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent">
+              YCB
+            </span>
           </h1>
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FFA500]" />
           <p className="mx-auto max-w-3xl text-gray-600 text-xl leading-relaxed">
@@ -499,19 +572,21 @@ const AboutPage = () => {
 
       {/* Main Content */}
       <div className="w-full px-8 lg:px-16 xl:px-24">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col gap-8 lg:flex-row">
           {/* Sidebar */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sticky top-28">
-              <h3 className="text-lg font-bold text-[#050a30] mb-4">Explore YCB</h3>
+          <div className="flex-shrink-0 lg:w-64">
+            <div className="sticky top-28 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg">
+              <h3 className="mb-4 font-bold text-[#050a30] text-lg">
+                Explore YCB
+              </h3>
               <div className="space-y-3">
                 {navigationItems.map((item) => {
                   return (
                     <button
                       className={`flex w-full items-center rounded-xl px-0 py-3 text-left font-medium transition-all duration-200 ${
                         activeSection === item.id
-                          ? "bg-soft-dark text-white shadow-lg px-4"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30] hover:px-4"
+                          ? "bg-soft-dark px-4 text-white shadow-lg"
+                          : "text-gray-600 hover:bg-gray-50 hover:px-4 hover:text-[#050a30]"
                       }`}
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
@@ -527,7 +602,7 @@ const AboutPage = () => {
           {/* Main Content */}
           <div className="flex-1 space-y-16">
             {/* About YCB */}
-            <section id="about" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="about">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -540,78 +615,93 @@ const AboutPage = () => {
                       Our Mission
                     </h3>
                     <p className="text-gray-700 leading-relaxed">
-                      Our mission is to empower high school students with the mindset, skills, and community to become changemakers — solving real problems with empathy, creativity, and teamwork.
+                      Our mission is to empower high school students with the
+                      mindset, skills, and community to become changemakers —
+                      solving real problems with empathy, creativity, and
+                      teamwork.
                     </p>
                   </div>
 
                   {/* Description */}
                   <div className="mb-8 rounded-xl border border-blue-100 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 p-6">
                     <p className="text-gray-700 leading-relaxed">
-                      The Young Changemakers Bootcamp (YCB) is an intensive one-week residential program for students of grades 9–12. It exposes them to real-world problem solving, engineering, and innovation. Through hands-on learning and interdisciplinary coursework, students identify pressing challenges, design solutions, build prototypes, and pitch their ideas — guided by mentors, innovators, and entrepreneurs. YCB transforms students' potential into action, helping them discover their power to drive meaningful change in their schools, communities, and beyond.
+                      The Young Changemakers Bootcamp (YCB) is an intensive
+                      one-week residential program for students of grades 9–12.
+                      It exposes them to real-world problem solving,
+                      engineering, and innovation. Through hands-on learning and
+                      interdisciplinary coursework, students identify pressing
+                      challenges, design solutions, build prototypes, and pitch
+                      their ideas — guided by mentors, innovators, and
+                      entrepreneurs. YCB transforms students' potential into
+                      action, helping them discover their power to drive
+                      meaningful change in their schools, communities, and
+                      beyond.
                     </p>
                   </div>
 
                   {/* Key Features Grid */}
                   <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 transition-all duration-300 group-hover:bg-blue-200 group-hover:scale-110">
+                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-200">
                         <BookOpen className="h-6 w-6 text-blue-600 transition-all duration-300 group-hover:text-blue-700" />
                       </div>
                       <h4 className="mb-2 font-bold text-[#050a30]">
                         Experiential Learning
                       </h4>
                       <p className="text-gray-600 text-sm">
-                        A structured journey of problem-solving, design thinking, and innovation.
+                        A structured journey of problem-solving, design
+                        thinking, and innovation.
                       </p>
                     </div>
 
-                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 transition-all duration-300 group-hover:bg-green-200 group-hover:scale-110">
+                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-green-200">
                         <Users className="h-6 w-6 text-green-600 transition-all duration-300 group-hover:text-green-700" />
                       </div>
                       <h4 className="mb-2 font-bold text-[#050a30]">
                         Diverse Peer Network
                       </h4>
                       <p className="text-gray-600 text-sm">
-                        Bringing together bright students from across India for collaborative learning.
+                        Bringing together bright students from across India for
+                        collaborative learning.
                       </p>
                     </div>
 
-                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 transition-all duration-300 group-hover:bg-purple-200 group-hover:scale-110">
+                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-purple-200">
                         <Target className="h-6 w-6 text-purple-600 transition-all duration-300 group-hover:text-purple-700" />
                       </div>
                       <h4 className="mb-2 font-bold text-[#050a30]">
                         Real-World Projects
                       </h4>
                       <p className="text-gray-600 text-sm">
-                        Students design practical solutions to pressing challenges in society.
+                        Students design practical solutions to pressing
+                        challenges in society.
                       </p>
                     </div>
 
-                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 transition-all duration-300 group-hover:bg-orange-200 group-hover:scale-110">
+                    <div className="group rounded-xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-orange-200">
                         <Award className="h-6 w-6 text-orange-600 transition-all duration-300 group-hover:text-orange-700" />
                       </div>
                       <h4 className="mb-2 font-bold text-[#050a30]">
                         Expert Mentorship
                       </h4>
                       <p className="text-gray-600 text-sm">
-                        Guidance from entrepreneurs, educators, and professionals for lasting impact.
+                        Guidance from entrepreneurs, educators, and
+                        professionals for lasting impact.
                       </p>
                     </div>
                   </div>
 
                   {/* Snapshots from past edition */}
                   <SnapshotsSlider />
-
-
                 </div>
               </div>
             </section>
 
             {/* Eligibility & Dates */}
-            <section id="eligibility" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="eligibility">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -626,24 +716,40 @@ const AboutPage = () => {
                     <div className="rounded-xl border border-gray-100 bg-white p-6">
                       <ul className="space-y-4 text-gray-700">
                         <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span>High school students from anywhere in India.</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span>
+                            High school students from anywhere in India.
+                          </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span>Must be in Grade 9, 10, 11, or 12 while attending in June 2025.</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span>
+                            Must be in Grade 9, 10, 11, or 12 while attending in
+                            June 2025.
+                          </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span>Students who have just finished Class 12 board exams are also eligible.</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span>
+                            Students who have just finished Class 12 board exams
+                            are also eligible.
+                          </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span>The program will be conducted in English, so students should be comfortable with written & spoken English.</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span>
+                            The program will be conducted in English, so
+                            students should be comfortable with written & spoken
+                            English.
+                          </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span>Applicants will fill an online form and write a short essay to show curiosity, creativity, and passion for solving problems.</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span>
+                            Applicants will fill an online form and write a
+                            short essay to show curiosity, creativity, and
+                            passion for solving problems.
+                          </span>
                         </li>
                       </ul>
                     </div>
@@ -728,18 +834,19 @@ const AboutPage = () => {
             </section>
 
             {/* Curriculum */}
-            <section id="curriculum" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="curriculum">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
                     Inside the Bootcamp
                   </h2>
                   <p className="mb-8 text-gray-600">
-                    A transformative 7-day journey of discovery, innovation, and impact.
+                    A transformative 7-day journey of discovery, innovation, and
+                    impact.
                   </p>
 
                   {/* Bootcamp Days Flow */}
-                  <div className="space-y-4 md:space-y-6 mb-12">
+                  <div className="mb-12 space-y-4 md:space-y-6">
                     {bootcampDays.map((day, index) => (
                       <div className="relative" key={index}>
                         {/* Connection Line - Hidden on mobile */}
@@ -765,7 +872,7 @@ const AboutPage = () => {
                                 {day.day}
                               </span>
                             </div>
-                            <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                            <p className="text-gray-600 text-sm leading-relaxed md:text-base">
                               {day.description}
                             </p>
                           </div>
@@ -780,66 +887,86 @@ const AboutPage = () => {
                       Learn from Inspiring Leaders
                     </h3>
                     <p className="mb-6 text-gray-700 leading-relaxed">
-                      Over the past editions, YCB participants have had the chance to interact with and learn directly from leading innovators, entrepreneurs, and changemakers.
+                      Over the past editions, YCB participants have had the
+                      chance to interact with and learn directly from leading
+                      innovators, entrepreneurs, and changemakers.
                     </p>
-                    
+
                     <div className="mb-6">
-                      <p className="mb-4 text-gray-700 font-medium">
+                      <p className="mb-4 font-medium text-gray-700">
                         ✨ Past speakers and mentors have included:
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-3 p-4 rounded-lg bg-white border border-gray-100 hover:shadow-md transition-all duration-300">
-                          <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-lg">
                             A
                           </div>
                           <div>
-                            <div className="font-semibold text-[#050a30]">Ajai Chowdhry</div>
-                            <div className="text-gray-600 text-sm">Co-Founder of HCL</div>
+                            <div className="font-semibold text-[#050a30]">
+                              Ajai Chowdhry
+                            </div>
+                            <div className="text-gray-600 text-sm">
+                              Co-Founder of HCL
+                            </div>
                           </div>
                         </div>
-                        
-                        <div className="flex items-center gap-3 p-4 rounded-lg bg-white border border-gray-100 hover:shadow-md transition-all duration-300">
-                          <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-lg">
+
+                        <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 font-bold text-green-600 text-lg">
                             D
                           </div>
                           <div>
-                            <div className="font-semibold text-[#050a30]">Debjani Ghosh</div>
-                            <div className="text-gray-600 text-sm">President, NASSCOM</div>
+                            <div className="font-semibold text-[#050a30]">
+                              Debjani Ghosh
+                            </div>
+                            <div className="text-gray-600 text-sm">
+                              President, NASSCOM
+                            </div>
                           </div>
                         </div>
-                        
-                        <div className="flex items-center gap-3 p-4 rounded-lg bg-white border border-gray-100 hover:shadow-md transition-all duration-300">
-                          <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-lg">
+
+                        <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 font-bold text-lg text-purple-600">
                             D
                           </div>
                           <div>
-                            <div className="font-semibold text-[#050a30]">Dia Mirza</div>
-                            <div className="text-gray-600 text-sm">Actor & UN Environment Goodwill Ambassador</div>
+                            <div className="font-semibold text-[#050a30]">
+                              Dia Mirza
+                            </div>
+                            <div className="text-gray-600 text-sm">
+                              Actor & UN Environment Goodwill Ambassador
+                            </div>
                           </div>
                         </div>
-                        
-                        <div className="flex items-center gap-3 p-4 rounded-lg bg-white border border-gray-100 hover:shadow-md transition-all duration-300">
-                          <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-lg">
+
+                        <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 font-bold text-lg text-orange-600">
                             R
                           </div>
                           <div>
-                            <div className="font-semibold text-[#050a30]">Prof. Ramgopal Rao</div>
-                            <div className="text-gray-600 text-sm">Former Director, IIT Delhi</div>
+                            <div className="font-semibold text-[#050a30]">
+                              Prof. Ramgopal Rao
+                            </div>
+                            <div className="text-gray-600 text-sm">
+                              Former Director, IIT Delhi
+                            </div>
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="mt-4 text-center text-gray-600">
                         …and many more incredible leaders from diverse fields.
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center justify-center">
-                      <a 
-                        href="/network" 
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#050a30] text-white rounded-lg hover:bg-[#050a30]/90 transition-all duration-300 hover:scale-105 font-medium"
+                      <a
+                        className="inline-flex items-center gap-2 rounded-lg bg-[#050a30] px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-[#050a30]/90"
+                        href="/network"
                       >
-                        <span>🔗 See our complete mentor and speaker network</span>
+                        <span>
+                          🔗 See our complete mentor and speaker network
+                        </span>
                         <ArrowRight className="h-4 w-4" />
                       </a>
                     </div>
@@ -849,14 +976,17 @@ const AboutPage = () => {
             </section>
 
             {/* Beyond the Curriculum */}
-            <section id="beyond" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="beyond">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
                     Beyond the Curriculum
                   </h2>
                   <p className="mb-8 text-gray-600">
-                    YCB doesn't end after one week - it's just the beginning of your changemaking journey. We've built a support system to help you keep growing, experimenting, and leading long after the camp is over.
+                    YCB doesn't end after one week - it's just the beginning of
+                    your changemaking journey. We've built a support system to
+                    help you keep growing, experimenting, and leading long after
+                    the camp is over.
                   </p>
 
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -895,7 +1025,7 @@ const AboutPage = () => {
             </section>
 
             {/* Fee & Financial Aid */}
-            <section id="aid" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="aid">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
@@ -907,29 +1037,47 @@ const AboutPage = () => {
                     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
                       <div className="mb-4 flex items-center gap-3">
                         <div className="text-2xl">💰</div>
-                        <h3 className="font-bold text-[#050a30] text-xl">Program Fee</h3>
+                        <h3 className="font-bold text-[#050a30] text-xl">
+                          Program Fee
+                        </h3>
                       </div>
-                      <p className="mb-4 text-gray-600 font-medium">Contribution towards the program:</p>
-                      
+                      <p className="mb-4 font-medium text-gray-600">
+                        Contribution towards the program:
+                      </p>
+
                       <div className="space-y-4">
                         <div className="rounded-lg bg-blue-50 p-4">
-                          <div className="font-bold text-[#050a30] text-2xl">₹15,500</div>
-                          <div className="text-gray-600 text-sm">Program Fee (includes meals during the program)</div>
+                          <div className="font-bold text-2xl text-[#050a30]">
+                            ₹15,500
+                          </div>
+                          <div className="text-gray-600 text-sm">
+                            Program Fee (includes meals during the program)
+                          </div>
                         </div>
-                        
+
                         <div className="text-center">
-                          <div className="text-gray-500 text-lg font-medium">+</div>
+                          <div className="font-medium text-gray-500 text-lg">
+                            +
+                          </div>
                         </div>
-                        
+
                         <div className="rounded-lg bg-green-50 p-4">
-                          <div className="font-bold text-[#050a30] text-xl">₹12,000</div>
-                          <div className="text-gray-600 text-sm">Residence Fee (optional, includes stay & additional services)</div>
+                          <div className="font-bold text-[#050a30] text-xl">
+                            ₹12,000
+                          </div>
+                          <div className="text-gray-600 text-sm">
+                            Residence Fee (optional, includes stay & additional
+                            services)
+                          </div>
                         </div>
-                        
+
                         <div className="border-t pt-4">
                           <div className="flex items-center gap-2 text-sm">
                             <span className="text-xl">📌</span>
-                            <span className="text-gray-600"><strong>Application Fee:</strong> ₹500 (non-refundable)</span>
+                            <span className="text-gray-600">
+                              <strong>Application Fee:</strong> ₹500
+                              (non-refundable)
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -937,51 +1085,80 @@ const AboutPage = () => {
 
                     {/* What's Included */}
                     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">What's Included</h3>
+                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">
+                        What's Included
+                      </h3>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Program sessions, workshops & lab visits</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span className="text-gray-700 text-sm">
+                            Program sessions, workshops & lab visits
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Meals for all participants (day-care & residential)</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span className="text-gray-700 text-sm">
+                            Meals for all participants (day-care & residential)
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Accommodation (for residential participants)</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span className="text-gray-700 text-sm">
+                            Accommodation (for residential participants)
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Mentorship & guidance from experts</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span className="text-gray-700 text-sm">
+                            Mentorship & guidance from experts
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Learning resources & material</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span className="text-gray-700 text-sm">
+                            Learning resources & material
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Local transfers (airport/railway pickups at fixed slots)</span>
+                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
+                          <span className="text-gray-700 text-sm">
+                            Local transfers (airport/railway pickups at fixed
+                            slots)
+                          </span>
                         </div>
                       </div>
                     </div>
 
                     {/* Why We Charge a Fee */}
                     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">Why We Charge a Fee</h3>
-                      <p className="mb-4 text-gray-600 font-medium italic">Because meaningful programs need sustainability.</p>
+                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">
+                        Why We Charge a Fee
+                      </h3>
+                      <p className="mb-4 font-medium text-gray-600 italic">
+                        Because meaningful programs need sustainability.
+                      </p>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3">
-                          <Target className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Ensures participants are serious & committed to the experience</span>
+                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
+                          <span className="text-gray-700 text-sm">
+                            Ensures participants are serious & committed to the
+                            experience
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <Target className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Helps us keep the program high-quality but affordable</span>
+                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
+                          <span className="text-gray-700 text-sm">
+                            Helps us keep the program high-quality but
+                            affordable
+                          </span>
                         </div>
                         <div className="flex items-start gap-3">
-                          <Target className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">Supports a scholarship pool, so that students from underserved backgrounds can attend with little or no cost</span>
+                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
+                          <span className="text-gray-700 text-sm">
+                            Supports a scholarship pool, so that students from
+                            underserved backgrounds can attend with little or no
+                            cost
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -990,30 +1167,47 @@ const AboutPage = () => {
                     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
                       <div className="mb-4 flex items-center gap-3">
                         <div className="text-2xl">🌟</div>
-                        <h3 className="font-bold text-[#050a30] text-xl">Scholarships & Accessibility</h3>
+                        <h3 className="font-bold text-[#050a30] text-xl">
+                          Scholarships & Accessibility
+                        </h3>
                       </div>
-                      <p className="mb-4 text-gray-600 font-medium italic">Our commitment is inclusion.</p>
-                      
+                      <p className="mb-4 font-medium text-gray-600 italic">
+                        Our commitment is inclusion.
+                      </p>
+
                       <div className="space-y-4">
                         <div className="rounded-lg bg-yellow-50 p-4">
-                          <div className="font-semibold text-[#050a30] mb-2">Need-based financial aid up to 100%</div>
-                          <div className="text-gray-600 text-sm">for students from underprivileged backgrounds</div>
+                          <div className="mb-2 font-semibold text-[#050a30]">
+                            Need-based financial aid up to 100%
+                          </div>
+                          <div className="text-gray-600 text-sm">
+                            for students from underprivileged backgrounds
+                          </div>
                         </div>
-                        
+
                         <div className="space-y-2">
-                          <div className="text-gray-700 font-medium text-sm">Requires supporting documents:</div>
-                          <div className="text-gray-600 text-sm pl-4">• Income certificate + short statement of need</div>
+                          <div className="font-medium text-gray-700 text-sm">
+                            Requires supporting documents:
+                          </div>
+                          <div className="pl-4 text-gray-600 text-sm">
+                            • Income certificate + short statement of need
+                          </div>
                         </div>
-                        
+
                         <div className="flex items-center gap-2 text-sm">
                           <span className="text-xl">📅</span>
-                          <span className="text-gray-600"><strong>Deadline to apply:</strong> May 30, 2025</span>
+                          <span className="text-gray-600">
+                            <strong>Deadline to apply:</strong> May 30, 2025
+                          </span>
                         </div>
-                        
+
                         <div className="rounded-lg bg-purple-50 p-4">
                           <div className="flex items-center gap-2 text-sm">
                             <span className="text-xl">✨</span>
-                            <span className="text-gray-700 font-medium">In past editions, over 30% of participants attended with partial or full scholarships.</span>
+                            <span className="font-medium text-gray-700">
+                              In past editions, over 30% of participants
+                              attended with partial or full scholarships.
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -1024,14 +1218,15 @@ const AboutPage = () => {
             </section>
 
             {/* Alumni Reviews */}
-            <section id="reviews" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="reviews">
               <div className="space-y-8">
                 <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
                   <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
                     What Our Alumni Say, in their own words
                   </h2>
                   <p className="mb-8 text-gray-600">
-                    Hear from our alumni about how YCB shaped their journey and sparked their changemaking spirit.
+                    Hear from our alumni about how YCB shaped their journey and
+                    sparked their changemaking spirit.
                   </p>
 
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -1056,8 +1251,10 @@ const AboutPage = () => {
                             </div>
                           </div>
                         </div>
-                        
-                        <p className="text-gray-600 text-sm italic">"{review.review}"</p>
+
+                        <p className="text-gray-600 text-sm italic">
+                          "{review.review}"
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -1066,70 +1263,80 @@ const AboutPage = () => {
             </section>
 
             {/* FAQ */}
-            <section id="faq" className="scroll-mt-32">
+            <section className="scroll-mt-32" id="faq">
               <div className="space-y-8">
-                <div className="bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 rounded-2xl shadow-lg border border-gray-100 p-8">
-                  <h2 className="text-3xl font-bold text-[#050a30] mb-6">Frequently Asked Questions</h2>
-                  <p className="text-gray-600 mb-8">Got questions? We've got answers. Click on any question to expand.</p>
-                  
+                <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-8 shadow-lg">
+                  <h2 className="mb-6 font-bold text-3xl text-[#050a30]">
+                    Frequently Asked Questions
+                  </h2>
+                  <p className="mb-8 text-gray-600">
+                    Got questions? We've got answers. Click on any question to
+                    expand.
+                  </p>
+
                   {/* Category Filter Tabs */}
-                  <div className="flex flex-wrap gap-3 mb-8">
+                  <div className="mb-8 flex flex-wrap gap-3">
                     {faqCategories.map((category) => (
                       <button
+                        className={`rounded-lg px-4 py-2 font-medium text-sm transition-all duration-200 ${
+                          selectedFaqCategory === category
+                            ? "bg-[#050a30] text-white shadow-lg"
+                            : "border border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-[#050a30]"
+                        }`}
                         key={category}
                         onClick={() => {
                           setSelectedFaqCategory(category);
                           setExpandedFaq(null);
                         }}
-                        className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
-                          selectedFaqCategory === category
-                            ? "bg-[#050a30] text-white shadow-lg"
-                            : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:text-[#050a30] hover:border-gray-300"
-                        }`}
                       >
                         {category}
                       </button>
                     ))}
                   </div>
-                  
+
                   {/* FAQ Content */}
                   <div>
-                      <div className="space-y-4">
-                        {faqData[selectedFaqCategory]?.map((faq, index) => (
-                          <div key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-                            <button
-                              className="flex w-full items-center justify-between p-6 text-left transition-colors duration-200 hover:bg-gray-50"
-                              onClick={() =>
-                                setExpandedFaq(expandedFaq === index ? null : index)
-                              }
-                            >
-                              <h3 className="pr-4 font-semibold text-[#050a30]">
-                                {faq.question}
-                              </h3>
-                              {expandedFaq === index ? (
-                                <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-500" />
-                              ) : (
-                                <ChevronRight className="h-5 w-5 flex-shrink-0 text-gray-500" />
-                              )}
-                            </button>
-
-                            {expandedFaq === index && (
-                              <div className="px-6 pb-6">
-                                <div className="mb-4 h-px w-full bg-gray-100" />
-                                <p className="text-gray-600 leading-relaxed">
-                                  {faq.answer}
-                                </p>
-                              </div>
+                    <div className="space-y-4">
+                      {faqData[selectedFaqCategory]?.map((faq, index) => (
+                        <div
+                          className="overflow-hidden rounded-xl border border-gray-100 bg-white"
+                          key={index}
+                        >
+                          <button
+                            className="flex w-full items-center justify-between p-6 text-left transition-colors duration-200 hover:bg-gray-50"
+                            onClick={() =>
+                              setExpandedFaq(
+                                expandedFaq === index ? null : index
+                              )
+                            }
+                          >
+                            <h3 className="pr-4 font-semibold text-[#050a30]">
+                              {faq.question}
+                            </h3>
+                            {expandedFaq === index ? (
+                              <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-500" />
+                            ) : (
+                              <ChevronRight className="h-5 w-5 flex-shrink-0 text-gray-500" />
                             )}
-                          </div>
-                        )) || (
-                          <div className="text-center py-8 text-gray-500">
-                            No FAQs available for this category.
-                          </div>
-                        )}
-                      </div>
+                          </button>
+
+                          {expandedFaq === index && (
+                            <div className="px-6 pb-6">
+                              <div className="mb-4 h-px w-full bg-gray-100" />
+                              <p className="text-gray-600 leading-relaxed">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )) || (
+                        <div className="py-8 text-center text-gray-500">
+                          No FAQs available for this category.
+                        </div>
+                      )}
                     </div>
                   </div>
+                </div>
 
                 {/* Contact for More Questions */}
                 <div className="mt-8 rounded-xl border border-[#FFD700]/20 bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6 text-center">
@@ -1142,7 +1349,7 @@ const AboutPage = () => {
                   </p>
                   <a
                     className="inline-flex items-center gap-2 rounded-xl bg-soft-dark px-6 py-3 font-medium text-white transition-all duration-200 hover:scale-105"
-                    href="mailto:ycbootcamp@taleofhumankind.org"
+                    href="/contact"
                   >
                     <MessageCircle className="h-5 w-5" />
                     Contact Us
@@ -1162,23 +1369,25 @@ const AboutPage = () => {
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg">
               <GraduationCap className="h-8 w-8 text-white" />
             </div>
-            
+
             {/* Heading */}
             <h3 className="mb-4 font-bold text-3xl text-[#050a30] lg:text-4xl">
               Ready to Begin Your Changemaking Journey?
             </h3>
-            
+
             {/* Description */}
-            <p className="mx-auto max-w-2xl text-lg text-[#718096] leading-relaxed">
-              Join the next cohort of young innovators and problem-solvers. Take the first step towards making a meaningful impact in your community and beyond.
+            <p className="mx-auto max-w-2xl text-[#718096] text-lg leading-relaxed">
+              Join the next cohort of young innovators and problem-solvers. Take
+              the first step towards making a meaningful impact in your
+              community and beyond.
             </p>
           </div>
 
           {/* Apply Now Button */}
           <div className="flex justify-center">
             <a
-              href="/how-to-apply"
               className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-3 rounded-[12px] border-2 border-[gold] bg-[gold] px-8 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-12 sm:py-4 sm:text-base lg:px-16 lg:py-5 lg:text-lg"
+              href="/how-to-apply"
             >
               <span>Apply Now</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
@@ -1186,8 +1395,9 @@ const AboutPage = () => {
           </div>
 
           {/* Additional Info */}
-          <p className="mt-6 text-sm text-gray-600">
-            Applications are open! Don't miss your chance to be part of YCB 2025.
+          <p className="mt-6 text-gray-600 text-sm">
+            Applications are open! Don't miss your chance to be part of YCB
+            2025.
           </p>
         </div>
       </section>
@@ -1200,30 +1410,30 @@ const AboutPage = () => {
         <>
           {/* Overlay to close menu when clicking outside */}
           {isFloatingNavOpen && (
-            <div 
-              className="fixed inset-0 z-40 lg:hidden" 
+            <div
+              className="fixed inset-0 z-40 lg:hidden"
               onClick={() => setIsFloatingNavOpen(false)}
             />
           )}
-          
-          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 lg:hidden">
+
+          <div className="-translate-x-1/2 fixed bottom-6 left-1/2 z-50 transform lg:hidden">
             <div className="relative">
               {/* Expanded Menu */}
               {isFloatingNavOpen && (
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 bg-white rounded-xl shadow-xl border border-gray-200 py-2 w-64 max-h-80 overflow-y-auto">
+                <div className="-translate-x-1/2 absolute bottom-full left-1/2 mb-3 max-h-80 w-64 transform overflow-y-auto rounded-xl border border-gray-200 bg-white py-2 shadow-xl">
                   {navigationItems.map((item) => {
                     return (
                       <button
+                        className={`flex w-full items-center px-4 py-3 text-left font-medium text-sm transition-all duration-200 ${
+                          activeSection === item.id
+                            ? "bg-soft-dark text-white"
+                            : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30]"
+                        }`}
                         key={item.id}
                         onClick={() => {
                           scrollToSection(item.id);
                           setIsFloatingNavOpen(false);
                         }}
-                        className={`flex w-full items-center px-4 py-3 text-left text-sm font-medium transition-all duration-200 ${
-                          activeSection === item.id
-                            ? "bg-soft-dark text-white"
-                            : "text-gray-600 hover:bg-gray-50 hover:text-[#050a30]"
-                        }`}
                       >
                         {item.label}
                       </button>
@@ -1231,14 +1441,17 @@ const AboutPage = () => {
                   })}
                 </div>
               )}
-              
+
               {/* Menu Button */}
               <button
+                className="flex items-center gap-2 rounded-full bg-soft-dark px-5 py-3 font-medium text-sm text-white shadow-lg transition-all duration-200 hover:bg-opacity-90"
                 onClick={() => setIsFloatingNavOpen(!isFloatingNavOpen)}
-                className="px-5 py-3 bg-soft-dark text-white rounded-full flex items-center gap-2 font-medium text-sm hover:bg-opacity-90 transition-all duration-200 shadow-lg"
               >
-                {navigationItems.find(item => item.id === activeSection)?.label || "Explore YCB"}
-                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isFloatingNavOpen ? 'rotate-180' : ''}`} />
+                {navigationItems.find((item) => item.id === activeSection)
+                  ?.label || "Explore YCB"}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${isFloatingNavOpen ? "rotate-180" : ""}`}
+                />
               </button>
             </div>
           </div>

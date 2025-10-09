@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import React from "react";
 import {
   Autoplay,
   EffectCoverflow,

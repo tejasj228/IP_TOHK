@@ -30,7 +30,13 @@ export default function Header() {
     pathname.startsWith("/tentative-calendar");
 
   // Pages that should always have navy header
-  const shouldAlwaysBeNavy = isNetworkPage || isAboutPage || isLegalPage || isEditionsPage || isFeaturedPage || isContactPage;
+  const shouldAlwaysBeNavy =
+    isNetworkPage ||
+    isAboutPage ||
+    isLegalPage ||
+    isEditionsPage ||
+    isFeaturedPage ||
+    isContactPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -83,7 +89,7 @@ export default function Header() {
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
     };
-  }, [pathname, isHomePage, shouldAlwaysBeNavy]);
+  }, [isHomePage, shouldAlwaysBeNavy]);
 
   type LinkConfig = {
     to: string;
@@ -189,7 +195,7 @@ export default function Header() {
 
             <Button
               asChild
-              className="smooth-hover bg-[gold] hover:bg-[gold]/90 text-[#1a365d] font-bold px-3 py-1.5 text-xs lg:px-4 lg:py-2 lg:text-sm xl:px-6 xl:text-base hover:scale-105 transition-all duration-300"
+              className="smooth-hover bg-[gold] px-3 py-1.5 font-bold text-[#1a365d] text-xs transition-all duration-300 hover:scale-105 hover:bg-[gold]/90 lg:px-4 lg:py-2 lg:text-sm xl:px-6 xl:text-base"
             >
               <Link href="/how-to-apply">Apply</Link>
             </Button>
@@ -200,7 +206,7 @@ export default function Header() {
             {/* Mobile Apply Button */}
             <Button
               asChild
-              className="smooth-hover bg-[gold] hover:bg-[gold]/90 text-[#1a365d] font-bold px-3 py-1.5 text-xs hover:scale-105 transition-all duration-300"
+              className="smooth-hover bg-[gold] px-3 py-1.5 font-bold text-[#1a365d] text-xs transition-all duration-300 hover:scale-105 hover:bg-[gold]/90"
             >
               <Link href="/how-to-apply">Apply</Link>
             </Button>
@@ -298,7 +304,10 @@ export default function Header() {
               asChild
               className="w-full bg-white font-bold text-[#1a365d] hover:bg-white/90"
             >
-              <Link href="/how-to-apply" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link
+                href="/how-to-apply"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 How to Apply
               </Link>
             </Button>

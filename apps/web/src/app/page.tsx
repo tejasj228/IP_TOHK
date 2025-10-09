@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  Award,
-  CheckCircle,
   ChevronLeft,
   ChevronRight,
   Heart,
@@ -11,15 +9,19 @@ import {
   Pause,
   Play,
   Search,
-  Target,
   Users,
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { type ElementType, useEffect, useRef, useState } from "react";
+import {
+  type ElementType,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Quotation from "@/assets/quotations.png";
-import tohkLogo from "@/assets/tohk.jpg";
 import { Button } from "@/components/ui/button";
 import { Marquee } from "@/components/ui/marquee";
 import WorldMap from "@/components/ui/world-map";
@@ -29,6 +31,13 @@ const NotificationBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [hasShown, setHasShown] = useState(false);
+
+  const handleClose = useCallback(() => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 300); // Animation duration
+  }, []);
 
   useEffect(() => {
     // Only show if it hasn't been shown in this session
@@ -49,14 +58,7 @@ const NotificationBanner = () => {
         clearTimeout(hideTimer);
       };
     }
-  }, [hasShown]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsVisible(false);
-    }, 300); // Animation duration
-  };
+  }, [hasShown, handleClose]);
 
   if (!isVisible) {
     return null;
@@ -172,7 +174,7 @@ const AnimatedCounter = ({
       return;
     }
     const startTime = Date.now();
-    const endTime = startTime + duration;
+    const _endTime = startTime + duration;
 
     const updateCount = () => {
       const now = Date.now();
@@ -315,7 +317,7 @@ const HERO_IMAGE_SLIDE_DURATION = 5000;
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [_isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   // Summary points data used in About YCB section
   const summaryPoints = [
@@ -489,10 +491,11 @@ export default function Home() {
 
                 {/* Short description */}
                 <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
-                  A one-week residential program where high schoolers learn to spot
-                  real-world problems, design bold solutions, build prototypes, and
-                  pitch their ideas - all while making memories and friends that last
-                  a lifetime, guided by mentors and changemakers.
+                  A one-week residential program where high schoolers learn to
+                  spot real-world problems, design bold solutions, build
+                  prototypes, and pitch their ideas - all while making memories
+                  and friends that last a lifetime, guided by mentors and
+                  changemakers.
                 </p>
               </div>
 
@@ -609,7 +612,8 @@ export default function Home() {
                       What You'll Discover
                     </h3>
                     <p className="mx-auto max-w-3xl text-base text-gray-300 sm:text-lg lg:text-xl">
-                      More than a bootcamp — it's a journey that blends skills, community, and unforgettable experiences.
+                      More than a bootcamp — it's a journey that blends skills,
+                      community, and unforgettable experiences.
                     </p>
                   </div>
                   {/* Pause/Play visible on mobile where marquee is used (icon-only) */}
@@ -638,27 +642,30 @@ export default function Home() {
             {/* Centered Read More Button */}
             <div className="flex justify-center">
               <Button
+                asChild
                 className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-6 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg"
                 size="lg"
               >
-                <span className="hidden sm:inline">Read More About YCB</span>
-                <span className="sm:hidden">Read More</span>
-                <svg
-                  className="transition-transform duration-300 group-hover:translate-x-2"
-                  fill="none"
-                  height="18"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  width="18"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Read More</title>
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
+                <Link href="/about">
+                  <span className="hidden sm:inline">Read More About YCB</span>
+                  <span className="sm:hidden">Read More</span>
+                  <svg
+                    className="transition-transform duration-300 group-hover:translate-x-2"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Read More</title>
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </Link>
               </Button>
             </div>
           </div>
@@ -687,7 +694,14 @@ export default function Home() {
             </h2>
             <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-1 max-w-4xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
-              Over the past five editions, the Young Changemakers Bootcamp has brought together over 220 alumni from 12+ states — from the hills of Sikkim to the deserts of Rajasthan, from Delhi's classrooms to the coasts of Tamil Nadu. These students didn't just attend a program — they built libraries in rural villages, started eco-clubs, improved sanitation facilities, and even pitched ideas that secured funding. What began as a bootcamp is now a growing nationwide network of young innovators, leaders, and changemakers.
+              Over the past five editions, the Young Changemakers Bootcamp has
+              brought together over 220 alumni from 12+ states — from the hills
+              of Sikkim to the deserts of Rajasthan, from Delhi's classrooms to
+              the coasts of Tamil Nadu. These students didn't just attend a
+              program — they built libraries in rural villages, started
+              eco-clubs, improved sanitation facilities, and even pitched ideas
+              that secured funding. What began as a bootcamp is now a growing
+              nationwide network of young innovators, leaders, and changemakers.
             </p>
 
             {/* Stats Grid */}
@@ -713,8 +727,10 @@ export default function Home() {
               {/* Lives Impacted */}
               <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={2500} suffix="+" target={50000} />
-                  <p className="text-white text-xs sm:text-sm">Lives Impacted</p>
+                  <AnimatedCounter duration={2500} suffix="+" target={50_000} />
+                  <p className="text-white text-xs sm:text-sm">
+                    Lives Impacted
+                  </p>
                 </div>
               </div>
             </div>
@@ -724,7 +740,7 @@ export default function Home() {
             </div>
 
             {/* View Our Network Button */}
-            <div className="flex justify-center mt-8">
+            <div className="mt-8 flex justify-center">
               <Button
                 asChild
                 className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-6 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg"
@@ -780,7 +796,8 @@ export default function Home() {
             </h2>
             <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-6 max-w-2xl text-[#718096] text-lg sm:mb-8 lg:mb-10">
-              Hear from mentors, leaders, and participants who have experienced the energy of the Young Changemakers Bootcamp.
+              Hear from mentors, leaders, and participants who have experienced
+              the energy of the Young Changemakers Bootcamp.
             </p>
             {/* Pause/Play below heading, aligned to viewport right with small margin - only visible on mobile */}
             <div className="-ml-[50vw] -mr-[50vw] relative right-[50%] left-[50%] mt-4 mb-8 flex w-[100vw] justify-end pr-4 sm:pr-6 md:hidden lg:pr-10">
@@ -801,10 +818,13 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4">
             {/* Section Title */}
             <div className="mb-12 text-center">
-              <h2 className="font-bold text-4xl text-[#050a30]">Alumni Stories</h2>
+              <h2 className="font-bold text-4xl text-[#050a30]">
+                Alumni Stories
+              </h2>
               <div className="gradient-underline mx-auto mt-4" />
               <p className="mx-auto mt-6 max-w-2xl text-[#718096] text-lg">
-                Discover the projects, blogs, and voices of YCB alumni making a difference across India.
+                Discover the projects, blogs, and voices of YCB alumni making a
+                difference across India.
               </p>
             </div>
 
@@ -1013,9 +1033,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            
+
             {/* Centered View More Button */}
-            <div className="relative z-30 flex justify-center mt-16 pt-2">
+            <div className="relative z-30 mt-16 flex justify-center pt-2">
               <Button
                 asChild
                 className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-2 rounded-[12px] border-2 border-[gold] bg-[gold] px-6 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg"
