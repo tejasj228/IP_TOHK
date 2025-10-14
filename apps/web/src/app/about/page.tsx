@@ -898,7 +898,7 @@ const AboutPage = () => {
                       </p>
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-lg">
+                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-lg aspect-square">
                             A
                           </div>
                           <div>
@@ -912,7 +912,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 font-bold text-green-600 text-lg">
+                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-600 text-lg aspect-square">
                             D
                           </div>
                           <div>
@@ -926,7 +926,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 font-bold text-lg text-purple-600">
+                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-purple-100 font-bold text-lg text-purple-600 aspect-square">
                             D
                           </div>
                           <div>
@@ -940,7 +940,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 font-bold text-lg text-orange-600">
+                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-orange-100 font-bold text-lg text-orange-600 aspect-square">
                             R
                           </div>
                           <div>

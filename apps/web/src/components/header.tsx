@@ -18,6 +18,7 @@ export default function Header() {
   const isEditionsPage = pathname === "/editions";
   const isFeaturedPage = pathname === "/featured";
   const isContactPage = pathname === "/contact";
+  const isApplyPage = pathname === "/apply";
 
   // Legal pages that should always have navy header and no highlighting
   const isLegalPage =
@@ -36,7 +37,8 @@ export default function Header() {
     isLegalPage ||
     isEditionsPage ||
     isFeaturedPage ||
-    isContactPage;
+    isContactPage ||
+    isApplyPage;
 
   React.useEffect(() => {
     // If we're on pages that should always have navy background
@@ -197,7 +199,7 @@ export default function Header() {
               asChild
               className="smooth-hover bg-[gold] px-3 py-1.5 font-bold text-[#1a365d] text-xs transition-all duration-300 hover:scale-105 hover:bg-[gold]/90 lg:px-4 lg:py-2 lg:text-sm xl:px-6 xl:text-base"
             >
-              <Link href="/how-to-apply">Apply</Link>
+              <Link href="/apply">Apply</Link>
             </Button>
           </div>
 
@@ -208,7 +210,7 @@ export default function Header() {
               asChild
               className="smooth-hover bg-[gold] px-3 py-1.5 font-bold text-[#1a365d] text-xs transition-all duration-300 hover:scale-105 hover:bg-[gold]/90"
             >
-              <Link href="/how-to-apply">Apply</Link>
+              <Link href="/apply">Apply</Link>
             </Button>
 
             {/* Mobile Hamburger Menu Button */}
