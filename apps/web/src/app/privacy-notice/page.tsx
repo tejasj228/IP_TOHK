@@ -25,10 +25,10 @@ export default function PrivacyNotice() {
               </h2>
               <div className="mb-4 flex gap-6 text-gray-600 text-sm">
                 <span>
-                  <strong>Effective Date:</strong> [Insert Date]
+                  <strong>Effective Date:</strong> April 2023
                 </span>
                 <span>
-                  <strong>Last Updated:</strong> [Insert Date]
+                  <strong>Last Updated:</strong> 23rd October 2025
                 </span>
               </div>
             </div>

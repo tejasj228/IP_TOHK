@@ -11,12 +11,16 @@ import {
   ChevronRight,
   Clock,
   DollarSign,
+  FileDown,
   Globe,
   GraduationCap,
   Heart,
   Lightbulb,
+  MapPin,
+  Megaphone,
   MessageCircle,
   Mic,
+  Pin,
   Search,
   Star,
   Target,
@@ -223,8 +227,10 @@ const AboutPage = () => {
     {
       day: "Day 0",
       title: "Kickoff & Orientation",
-      description:
-        "Welcome, icebreakers, campus walk, and informal interaction with mentors & peers.",
+      description: [
+        "Welcome, icebreakers, campus walk",
+        "Informal interaction with mentors & peers"
+      ],
       icon: (
         <Image
           alt="Kickoff"
@@ -239,16 +245,23 @@ const AboutPage = () => {
     {
       day: "Day 1",
       title: "Spotting Problems That Matter",
-      description:
-        "Intro to science & tech, changemaking for a better world, observation walks, drone demo, icebreaker games.",
+      description: [
+        "Intro to science & tech, changemaking for a better world",
+        "Observation walks, drone demo",
+        "Icebreaker games"
+      ],
       icon: <Search className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-green-400 to-green-600",
     },
     {
       day: "Day 2",
       title: "Exploring Innovation",
-      description:
-        "AI/ML & ChatGPT, cognitive psychology, design & innovation lab visit, 3D printing demo, entrepreneurship mindset, expressive art, Web 3.0, movie night.",
+      description: [
+        "AI/ML & ChatGPT, cognitive psychology",
+        "Design & innovation lab visit, 3D printing demo",
+        "Entrepreneurship mindset, expressive art",
+        "Web 3.0, movie night"
+      ],
       icon: (
         <Image
           alt="Exploring Innovation"
@@ -263,8 +276,11 @@ const AboutPage = () => {
     {
       day: "Day 3",
       title: "Creativity & Design Thinking",
-      description:
-        "Team formation, ideation with mentors, problem validation, design thinking, app/web basics, talent night.",
+      description: [
+        "Team formation, ideation with mentors",
+        "Problem validation, design thinking",
+        "App/web basics, talent night"
+      ],
       icon: (
         <Image
           alt="Creativity"
@@ -279,8 +295,11 @@ const AboutPage = () => {
     {
       day: "Day 4",
       title: "From Ideas to Ventures",
-      description:
-        "Product innovation, unique value proposition, financial basics, business plan prep, pitching practice, storytelling & photography workshop.",
+      description: [
+        "Product innovation, unique value proposition",
+        "Financial basics, business plan prep",
+        "Pitching practice, storytelling & photography workshop"
+      ],
       icon: (
         <Image
           alt="Venture"
@@ -295,16 +314,21 @@ const AboutPage = () => {
     {
       day: "Day 5",
       title: "The Big Pitch",
-      description:
-        "My Idea for Change Competition, career guidance, interaction with faculty, mini farewell, sports, music & cultural night.",
+      description: [
+        "My Idea for Change Competition, career guidance",
+        "Interaction with faculty, mini farewell",
+        "Sports, music & cultural night"
+      ],
       icon: <Mic className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-indigo-400 to-indigo-600",
     },
     {
       day: "Day 6",
       title: "Closing & Departure",
-      description:
-        "Reflections, goodbyes, departure with new ideas and lifelong friendships.",
+      description: [
+        "Reflections, goodbyes",
+        "Departure with new ideas and lifelong friendships"
+      ],
       icon: <GraduationCap className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-pink-400 to-pink-600",
     },
@@ -762,7 +786,9 @@ const AboutPage = () => {
                     </h3>
                     <div className="space-y-4">
                       <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4">
-                        <div className="text-2xl">📥</div>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                          <FileDown className="h-5 w-5 text-blue-600" />
+                        </div>
                         <div>
                           <div className="font-semibold text-[#050a30]">
                             Applications Open
@@ -773,7 +799,9 @@ const AboutPage = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4">
-                        <div className="text-2xl">📌</div>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100">
+                          <Pin className="h-5 w-5 text-red-600" />
+                        </div>
                         <div>
                           <div className="font-semibold text-[#050a30]">
                             Application Deadline
@@ -784,7 +812,9 @@ const AboutPage = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4">
-                        <div className="text-2xl">📢</div>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
+                          <Megaphone className="h-5 w-5 text-green-600" />
+                        </div>
                         <div>
                           <div className="font-semibold text-[#050a30]">
                             Round 1 Results Announced
@@ -795,7 +825,9 @@ const AboutPage = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4">
-                        <div className="text-2xl">🎤</div>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
+                          <Mic className="h-5 w-5 text-purple-600" />
+                        </div>
                         <div>
                           <div className="font-semibold text-[#050a30]">
                             Group Discussion Slots
@@ -806,7 +838,9 @@ const AboutPage = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4">
-                        <div className="text-2xl">✅</div>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
+                          <CheckCircle className="h-5 w-5 text-green-600" />
+                        </div>
                         <div>
                           <div className="font-semibold text-[#050a30]">
                             Final Shortlist
@@ -817,7 +851,9 @@ const AboutPage = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4">
-                        <div className="text-2xl">🏕</div>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100">
+                          <Calendar className="h-5 w-5 text-orange-600" />
+                        </div>
                         <div>
                           <div className="font-semibold text-[#050a30]">
                             Bootcamp Dates
@@ -872,9 +908,14 @@ const AboutPage = () => {
                                 {day.day}
                               </span>
                             </div>
-                            <p className="text-gray-600 text-sm leading-relaxed md:text-base">
-                              {day.description}
-                            </p>
+                            <ul className="space-y-2 text-gray-600 text-sm leading-relaxed md:text-base">
+                              {day.description.map((point, pointIndex) => (
+                                <li key={pointIndex} className="flex items-start gap-2">
+                                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400"></span>
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
                       </div>
@@ -894,7 +935,7 @@ const AboutPage = () => {
 
                     <div className="mb-6">
                       <p className="mb-4 font-medium text-gray-700">
-                        ✨ Past speakers and mentors have included:
+                        Past speakers and mentors have included:
                       </p>
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
@@ -965,7 +1006,7 @@ const AboutPage = () => {
                         href="/network"
                       >
                         <span>
-                          🔗 See our complete mentor and speaker network
+                          See our complete mentor and speaker network
                         </span>
                         <ArrowRight className="h-4 w-4" />
                       </a>
@@ -1035,8 +1076,7 @@ const AboutPage = () => {
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {/* Program Fee */}
                     <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <div className="mb-4 flex items-center gap-3">
-                        <div className="text-2xl">💰</div>
+                      <div className="mb-4">
                         <h3 className="font-bold text-[#050a30] text-xl">
                           Program Fee
                         </h3>
@@ -1072,8 +1112,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="border-t pt-4">
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-xl">📌</span>
+                          <div className="text-sm">
                             <span className="text-gray-600">
                               <strong>Application Fee:</strong> ₹500
                               (non-refundable)
@@ -1129,44 +1168,9 @@ const AboutPage = () => {
                       </div>
                     </div>
 
-                    {/* Why We Charge a Fee */}
-                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <h3 className="mb-4 font-bold text-[#050a30] text-xl">
-                        Why We Charge a Fee
-                      </h3>
-                      <p className="mb-4 font-medium text-gray-600 italic">
-                        Because meaningful programs need sustainability.
-                      </p>
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
-                          <span className="text-gray-700 text-sm">
-                            Ensures participants are serious & committed to the
-                            experience
-                          </span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
-                          <span className="text-gray-700 text-sm">
-                            Helps us keep the program high-quality but
-                            affordable
-                          </span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <Target className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" />
-                          <span className="text-gray-700 text-sm">
-                            Supports a scholarship pool, so that students from
-                            underserved backgrounds can attend with little or no
-                            cost
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
                     {/* Scholarships & Accessibility */}
-                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                      <div className="mb-4 flex items-center gap-3">
-                        <div className="text-2xl">🌟</div>
+                    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm md:col-span-2">
+                      <div className="mb-4">
                         <h3 className="font-bold text-[#050a30] text-xl">
                           Scholarships & Accessibility
                         </h3>
@@ -1194,16 +1198,14 @@ const AboutPage = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm">
-                          <span className="text-xl">📅</span>
+                        <div className="text-sm">
                           <span className="text-gray-600">
                             <strong>Deadline to apply:</strong> May 30, 2025
                           </span>
                         </div>
 
                         <div className="rounded-lg bg-purple-50 p-4">
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-xl">✨</span>
+                          <div className="text-sm">
                             <span className="font-medium text-gray-700">
                               In past editions, over 30% of participants
                               attended with partial or full scholarships.

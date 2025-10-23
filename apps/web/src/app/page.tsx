@@ -485,17 +485,13 @@ export default function Home() {
                 <h1 className="font-bold text-4xl text-white leading-tight md:text-5xl lg:text-7xl">
                   This is where your{" "}
                   <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text font-extrabold text-transparent italic">
-                    journey of changemaking begins.
+                    journey of changemaking and youth leadership begins.
                   </span>
                 </h1>
 
                 {/* Short description */}
                 <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
-                  A one-week residential program where high schoolers learn to
-                  spot real-world problems, design bold solutions, build
-                  prototypes, and pitch their ideas - all while making memories
-                  and friends that last a lifetime, guided by mentors and
-                  changemakers.
+                  Empowering high school students to become innovative changemakers through hands-on problem-solving, collaborative learning, and mentorship that transforms ideas into impactful solutions for tomorrow's challenges.
                 </p>
               </div>
 
@@ -695,7 +691,7 @@ export default function Home() {
             <div className="gradient-underline mx-auto mb-4" />
             <p className="mx-auto mb-1 max-w-4xl text-[#718096] text-lg sm:mb-12 lg:mb-16">
               Over the past five editions, the Young Changemakers Bootcamp has
-              brought together over 220 alumni from 12+ states — from the hills
+              brought together over 210+ alumni from 12+ states — from the hills
               of Sikkim to the deserts of Rajasthan, from Delhi's classrooms to
               the coasts of Tamil Nadu. These students didn't just attend a
               program — they built libraries in rural villages, started
@@ -705,19 +701,27 @@ export default function Home() {
             </p>
 
             {/* Stats Grid */}
-            <div className="mx-auto mt-4 mb-12 flex max-w-4xl justify-center gap-7 sm:mt-6 sm:gap-13 lg:mb-16">
-              {/* Alumni */}
-              <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
+            <div className="mx-auto mt-4 mb-12 grid max-w-5xl grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mb-16 lg:grid-cols-4 lg:gap-8">
+              {/* Editions */}
+              <div className="hover-lift hover-glow smooth-hover relative w-full overflow-hidden rounded-lg bg-[#050a30] p-3 shadow-lg sm:rounded-xl sm:p-4 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={1500} suffix="+" target={220} />
+                  <AnimatedCounter duration={1500} suffix="" target={5} />
+                  <p className="text-white text-xs sm:text-sm">Editions</p>
+                </div>
+              </div>
+
+              {/* Alumni */}
+              <div className="hover-lift hover-glow smooth-hover relative w-full overflow-hidden rounded-lg bg-[#050a30] p-3 shadow-lg sm:rounded-xl sm:p-4 lg:p-6">
+                <div className="relative z-10 text-center">
+                  <AnimatedCounter duration={1750} suffix="+" target={210} />
                   <p className="text-white text-xs sm:text-sm">Alumni</p>
                 </div>
               </div>
 
               {/* Student Projects */}
-              <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
+              <div className="hover-lift hover-glow smooth-hover relative w-full overflow-hidden rounded-lg bg-[#050a30] p-3 shadow-lg sm:rounded-xl sm:p-4 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={2000} suffix="+" target={50} />
+                  <AnimatedCounter duration={2000} suffix="+" target={60} />
                   <p className="text-white text-xs sm:text-sm">
                     Student Projects
                   </p>
@@ -725,9 +729,9 @@ export default function Home() {
               </div>
 
               {/* Lives Impacted */}
-              <div className="hover-lift hover-glow smooth-hover relative w-24 overflow-hidden rounded-lg bg-[#050a30] p-2 shadow-lg sm:w-32 sm:rounded-xl sm:p-4 lg:w-40 lg:p-6">
+              <div className="hover-lift hover-glow smooth-hover relative w-full overflow-hidden rounded-lg bg-[#050a30] p-3 shadow-lg sm:rounded-xl sm:p-4 lg:p-6">
                 <div className="relative z-10 text-center">
-                  <AnimatedCounter duration={2500} suffix="+" target={50_000} />
+                  <AnimatedCounter duration={2500} suffix="+" target={75_000} />
                   <p className="text-white text-xs sm:text-sm">
                     Lives Impacted
                   </p>
