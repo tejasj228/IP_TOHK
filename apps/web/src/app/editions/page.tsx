@@ -18,430 +18,20 @@ import { useEffect, useRef, useState } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Skiper } from "@/components/ui/skiper";
 
-// Mock data for editions (5 completed seasons, 1 current season)
 const editionsData = {
-  "YCB 2020": {
-    year: "2020",
-    season: "YCB 2020",
-    name: "YCB 2020 – Foundations of Change",
-    status: "completed",
-    location: "Delhi",
-    participants: 30,
-    states: 8,
-    schools: 20,
-    expectedParticipants: 30,
-    dates: "15-22 March 2020",
-    tagline: "Building the foundation for tomorrow's leaders.",
-    registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-
-    highlights: {
-      keynotes: ["Dr. A.P.J. Abdul Kalam", "Kiran Mazumdar-Shaw"],
-      workshops: [
-        "Leadership Fundamentals",
-        "Innovation Thinking",
-        "Communication Skills",
-      ],
-      visits: ["Rashtrapati Bhavan", "IIT Delhi", "Red Fort"],
-      activities: ["Talent Night", "Cultural Exchange", "Team Building"],
-    },
-
-    galleryImages: [
-      {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Opening ceremony with participants",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Leadership workshop",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team collaboration session",
-      },
-    ],
-
-    winningIdeas: [
-      {
-        title: "EcoStart",
-        description: "Sustainable startup incubator for youth",
-        team: "Team GreenBegin",
-      },
-      {
-        title: "SkillBridge",
-        description: "Connecting rural youth with urban opportunities",
-        team: "Team Connect",
-      },
-    ],
-
-    testimonials: [
-      {
-        quote: "YCB 2020 was the beginning of my leadership journey.",
-        author: "Rahul Kumar",
-        location: "Delhi",
-      },
-      {
-        quote: "I learned to think beyond boundaries and dream bigger.",
-        author: "Sneha Agarwal",
-        location: "Jaipur",
-      },
-    ],
-
-    impact: {
-      projectsStarted: 25,
-      clubsFormed: 8,
-      diversityStats: {
-        genderBalance: "50% female, 50% male",
-        ruralUrban: "35% rural, 65% urban",
-      },
-      initiatives: [
-        "8 leadership clubs started in participating schools",
-        "5 community service projects launched",
-        "2 social initiatives founded by participants",
-      ],
-    },
-  },
-
-  "YCB 2021": {
-    year: "2021",
-    season: "YCB 2021",
-    name: "YCB 2021 – Resilience & Innovation",
-    status: "completed",
-    location: "Bangalore",
-    participants: 40,
-    states: 10,
-    schools: 25,
-    expectedParticipants: 40,
-    dates: "10-17 August 2021",
-    tagline: "Rising stronger through innovation.",
-    registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-
-    highlights: {
-      keynotes: ["Ratan Tata", "Falguni Nayar", "Ritesh Agarwal"],
-      workshops: [
-        "Digital Innovation",
-        "Entrepreneurship",
-        "Mental Health Awareness",
-        "Climate Action",
-      ],
-      visits: [
-        "Indian Space Research Organisation",
-        "IISc Bangalore",
-        "Lalbagh Botanical Garden",
-      ],
-      activities: [
-        "Innovation Fair",
-        "Cultural Night",
-        "Outdoor Adventure",
-        "Mindfulness Sessions",
-      ],
-    },
-
-    galleryImages: [
-      {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Innovation showcase",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Digital workshop session",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team presentation",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Climate action project",
-      },
-    ],
-
-    winningIdeas: [
-      {
-        title: "MindCare",
-        description: "Mental health support app for teenagers",
-        team: "Team Wellness",
-      },
-      {
-        title: "CleanEnergy",
-        description: "Solar-powered charging stations for rural areas",
-        team: "Team SolarTech",
-      },
-      {
-        title: "FoodShare",
-        description: "Platform to reduce food waste in communities",
-        team: "Team ZeroWaste",
-      },
-    ],
-
-    testimonials: [
-      {
-        quote: "YCB 2021 taught me resilience during challenging times.",
-        author: "Ananya Reddy",
-        location: "Hyderabad",
-      },
-      {
-        quote: "The innovation workshops opened my mind to possibilities.",
-        author: "Vikram Singh",
-        location: "Chandigarh",
-      },
-    ],
-
-    impact: {
-      projectsStarted: 45,
-      clubsFormed: 15,
-      diversityStats: {
-        genderBalance: "55% female, 45% male",
-        ruralUrban: "38% rural, 62% urban",
-      },
-      initiatives: [
-        "12 innovation clubs started in participating schools",
-        "6 mental health awareness campaigns launched",
-        "4 climate action projects initiated",
-      ],
-    },
-  },
-
-  "YCB 2022": {
-    year: "2022",
-    season: "YCB 2022",
-    name: "YCB 2022 – Technology for Good",
-    status: "completed",
-    location: "Mumbai",
-    participants: 60,
-    states: 15,
-    schools: 40,
-    expectedParticipants: 60,
-    dates: "5-12 June 2022",
-    tagline: "Harnessing technology for social impact.",
-    registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-
-    highlights: {
-      keynotes: ["Sundar Pichai", "Nandan Nilekani", "Melinda French Gates"],
-      workshops: [
-        "AI for Social Good",
-        "Blockchain Applications",
-        "App Development",
-        "Data Science Basics",
-      ],
-      visits: [
-        "Tata Institute of Fundamental Research",
-        "Gateway of India",
-        "Mumbai Film City",
-        "Tech Startup Hub",
-      ],
-      activities: [
-        "Hackathon",
-        "Tech Fair",
-        "Beach Cleanup",
-        "Bollywood Night",
-      ],
-    },
-
-    galleryImages: [
-      {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Hackathon participants",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "AI workshop session",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "App development team",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Tech showcase presentation",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Beach cleanup initiative",
-      },
-    ],
-
-    winningIdeas: [
-      {
-        title: "EduAI",
-        description: "AI-powered personalized learning assistant",
-        team: "Team SmartLearn",
-      },
-      {
-        title: "HealthChain",
-        description: "Blockchain-based medical records system",
-        team: "Team MedChain",
-      },
-      {
-        title: "FarmTech",
-        description: "IoT-based smart farming solution",
-        team: "Team AgriInnovate",
-      },
-      {
-        title: "DisasterAlert",
-        description: "Early warning system for natural disasters",
-        team: "Team SafeGuard",
-      },
-    ],
-
-    testimonials: [
-      {
-        quote: "YCB 2022 showed me how technology can solve real problems.",
-        author: "Kiran Joshi",
-        location: "Pune",
-      },
-      {
-        quote:
-          "The hackathon experience was transformative for my coding journey.",
-        author: "Meera Patel",
-        location: "Surat",
-      },
-    ],
-
-    impact: {
-      projectsStarted: 75,
-      clubsFormed: 20,
-      diversityStats: {
-        genderBalance: "48% female, 52% male",
-        ruralUrban: "42% rural, 58% urban",
-      },
-      initiatives: [
-        "18 coding clubs started in participating schools",
-        "10 tech-for-good projects launched",
-        "5 startups incubated by participants",
-      ],
-    },
-  },
-
-  "YCB 2023": {
+  "Season 1": {
     year: "2023",
-    season: "YCB 2023",
-    name: "YCB 2023 – Sustainability & Impact",
+    season: "June 2023",
+    name: "YCB June 2023 – The Beginning",
     status: "completed",
-    location: "Kolkata",
-    participants: 65,
-    states: 18,
-    schools: 45,
-    expectedParticipants: 65,
-    dates: "22-29 October 2023",
-    tagline: "Creating sustainable solutions for a better tomorrow.",
-    registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-
-    highlights: {
-      keynotes: ["Dr. Vandana Shiva", "Anand Mahindra", "Greta Thunberg"],
-      workshops: [
-        "Sustainable Development",
-        "Circular Economy",
-        "Climate Science",
-        "Social Entrepreneurship",
-      ],
-      visits: [
-        "Victoria Memorial",
-        "Indian Museum",
-        "Eco Park",
-        "Sustainable Living Center",
-      ],
-      activities: [
-        "Sustainability Fair",
-        "Cultural Heritage Walk",
-        "River Cleanup",
-        "Bengali Cultural Night",
-      ],
-    },
-
-    galleryImages: [
-      {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Sustainability workshop",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Climate action planning",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "River cleanup team",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Social enterprise pitch",
-      },
-    ],
-
-    winningIdeas: [
-      {
-        title: "PlasticCycle",
-        description: "Community-based plastic recycling network",
-        team: "Team EcoCycle",
-      },
-      {
-        title: "GreenEnergy",
-        description: "Renewable energy solutions for rural communities",
-        team: "Team SustainPower",
-      },
-      {
-        title: "WasteToWealth",
-        description: "Converting agricultural waste to bio-fuel",
-        team: "Team BioInnovate",
-      },
-    ],
-
-    testimonials: [
-      {
-        quote: "YCB 2023 made me passionate about environmental conservation.",
-        author: "Riya Chatterjee",
-        location: "Kolkata",
-      },
-      {
-        quote:
-          "I learned that small actions can create big environmental impact.",
-        author: "Arjun Gupta",
-        location: "Guwahati",
-      },
-    ],
-
-    impact: {
-      projectsStarted: 90,
-      clubsFormed: 25,
-      diversityStats: {
-        genderBalance: "53% female, 47% male",
-        ruralUrban: "45% rural, 55% urban",
-      },
-      initiatives: [
-        "20 environmental clubs started in participating schools",
-        "12 sustainability projects launched",
-        "6 green startups founded by participants",
-      ],
-    },
-  },
-
-  "YCB 2024": {
-    year: "2024",
-    season: "YCB 2024",
-    name: "YCB 2024 – Innovation for a Better World",
-    status: "completed",
-    location: "Chennai",
-    participants: 70,
-    states: 20,
-    schools: 50,
-    expectedParticipants: 70,
-    dates: "15-22 March 2024",
-    tagline: "A week of learning, collaboration, and changemaking.",
+    location: "IIT Delhi",
+    participants: 50,
+    states: 12,
+    schools: 35,
+    expectedParticipants: 50,
+    dates: "June 2023",
+    tagline:
+      "Where ideas turned into movement, curiosity met purpose, and young minds reimagined changemaking.",
     registrationOpen: false,
     groupPhoto:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -450,29 +40,51 @@ const editionsData = {
 
     highlights: {
       keynotes: [
-        "Dr. Abdul Kalam Center",
-        "Kiran Mazumdar-Shaw",
-        "Byju Raveendran",
+        "Prof. Virendra Kumar Vijay",
+        "Debjani Ghosh",
+        "Dr. Itisha Nagar",
+        "RJ Ginnie",
+        "Prof. Tapan Gandhi",
+        "Yashveer Singh",
+        "Tanmay Nag",
+        "Pragya Vats",
       ],
       workshops: [
-        "Design Thinking",
         "AI & Robotics",
-        "Storytelling for Change",
-        "Sustainable Innovation",
-        "Space Technology",
+        "Python Programming",
+        "Cybersecurity",
+        "Design Thinking",
+        "Expressive Art Workshop",
+        "Art of Storytelling",
+        "Business Planning",
+        "Social Entrepreneurship",
       ],
       visits: [
-        "ISRO Headquarters",
-        "IIT Madras",
-        "Marina Beach",
-        "Innovation District",
+        "Rashtrapati Bhavan",
+        "IIT Delhi Central Library and Workshops",
+        "India Gate",
       ],
       activities: [
-        "Talent Night",
-        "Space Tech Fair",
-        "Beach Conservation",
-        "Tamil Cultural Evening",
+        "Informal Dialogues with Young Entrepreneurs",
+        "Movie Nights",
+        "Talent and Music Nights",
+        "My Idea for Change Competition",
       ],
+    },
+
+    narrativeContent: {
+      intro:
+        "YCB 2023 marked the beginning of a changemaking revolution, a week where ideas turned into movement, curiosity met purpose, and young minds came together to reimagine how change is created.",
+      visionaryLeadership:
+        "The first edition brought together some of the most forward-thinking leaders from diverse fields who laid the foundation of what YCB stands for today. From Prof. Virendra Kumar Vijay and Debjani Ghosh's powerful inaugural sessions on rural development, technology, and innovation, to thought-provoking interactions with Dr. Itisha Nagar, RJ Ginnie, and Prof. Tapan Gandhi, every speaker inspired students to think beyond boundaries. The finale, graced by Yashveer Singh, Tanmay Nag, and Pragya Vats, gave participants a glimpse into the real-world stories of courage, empathy, and leadership that define changemaking.",
+      handsOnLearning:
+        "YCB 2023 was designed as an immersive experience, a blend of creativity, technology, and problem-solving. Participants explored AI & Robotics, Python Programming, and Cybersecurity, while discovering how design thinking fuels social impact. The Expressive Art Workshop and Art of Storytelling sessions helped them connect creativity with purpose, while workshops on Business Planning and Social Entrepreneurship bridged innovation with action. Each day deepened their understanding of how technology and empathy can come together to create lasting solutions.",
+      immersiveExperiences:
+        "Learning extended far beyond classrooms. Participants explored India's historic and innovation landmarks, from the grandeur of Rashtrapati Bhavan to the bustling corridors of IIT Delhi's Central Library and Workshops, and an evening at India Gate that left everyone spellbound. These visits gave students a lived experience of India's heritage and progress, reminding them that innovation grows best when rooted in culture and purpose.",
+      communityBuilding:
+        "True to YCB's spirit, the first season built a close-knit family of changemakers. From informal dialogues with young entrepreneurs and movie nights under the stars to talent and music nights, every interaction became a memory. Meals turned into mini think-tanks, and laughter-filled evenings sparked friendships that still last today. What began as a program quickly transformed into a community.",
+      conclusion:
+        "YCB 2023 wasn't just the start of a bootcamp, it was the birth of a changemaking movement. It set the tone for every edition that followed, proving that when young people come together with purpose, innovation, and heart, change becomes unstoppable.",
     },
 
     galleryImages: [
@@ -500,153 +112,626 @@ const editionsData = {
 
     winningIdeas: [
       {
-        title: "Waste to Gold",
+        title: "Kheti Khata",
         description:
-          "Turning organic waste into affordable compost for farmers",
-        team: "Team EcoInnovators",
+          "Empowering agricultural traders with digital tools to simplify and streamline daily accounting.",
+        team: "Bhavya Garodia, Parwan Siddle, Tanvir Singh",
       },
       {
-        title: "LearnBridge",
-        description: "AI-powered learning platform for rural students",
-        team: "Team TechForAll",
-      },
-      {
-        title: "WaterWise",
-        description: "Smart water conservation system for schools",
-        team: "Team AquaSavers",
-      },
-      {
-        title: "HealthConnect",
-        description: "Telemedicine app connecting villages to urban doctors",
-        team: "Team MedTech",
-      },
-      {
-        title: "SkillUp",
-        description: "Peer-to-peer skill sharing platform for youth",
-        team: "Team SkillShare",
+        title: "Wear Easy",
+        description:
+          "Creating an inclusive fashion platform that empowers people with disabilities to express themselves confidently.",
+        team: "Agrim Sharma, Dewank Paliwal, Jyotiraditya Ganguly, Shubham Rohatgi",
       },
     ],
 
     testimonials: [
       {
         quote:
-          "I came to YCB shy, but left with confidence to lead projects in my school.",
-        author: "Priya Sharma",
-        location: "Mumbai",
+          "Being part of the Young Changemakers Bootcamp was a defining moment in my journey. Interacting with mentors and innovators from diverse fields opened my mind to new ideas and perspectives. Above all, it reminded me that age is never a barrier to creating meaningful change.",
+        author: "Ariqa Rizwan",
+        location: "Delhi",
       },
       {
         quote:
-          "YCB taught me that age is just a number when it comes to creating impact.",
-        author: "Arjun Patel",
-        location: "Ahmedabad",
+          "Young Changemakers Bootcamp was truly a life-changing experience. From learning to express ideas to building confidence, it shaped my mindset and helped me discover a newer, more confident version of myself. The workshops completely changed how I see the world and my role in it.",
+        author: "Rhythm Goel",
+        location: "Delhi",
       },
       {
         quote:
-          "The connections I made at YCB continue to support my changemaking journey.",
-        author: "Kavya Singh",
-        location: "Bangalore",
+          "The mentors at YCB didn't just teach us, they believed in us. The way they shared their journeys, their failures, and lessons made me realize that changemakers aren't born; they're built through persistence and empathy. I left with clarity, courage, and countless memories.",
+        author: "Navya Nilay",
+        location: "Delhi",
       },
     ],
 
     impact: {
-      projectsStarted: 105,
-      clubsFormed: 30,
+      projectsStarted: 80,
+      clubsFormed: 12,
       diversityStats: {
-        genderBalance: "52% female, 48% male",
+        genderBalance: "50% female, 50% male",
         ruralUrban: "40% rural, 60% urban",
       },
       initiatives: [
-        "25 innovation clubs started in participating schools",
-        "15 community service projects launched",
-        "8 social enterprises founded by participants",
+        "First YCB edition that started the changemaking movement",
+        "Built a close-knit family of changemakers",
+        "Established the foundation for all future editions",
       ],
     },
   },
 
-  "YCB 2025": {
-    year: "2025",
-    season: "YCB 2025",
-    name: "YCB 2025 – Future Leaders Summit",
-    status: "upcoming",
-    location: "Jaipur",
-    participants: 80,
-    states: 22,
-    schools: 60,
-    expectedParticipants: 80,
-    dates: "20-27 July 2025",
-    tagline: "Building tomorrow's changemakers today.",
-    theme: "Digital Innovation for Social Impact",
-    registrationOpen: true,
+  "Season 2": {
+    year: "2023",
+    season: "December 2023",
+    name: "YCB December 2023 – Winter of Innovation",
+    status: "completed",
+    location: "IIT Delhi",
+    participants: 55,
+    states: 14,
+    schools: 38,
+    expectedParticipants: 55,
+    dates: "December 2023",
+    tagline:
+      "A winter of ideas, innovation, and imagination, where technology met purpose.",
+    registrationOpen: false,
     groupPhoto:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     comingSoonImage:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
 
     highlights: {
-      keynotes: ["Satya Nadella", "Priyanka Chopra", "Elon Musk"],
+      keynotes: [
+        "Prof. Payel C. Mukherjee",
+        "Prof. Ramgopal Rao",
+        "Richa Gupta",
+        "Kulbir Lamba",
+        "Prabal Kaur Deol",
+        "Dia Mirza",
+      ],
       workshops: [
-        "Digital Innovation",
-        "AI for Social Good",
-        "Sustainable Tech",
-        "Youth Leadership",
+        "Web & App Development",
+        "Figma Activities",
+        "AI Applications and ChatGPT",
+        "Brain-Computer Interface (BCI) Demonstration",
+        "Deep Tech Entrepreneurship",
+        "Inventive Problem Solving",
+        "Business Planning",
+        "Storytelling",
+        "Drone Theory",
+        "Sustainability",
       ],
-      visits: ["Hawa Mahal", "IIT Jodhpur", "City Palace", "Startup Incubator"],
+      visits: [
+        "Rashtrapati Bhavan",
+        "India Gate",
+        "IIT Delhi Central Library and Workshops",
+      ],
       activities: [
-        "Tech Showcase",
-        "Rajasthani Cultural Night",
-        "Innovation Challenge",
-        "Leadership Summit",
+        "Talent Nights",
+        "Dance and Music",
+        "Movie Screenings",
+        "Informal Dialogues",
+        "My Idea for Change Competition",
       ],
+    },
+
+    narrativeContent: {
+      intro:
+        "As the year came to a close, YCB December 2023 became a winter of ideas, innovation, and imagination, where technology met purpose, and changemaking evolved into action.",
+      visionaryLeadership:
+        "The winter edition of YCB brought together an inspiring lineup of speakers who shaped perspectives and provoked thought. From Prof. Payel C. Mukherjee and Prof. Ramgopal Rao's insights on innovation and technology, to Richa Gupta, Kulbir Lamba, and Prabal Kaur Deol's sessions on sustainability, leadership, and entrepreneurship, each moment pushed participants to think bigger and bolder. The camp's finale was graced by Dia Mirza, whose powerful talk on environmental activism and social change left every young changemaker inspired to act with purpose and compassion.",
+      handsOnLearning:
+        "YCB December 2023 was a deep dive into innovation in action. Students explored Web & App Development with live demonstrations and Figma activities, unlocked the potential of AI applications and ChatGPT, and even witnessed the demonstration of Brain-Computer Interface (BCI) devices, bringing science fiction to life. Sessions on Deep Tech Entrepreneurship, Inventive Problem Solving, Business Planning, and Storytelling combined creativity with practical impact, while workshops on Drone Theory and Sustainability added layers of modern relevance to the learning journey. The 'My Idea for Change' Competition once again became the stage for students to transform their ideas into tangible, socially driven ventures.",
+      immersiveExperiences:
+        "Beyond the sessions, participants explored the heart of Delhi, from the Rashtrapati Bhavan and the iconic India Gate in breezy winter evenings to the Central Library and Workshops at IIT Delhi, where innovation thrives daily. For many, this was their first glimpse into the world where tradition and technology coexist, a symbol of how India's youth can lead the future through both heritage and innovation.",
+      communityBuilding:
+        "What made YCB December 2023 truly special was its energy, the warmth of winter evenings filled with music, art, and laughter. Participants bonded over talent nights, dance, music, and movie screenings, and informal dialogues with young changemakers. Every lunch and dinner turned into a networking exchange of dreams, ideas, and collaboration. By the end of the week, what started as a camp had transformed into a vibrant ecosystem of friendships, inspiration, and shared purpose.",
+      conclusion:
+        "YCB December 2023 proved that changemaking isn't seasonal, it's a mindset. Even in the coldest Delhi winter, the spark of innovation and purpose burned brighter than ever.",
     },
 
     galleryImages: [
       {
         src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Registration and welcome ceremony",
+        alt: "Opening ceremony with participants",
       },
       {
         src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Digital innovation workshop",
+        alt: "Design thinking workshop",
       },
       {
         src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Future leaders collaboration",
+        alt: "Team collaboration session",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Innovation pitch competition",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Cultural night celebration",
       },
     ],
 
     winningIdeas: [
       {
-        title: "Coming Soon",
-        description: "Innovative solutions from YCB 2025 participants",
-        team: "Teams TBA",
+        title: "EcoPads Collective",
+        description:
+          "Turning discarded fabric into sustainable, affordable, and eco-friendly menstrual pads.",
+        team: "Nishtha Agnihotri, Piyush Paul, Siddhant Dhunna, Siddhi Jairath",
+      },
+      {
+        title: "Filtread",
+        description:
+          "Developing a device that captures microplastics released from car tires, reducing air pollution and promoting cleaner cities.",
+        team: "Avirat Jain, Ayaan Sharma, Rahul Setia",
       },
     ],
 
     testimonials: [
       {
-        quote: "Looking forward to an amazing experience at YCB 2025!",
-        author: "Participants",
-        location: "Pan India",
+        quote:
+          "When I think of YCB, I think of growth, the kind that transforms you from within. The workshops gave me clarity, the mentors gave me direction, and the community gave me belonging. It's not just a bootcamp; it's a movement that stays with you.",
+        author: "Aanya Navin",
+        location: "Tamil Nadu",
+      },
+      {
+        quote:
+          "From late-night reflections to heated brainstorming sessions, YCB was an experience that shaped my sense of purpose. The mentors' stories made me want to chase my passions fearlessly, while the activities helped me understand how innovation and impact can go hand in hand.",
+        author: "Rahul Setia",
+        location: "Chandigarh",
+      },
+      {
+        quote:
+          "YCB felt like stepping into a world where imagination met purpose. From learning about AI to sharing ideas with like-minded changemakers, every moment was filled with inspiration. It's where I stopped doubting myself and started believing that I could actually build something meaningful.",
+        author: "Siddhi Jairath",
+        location: "Delhi",
       },
     ],
 
     impact: {
-      projectsStarted: 0,
-      clubsFormed: 0,
+      projectsStarted: 85,
+      clubsFormed: 15,
       diversityStats: {
-        genderBalance: "Target: 50% female, 50% male",
-        ruralUrban: "Target: 45% rural, 55% urban",
+        genderBalance: "52% female, 48% male",
+        ruralUrban: "42% rural, 58% urban",
       },
       initiatives: [
-        "Programs currently in progress",
-        "Results will be available post-summit",
+        "Proved changemaking isn't seasonal, it's a mindset",
+        "Created a vibrant ecosystem of friendships and collaboration",
+        "Innovation and purpose burned bright through Delhi winter",
+      ],
+    },
+  },
+
+  "Season 3": {
+    year: "2024",
+    season: "June 2024",
+    name: "YCB June 2024 – Expanding Horizons",
+    status: "completed",
+    location: "IIT Delhi",
+    participants: 60,
+    states: 16,
+    schools: 42,
+    expectedParticipants: 60,
+    dates: "June 2024",
+    tagline:
+      "Exploring the intersections of technology, creativity, and social impact.",
+    registrationOpen: false,
+    groupPhoto:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    comingSoonImage:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+
+    highlights: {
+      keynotes: [
+        "Dr. Ritesh Malik",
+        "Vaasvi Srivastava",
+        "Prof. Sonia Baloni Ray",
+        "Dr. Sapna Yadav",
+        "Prof. Anmol Srivastava",
+        "Prof. Pravesh Biyani",
+        "Sanjeev Bikhchandani",
+        "Yashveer Singh",
+        "Tanmay Nag",
+        "Dr. Sommya Bansal",
+      ],
+      workshops: [
+        "Design Thinking for Social Innovation",
+        "Product Innovation and Unique Value Proposition",
+        "Building Impactful Businesses",
+        "Cognitive Approaches to Learning",
+        "AI Concepts",
+      ],
+      visits: [
+        "Rashtrapati Bhavan",
+        "Prime Minister Museum",
+        "IIT Delhi Central Library and Workshops",
+      ],
+      activities: [
+        "Talent Nights",
+        "Music Evenings",
+        "Informal Dialogues",
+        "My Idea for Change Competition",
+      ],
+    },
+
+    narrativeContent: {
+      intro:
+        "YCB June 2024 marked another exciting chapter in our journey of shaping young changemakers. Over an intensive week, students explored the intersections of technology, creativity, and social impact, gaining both practical skills and the confidence to lead change. This edition was designed to expand horizons, spark curiosity, and nurture the entrepreneurial mindset in every participant.",
+      visionaryLeadership:
+        "The bootcamp featured engaging sessions with a diverse set of thought leaders who inspired participants to dream big and act boldly. The week opened with the Inaugural Session on Technology, Innovation & Entrepreneurship, followed by sessions on cognitive psychology, creativity, and inventive problem-solving. Distinguished speakers like Dr. Ritesh Malik, Vaasvi Srivastava, Prof. Sonia Baloni Ray, Dr. Sapna Yadav, Prof. Anmol Srivastava, Prof. Pravesh Biyani, and Sanjeev Bikhchandani guided students in understanding innovation, product development, and the principles of social impact. The last day featured guests Yashveer Singh, Tanmay Nag, and Dr. Sommya Bansal, who graced the 'My Idea for Change' Competition, sharing insights and encouragement while judging participants' innovative solutions.",
+      handsOnLearning:
+        "Participants engaged in practical, immersive workshops that combined creativity with strategy. Sessions included Design Thinking for Social Innovation, Product Innovation and Unique Value Proposition, and building impactful businesses, equipping students to translate ideas into action. They also explored cognitive approaches to learning and problem-solving and experimented with AI concepts, gaining hands-on understanding of emerging technologies. The combination of interactive workshops and guided mentorship encouraged students to ideate, collaborate, and implement solutions confidently.",
+      immersiveExperiences:
+        "Beyond the classroom, students explored spaces that inspire curiosity and innovation. Visits to Rashtrapati Bhavan, Prime Minister Museum, and the IIT Delhi central library and workshops provided unique insights into governance, research, and India's innovation ecosystem. These excursions helped participants connect their theoretical learnings with real-world applications, fostering a holistic understanding of how technology and creativity can address societal challenges.",
+      communityBuilding:
+        "Evenings at YCB were filled with rich interactions and creative experiences. From talent nights and music evenings to informal dialogues with mentors and changemakers, every activity strengthened the sense of community. Participants bonded through dance, networking over meals, and spontaneous conversations, building friendships and networks that extend beyond the bootcamp.",
+      conclusion:
+        "YCB June 2024 exemplified the power of experiential learning, visionary guidance, and a supportive community. Students not only honed skills in innovation, entrepreneurship, and technology but also discovered the confidence and clarity to become changemakers in their own communities.",
+    },
+
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Opening ceremony with participants",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Design thinking workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Team collaboration session",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Innovation pitch competition",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Cultural night celebration",
+      },
+    ],
+
+    winningIdeas: [
+      {
+        title: "EcoPreneurs",
+        description:
+          "Reviving rural economies through sustainable entrepreneurship and digital empowerment.",
+        team: "Amirtha Varshini, Ishita Porwal, Maaya Madhavan, Savar Bhatia",
+      },
+      {
+        title: "Kuber",
+        description:
+          "Empowering rural communities through accessible financial literacy and smart investment learning.",
+        team: "Arya Sanjey Kumaraguru, Kashvi Garg, Kunal Aiyer, Sachitha S R",
+      },
+    ],
+
+    testimonials: [
+      {
+        quote:
+          "The 'My Idea for Change' challenge was one of the most empowering moments of my life. Presenting an idea that mattered to me, and being heard, gave me confidence I'd never felt before. YCB helped me find my voice as a changemaker.",
+        author: "Kunal Aiyer",
+        location: "Gujarat",
+      },
+      {
+        quote:
+          "The Young Changemakers Bootcamp was truly a transformative experience. Spending an entire week on the IIT Delhi campus, surrounded by bright minds and mentors, was incredibly inspiring. Working with 9th graders, we built a community hydroponic–aeroponic farming model. The hands-on mentorship, teamwork, and diverse ideas reshaped how I see leadership, impact, and turning concepts into real solutions.",
+        author: "Jatin Chutani",
+        location: "Delhi",
+      },
+      {
+        quote:
+          "YCB taught me that changemaking isn't a one-time act, it's a mindset you live with. The sessions helped me connect my interests with impact, while the friendships I made became my support system for every challenge I've faced since then.",
+        author: "Dev Shah",
+        location: "Gujarat",
+      },
+    ],
+
+    impact: {
+      projectsStarted: 90,
+      clubsFormed: 18,
+      diversityStats: {
+        genderBalance: "51% female, 49% male",
+        ruralUrban: "43% rural, 57% urban",
+      },
+      initiatives: [
+        "Students honed skills in innovation, entrepreneurship, and technology",
+        "Participants discovered confidence and clarity to become changemakers",
+        "Power of experiential learning exemplified",
+      ],
+    },
+  },
+
+  "Season 4": {
+    year: "2024",
+    season: "December 2024",
+    name: "YCB December 2024 – Purpose-Driven Innovation",
+    status: "completed",
+    location: "IIT Delhi",
+    participants: 65,
+    states: 18,
+    schools: 45,
+    expectedParticipants: 65,
+    dates: "December 2024",
+    tagline:
+      "A powerful convergence of innovation, creativity, and collaboration.",
+    registrationOpen: false,
+    groupPhoto:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    comingSoonImage:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+
+    highlights: {
+      keynotes: [
+        "Prof. Ganesh Bagler",
+        "Prof. Payel Mukherjee",
+        "Dr. Sapna Yadav",
+        "Prof. Pravesh Biyani",
+        "Yashveer Singh",
+        "Pragya Vats",
+        "Dr. Sommya Bansal",
+      ],
+      workshops: [
+        "Critical Thinking for Leadership",
+        "Creativity, Innovation & Inventive Problem Solving",
+        "Product Innovation & Unique Value Proposition",
+        "Art of Storytelling",
+        "Business Plan Workshop",
+        "Expressive Art Workshop",
+      ],
+      visits: [
+        "Rashtrapati Bhavan",
+        "Prime Minister's Museum",
+        "IIT Delhi Central Library and Workshops",
+      ],
+      activities: [
+        "Informal Dialogues with Young Changemakers",
+        "Talent Nights",
+        "Music and Dance Performances",
+        "My Idea for Change Competition",
+      ],
+    },
+
+    narrativeContent: {
+      intro:
+        "YCB December 2024 was a powerful convergence of innovation, creativity, and collaboration, where young changemakers from across India came together with purpose to reimagine what's possible.",
+      visionaryLeadership:
+        "The winter edition brought together some of India's leading minds who shared powerful insights on changemaking. From Prof. Ganesh Bagler and Prof. Payel Mukherjee's thought-provoking sessions on innovation and technology to Dr. Sapna Yadav and Prof. Pravesh Biyani's explorations into problem-solving and leadership, each interaction sparked new ideas. The finale featured the inspiring trio of Yashveer Singh, Pragya Vats, and Dr. Sommya Bansal, who shared their journeys and judged the 'My Idea for Change' competition, reminding students that true leadership is rooted in empathy, resilience, and purpose.",
+      handsOnLearning:
+        "Workshops at YCB December 2024 were designed to challenge, inspire, and empower. Sessions on Critical Thinking for Leadership equipped students with frameworks to navigate complexity, while Creativity, Innovation & Inventive Problem Solving helped them think beyond conventional boundaries. Participants explored Product Innovation & Unique Value Proposition, honed their communication skills through the Art of Storytelling, and learned to build sustainable ventures through the Business Plan Workshop. The Expressive Art Workshop reminded everyone that creativity is as important as logic when solving the world's toughest challenges. Each session was hands-on, collaborative, and deeply engaging.",
+      immersiveExperiences:
+        "Learning extended far beyond lecture halls as students explored iconic spaces that tell stories of India's past, present, and future. Visits to Rashtrapati Bhavan, the Prime Minister's Museum, and the IIT Delhi Central Library and Workshops gave students a glimpse into governance, history, and cutting-edge research. These experiences connected abstract ideas to tangible realities, reminding participants that changemaking is as much about understanding the world as it is about changing it.",
+      communityBuilding:
+        "As always, the heart of YCB lay in its people. From informal dialogues with young changemakers and talent nights filled with laughter and applause to music and dance performances that brought cultures together, every moment was designed to build lasting bonds. Shared meals turned into think tanks, and late-night conversations turned into lifelong friendships. By the end of the week, participants weren't just leaving with skills and knowledge, they were leaving as part of a community.",
+      conclusion:
+        "YCB December 2024 was a celebration of curiosity, courage, and community. It reminded us all that changemaking isn't only about ideation, but execution. It's not only about dreaming, but doing. And most importantly, it reaffirmed YCB's belief in the power of young minds to imagine and build a better world.",
+    },
+
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Opening ceremony with participants",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Design thinking workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Team collaboration session",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Innovation pitch competition",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Cultural night celebration",
+      },
+    ],
+
+    winningIdeas: [
+      {
+        title: "ElderEase",
+        description:
+          "Making elder care accessible through smart, affordable, and adaptive bedding solutions.",
+        team: "Kanishk Das, Mohammad Saad, Sarah Taneja, Tanu Singh",
+      },
+      {
+        title: "EcoPack",
+        description:
+          "Turning everyday waste into eco-friendly packaging for a cleaner tomorrow.",
+        team: "Alveerah Bashir, Divyanshu Yadav, Kisna Garg, Rudra Kothiyal",
+      },
+    ],
+
+    testimonials: [
+      {
+        quote:
+          "The best part about YCB was how real it felt. The mentors didn't talk about change theoretically; they showed us what it looks like in action. I learned how passion can turn into purpose, and purpose into something that truly helps people.",
+        author: "Allu Sairuchi Reddy",
+        location: "Telangana",
+      },
+      {
+        quote:
+          "YCB showed me what learning outside classrooms truly feels like. The exposure visits, team activities, and dialogues pushed me out of my comfort zone. I learned to collaborate, to listen deeply, and to think differently, lessons that no textbook could have given.",
+        author: "Vanshika Jain",
+        location: "Karnataka",
+      },
+      {
+        quote:
+          "Changemaking isn't about doing big things; it's about starting small with intention. That's what YCB taught me. Every day at the bootcamp reminded me that innovation begins with curiosity, empathy, and courage; and I've carried that mindset with me ever since.",
+        author: "Sridaran Ishanth",
+        location: "Tamil Nadu",
+      },
+    ],
+
+    impact: {
+      projectsStarted: 95,
+      clubsFormed: 20,
+      diversityStats: {
+        genderBalance: "53% female, 47% male",
+        ruralUrban: "44% rural, 56% urban",
+      },
+      initiatives: [
+        "Celebration of curiosity, courage, and community",
+        "Students learned that changemaking isn't only about ideation, but execution",
+        "Reaffirmed YCB's belief in the power of young minds",
+      ],
+    },
+  },
+
+  "Season 5": {
+    year: "2025",
+    season: "June 2025",
+    name: "YCB June 2025 – Fifth Milestone",
+    status: "completed",
+    location: "IIT Delhi & IIIT Delhi",
+    participants: 70,
+    states: 20,
+    schools: 50,
+    expectedParticipants: 70,
+    dates: "June 2025",
+    tagline:
+      "A defining milestone celebrating five transformative cycles of learning, innovation, and community.",
+    registrationOpen: false,
+    groupPhoto:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    comingSoonImage:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+
+    highlights: {
+      keynotes: [
+        "Dr. Rishi Mohan Bhatnagar",
+        "Ajai Chowdhary",
+        "Prof. Aheli Choudhary",
+        "Prof. Pragma Kaur",
+        "Sagarika Deka",
+        "Prof. Ganesh Bagler",
+        "Yashveer Singh",
+        "Meenakshi Lekhi",
+        "Ojasvi Gupta",
+      ],
+      workshops: [
+        "Design Thinking and Problem Validation",
+        "AI, Machine Learning, and ChatGPT",
+        "Storytelling",
+        "Creativity",
+        "Business Canvas Modelling",
+        "Introduction to Financial Concepts",
+        "Career Counselling Dialogue",
+      ],
+      visits: [
+        "Rashtrapati Bhavan",
+        "National Gallery of Modern Art",
+        "IIT Delhi",
+        "IIIT Delhi Innovation and Incubation Centre",
+        "Medical Cobotix Centre",
+        "ECE Labs",
+      ],
+      activities: [
+        "Talent Nights",
+        "Music Evenings",
+        "Informal Dialogues with Mentors",
+        "My Idea for Change Competition",
+      ],
+    },
+
+    narrativeContent: {
+      intro:
+        "YCB June 2025 marked a defining milestone, celebrating five transformative cycles of learning, innovation, and community. This edition brought together 70 changemakers from across India to reimagine the future and turn ideas into meaningful impact.",
+      visionaryLeadership:
+        "The fifth edition featured a stellar lineup of visionaries whose sessions challenged and inspired in equal measure. From Dr. Rishi Mohan Bhatnagar's powerful inaugural address and Ajai Chowdhary's insights into entrepreneurship to Prof. Aheli Choudhary, Prof. Pragma Kaur, and Sagarika Deka's sessions on innovation, leadership, and sustainability, every moment expanded students' worldviews. Prof. Ganesh Bagler brought his unique perspective on computational thinking, while Yashveer Singh returned to share how the YCB alumni network is creating real-world change. The finale was graced by Meenakshi Lekhi and Ojasvi Gupta, whose presence added gravitas and inspiration to the 'My Idea for Change' competition, reminding everyone that changemaking is a collective responsibility.",
+      handsOnLearning:
+        "Participants dove deep into the skills and mindsets needed to lead change in a complex world. Sessions on Design Thinking and Problem Validation taught students to approach challenges systematically, while workshops on AI, Machine Learning, and ChatGPT explored the potential and ethics of emerging technologies. The Storytelling and Creativity workshops reminded participants that communication and imagination are as vital as technical skills. Business Canvas Modelling and Introduction to Financial Concepts gave students practical tools to build sustainable ventures, while the Career Counselling Dialogue offered personalized guidance for navigating futures filled with possibility. Every workshop was interactive, challenging, and deeply relevant.",
+      immersiveExperiences:
+        "Beyond classrooms and conference halls, YCB June 2025 participants explored spaces where culture meets innovation. From the grandeur of Rashtrapati Bhavan and the artistry at the National Gallery of Modern Art to the cutting-edge labs at IIT Delhi and IIIT Delhi's Innovation and Incubation Centre, every visit sparked curiosity. Seeing the Medical Cobotix Centre and exploring ECE Labs showed students the frontiers of technology and how research translates into impact. These experiences grounded their learning in reality and reminded them that changemaking is built on understanding what already exists.",
+      communityBuilding:
+        "As with every edition, the magic of YCB lived in its people and moments. From talent nights showcasing hidden gifts and music evenings that united cultures to informal dialogues with mentors that turned into mentorship relationships, every interaction added depth to the experience. Participants bonded over shared dreams, laughed over meals, and built networks that will last a lifetime. By the end of the week, they weren't just peers, they were a community bound by purpose and friendship.",
+      conclusion:
+        "YCB June 2025 became more than a bootcamp; it became a movement. As the fifth edition, it stood as proof that when young minds come together with vision, tools, and community, they don't just imagine a better world, they begin building it. It was a reminder that changemaking is not a destination, it's a way of life.",
+    },
+
+    galleryImages: [
+      {
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Opening ceremony with participants",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Design thinking workshop",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Team collaboration session",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Innovation pitch competition",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Cultural night celebration",
+      },
+    ],
+
+    winningIdeas: [
+      {
+        title: "BioClenz",
+        description:
+          "Transforming ordinary buildings into living, breathing ecosystems that restore our planet.",
+        team: "Lopeka Attreja, Meghna Atapaka, Pranay Mohan, Saksham Agarwal, Suksham Ghimiray",
+      },
+      {
+        title: "Lines of Culture",
+        description:
+          "Restoring inclusion's true meaning - not presence, but genuine participation.",
+        team: "Adhav Kandasamy, Alok Chettri, Ayaan Mohan, Sarvagya Jagatram, Tseten Bhutia",
+      },
+    ],
+
+    testimonials: [
+      {
+        quote:
+          "What made YCB special wasn't just the sessions, it was the people. I met dreamers, doers, and believers who changed how I see the world. Every discussion and visit opened my eyes to what collaboration, empathy, and purpose can truly create together.",
+        author: "Nyssha Ladha",
+        location: "Sikkim",
+      },
+      {
+        quote:
+          "The YCB Bootcamp at IIT Delhi was one of the most inspiring experiences of my life. I met amazing people, learned beyond books, and truly grew in confidence and clarity. Every session pushed me to think deeper and dream bigger; it felt like a turning point for me.",
+        author: "Madhav Rathi",
+        location: "Gujarat",
+      },
+      {
+        quote:
+          "YCB made me realize that changemaking isn't about age, resources, or background, it's all about mindset and the courage to begin. Every speaker, mentor, and even my fellow participants inspired me in their own unique way, pushing me to think deeper and dream bigger.",
+        author: "Ananya Srivastava",
+        location: "Maharashtra",
+      },
+    ],
+
+    impact: {
+      projectsStarted: 100,
+      clubsFormed: 22,
+      diversityStats: {
+        genderBalance: "54% female, 46% male",
+        ruralUrban: "45% rural, 55% urban",
+      },
+      initiatives: [
+        "Fifth successful edition marking a defining milestone",
+        "Became more than a bootcamp, it became a movement",
+        "Reminder that changemaking is a way of life",
       ],
     },
   },
 };
 
 const EditionsPage = () => {
-  const [selectedEdition, setSelectedEdition] = useState("YCB 2024");
+  const [selectedEdition, setSelectedEdition] = useState("Season 5");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const editions = Object.keys(editionsData);
@@ -959,118 +1044,179 @@ const EditionsPage = () => {
 
               <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-lg lg:p-12">
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                  <p className="mb-6 text-gray-800 text-xl leading-relaxed">
-                    {selectedEdition} was a remarkable convergence of
-                    inspiration, innovation, and impact, bringing together
-                    passionate young changemakers for an intensive week of
-                    learning and collaboration.
-                  </p>
+                  {currentEdition.narrativeContent ? (
+                    <>
+                      <p className="mb-6 text-gray-800 text-xl leading-relaxed">
+                        {currentEdition.narrativeContent.intro}
+                      </p>
 
-                  <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
-                    <div className="rounded-lg bg-blue-100 p-2">
-                      <Users className="h-6 w-6 text-blue-600" />
-                    </div>
-                    Visionary Leadership
-                  </h3>
-                  <p className="mb-6">
-                    The program featured inspiring keynote sessions from
-                    distinguished speakers who shared their transformative
-                    journeys. Participants had the privilege of learning from{" "}
-                    {currentEdition.highlights.keynotes.slice(0, -1).join(", ")}{" "}
-                    and{" "}
-                    {currentEdition.highlights.keynotes.at(-1)}
-                    , each bringing unique perspectives on leadership,
-                    innovation, and social impact. These sessions not only
-                    provided valuable insights but also sparked meaningful
-                    conversations about the role of youth in shaping our
-                    collective future.
-                  </p>
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-blue-100 p-2">
+                          <Users className="h-6 w-6 text-blue-600" />
+                        </div>
+                        Visionary Leadership
+                      </h3>
+                      <p className="mb-6">
+                        {currentEdition.narrativeContent.visionaryLeadership}
+                      </p>
 
-                  <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
-                    <div className="rounded-lg bg-green-100 p-2">
-                      <Lightbulb className="h-6 w-6 text-green-600" />
-                    </div>
-                    Hands-On Learning
-                  </h3>
-                  <p className="mb-6">
-                    The heart of the bootcamp lay in its comprehensive workshop
-                    series, designed to equip participants with practical skills
-                    and innovative thinking approaches. Through immersive
-                    sessions on{" "}
-                    {currentEdition.highlights.workshops
-                      .slice(0, -1)
-                      .join(", ")}{" "}
-                    and{" "}
-                    {
-                      currentEdition.highlights.workshops[
-                        currentEdition.highlights.workshops.length - 1
-                      ]
-                    }
-                    , participants developed critical competencies for modern
-                    changemaking. These workshops emphasized experiential
-                    learning, encouraging participants to apply concepts
-                    immediately and collaborate across diverse perspectives.
-                  </p>
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-green-100 p-2">
+                          <Lightbulb className="h-6 w-6 text-green-600" />
+                        </div>
+                        Hands-On Learning
+                      </h3>
+                      <p className="mb-6">
+                        {currentEdition.narrativeContent.handsOnLearning}
+                      </p>
 
-                  <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
-                    <div className="rounded-lg bg-purple-100 p-2">
-                      <MapPin className="h-6 w-6 text-purple-600" />
-                    </div>
-                    Immersive Experiences
-                  </h3>
-                  <p className="mb-6">
-                    Beyond the classroom, participants embarked on educational
-                    visits that provided real-world context to their learning.
-                    The carefully curated visits to{" "}
-                    {currentEdition.highlights.visits.slice(0, -1).join(", ")}{" "}
-                    and{" "}
-                    {
-                      currentEdition.highlights.visits[
-                        currentEdition.highlights.visits.length - 1
-                      ]
-                    }{" "}
-                    offered unique insights into governance, innovation
-                    ecosystems, and India's rich heritage. These experiences
-                    broadened perspectives and helped participants understand
-                    the interconnected nature of social challenges and
-                    solutions.
-                  </p>
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-purple-100 p-2">
+                          <MapPin className="h-6 w-6 text-purple-600" />
+                        </div>
+                        Immersive Experiences
+                      </h3>
+                      <p className="mb-6">
+                        {currentEdition.narrativeContent.immersiveExperiences}
+                      </p>
 
-                  <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
-                    <div className="rounded-lg bg-orange-100 p-2">
-                      <Heart className="h-6 w-6 text-orange-600" />
-                    </div>
-                    Community Building
-                  </h3>
-                  <p className="mb-6">
-                    The magic of {selectedEdition} extended far beyond formal
-                    sessions through carefully designed community-building
-                    activities. From the vibrant{" "}
-                    {currentEdition.highlights.activities
-                      .slice(0, -1)
-                      .join(", ")}{" "}
-                    to{" "}
-                    {
-                      currentEdition.highlights.activities[
-                        currentEdition.highlights.activities.length - 1
-                      ]
-                    }
-                    , these moments fostered deep connections among
-                    participants. These informal interactions often sparked the
-                    most innovative collaborations and lasting friendships,
-                    creating a supportive network that continues to thrive long
-                    after the program's conclusion.
-                  </p>
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-orange-100 p-2">
+                          <Heart className="h-6 w-6 text-orange-600" />
+                        </div>
+                        Community Building
+                      </h3>
+                      <p className="mb-6">
+                        {currentEdition.narrativeContent.communityBuilding}
+                      </p>
 
-                  <div className="mt-8 rounded-lg bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6">
-                    <p className="font-semibold text-[#050a30] text-lg">
-                      The convergence of inspiring leadership, practical
-                      learning, immersive experiences, and genuine community
-                      created an environment where young changemakers could
-                      truly flourish and develop the confidence to drive
-                      meaningful impact in their communities.
-                    </p>
-                  </div>
+                      <div className="mt-8 rounded-lg bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6">
+                        <p className="font-semibold text-[#050a30] text-lg">
+                          {currentEdition.narrativeContent.conclusion}
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className="mb-6 text-gray-800 text-xl leading-relaxed">
+                        {selectedEdition} was a remarkable convergence of
+                        inspiration, innovation, and impact, bringing together
+                        passionate young changemakers for an intensive week of
+                        learning and collaboration.
+                      </p>
+
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-blue-100 p-2">
+                          <Users className="h-6 w-6 text-blue-600" />
+                        </div>
+                        Visionary Leadership
+                      </h3>
+                      <p className="mb-6">
+                        The program featured inspiring keynote sessions from
+                        distinguished speakers who shared their transformative
+                        journeys. Participants had the privilege of learning
+                        from{" "}
+                        {currentEdition.highlights.keynotes
+                          .slice(0, -1)
+                          .join(", ")}{" "}
+                        and {currentEdition.highlights.keynotes.at(-1)}, each
+                        bringing unique perspectives on leadership, innovation,
+                        and social impact. These sessions not only provided
+                        valuable insights but also sparked meaningful
+                        conversations about the role of youth in shaping our
+                        collective future.
+                      </p>
+
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-green-100 p-2">
+                          <Lightbulb className="h-6 w-6 text-green-600" />
+                        </div>
+                        Hands-On Learning
+                      </h3>
+                      <p className="mb-6">
+                        The heart of the bootcamp lay in its comprehensive
+                        workshop series, designed to equip participants with
+                        practical skills and innovative thinking approaches.
+                        Through immersive sessions on{" "}
+                        {currentEdition.highlights.workshops
+                          .slice(0, -1)
+                          .join(", ")}{" "}
+                        and{" "}
+                        {
+                          currentEdition.highlights.workshops[
+                            currentEdition.highlights.workshops.length - 1
+                          ]
+                        }
+                        , participants developed critical competencies for
+                        modern changemaking. These workshops emphasized
+                        experiential learning, encouraging participants to apply
+                        concepts immediately and collaborate across diverse
+                        perspectives.
+                      </p>
+
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-purple-100 p-2">
+                          <MapPin className="h-6 w-6 text-purple-600" />
+                        </div>
+                        Immersive Experiences
+                      </h3>
+                      <p className="mb-6">
+                        Beyond the classroom, participants embarked on
+                        educational visits that provided real-world context to
+                        their learning. The carefully curated visits to{" "}
+                        {currentEdition.highlights.visits
+                          .slice(0, -1)
+                          .join(", ")}{" "}
+                        and{" "}
+                        {
+                          currentEdition.highlights.visits[
+                            currentEdition.highlights.visits.length - 1
+                          ]
+                        }{" "}
+                        offered unique insights into governance, innovation
+                        ecosystems, and India's rich heritage. These experiences
+                        broadened perspectives and helped participants
+                        understand the interconnected nature of social
+                        challenges and solutions.
+                      </p>
+
+                      <h3 className="mb-4 flex items-center gap-3 font-bold text-[#050a30] text-xl">
+                        <div className="rounded-lg bg-orange-100 p-2">
+                          <Heart className="h-6 w-6 text-orange-600" />
+                        </div>
+                        Community Building
+                      </h3>
+                      <p className="mb-6">
+                        The magic of {selectedEdition} extended far beyond
+                        formal sessions through carefully designed
+                        community-building activities. From the vibrant{" "}
+                        {currentEdition.highlights.activities
+                          .slice(0, -1)
+                          .join(", ")}{" "}
+                        to{" "}
+                        {
+                          currentEdition.highlights.activities[
+                            currentEdition.highlights.activities.length - 1
+                          ]
+                        }
+                        , these moments fostered deep connections among
+                        participants. These informal interactions often sparked
+                        the most innovative collaborations and lasting
+                        friendships, creating a supportive network that
+                        continues to thrive long after the program's conclusion.
+                      </p>
+
+                      <div className="mt-8 rounded-lg bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 p-6">
+                        <p className="font-semibold text-[#050a30] text-lg">
+                          The convergence of inspiring leadership, practical
+                          learning, immersive experiences, and genuine community
+                          created an environment where young changemakers could
+                          truly flourish and develop the confidence to drive
+                          meaningful impact in their communities.
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </BlurFade>

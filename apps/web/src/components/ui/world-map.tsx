@@ -31,6 +31,9 @@ export default function WorldMap(
     "Telangana",
     "Odisha",
     "Sikkim",
+    "Bihar",
+    "Karnataka",
+    "Punjab",
   ];
 
   // Create cityColors object for precolored states
