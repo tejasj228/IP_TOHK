@@ -398,11 +398,10 @@ const AboutPage = () => {
 
   const faqCategories = [
     "About YCB",
-    "Eligibility & Dates",
-    "Curriculum & Experience",
-    "Logistics & Safety",
-    "Fee & Financial Aid",
-    "After the Bootcamp",
+    "Application & Admission",
+    "For Parents",
+    "Travel & Logistics",
+    "Program Experience",
   ] as const;
 
   type FaqCategory = (typeof faqCategories)[number];
@@ -413,84 +412,122 @@ const AboutPage = () => {
   > = {
     "About YCB": [
       {
-        question: "What makes YCB different from other programs?",
+        question: "What is the Young Changemakers Bootcamp (YCB)?",
         answer:
-          "YCB combines rigorous academic content with hands-on project work, connecting you with real organizations and experienced mentors. Our focus on climate action and social entrepreneurship, combined with a global network of changemakers, creates a unique learning environment that prepares you for real-world impact.",
+          "The Young Changemakers Bootcamp (YCB) is a one-week residential program for high school students that focuses on problem-solving, innovation, leadership, and entrepreneurial skills through hands-on, real-world learning.",
       },
       {
-        question: "Is the program conducted online or offline?",
+        question: "Who can apply for YCB?",
         answer:
-          "YCB is a hybrid program that combines online learning modules with in-person workshops and networking events. This allows us to accommodate participants from different locations while still providing valuable face-to-face interactions and collaborative experiences.",
+          "High school students in classes 9–12 (or equivalent), including those who have just completed Class 12 board exams.",
       },
       {
-        question: "What happens after completing the program?",
+        question: "Is YCB a partnered program or connected to the host institution?",
         answer:
-          "Graduates join our global alumni network with access to job opportunities, continued mentorship, funding connections, and collaboration on future projects. Many alumni start their own ventures, join impact organizations, or become mentors themselves.",
-      },
-    ],
-    "Eligibility & Dates": [
-      {
-        question: "Are there any prerequisites for applying?",
-        answer:
-          "No specific academic background is required, but we look for demonstrated passion for social change, basic communication skills, and commitment to the program duration. We welcome applications from diverse academic and professional backgrounds.",
+          "No, YCB is an independent program entirely by the Tale of Humankind team. The host institute only provides the venue and is not responsible for design, curriculum, or delivery.",
       },
       {
-        question: "Can I participate if I'm working full-time?",
+        question: "How many students are selected each season?",
         answer:
-          "The program is designed to be intensive but flexible. While it requires significant commitment (15-20 hours per week), many participants successfully balance it with work or studies. We provide recorded sessions and flexible scheduling for working professionals.",
+          "Around 40-50 students are selected each season. Seats are limited to ensure high-quality learning and personal attention.",
       },
       {
-        question: "What are the age requirements?",
+        question: "What makes YCB unique compared to other student bootcamps?",
         answer:
-          "YCB is open to individuals aged 18-30 who are passionate about creating positive change. We believe this age range captures emerging leaders who are ready to take action and have the energy to drive meaningful impact.",
+          "YCB emphasizes changemaking, real-world challenges, interdisciplinary learning, and personal leadership growth, beyond just academics.",
       },
     ],
-    "Curriculum & Experience": [
+    "Application & Admission": [
       {
-        question: "What kind of support is available during the program?",
+        question: "How do I apply?",
         answer:
-          "Participants receive comprehensive support including personal mentorship, peer learning groups, technical assistance, career guidance, and access to our alumni network. We also provide mental health support and academic assistance as needed.",
+          "Students can apply directly through the 'Apply' button on our website, and complete the application process online.",
       },
       {
-        question: "How are the projects structured?",
+        question: "Is there an application fee?",
         answer:
-          "Projects are real-world challenges provided by partner organizations. You'll work in teams of 4-5 participants, guided by industry mentors, to develop practical solutions over the course of the program. Each project culminates in a presentation to stakeholders.",
+          "Yes, there is a non-refundable application fee of ₹500, payable online.",
+      },
+      {
+        question: "What is required in the application?",
+        answer:
+          "Applicants must complete the online form, provide details, and pay the application fee. Shortlisted candidates then move to the next round.",
+      },
+      {
+        question: "What is the admission process?",
+        answer:
+          "Round 1: Application review and essay. Round 2: Group discussion via online video call. Selected students receive admission confirmation and further details.",
+      },
+      {
+        question: "When will I know the result of my application?",
+        answer:
+          "The results are generally out within a week for the respective rounds.",
+      },
+      {
+        question: "What qualities are you looking for in applicants?",
+        answer:
+          "Passion for innovation and entrepreneurship, intellectual curiosity, openness to collaboration, and a willingness to explore and solve real-world problems.",
+      },
+      {
+        question: "Can international students apply?",
+        answer:
+          "Currently, YCB is open only to students across India. Any Indian student living abroad for studies is welcome to participate in YCB.",
       },
     ],
-    "Logistics & Safety": [
+    "For Parents": [
       {
-        question: "What networking opportunities are available?",
+        question: "How safe is the residential environment for students?",
         answer:
-          "YCB provides extensive networking through monthly alumni meetups, industry expert sessions, partner organization visits, and our global online community. You'll connect with changemakers across sectors and geographies.",
+          "The campus is secure with 24x7 supervision, gender-separate accommodations, and trained team to ensure student safety and comfort.",
       },
       {
-        question: "Is there ongoing support after graduation?",
+        question: "What level of parental involvement is expected during the program?",
         answer:
-          "Yes! Alumni receive lifetime access to our network, quarterly check-ins with career counselors, funding opportunity alerts, collaboration platforms, and invitations to exclusive events and workshops.",
+          "Parents are not required to attend. However, they receive regular updates via email and Whatsapp group. They can connect with participants in their break hours.",
+      },
+      {
+        question: "What if my child has dietary restrictions or medical needs?",
+        answer:
+          "We accommodate vegetarian, and other dietary requirements, as well as special medical needs if informed in advance. On-site support is available throughout the week.",
+      },
+      {
+        question: "Is there any difference between day scholars and residential participants?",
+        answer:
+          "No, all students receive the same program experience. The only difference is that scholars return home daily, while residential students stay on campus.",
+      },
+      {
+        question: "Will my child have time to rest or relax during the program?",
+        answer:
+          "Yes, the schedule includes breaks, reflection time, and evening activities for relaxation and social interaction.",
       },
     ],
-    "Fee & Financial Aid": [
+    "Travel & Logistics": [
       {
-        question: "What is the program fee?",
+        question: "How should students arriving from outside Delhi plan their travel?",
         answer:
-          "The program fee varies by location and format. We offer need-based scholarships covering up to 80% of costs. Financial assistance is available for deserving candidates who demonstrate passion and commitment.",
+          "We provide free pick-up and drop services for students from Delhi airports, railway stations, and bus stops for outside Delhi participants. Parents will be informed in advance about travel arrangements.",
       },
       {
-        question: "Are there payment plans available?",
+        question: "What should participants bring with them?",
         answer:
-          "Yes, we offer flexible payment plans including installment options and deferred payment for students. Our goal is to make the program accessible to passionate changemakers regardless of financial background.",
+          "A list of essentials will be shared after admission confirmation, including clothes, ID card, and personal care items.",
       },
     ],
-    "After the Bootcamp": [
+    "Program Experience": [
       {
-        question: "How do alumni stay connected?",
+        question: "How intensive is the daily schedule?",
         answer:
-          "Our alumni network is active through monthly meetups, online forums, collaborative projects, and mentorship programs. Many alumni also return as mentors and guest speakers for current participants.",
+          "The program is structured yet balanced, combining workshops, group projects, mentor sessions, and fun activities.",
       },
       {
-        question: "What career opportunities are available to alumni?",
+        question: "Will students have access to mentors?",
         answer:
-          "Alumni have access to exclusive job boards, startup opportunities, government positions, and NGO roles. Our career services team also provides ongoing support for career transitions and advancement.",
+          "Yes, industry experts, entrepreneurs, and experienced facilitators guide students throughout the program.",
+      },
+      {
+        question: "How will YCB support students after the program?",
+        answer:
+          "Students join the YCB alumni network, where they get continued mentorship, exposure, and opportunities to collaborate on changemaking initiatives.",
       },
     ],
   };
