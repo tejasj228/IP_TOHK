@@ -2,6 +2,118 @@
 
 import { Users } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
+// Static imports for mentor images
+import DebjaniGhosh from "./assets_speakers/Debjani Ghosh.jpg";
+import SanjeevBikchandani from "./assets_speakers/Sanjeev Bikchandani.jpeg";
+import AjaiChowdhary from "./assets_speakers/Ajai Chowdhary.jpg";
+import DiaMirza from "./assets_speakers/Dia Mirza.jpg";
+import MeenakshiLekhi from "./assets_speakers/Meenakshi Lekhi.jpeg";
+import RishiMohanBhatnagar from "./assets_speakers/Rishi Mohan Bhatnagar.jpeg";
+import YashveerSingh from "./assets_speakers/Yashveer Singh.jpeg";
+import PragyaVats from "./assets_speakers/Pragya Vats.jpeg";
+import RiteshMalik from "./assets_speakers/Ritesh Malik.avif";
+import MalvikaMudgal from "./assets_speakers/Malvika Mudgal.jpg";
+import RJGinnie from "./assets_speakers/RJ Ginnie.jpg";
+import TanmayNag from "./assets_speakers/Tanmay Nag.jpg";
+import DrItishaNagar from "./assets_speakers/Dr. Itisha Nagar.jpeg";
+import DrSapnaYadav from "./assets_speakers/Dr. Sapna Yadav.jpeg";
+import ProfSoniaBaloniRay from "./assets_speakers/Prof. Sonia Baloni Ray.jpeg";
+import VaasviSrivastava from "./assets_speakers/Vaasvi Srivastava.jpg";
+import AarushiKhare from "./assets_speakers/Aarushi Khare.jpeg";
+import AbhiirBhalla from "./assets_speakers/Abhiir Bhalla.jpeg";
+import AchintyaGhoshal from "./assets_speakers/Achintya Ghoshal.jpg";
+import AdvikSingh from "./assets_speakers/Advik Singh.jpeg";
+import AnugrehSehtya from "./assets_speakers/Anugreh Sehtya.webp";
+import AryanJain from "./assets_speakers/Aryan Jain.jpeg";
+import HeemankVerma from "./assets_speakers/Heemank Verma.jpeg";
+import JublieePatgiri from "./assets_speakers/Jubliee Patgiri.jpeg";
+import JyotiSharma from "./assets_speakers/Jyoti Sharma.jpg";
+import KeshavSuyal from "./assets_speakers/Keshav Suyal.jpeg";
+import KulbirLamba from "./assets_speakers/Kulbir Lamba.webp";
+import MdAnas from "./assets_speakers/Md. Anas.png";
+import NehaJain from "./assets_speakers/Neha Jain.jpeg";
+import OjasviGupta from "./assets_speakers/Ojasvi Gupta.jpeg";
+import PawanPagaria from "./assets_speakers/Pawan Pagaria.jpg";
+import PoojaKaul from "./assets_speakers/Pooja Kaul.png";
+import PrabalKaurDeol from "./assets_speakers/Prabal Kaur Deol.jpeg";
+import PragyaSikka from "./assets_speakers/Pragya Sikka.jpeg";
+import PriyanshuRatnakar from "./assets_speakers/Priyanshu Ratnakar.jpg";
+import PriyaswaraBharti from "./assets_speakers/Priyaswara Bharti.jpg";
+import ProfAheliChoudhary from "./assets_speakers/Prof. Aheli Choudhary.jpg";
+import ProfAlokSrivastava from "./assets_speakers/Prof. Alok Srivastava.jpeg";
+import ProfAnmolSrivastava from "./assets_speakers/Prof. Anmol Srivastava.jpg";
+import ProfAnujGrover from "./assets_speakers/Prof. Anuj Grover.jpg";
+import ProfGaneshBagler from "./assets_speakers/Prof. Ganesh Bagler.jpg";
+import ProfPayelCMukherjee from "./assets_speakers/Prof. Payel C Mukherjee.jpg";
+import ProfPragmaKaur from "./assets_speakers/Prof. Pragma Kaur.jpeg";
+import ProfPraveshBiyani from "./assets_speakers/Prof. Pravesh Biyani.jpg";
+import ProfRamgopalRao from "./assets_speakers/Prof. Ramgopal Rao.webp";
+import ProfTapanGandhi from "./assets_speakers/Prof. Tapan Gandhi.webp";
+import ProfVirendraKumarVijay from "./assets_speakers/Prof. Virendra Kumar Vijay.jpg";
+import RichaGupta from "./assets_speakers/Richa Gupta.jpg";
+import SagarikaDeka from "./assets_speakers/Sagarika Deka.jpg";
+import SangramjitMaity from "./assets_speakers/Sangramjit Maity.jpeg";
+import SaurabhChaubey from "./assets_speakers/Saurabh Chaubey.jpeg";
+import UpasanaRavikannan from "./assets_speakers/Upasana Ravikannan.jpg";
+
+// Map mentor display names to their imported images
+const mentorImages: Record<string, StaticImageData> = {
+  "Debjani Ghosh": DebjaniGhosh,
+  "Sanjeev Bikhchandani": SanjeevBikchandani,
+  "Ajai Chowdhary": AjaiChowdhary,
+  "Dia Mirza": DiaMirza,
+  "Meenakshi Lekhi": MeenakshiLekhi,
+  "Dr. Rishi Mohan Bhatnagar": RishiMohanBhatnagar,
+  "Yashveer Singh": YashveerSingh,
+  "Pragya Vats": PragyaVats,
+  "Dr. Ritesh Malik": RiteshMalik,
+  "Malvika Mudgal": MalvikaMudgal,
+  "RJ Ginnie": RJGinnie,
+  "Tanmay Nag": TanmayNag,
+  "Dr. Itisha Nagar": DrItishaNagar,
+  "Dr. Sapna Yadav": DrSapnaYadav,
+  "Prof. Sonia Baloni Ray": ProfSoniaBaloniRay,
+  "Vaasvi Srivastava": VaasviSrivastava,
+  "Aarushi Khare": AarushiKhare,
+  "Abhiir Bhalla": AbhiirBhalla,
+  "Achintya Ghoshal": AchintyaGhoshal,
+  "Advik Singh": AdvikSingh,
+  "Anugreh Sehtya": AnugrehSehtya,
+  "Aryan Jain": AryanJain,
+  "Heemank Verma": HeemankVerma,
+  "Jubliee Patgiri": JublieePatgiri,
+  "Jyoti Sharma": JyotiSharma,
+  "Prof. Jyoti Sharma": JyotiSharma,
+  "Keshav Suyal": KeshavSuyal,
+  "Kulbir Lamba": KulbirLamba,
+  "Md. Anas": MdAnas,
+  "Neha Jain": NehaJain,
+  "Ojasvi Gupta": OjasviGupta,
+  "Pawan Pagaria": PawanPagaria,
+  "Pooja Kaul": PoojaKaul,
+  "Prabal Kaur Deol": PrabalKaurDeol,
+  "Pragya Sikka": PragyaSikka,
+  "Priyanshu Ratnakar": PriyanshuRatnakar,
+  "Priyaswara Bharti": PriyaswaraBharti,
+  "Prof. Aheli Choudhary": ProfAheliChoudhary,
+  "Prof. Alok Srivastava": ProfAlokSrivastava,
+  "Prof. Anmol Srivastava": ProfAnmolSrivastava,
+  "Prof. Anuj Grover": ProfAnujGrover,
+  "Prof. Ganesh Bagler": ProfGaneshBagler,
+  "Prof. Payel C Mukherjee": ProfPayelCMukherjee,
+  "Prof. Pragma Kaur": ProfPragmaKaur,
+  "Prof. Pravesh Biyani": ProfPraveshBiyani,
+  "Prof. Ramgopal Rao": ProfRamgopalRao,
+  "Prof. Tapan Gandhi": ProfTapanGandhi,
+  "Prof. Virendra Kumar Vijay": ProfVirendraKumarVijay,
+  "Richa Gupta": RichaGupta,
+  "Sagarika Deka": SagarikaDeka,
+  "Sangramjit Maity": SangramjitMaity,
+  "Saurabh Chaubey": SaurabhChaubey,
+  "Upasana Ravikannan": UpasanaRavikannan,
+};
 
 // Past Mentors Data (actual YCB mentors and speakers)
 const speakersData = [
@@ -773,12 +885,23 @@ const NetworkPage = () => {
                         key={speaker.id}
                       >
                         <div className="relative mb-4">
-                          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-soft-dark font-bold text-white text-xl">
-                            {speaker.name
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
-                          </div>
+                          {mentorImages[speaker.name] ? (
+                            <Image
+                              src={mentorImages[speaker.name]}
+                              alt={`${speaker.name}`}
+                              width={80}
+                              height={80}
+                              className="mx-auto h-20 w-20 rounded-full object-cover shadow-sm"
+                              priority={false}
+                            />
+                          ) : (
+                            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-soft-dark font-bold text-white text-xl">
+                              {speaker.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </div>
+                          )}
                         </div>
                         <div className="text-center">
                           <h3 className="mb-1 font-bold text-[#050a30] transition-colors group-hover:text-[#1e40af]">
