@@ -254,7 +254,7 @@ const AboutPage = () => {
   const [activeSection, setActiveSection] = useState<string>("about");
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [selectedFaqCategory, setSelectedFaqCategory] =
-    useState<FaqCategory>("About YCB");
+    useState<FaqCategory>("Application & Admission");
   const [showFloatingNav, setShowFloatingNav] = useState(false);
   const [isFloatingNavOpen, setIsFloatingNavOpen] = useState(false);
 
@@ -512,7 +512,6 @@ const AboutPage = () => {
   ];
 
   const faqCategories = [
-    "About YCB",
     "Application & Admission",
     "For Parents",
     "Travel & Logistics",
@@ -525,35 +524,12 @@ const AboutPage = () => {
     FaqCategory,
     Array<{ question: string; answer: string }>
   > = {
-    "About YCB": [
-      {
-        question: "What is the Young Changemakers Bootcamp (YCB)?",
-        answer:
-          "The Young Changemakers Bootcamp (YCB) is a one-week residential program for high school students that focuses on problem-solving, innovation, leadership, and entrepreneurial skills through hands-on, real-world learning.",
-      },
+    "Application & Admission": [
       {
         question: "Who can apply for YCB?",
         answer:
           "High school students in classes 9–12 (or equivalent), including those who have just completed Class 12 board exams.",
       },
-      {
-        question:
-          "Is YCB a partnered program or connected to the host institution?",
-        answer:
-          "No, YCB is an independent program entirely by the Tale of Humankind team. The host institute only provides the venue and is not responsible for design, curriculum, or delivery.",
-      },
-      {
-        question: "How many students are selected each season?",
-        answer:
-          "Around 40-50 students are selected each season. Seats are limited to ensure high-quality learning and personal attention.",
-      },
-      {
-        question: "What makes YCB unique compared to other student bootcamps?",
-        answer:
-          "YCB emphasizes changemaking, real-world challenges, interdisciplinary learning, and personal leadership growth, beyond just academics.",
-      },
-    ],
-    "Application & Admission": [
       {
         question: "How do I apply?",
         answer:
@@ -588,6 +564,11 @@ const AboutPage = () => {
         question: "Can international students apply?",
         answer:
           "Currently, YCB is open only to students across India. Any Indian student living abroad for studies is welcome to participate in YCB.",
+      },
+      {
+        question: "How many students are selected each season?",
+        answer:
+          "Around 40-50 students are selected each season pan India. Seats are limited to ensure high-quality learning and personal attention.",
       },
     ],
     "For Parents": [
@@ -634,6 +615,12 @@ const AboutPage = () => {
       },
     ],
     "Program Experience": [
+      {
+        question:
+          "Is YCB a partnered program or connected to the host institution?",
+        answer:
+          "No, YCB is a flagship program of the Tale of Humankind foundation. The host institute is not responsible for design, curriculum, or delivery.",
+      },
       {
         question: "How intensive is the daily schedule?",
         answer:
@@ -1559,9 +1546,7 @@ const AboutPage = () => {
           <div className="flex justify-center">
             <a
               className="group hover:-translate-y-1 hover-glow flex h-12 w-fit items-center justify-center gap-3 rounded-[12px] border-2 border-[gold] bg-[gold] px-8 py-3 font-bold text-[#050a30] text-sm leading-[22.4px] transition-all duration-300 hover:border-white hover:bg-white hover:text-[#050a30] hover:shadow-lg sm:h-14 sm:px-12 sm:py-4 sm:text-base lg:px-16 lg:py-5 lg:text-lg"
-              href="https://docs.google.com/forms/d/1EArNLQpDdzHXXbT8y8xk3q7ZPGy0ZgmG0SI6cAV8ZEA/edit?usp=drivesdk"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/how-to-apply"
             >
               <span>Apply Now</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
