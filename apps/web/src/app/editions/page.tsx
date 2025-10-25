@@ -17,26 +17,89 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Skiper } from "@/components/ui/skiper";
-
+import s1_group from "./../../assets/group/s1_group.jpg";
+import s2_group from "./../../assets/group/s2_group.jpg";
+import s3_group from "./../../assets/group/s3_group.jpg";
+import s4_group from "./../../assets/group/s4_group.jpeg";
+import s5_group from "./../../assets/group/s5_group.jpg";
+import s1_gallery_1 from "./s1_gallery/IMG_2207.jpg";
+import s1_gallery_2 from "./s1_gallery/IMG_2208.jpg";
+import s1_gallery_3 from "./s1_gallery/IMG_2209.jpg";
+import s1_gallery_4 from "./s1_gallery/IMG_2210.jpg";
+import s1_gallery_5 from "./s1_gallery/IMG_2211.jpg";
+import s1_gallery_6 from "./s1_gallery/IMG_2212.jpg";
+import s1_gallery_7 from "./s1_gallery/IMG_2213.jpg";
+import s1_gallery_8 from "./s1_gallery/IMG_2214.jpg";
+import s1_gallery_9 from "./s1_gallery/IMG_2216.jpg";
+import s1_gallery_10 from "./s1_gallery/IMG_2217.jpg";
+import s1_gallery_11 from "./s1_gallery/IMG_2218.jpg";
+import s1_gallery_12 from "./s1_gallery/IMG_2219.jpg";
+import s2_gallery_1 from "./s2_gallery/IMG_2220.jpg";
+import s2_gallery_2 from "./s2_gallery/IMG_2221.jpg";
+import s2_gallery_3 from "./s2_gallery/IMG_2222.jpg";
+import s2_gallery_4 from "./s2_gallery/IMG_2223.jpg";
+import s2_gallery_5 from "./s2_gallery/IMG_2224.jpg";
+import s2_gallery_6 from "./s2_gallery/IMG_2225.jpg";
+import s2_gallery_7 from "./s2_gallery/IMG_2226.jpg";
+import s2_gallery_8 from "./s2_gallery/IMG_2227.jpg";
+import s2_gallery_9 from "./s2_gallery/IMG_2228.jpg";
+import s3_gallery_1 from "./s3_gallery/20240625_154957.jpeg";
+import s3_gallery_2 from "./s3_gallery/20240625_172613.jpeg";
+import s3_gallery_3 from "./s3_gallery/A270B11C-A5B9-44C9-87A0-3FCE8AA73301.jpg";
+import s3_gallery_4 from "./s3_gallery/DSC02531.jpeg";
+import s3_gallery_5 from "./s3_gallery/DSC02585.jpeg";
+import s3_gallery_6 from "./s3_gallery/DSC02638.jpeg";
+import s3_gallery_7 from "./s3_gallery/DSC02908.jpeg";
+import s3_gallery_8 from "./s3_gallery/DSC03303.jpeg";
+import s3_gallery_9 from "./s3_gallery/DSC03346.jpeg";
+import s3_gallery_10 from "./s3_gallery/IMG_1612.jpeg";
+import s3_gallery_11 from "./s3_gallery/IMG_1623.jpeg";
+import s3_gallery_12 from "./s3_gallery/IMG_1847.jpeg";
+import s4_gallery_1 from "./s4_gallery/IMG_0672.jpeg";
+import s4_gallery_2 from "./s4_gallery/IMG_2257.jpeg";
+import s4_gallery_3 from "./s4_gallery/IMG_2258.jpeg";
+import s4_gallery_4 from "./s4_gallery/IMG_2259.jpeg";
+import s4_gallery_5 from "./s4_gallery/IMG_2260.jpeg";
+import s4_gallery_6 from "./s4_gallery/IMG_2261.jpeg";
+import s4_gallery_7 from "./s4_gallery/IMG_2262.jpeg";
+import s4_gallery_8 from "./s4_gallery/IMG_2263.jpeg";
+import s4_gallery_9 from "./s4_gallery/IMG_2264.jpeg";
+import s4_gallery_10 from "./s4_gallery/IMG_2265.jpeg";
+import s4_gallery_11 from "./s4_gallery/IMG_2266.jpeg";
+import s4_gallery_12 from "./s4_gallery/IMG_2267.jpeg";
+import s5_gallery_1 from "./s5_gallery/IMG_2240 Large.jpeg";
+import s5_gallery_2 from "./s5_gallery/IMG_2241 Large.jpeg";
+import s5_gallery_3 from "./s5_gallery/IMG_2242 Large.jpeg";
+import s5_gallery_4 from "./s5_gallery/IMG_2243 Large.jpeg";
+import s5_gallery_5 from "./s5_gallery/IMG_2244 Large.jpeg";
+import s5_gallery_6 from "./s5_gallery/IMG_2245 Large.jpeg";
+import s5_gallery_7 from "./s5_gallery/IMG_2246 Large.jpeg";
+import s5_gallery_8 from "./s5_gallery/IMG_2247 Large.jpeg";
+import s5_gallery_9 from "./s5_gallery/IMG_2248 Large.jpeg";
+import s5_gallery_10 from "./s5_gallery/IMG_2249 Large.jpeg";
+import s5_gallery_11 from "./s5_gallery/IMG_2250 Large.jpeg";
+import s5_gallery_12 from "./s5_gallery/IMG_2251 Large.jpeg";
+import s5_gallery_13 from "./s5_gallery/IMG_2252 Large.jpeg";
+import s5_gallery_14 from "./s5_gallery/IMG_2253 Large.jpeg";
+import s5_gallery_15 from "./s5_gallery/IMG_2254 Large.jpeg";
+import s5_gallery_16 from "./s5_gallery/IMG_2255 Large.jpeg";
 const editionsData = {
   "Season 1": {
     year: "2023",
     season: "June 2023",
-    name: "YCB June 2023 – The Beginning",
+    name: "YCB 2023 - Summer Edition",
     status: "completed",
     location: "IIT Delhi",
-    participants: 50,
-    states: 12,
-    schools: 35,
+    participants: 46,
+    states: 6,
+    schools: 14,
     expectedParticipants: 50,
     dates: "June 2023",
     tagline:
       "Where ideas turned into movement, curiosity met purpose, and young minds reimagined changemaking.",
     registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    groupPhoto: s1_group.src,
+    comingSoonImage: s1_group.src,
 
     highlights: {
       keynotes: [
@@ -89,24 +152,52 @@ const editionsData = {
 
     galleryImages: [
       {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Opening ceremony with participants",
+        src: s1_gallery_1.src,
+        alt: "YCB Season 1 - Event moment 1",
       },
       {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Design thinking workshop",
+        src: s1_gallery_2.src,
+        alt: "YCB Season 1 - Event moment 2",
       },
       {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team collaboration session",
+        src: s1_gallery_3.src,
+        alt: "YCB Season 1 - Event moment 3",
       },
       {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Innovation pitch competition",
+        src: s1_gallery_4.src,
+        alt: "YCB Season 1 - Event moment 4",
       },
       {
-        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Cultural night celebration",
+        src: s1_gallery_5.src,
+        alt: "YCB Season 1 - Event moment 5",
+      },
+      {
+        src: s1_gallery_6.src,
+        alt: "YCB Season 1 - Event moment 6",
+      },
+      {
+        src: s1_gallery_7.src,
+        alt: "YCB Season 1 - Event moment 7",
+      },
+      {
+        src: s1_gallery_8.src,
+        alt: "YCB Season 1 - Event moment 8",
+      },
+      {
+        src: s1_gallery_9.src,
+        alt: "YCB Season 1 - Event moment 9",
+      },
+      {
+        src: s1_gallery_10.src,
+        alt: "YCB Season 1 - Event moment 10",
+      },
+      {
+        src: s1_gallery_11.src,
+        alt: "YCB Season 1 - Event moment 11",
+      },
+      {
+        src: s1_gallery_12.src,
+        alt: "YCB Season 1 - Event moment 12",
       },
     ],
 
@@ -146,39 +237,37 @@ const editionsData = {
       },
     ],
 
-    impact: {
-      projectsStarted: 80,
-      clubsFormed: 12,
-      diversityStats: {
-        genderBalance: "50% female, 50% male",
-        ruralUrban: "40% rural, 60% urban",
-      },
-      initiatives: [
-        "First YCB edition that started the changemaking movement",
-        "Built a close-knit family of changemakers",
-        "Established the foundation for all future editions",
-      ],
-    },
+    // impact: {
+    //   projectsStarted: 80,
+    //   clubsFormed: 12,
+    //   diversityStats: {
+    //     genderBalance: "50% female, 50% male",
+    //     ruralUrban: "40% rural, 60% urban",
+    //   },
+    //   initiatives: [
+    //     "First YCB edition that started the changemaking movement",
+    //     "Built a close-knit family of changemakers",
+    //     "Established the foundation for all future editions",
+    //   ],
+    // },
   },
 
   "Season 2": {
     year: "2023",
     season: "December 2023",
-    name: "YCB December 2023 – Winter of Innovation",
+    name: "YCB 2023 - Winter Edition",
     status: "completed",
     location: "IIT Delhi",
-    participants: 55,
-    states: 14,
-    schools: 38,
-    expectedParticipants: 55,
+    participants: 35,
+    states: 5,
+    schools: 17,
+    expectedParticipants: 40,
     dates: "December 2023",
     tagline:
       "A winter of ideas, innovation, and imagination, where technology met purpose.",
     registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    groupPhoto: s2_group.src,
+    comingSoonImage: s2_group.src,
 
     highlights: {
       keynotes: [
@@ -232,24 +321,40 @@ const editionsData = {
 
     galleryImages: [
       {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Opening ceremony with participants",
+        src: s2_gallery_1.src,
+        alt: "YCB Season 2 - Event moment 1",
       },
       {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Design thinking workshop",
+        src: s2_gallery_2.src,
+        alt: "YCB Season 2 - Event moment 2",
       },
       {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team collaboration session",
+        src: s2_gallery_3.src,
+        alt: "YCB Season 2 - Event moment 3",
       },
       {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Innovation pitch competition",
+        src: s2_gallery_4.src,
+        alt: "YCB Season 2 - Event moment 4",
       },
       {
-        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Cultural night celebration",
+        src: s2_gallery_5.src,
+        alt: "YCB Season 2 - Event moment 5",
+      },
+      {
+        src: s2_gallery_6.src,
+        alt: "YCB Season 2 - Event moment 6",
+      },
+      {
+        src: s2_gallery_7.src,
+        alt: "YCB Season 2 - Event moment 7",
+      },
+      {
+        src: s2_gallery_8.src,
+        alt: "YCB Season 2 - Event moment 8",
+      },
+      {
+        src: s2_gallery_9.src,
+        alt: "YCB Season 2 - Event moment 9",
       },
     ],
 
@@ -289,39 +394,37 @@ const editionsData = {
       },
     ],
 
-    impact: {
-      projectsStarted: 85,
-      clubsFormed: 15,
-      diversityStats: {
-        genderBalance: "52% female, 48% male",
-        ruralUrban: "42% rural, 58% urban",
-      },
-      initiatives: [
-        "Proved changemaking isn't seasonal, it's a mindset",
-        "Created a vibrant ecosystem of friendships and collaboration",
-        "Innovation and purpose burned bright through Delhi winter",
-      ],
-    },
+    // impact: {
+    //   projectsStarted: 85,
+    //   clubsFormed: 15,
+    //   diversityStats: {
+    //     genderBalance: "52% female, 48% male",
+    //     ruralUrban: "42% rural, 58% urban",
+    //   },
+    //   initiatives: [
+    //     "Proved changemaking isn't seasonal, it's a mindset",
+    //     "Created a vibrant ecosystem of friendships and collaboration",
+    //     "Innovation and purpose burned bright through Delhi winter",
+    //   ],
+    // },
   },
 
   "Season 3": {
     year: "2024",
     season: "June 2024",
-    name: "YCB June 2024 – Expanding Horizons",
+    name: "YCB 2024 - Summer Edition",
     status: "completed",
     location: "IIT Delhi",
-    participants: 60,
-    states: 16,
-    schools: 42,
+    participants: 41,
+    states: 7,
+    schools: 15,
     expectedParticipants: 60,
     dates: "June 2024",
     tagline:
       "Exploring the intersections of technology, creativity, and social impact.",
     registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    groupPhoto: s3_group.src,
+    comingSoonImage: s3_group.src,
 
     highlights: {
       keynotes: [
@@ -373,24 +476,52 @@ const editionsData = {
 
     galleryImages: [
       {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Opening ceremony with participants",
+        src: s3_gallery_1.src,
+        alt: "YCB Season 3 - Event moment 1",
       },
       {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Design thinking workshop",
+        src: s3_gallery_2.src,
+        alt: "YCB Season 3 - Event moment 2",
       },
       {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team collaboration session",
+        src: s3_gallery_3.src,
+        alt: "YCB Season 3 - Event moment 3",
       },
       {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Innovation pitch competition",
+        src: s3_gallery_4.src,
+        alt: "YCB Season 3 - Event moment 4",
       },
       {
-        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Cultural night celebration",
+        src: s3_gallery_5.src,
+        alt: "YCB Season 3 - Event moment 5",
+      },
+      {
+        src: s3_gallery_6.src,
+        alt: "YCB Season 3 - Event moment 6",
+      },
+      {
+        src: s3_gallery_7.src,
+        alt: "YCB Season 3 - Event moment 7",
+      },
+      {
+        src: s3_gallery_8.src,
+        alt: "YCB Season 3 - Event moment 8",
+      },
+      {
+        src: s3_gallery_9.src,
+        alt: "YCB Season 3 - Event moment 9",
+      },
+      {
+        src: s3_gallery_10.src,
+        alt: "YCB Season 3 - Event moment 10",
+      },
+      {
+        src: s3_gallery_11.src,
+        alt: "YCB Season 3 - Event moment 11",
+      },
+      {
+        src: s3_gallery_12.src,
+        alt: "YCB Season 3 - Event moment 12",
       },
     ],
 
@@ -430,39 +561,37 @@ const editionsData = {
       },
     ],
 
-    impact: {
-      projectsStarted: 90,
-      clubsFormed: 18,
-      diversityStats: {
-        genderBalance: "51% female, 49% male",
-        ruralUrban: "43% rural, 57% urban",
-      },
-      initiatives: [
-        "Students honed skills in innovation, entrepreneurship, and technology",
-        "Participants discovered confidence and clarity to become changemakers",
-        "Power of experiential learning exemplified",
-      ],
-    },
+    // impact: {
+    //   projectsStarted: 90,
+    //   clubsFormed: 18,
+    //   diversityStats: {
+    //     genderBalance: "51% female, 49% male",
+    //     ruralUrban: "43% rural, 57% urban",
+    //   },
+    //   initiatives: [
+    //     "Students honed skills in innovation, entrepreneurship, and technology",
+    //     "Participants discovered confidence and clarity to become changemakers",
+    //     "Power of experiential learning exemplified",
+    //   ],
+    // },
   },
 
   "Season 4": {
     year: "2024",
     season: "December 2024",
-    name: "YCB December 2024 – Purpose-Driven Innovation",
+    name: "YCB 2024 - Winter Edition",
     status: "completed",
     location: "IIT Delhi",
-    participants: 65,
-    states: 18,
-    schools: 45,
+    participants: 41,
+    states: 7,
+    schools: 12,
     expectedParticipants: 65,
     dates: "December 2024",
     tagline:
       "A powerful convergence of innovation, creativity, and collaboration.",
     registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    groupPhoto: s4_group.src,
+    comingSoonImage: s4_group.src,
 
     highlights: {
       keynotes: [
@@ -512,24 +641,52 @@ const editionsData = {
 
     galleryImages: [
       {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Opening ceremony with participants",
+        src: s4_gallery_1.src,
+        alt: "YCB Season 4 - Event moment 1",
       },
       {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Design thinking workshop",
+        src: s4_gallery_2.src,
+        alt: "YCB Season 4 - Event moment 2",
       },
       {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team collaboration session",
+        src: s4_gallery_3.src,
+        alt: "YCB Season 4 - Event moment 3",
       },
       {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Innovation pitch competition",
+        src: s4_gallery_4.src,
+        alt: "YCB Season 4 - Event moment 4",
       },
       {
-        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Cultural night celebration",
+        src: s4_gallery_5.src,
+        alt: "YCB Season 4 - Event moment 5",
+      },
+      {
+        src: s4_gallery_6.src,
+        alt: "YCB Season 4 - Event moment 6",
+      },
+      {
+        src: s4_gallery_7.src,
+        alt: "YCB Season 4 - Event moment 7",
+      },
+      {
+        src: s4_gallery_8.src,
+        alt: "YCB Season 4 - Event moment 8",
+      },
+      {
+        src: s4_gallery_9.src,
+        alt: "YCB Season 4 - Event moment 9",
+      },
+      {
+        src: s4_gallery_10.src,
+        alt: "YCB Season 4 - Event moment 10",
+      },
+      {
+        src: s4_gallery_11.src,
+        alt: "YCB Season 4 - Event moment 11",
+      },
+      {
+        src: s4_gallery_12.src,
+        alt: "YCB Season 4 - Event moment 12",
       },
     ],
 
@@ -569,39 +726,37 @@ const editionsData = {
       },
     ],
 
-    impact: {
-      projectsStarted: 95,
-      clubsFormed: 20,
-      diversityStats: {
-        genderBalance: "53% female, 47% male",
-        ruralUrban: "44% rural, 56% urban",
-      },
-      initiatives: [
-        "Celebration of curiosity, courage, and community",
-        "Students learned that changemaking isn't only about ideation, but execution",
-        "Reaffirmed YCB's belief in the power of young minds",
-      ],
-    },
+    // impact: {
+    //   projectsStarted: 95,
+    //   clubsFormed: 20,
+    //   diversityStats: {
+    //     genderBalance: "53% female, 47% male",
+    //     ruralUrban: "44% rural, 56% urban",
+    //   },
+    //   initiatives: [
+    //     "Celebration of curiosity, courage, and community",
+    //     "Students learned that changemaking isn't only about ideation, but execution",
+    //     "Reaffirmed YCB's belief in the power of young minds",
+    //   ],
+    // },
   },
 
   "Season 5": {
     year: "2025",
     season: "June 2025",
-    name: "YCB June 2025 – Fifth Milestone",
+    name: "YCB 2025 - Summer Edition",
     status: "completed",
-    location: "IIT Delhi & IIIT Delhi",
-    participants: 70,
-    states: 20,
-    schools: 50,
+    location: "IIT Delhi",
+    participants: 50,
+    states: 9,
+    schools: 18,
     expectedParticipants: 70,
     dates: "June 2025",
     tagline:
       "A defining milestone celebrating five transformative cycles of learning, innovation, and community.",
     registrationOpen: false,
-    groupPhoto:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    comingSoonImage:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    groupPhoto: s5_group.src,
+    comingSoonImage: s5_group.src,
 
     highlights: {
       keynotes: [
@@ -657,24 +812,68 @@ const editionsData = {
 
     galleryImages: [
       {
-        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Opening ceremony with participants",
+        src: s5_gallery_1.src,
+        alt: "YCB Season 5 - Event moment 1",
       },
       {
-        src: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Design thinking workshop",
+        src: s5_gallery_2.src,
+        alt: "YCB Season 5 - Event moment 2",
       },
       {
-        src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Team collaboration session",
+        src: s5_gallery_3.src,
+        alt: "YCB Season 5 - Event moment 3",
       },
       {
-        src: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Innovation pitch competition",
+        src: s5_gallery_4.src,
+        alt: "YCB Season 5 - Event moment 4",
       },
       {
-        src: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        alt: "Cultural night celebration",
+        src: s5_gallery_5.src,
+        alt: "YCB Season 5 - Event moment 5",
+      },
+      {
+        src: s5_gallery_6.src,
+        alt: "YCB Season 5 - Event moment 6",
+      },
+      {
+        src: s5_gallery_7.src,
+        alt: "YCB Season 5 - Event moment 7",
+      },
+      {
+        src: s5_gallery_8.src,
+        alt: "YCB Season 5 - Event moment 8",
+      },
+      {
+        src: s5_gallery_9.src,
+        alt: "YCB Season 5 - Event moment 9",
+      },
+      {
+        src: s5_gallery_10.src,
+        alt: "YCB Season 5 - Event moment 10",
+      },
+      {
+        src: s5_gallery_11.src,
+        alt: "YCB Season 5 - Event moment 11",
+      },
+      {
+        src: s5_gallery_12.src,
+        alt: "YCB Season 5 - Event moment 12",
+      },
+      {
+        src: s5_gallery_13.src,
+        alt: "YCB Season 5 - Event moment 13",
+      },
+      {
+        src: s5_gallery_14.src,
+        alt: "YCB Season 5 - Event moment 14",
+      },
+      {
+        src: s5_gallery_15.src,
+        alt: "YCB Season 5 - Event moment 15",
+      },
+      {
+        src: s5_gallery_16.src,
+        alt: "YCB Season 5 - Event moment 16",
       },
     ],
 
@@ -714,19 +913,19 @@ const editionsData = {
       },
     ],
 
-    impact: {
-      projectsStarted: 100,
-      clubsFormed: 22,
-      diversityStats: {
-        genderBalance: "54% female, 46% male",
-        ruralUrban: "45% rural, 55% urban",
-      },
-      initiatives: [
-        "Fifth successful edition marking a defining milestone",
-        "Became more than a bootcamp, it became a movement",
-        "Reminder that changemaking is a way of life",
-      ],
-    },
+    // impact: {
+    //   projectsStarted: 100,
+    //   clubsFormed: 22,
+    //   diversityStats: {
+    //     genderBalance: "54% female, 46% male",
+    //     ruralUrban: "45% rural, 55% urban",
+    //   },
+    //   initiatives: [
+    //     "Fifth successful edition marking a defining milestone",
+    //     "Became more than a bootcamp, it became a movement",
+    //     "Reminder that changemaking is a way of life",
+    //   ],
+    // },
   },
 };
 
@@ -1317,7 +1516,7 @@ const EditionsPage = () => {
               </div>
             </BlurFade>
             {/* Impact Snapshot */}
-            <BlurFade delay={0.6} key={`impact-${selectedEdition}`}>
+            {/*<BlurFade delay={0.6} key={`impact-${selectedEdition}`}>
               <div className="mb-8 text-center sm:mb-12">
                 <h2 className="font-bold text-4xl text-[#050a30]">
                   Impact{" "}
@@ -1334,7 +1533,7 @@ const EditionsPage = () => {
               <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-indigo-50/30 p-8 shadow-lg">
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                   {/* Stats */}
-                  <div className="text-center">
+            {/*<div className="text-center">
                     <div className="mb-2 font-bold text-4xl text-[#050a30]">
                       {currentEdition.impact.projectsStarted}%
                     </div>
@@ -1377,7 +1576,7 @@ const EditionsPage = () => {
                   </ul>
                 </div>
               </div>
-            </BlurFade>
+            </BlurFade> */}
             {/* Closing Message */}
             <BlurFade delay={0.7} key={`closing-${selectedEdition}`}>
               <div className="rounded-2xl bg-gradient-to-r from-[#050a30] to-[#0a1540] p-8 text-center text-white shadow-xl lg:p-12">

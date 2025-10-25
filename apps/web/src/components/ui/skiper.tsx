@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import Image from "next/image";
 import {
   Autoplay,
   EffectCoverflow,
@@ -83,15 +84,7 @@ const Carousel_001 = ({
   }
   `;
   return (
-    <motion.div
-      animate={{ opacity: 1, translateY: 0 }}
-      className={cn("relative w-3xl", className)}
-      initial={{ opacity: 0, translateY: 20 }}
-      transition={{
-        duration: 0.3,
-        delay: 0.5,
-      }}
-    >
+    <div className={cn("relative w-3xl", className)}>
       <style>{css}</style>
 
       <Swiper
@@ -136,11 +129,17 @@ const Carousel_001 = ({
       >
         {images.map((image, index) => (
           <SwiperSlide className="!h-[320px] w-full border" key={index}>
-            <img
-              alt={image.alt}
-              className="h-full w-full object-cover"
-              src={image.src}
-            />
+            <div className="relative h-full w-full">
+              <Image
+                alt={image.alt}
+                className="object-cover"
+                fill
+                loading="lazy"
+                quality={75}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                src={image.src}
+              />
+            </div>
           </SwiperSlide>
         ))}
         {showNavigation && (
@@ -154,7 +153,7 @@ const Carousel_001 = ({
           </div>
         )}
       </Swiper>
-    </motion.div>
+    </div>
   );
 };
 
