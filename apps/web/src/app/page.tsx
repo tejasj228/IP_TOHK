@@ -25,6 +25,16 @@ import Quotation from "@/assets/quotations.png";
 import { Button } from "@/components/ui/button";
 import { Marquee } from "@/components/ui/marquee";
 import WorldMap from "@/components/ui/world-map";
+import img_2226 from "./hero_images/IMG_2226.jpg";
+import img_2243 from "./hero_images/IMG_2243.jpg";
+import img_2247 from "./hero_images/IMG_2247.jpg";
+import img_2264 from "./hero_images/IMG_2264.jpg";
+import img_7940 from "./hero_images/IMG_7940.jpg";
+import alumniAbhijay from "./featured/alumni_story/Abhijay.jpg";
+import alumniManan from "./featured/alumni_story/Manan.jpg";
+import alumniNandini from "./featured/alumni_story/Nandini.jpg";
+import alumniNishtha from "./featured/alumni_story/Nishtha.jpg";
+import alumniTseten from "./featured/alumni_story/Tseten.jpg";
 
 // Notification Banner Component
 const NotificationBanner = () => {
@@ -206,51 +216,51 @@ const AnimatedCounter = ({
   );
 };
 
-// Hero slider images from Unsplash
+// Hero slider images (local)
 const heroImages = [
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+  img_7940.src,
+  img_2243.src,
+  img_2247.src,
+  img_2264.src,
+  img_2226.src,
 ];
 
-// Testimonial data
+// Testimonial data (updated)
 const testimonials = [
   {
     id: 1,
+    name: "Ajai Chowdhry",
+    role: "Co-founder, HCL",
     quote:
-      "Working with mentors and peers from across India opened my eyes to diverse perspectives. The collaborative environment was truly inspiring.",
-    name: "Priya Patel",
-    school: "Kendriya Vidyalaya, Mumbai",
+      "The Young Changemakers Bootcamp is shaping the next generation of thinkers, innovators, and leaders. I was truly inspired to see how these young minds approached real-world problems with empathy, creativity, and purpose. Programs like YCB are building the foundation for a new India - one driven by curiosity, courage, and changemaking spirit.",
   },
   {
     id: 2,
+    name: "Ariqa Rizwan",
+    role: "Participant, Summer 2023 Edition",
     quote:
-      "The program transformed my understanding of social impact and gave me the tools to make a real difference in my community.",
-    name: "Arjun Singh",
-    school: "Delhi Public School, Delhi",
+      "Being part of the Young Changemakers Bootcamp was a defining moment in my journey. Interacting with mentors and innovators from diverse fields opened my mind to new ideas and perspectives. Above all, it reminded me that age is never a barrier to creating meaningful change.",
   },
   {
     id: 3,
+    name: "Yashveer Singh",
+    role: "Global Director, Ashoka Young Changemakers",
     quote:
-      "YCB connected me with like-minded changemakers and helped me develop a clear vision for my social enterprise.",
-    name: "Meera Iyer",
-    school: "St. Xavier's College, Mumbai",
+      "When I met the students at YCB, I saw a spark, the same one that drives every changemaker who starts young. Every participant I met carried a deep sense of purpose, and that’s the true success of this initiative. What Tale of Humankind is doing through YCB is remarkable: helping young people realize that they don’t need to wait to make a difference.",
   },
   {
     id: 4,
+    name: "Pravesh Biyani",
+    role: "Professor, IIIT Delhi",
     quote:
-      "The hands-on approach and real-world projects gave me confidence to tackle complex social challenges.",
-    name: "Rahul Kumar",
-    school: "DAV Public School, Bangalore",
+      "Hosting the YCB sessions was a delight. The students’ energy, curiosity, and willingness to engage with complex ideas were remarkable. It’s rare to see such integration of empathy and innovation in early education - YCB achieves that beautifully.",
   },
   {
     id: 5,
+    name: "Vishal Pal Singh",
+    role: "IRS Officer, Parent of Participant",
     quote:
-      "Being part of YCB opened doors to a network of young leaders who continue to inspire and support each other.",
-    name: "Sneha Sharma",
-    school: "Miranda House, Delhi University",
+      "Having spent years in public service, I’ve seen how crucial early leadership and empathy are. YCB helps young people build those values beautifully. My child came back more self-assured and socially aware — it was heartwarming to see such transformation at that age.",
   },
 ];
 
@@ -258,60 +268,81 @@ const testimonials = [
 const TestimonialCard = ({
   quote,
   name,
-  school,
+  role,
 }: {
   quote: string;
   name: string;
-  school: string;
-}) => (
-  <div className="card-hover relative mx-2 h-[200px] w-[320px] flex-shrink-0 overflow-clip sm:h-[260px] sm:w-[480px] md:h-[320px] md:w-[620px]">
-    {/* Card Background with gradient */}
-    <div className="card-gradient-testimonial absolute inset-0 rounded-[12px] transition-all duration-300" />
+  role: string;
+}) => {
+  const initials = name
+    .split(" ")
+    .filter((n) => n.length > 0)
+    .slice(0, 3)
+    .map((part, idx, arr) =>
+      arr.length > 1 ? (idx === 0 || idx === arr.length - 1 ? part[0] : "") : part[0]
+    )
+    .join("")
+    .toUpperCase()
+    .trim();
 
-    {/* Profile Image - positioned left with gradient border */}
-    <div className="hover-scale absolute top-3 left-3 size-[50px] rounded-full border-[3px] border-[gold] bg-gradient-to-br from-[#f9fafb] to-[#e5e7eb] transition-all duration-300 sm:top-4 sm:left-4 sm:size-[60px] md:top-8 md:left-8 md:size-[74px]" />
+  return (
+    <div className="card-hover relative mx-2 h-[260px] w-[320px] flex-shrink-0 overflow-clip sm:h-[320px] sm:w-[480px] md:h-[380px] md:w-[620px]">
+      {/* Card Background with gradient */}
+      <div className="card-gradient-testimonial absolute inset-0 rounded-[12px] transition-all duration-300" />
 
-    {/* Name and School Container */}
-    <div className="absolute top-[20px] left-[75px] text-left sm:top-[30px] sm:left-[80px] md:top-[45px] md:left-[130px]">
-      <h4 className="mb-1 font-bold text-[#1a365d] text-[14px] leading-[16px] transition-colors duration-300 sm:text-[16px] sm:leading-[20px] md:text-[20px] md:leading-[24px]">
-        {name}
-      </h4>
-      <p className="font-normal text-[#718096] text-[12px] leading-[14px] transition-colors duration-300 sm:text-[14px] sm:leading-[18px] md:text-[16px] md:leading-[20px]">
-        {school}
-      </p>
-    </div>
-
-    {/* Quote Container */}
-    <div className="relative mx-auto mt-[80px] max-w-[280px] px-3 sm:mt-[100px] sm:max-w-[360px] sm:px-4 md:mt-[136px] md:max-w-[465px] md:px-8">
-      {/* Opening Quotation Mark */}
-      <div className="-left-[20px] -top-[15px] sm:-left-[25px] sm:-top-[20px] md:-left-[40px] md:-top-[31px] absolute">
-        <Image
-          alt=""
-          className="h-[30px] w-[30px] sm:h-[40px] sm:w-[40px] md:h-[62px] md:w-[62px]"
-          height={62}
-          src={Quotation}
-          width={62}
-        />
+      {/* Avatar with initials */}
+      <div
+        aria-label={`Avatar initials for ${name}`}
+        className="hover-scale absolute top-4 left-4 flex size-[50px] items-center justify-center rounded-full border-[3px] border-[gold] bg-gradient-to-br from-[#f9fafb] to-[#e5e7eb] text-[#1a365d] font-semibold transition-all duration-300 sm:top-5 sm:left-5 sm:size-[60px] md:top-8 md:left-8 md:size-[74px]"
+        role="img"
+      >
+        <span aria-hidden="true" className="text-sm sm:text-base md:text-lg">
+          {initials}
+        </span>
       </div>
 
-      {/* Quote Text */}
-      <p className="text-left font-normal text-[#2d3748] text-[12px] leading-[16px] sm:text-[14px] sm:leading-[20px] md:text-[16px] md:leading-[24.32px]">
-        {quote}
-      </p>
+      {/* Name and Role Container */}
+      <div className="absolute top-[22px] left-[75px] text-left sm:top-[32px] sm:left-[85px] md:top-[45px] md:left-[130px]">
+        <h4 className="mb-1 font-bold text-[#1a365d] text-[14px] leading-[16px] transition-colors duration-300 sm:text-[16px] sm:leading-[20px] md:text-[20px] md:leading-[24px]">
+          {name}
+        </h4>
+        <p className="font-normal text-[#718096] text-[12px] leading-[14px] transition-colors duration-300 sm:text-[14px] sm:leading-[18px] md:text-[16px] md:leading-[20px]">
+          {role}
+        </p>
+      </div>
 
-      {/* Closing Quotation Mark */}
-      <div className="-right-[20px] -bottom-[15px] sm:-right-[25px] sm:-bottom-[20px] md:-right-[40px] md:-bottom-[31px] absolute scale-x-[-1] scale-y-[-1]">
-        <Image
-          alt=""
-          className="h-[30px] w-[30px] sm:h-[40px] sm:w-[40px] md:h-[62px] md:w-[62px]"
-          height={62}
-          src={Quotation}
-          width={62}
-        />
+      {/* Quote Container */}
+      <div className="relative mx-auto mt-[95px] max-w-[270px] px-4 pb-5 sm:mt-[115px] sm:max-w-[350px] sm:px-5 sm:pb-6 md:mt-[150px] md:max-w-[455px] md:px-8 md:pb-8">
+        {/* Opening Quotation Mark */}
+        <div className="-left-[18px] -top-[12px] sm:-left-[22px] sm:-top-[16px] md:-left-[35px] md:-top-[28px] absolute">
+          <Image
+            alt=""
+            className="h-[28px] w-[28px] sm:h-[36px] sm:w-[36px] md:h-[58px] md:w-[58px]"
+            height={62}
+            src={Quotation}
+            width={62}
+          />
+        </div>
+
+        {/* Quote Text */}
+        <p className="text-left font-normal text-[#2d3748] text-[12px] leading-[17px] sm:text-[14px] sm:leading-[21px] md:text-[16px] md:leading-[25px]">
+          {quote}
+        </p>
+
+        {/* Closing Quotation Mark */}
+        <div className="-right-[18px] -bottom-[8px] sm:-right-[22px] sm:-bottom-[12px] md:-right-[35px] md:-bottom-[20px] absolute scale-x-[-1] scale-y-[-1]">
+          <Image
+            alt=""
+            className="h-[28px] w-[28px] sm:h-[36px] sm:w-[36px] md:h-[58px] md:w-[58px]"
+            height={62}
+            src={Quotation}
+            width={62}
+          />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const HERO_IMAGE_SLIDE_DURATION = 5000;
 
@@ -431,12 +462,13 @@ export default function Home() {
         <div className="absolute inset-0">
           {heroImages.map((image, index) => (
             <div
-              className={`absolute inset-0 bg-center bg-cover bg-no-repeat transition-opacity duration-1000 ${
+              className={`absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000 ${
                 index === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
               key={index}
               style={{
                 backgroundImage: `url(${image})`,
+                backgroundPosition: index === 1 || index === 2 ? 'center 35%' : 'center',
               }}
             />
           ))}
@@ -482,16 +514,16 @@ export default function Home() {
                 </div> */}
 
                 {/* Main Heading */}
-                <h1 className="font-bold text-4xl text-white leading-tight md:text-5xl lg:text-7xl">
-                  This is where your{" "}
-                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text font-extrabold text-transparent italic">
-                    journey of changemaking and youth leadership begins.
+                <h1 className="font-bold text-4xl leading-tight md:text-5xl lg:text-7xl">
+                  <span className="text-white">Dream it.</span>{" "}
+                  <span className="bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FF8C00] bg-clip-text text-transparent">
+                    Build it. Change it.
                   </span>
                 </h1>
 
                 {/* Short description */}
                 <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
-                  Empowering high school students to become innovative changemakers through hands-on problem-solving, collaborative learning, and mentorship that transforms ideas into impactful solutions for tomorrow's challenges.
+                  A one-week residential program where high schoolers learn to spot real-world problems, design bold solutions, build prototypes, and pitch their ideas - all while making memories and friends that last a lifetime, guided by mentors and changemakers
                 </p>
               </div>
 
@@ -834,7 +866,7 @@ export default function Home() {
 
             {/* Featured Grid - Mosaic: first card spans 2 cols on large */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {/* Card 1 (featured larger) */}
+              {/* Card 1 (featured larger) - Nandini */}
               <div className="lg:col-span-2">
                 <div
                   className="card-hover relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg"
@@ -848,24 +880,26 @@ export default function Home() {
                   />
                   <div className="relative z-10 h-[220px] overflow-hidden md:h-[240px] lg:h-[300px]">
                     <Image
-                      alt="Student speaking at conference"
+                      alt="Nandini Nithyanandh"
                       className="object-cover transition-transform duration-500 hover:scale-110"
                       fill
-                      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      src={alumniNandini}
                     />
                   </div>
                   <div className="relative z-20 flex flex-1 flex-col p-6">
                     <h3 className="mb-2 font-bold text-[#050a30] text-xl">
-                      Ananya Gupta
+                      My Journey at YCB Winter 2023
                     </h3>
+                    <p className="mb-2 font-semibold text-[#D4A574] text-sm">
+                      Nandini Nithyanandh, Tamil Nadu • Season 2
+                    </p>
                     <p className="mb-4 text-[#718096]">
-                      On a mission to build support network for Women Social
-                      Entrepreneurs and Changemakers.
+                      A transformative week of learning, laughter, and lifelong connections that nurtured confidence, creativity, and courage.
                     </p>
                     <div className="mt-auto">
                       <a
                         className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                        href="/stories/ananya-gupta"
+                        href="/featured/alumni_story/nandini"
                       >
                         Read more{" "}
                         <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
@@ -877,7 +911,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 2 */}
+              {/* Card 2 - Manan */}
               <div
                 className="card-hover relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg"
                 style={{ backgroundColor: "#ffffff" }}
@@ -889,24 +923,26 @@ export default function Home() {
                 />
                 <div className="relative z-10 h-[200px] overflow-hidden md:h-[220px]">
                   <Image
-                    alt="Students collaborating"
+                    alt="Manan Sangtani"
                     className="object-cover transition-transform duration-500 hover:scale-110"
                     fill
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src={alumniManan}
                   />
                 </div>
                 <div className="relative z-20 flex flex-1 flex-col p-6">
                   <h3 className="mb-2 font-bold text-[#050a30] text-xl">
-                    Rural Education Initiative
+                    From Ideas to Impact
                   </h3>
+                  <p className="mb-2 font-semibold text-[#D4A574] text-sm">
+                    Manan Sangtani, BITS Goa • Mentor
+                  </p>
                   <p className="mb-4 text-[#718096]">
-                    YCB alumni launch program to bring quality education to 15
-                    rural schools in Maharashtra.
+                    A mentor's journey through YCB, where ideas came to life and community connections grew stronger.
                   </p>
                   <div className="mt-auto">
                     <a
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/stories/rural-education"
+                      href="/featured/alumni_story/manan"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
@@ -917,7 +953,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 3 */}
+              {/* Card 3 - Tseten */}
               <div
                 className="card-hover relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg"
                 style={{ backgroundColor: "#ffffff" }}
@@ -929,24 +965,26 @@ export default function Home() {
                 />
                 <div className="relative z-10 h-[200px] overflow-hidden md:h-[220px]">
                   <Image
-                    alt="Tech workspace"
+                    alt="Tseten Lhamu Bhutia"
                     className="object-cover transition-transform duration-500 hover:scale-110"
                     fill
-                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src={alumniTseten}
                   />
                 </div>
                 <div className="relative z-20 flex flex-1 flex-col p-6">
                   <h3 className="mb-2 font-bold text-[#050a30] text-xl">
-                    Tech for Change
+                    Lines of Culture and Lessons of Change
                   </h3>
+                  <p className="mb-2 font-semibold text-[#D4A574] text-sm">
+                    Tseten Lhamu Bhutia, Sikkim • Season 5
+                  </p>
                   <p className="mb-4 text-[#718096]">
-                    Student startup develops app to connect local farmers
-                    directly with urban consumers.
+                    Learning that real change begins when we listen, empathize, and work together for our communities.
                   </p>
                   <div className="mt-auto">
                     <a
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/stories/tech-for-change"
+                      href="/featured/alumni_story/tseten"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
@@ -957,7 +995,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 4 */}
+              {/* Card 4 - Abhijay */}
               <div
                 className="card-hover relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg"
                 style={{ backgroundColor: "#ffffff" }}
@@ -969,24 +1007,26 @@ export default function Home() {
                 />
                 <div className="relative z-10 h-[200px] overflow-hidden md:h-[220px]">
                   <Image
-                    alt="Environmental project"
+                    alt="Abhijay Srivastava"
                     className="object-cover transition-transform duration-500 hover:scale-110"
                     fill
-                    src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src={alumniAbhijay}
                   />
                 </div>
                 <div className="relative z-20 flex flex-1 flex-col p-6">
                   <h3 className="mb-2 font-bold text-[#050a30] text-xl">
-                    Green Campus Movement
+                    100x Learning
                   </h3>
+                  <p className="mb-2 font-semibold text-[#D4A574] text-sm">
+                    Abhijay Srivastava, Tamil Nadu • Season 1
+                  </p>
                   <p className="mb-4 text-[#718096]">
-                    YCB participants lead successful campaign to make 25 schools
-                    plastic-free zones.
+                    An intense week that changed perspectives on innovation, design thinking, and building for tomorrow.
                   </p>
                   <div className="mt-auto">
                     <a
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/stories/green-campus"
+                      href="/featured/alumni_story/abhijay"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
@@ -997,7 +1037,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 5 */}
+              {/* Card 5 - Nishtha */}
               <div
                 className="card-hover relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg"
                 style={{ backgroundColor: "#ffffff" }}
@@ -1009,24 +1049,26 @@ export default function Home() {
                 />
                 <div className="relative z-10 h-[200px] overflow-hidden md:h-[220px]">
                   <Image
-                    alt="Community event"
+                    alt="Nishtha Agnihotri"
                     className="object-cover transition-transform duration-500 hover:scale-110"
                     fill
-                    src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src={alumniNishtha}
                   />
                 </div>
                 <div className="relative z-20 flex flex-1 flex-col p-6">
                   <h3 className="mb-2 font-bold text-[#050a30] text-xl">
-                    Mental Health Advocacy
+                    A Week That Changed How I See the World
                   </h3>
+                  <p className="mb-2 font-semibold text-[#D4A574] text-sm">
+                    Nishtha Agnihotri, Uttar Pradesh • Season 2
+                  </p>
                   <p className="mb-4 text-[#718096]">
-                    Student-led mental health awareness program reaches over
-                    1000 teenagers across Delhi.
+                    Discovering that anyone, no matter how young, can make a difference through creativity and collaboration.
                   </p>
                   <div className="mt-auto">
                     <a
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/stories/mental-health"
+                      href="/featured/alumni_story/nishtha"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
@@ -1208,7 +1250,7 @@ function TestimonialsMarquee({ className = "" }: { className?: string }) {
           key={testimonial.id}
           name={testimonial.name}
           quote={testimonial.quote}
-          school={testimonial.school}
+          role={testimonial.role}
         />
       ))}
     </Marquee>
