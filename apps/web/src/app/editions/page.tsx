@@ -83,6 +83,7 @@ import s5_gallery_13 from "./s5_gallery/IMG_2252 Large.jpeg";
 import s5_gallery_14 from "./s5_gallery/IMG_2253 Large.jpeg";
 import s5_gallery_15 from "./s5_gallery/IMG_2254 Large.jpeg";
 import s5_gallery_16 from "./s5_gallery/IMG_2255 Large.jpeg";
+
 const editionsData = {
   "Season 1": {
     year: "2023",

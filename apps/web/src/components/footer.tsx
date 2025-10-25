@@ -64,7 +64,8 @@ export default function Footer() {
 
             {/* Description */}
             <p className="mx-auto max-w-2xl text-[#718096] text-lg leading-relaxed">
-              Stay updated on programs, deadlines, and changemaking opportunities.
+              Stay updated on programs, deadlines, and changemaking
+              opportunities.
             </p>
           </div>
 
@@ -188,8 +189,10 @@ export default function Footer() {
                 width={64}
               />
               {/* Description below logo */}
-              <p className="max-w-44 text-xs text-white/60 leading-relaxed">
-                Young Changemakers Bootcamp is a flagship program by Tale of Humankind Foundation to empower high schoolers with changemaking skills.
+              <p className="max-w-44 text-white/60 text-xs leading-relaxed">
+                Young Changemakers Bootcamp is a flagship program by Tale of
+                Humankind Foundation to empower high schoolers with changemaking
+                skills.
               </p>
             </div>
 
@@ -314,8 +317,8 @@ export default function Footer() {
                   <a
                     className="transition-colors hover:text-[gold]"
                     href="https://instagram.com/taleofhumankind"
-                    target="_blank"
                     rel="noopener noreferrer"
+                    target="_blank"
                   >
                     Instagram
                   </a>
@@ -331,8 +334,8 @@ export default function Footer() {
                   <a
                     className="transition-colors hover:text-[gold]"
                     href="https://x.com/taleofhumankind"
-                    target="_blank"
                     rel="noopener noreferrer"
+                    target="_blank"
                   >
                     X
                   </a>
@@ -348,8 +351,8 @@ export default function Footer() {
                   <a
                     className="transition-colors hover:text-[gold]"
                     href="https://www.linkedin.com/in/the-tale-of-humankind-4a6ba6235/"
-                    target="_blank"
                     rel="noopener noreferrer"
+                    target="_blank"
                   >
                     LinkedIn
                   </a>

@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import type { Route } from "next";
 import { Card } from "@/components/ui/card";
 import { BlurFade } from "./ui/blur-fade";
 
@@ -72,13 +74,12 @@ const Blog8 = ({
                       </div>
                     </div>
                     <h3 className="font-semibold text-xl md:text-2xl lg:text-3xl">
-                      <a
+                      <Link
                         className="hover:underline"
-                        href={post.url}
-                        target="_blank"
+                        href={post.url as Route}
                       >
                         {post.title}
-                      </a>
+                      </Link>
                     </h3>
                     <p className="mt-4 text-muted-foreground md:mt-5">
                       {post.summary}
@@ -93,18 +94,17 @@ const Blog8 = ({
                       </span>
                     </div>
                     <div className="mt-6 flex items-center space-x-2 md:mt-8">
-                      <a
+                      <Link
                         className="inline-flex items-center font-semibold hover:underline md:text-base"
-                        href={post.url}
-                        target="_blank"
+                        href={post.url as Route}
                       >
                         <span>Read more</span>
                         <ArrowRight className="ml-2 size-4 transition-transform" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="order-first sm:order-last sm:col-span-5">
-                    <a className="block" href={post.url} target="_blank">
+                    <Link className="block" href={post.url as Route}>
                       <BlurFade delay={0.1} duration={0.3} inView>
                         <div className="aspect-16/9 overflow-clip rounded-lg border border-border">
                           <Image
@@ -116,7 +116,7 @@ const Blog8 = ({
                           />
                         </div>
                       </BlurFade>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </Card>

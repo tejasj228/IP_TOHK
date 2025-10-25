@@ -25,16 +25,16 @@ import Quotation from "@/assets/quotations.png";
 import { Button } from "@/components/ui/button";
 import { Marquee } from "@/components/ui/marquee";
 import WorldMap from "@/components/ui/world-map";
-import img_2226 from "./hero_images/IMG_2226.jpg";
-import img_2243 from "./hero_images/IMG_2243.jpg";
-import img_2247 from "./hero_images/IMG_2247.jpg";
-import img_2264 from "./hero_images/IMG_2264.jpg";
-import img_7940 from "./hero_images/IMG_7940.jpg";
 import alumniAbhijay from "./featured/alumni_story/Abhijay.jpg";
 import alumniManan from "./featured/alumni_story/Manan.jpg";
 import alumniNandini from "./featured/alumni_story/Nandini.jpg";
 import alumniNishtha from "./featured/alumni_story/Nishtha.jpg";
 import alumniTseten from "./featured/alumni_story/Tseten.jpg";
+import img_2226 from "./hero_images/IMG_2226.jpg";
+import img_2243 from "./hero_images/IMG_2243.jpg";
+import img_2247 from "./hero_images/IMG_2247.jpg";
+import img_2264 from "./hero_images/IMG_2264.jpg";
+import img_7940 from "./hero_images/IMG_7940.jpg";
 
 // Notification Banner Component
 const NotificationBanner = () => {
@@ -279,7 +279,11 @@ const TestimonialCard = ({
     .filter((n) => n.length > 0)
     .slice(0, 3)
     .map((part, idx, arr) =>
-      arr.length > 1 ? (idx === 0 || idx === arr.length - 1 ? part[0] : "") : part[0]
+      arr.length > 1
+        ? idx === 0 || idx === arr.length - 1
+          ? part[0]
+          : ""
+        : part[0]
     )
     .join("")
     .toUpperCase()
@@ -293,7 +297,7 @@ const TestimonialCard = ({
       {/* Avatar with initials */}
       <div
         aria-label={`Avatar initials for ${name}`}
-        className="hover-scale absolute top-4 left-4 flex size-[50px] items-center justify-center rounded-full border-[3px] border-[gold] bg-gradient-to-br from-[#f9fafb] to-[#e5e7eb] text-[#1a365d] font-semibold transition-all duration-300 sm:top-5 sm:left-5 sm:size-[60px] md:top-8 md:left-8 md:size-[74px]"
+        className="hover-scale absolute top-4 left-4 flex size-[50px] items-center justify-center rounded-full border-[3px] border-[gold] bg-gradient-to-br from-[#f9fafb] to-[#e5e7eb] font-semibold text-[#1a365d] transition-all duration-300 sm:top-5 sm:left-5 sm:size-[60px] md:top-8 md:left-8 md:size-[74px]"
         role="img"
       >
         <span aria-hidden="true" className="text-sm sm:text-base md:text-lg">
@@ -468,7 +472,8 @@ export default function Home() {
               key={index}
               style={{
                 backgroundImage: `url(${image})`,
-                backgroundPosition: index === 1 || index === 2 ? 'center 35%' : 'center',
+                backgroundPosition:
+                  index === 1 || index === 2 ? "center 35%" : "center",
               }}
             />
           ))}
@@ -523,7 +528,11 @@ export default function Home() {
 
                 {/* Short description */}
                 <p className="max-w-xl text-base text-white/90 leading-relaxed tracking-[0.005em] sm:text-lg lg:max-w-2xl lg:text-xl xl:max-w-3xl">
-                  A one-week residential program where high schoolers learn to spot real-world problems, design bold solutions, build prototypes, and pitch their ideas - all while making memories and friends that last a lifetime, guided by mentors and changemakers
+                  A one-week residential program where high schoolers learn to
+                  spot real-world problems, design bold solutions, build
+                  prototypes, and pitch their ideas - all while making memories
+                  and friends that last a lifetime, guided by mentors and
+                  changemakers
                 </p>
               </div>
 
@@ -894,18 +903,20 @@ export default function Home() {
                       Nandini Nithyanandh, Tamil Nadu • Season 2
                     </p>
                     <p className="mb-4 text-[#718096]">
-                      A transformative week of learning, laughter, and lifelong connections that nurtured confidence, creativity, and courage.
+                      A transformative week of learning, laughter, and lifelong
+                      connections that nurtured confidence, creativity, and
+                      courage.
                     </p>
                     <div className="mt-auto">
-                      <a
+                      <Link
                         className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                        href="/featured/alumni_story/nandini"
+                        href="/featured/nandini-nithyanandh-winter-2023"
                       >
                         Read more{" "}
                         <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                           →
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -937,18 +948,19 @@ export default function Home() {
                     Manan Sangtani, BITS Goa • Mentor
                   </p>
                   <p className="mb-4 text-[#718096]">
-                    A mentor's journey through YCB, where ideas came to life and community connections grew stronger.
+                    A mentor's journey through YCB, where ideas came to life and
+                    community connections grew stronger.
                   </p>
                   <div className="mt-auto">
-                    <a
+                    <Link
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/featured/alumni_story/manan"
+                      href="/featured/manan-sangtani-mentor"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                         →
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -979,18 +991,19 @@ export default function Home() {
                     Tseten Lhamu Bhutia, Sikkim • Season 5
                   </p>
                   <p className="mb-4 text-[#718096]">
-                    Learning that real change begins when we listen, empathize, and work together for our communities.
+                    Learning that real change begins when we listen, empathize,
+                    and work together for our communities.
                   </p>
                   <div className="mt-auto">
-                    <a
+                    <Link
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/featured/alumni_story/tseten"
+                      href="/featured/tseten-lhamu-bhutia-season-5"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                         →
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -1021,18 +1034,19 @@ export default function Home() {
                     Abhijay Srivastava, Tamil Nadu • Season 1
                   </p>
                   <p className="mb-4 text-[#718096]">
-                    An intense week that changed perspectives on innovation, design thinking, and building for tomorrow.
+                    An intense week that changed perspectives on innovation,
+                    design thinking, and building for tomorrow.
                   </p>
                   <div className="mt-auto">
-                    <a
+                    <Link
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/featured/alumni_story/abhijay"
+                      href="/featured/abhijay-srivastava-season-1"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                         →
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -1063,18 +1077,19 @@ export default function Home() {
                     Nishtha Agnihotri, Uttar Pradesh • Season 2
                   </p>
                   <p className="mb-4 text-[#718096]">
-                    Discovering that anyone, no matter how young, can make a difference through creativity and collaboration.
+                    Discovering that anyone, no matter how young, can make a
+                    difference through creativity and collaboration.
                   </p>
                   <div className="mt-auto">
-                    <a
+                    <Link
                       className="link-hover group flex items-center gap-1 font-semibold text-[#D4A574] transition-all duration-300 hover:text-[#B8935F]"
-                      href="/featured/alumni_story/nishtha"
+                      href="/featured/nishtha-agnihotri-season-2"
                     >
                       Read more{" "}
                       <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">
                         →
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Clock, ArrowRight, Award } from "lucide-react";
+import { ArrowRight, Award, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -11,8 +11,10 @@ export default function ApplyPage() {
     {
       id: "ycb-2025",
       title: "Young Changemakers Bootcamp 2025",
-      description: "Join our flagship program for young innovators and social entrepreneurs",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop",
+      description:
+        "Join our flagship program for young innovators and social entrepreneurs",
+      image:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop",
       deadline: "March 15, 2025",
       status: "Open",
       duration: "6 months",
@@ -22,7 +24,8 @@ export default function ApplyPage() {
       id: "summer-intensive",
       title: "Summer Innovation Intensive",
       description: "Fast-track program for rapid prototyping and validation",
-      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=250&fit=crop", 
+      image:
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=250&fit=crop",
       deadline: "May 30, 2025",
       status: "Open",
       duration: "2 months",
@@ -31,8 +34,10 @@ export default function ApplyPage() {
     {
       id: "leadership-program",
       title: "Youth Leadership Development",
-      description: "Comprehensive leadership training for emerging changemakers",
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=250&fit=crop",
+      description:
+        "Comprehensive leadership training for emerging changemakers",
+      image:
+        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=250&fit=crop",
       deadline: "July 15, 2025",
       status: "Coming Soon",
       duration: "4 months",
@@ -43,46 +48,48 @@ export default function ApplyPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+      <section className="relative px-4 pt-32 pb-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <h1 className="mb-4 font-bold text-3xl md:text-5xl">
             <span className="text-gray-900">Available </span>
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">Programs</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+              Programs
+            </span>
           </h1>
-          
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4 leading-relaxed">
+
+          <p className="mx-auto mb-4 max-w-2xl text-gray-600 text-lg leading-relaxed">
             Choose the program that best fits your goals and timeline
           </p>
         </div>
       </section>
 
       {/* Application Cards Section */}
-        <section className="pt-4 pb-12 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <section className="bg-gray-50 px-4 pt-4 pb-12">
+        <div className="mx-auto max-w-5xl">
+          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
             {applications.map((program) => (
               <Card
+                className="group relative gap-0 overflow-hidden border border-gray-200 bg-white p-0 transition-all duration-300 hover:border-gold/50 hover:shadow-xl"
                 key={program.id}
-                className="group relative overflow-hidden bg-white border border-gray-200 hover:border-gold/50 transition-all duration-300 hover:shadow-xl p-0 gap-0"
               >
                 {/* Program Image */}
                 <div className="relative h-48 overflow-hidden rounded-t-xl">
                   <Image
-                    src={program.image}
                     alt={program.title}
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    src={program.image}
                   />
-                  
+
                   {/* Status Badge */}
                   <div className="absolute top-4 left-4 z-20">
                     <div
-                      className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      className={`rounded-full px-3 py-1 font-bold text-xs ${
                         program.status === "Open"
                           ? "bg-green-500 text-white"
                           : program.status === "Opening Soon"
-                          ? "bg-amber-500 text-white"
-                          : "bg-orange-500 text-white"
+                            ? "bg-amber-500 text-white"
+                            : "bg-orange-500 text-white"
                       }`}
                     >
                       {program.status}
@@ -91,30 +98,36 @@ export default function ApplyPage() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col h-full mt-0">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <div className="mt-0 flex h-full flex-col p-6">
+                  <h3 className="mb-3 font-bold text-gray-900 text-xl">
                     {program.title}
                   </h3>
-                  
-                  <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
+
+                  <p className="mb-4 flex-grow text-gray-600 leading-relaxed">
                     {program.description}
                   </p>
 
                   {/* Program Details */}
-                  <div className="space-y-2 mb-6">
+                  <div className="mb-6 space-y-2">
                     <div className="flex items-center gap-3 text-gray-500">
-                      <Calendar className="w-4 h-4 text-gold" />
-                      <span className="text-sm">Deadline: {program.deadline}</span>
+                      <Calendar className="h-4 w-4 text-gold" />
+                      <span className="text-sm">
+                        Deadline: {program.deadline}
+                      </span>
                     </div>
-                    
+
                     <div className="flex items-center gap-3 text-gray-500">
-                      <Clock className="w-4 h-4 text-gold" />
-                      <span className="text-sm">Duration: {program.duration}</span>
+                      <Clock className="h-4 w-4 text-gold" />
+                      <span className="text-sm">
+                        Duration: {program.duration}
+                      </span>
                     </div>
-                    
+
                     <div className="flex items-center gap-3 text-gray-500">
-                      <div className="w-4 h-4 rounded-full bg-gold" />
-                      <span className="text-sm">Location: {program.location}</span>
+                      <div className="h-4 w-4 rounded-full bg-gold" />
+                      <span className="text-sm">
+                        Location: {program.location}
+                      </span>
                     </div>
                   </div>
 
@@ -122,18 +135,25 @@ export default function ApplyPage() {
                   <div className="mt-auto">
                     <Button
                       asChild
-                      className={`w-full group/btn transition-all duration-300 ${
-                        program.status === "Open" || program.status === "Opening Soon"
-                          ? "smooth-hover bg-[gold] hover:scale-105 hover:bg-[gold]/90 font-bold text-[#1a365d]"
-                          : "bg-gray-200 hover:bg-gray-300 text-gray-500 cursor-not-allowed"
+                      className={`group/btn w-full transition-all duration-300 ${
+                        program.status === "Open" ||
+                        program.status === "Opening Soon"
+                          ? "smooth-hover bg-[gold] font-bold text-[#1a365d] hover:scale-105 hover:bg-[gold]/90"
+                          : "cursor-not-allowed bg-gray-200 text-gray-500 hover:bg-gray-300"
                       }`}
                       disabled={program.status === "Coming Soon"}
                     >
-                      <Link 
-                        href={program.status !== "Coming Soon" ? "/how-to-apply" : "#"}
+                      <Link
                         className="flex items-center justify-center gap-2 font-bold"
+                        href={
+                          program.status !== "Coming Soon"
+                            ? "/how-to-apply"
+                            : "#"
+                        }
                       >
-                        {program.status === "Coming Soon" ? "Coming Soon" : "Apply"}
+                        {program.status === "Coming Soon"
+                          ? "Coming Soon"
+                          : "Apply"}
                       </Link>
                     </Button>
                   </div>
@@ -145,36 +165,35 @@ export default function ApplyPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <section className="bg-white px-4 py-16">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8">
+            <h2 className="mb-4 font-bold text-3xl text-gray-900 md:text-4xl">
               Ready to Make an Impact?
             </h2>
-            
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Join thousands of young changemakers who have transformed their communities through our programs. Your journey starts here.
+
+            <p className="mb-6 text-gray-600 text-lg leading-relaxed">
+              Join thousands of young changemakers who have transformed their
+              communities through our programs. Your journey starts here.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Button
                 asChild
-                className="smooth-hover bg-[gold] hover:scale-105 hover:bg-[gold]/90 font-bold text-[#1a365d] px-6 py-3 transition-all duration-300"
+                className="smooth-hover bg-[gold] px-6 py-3 font-bold text-[#1a365d] transition-all duration-300 hover:scale-105 hover:bg-[gold]/90"
               >
-                <Link href="/how-to-apply" className="flex items-center gap-2">
+                <Link className="flex items-center gap-2" href="/how-to-apply">
                   Learn How to Apply
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              
+
               <Button
                 asChild
+                className="border-gray-300 px-6 py-3 font-bold text-gray-700 hover:bg-gray-50"
                 variant="outline"
-                className="border-gray-300 text-gray-700 hover:bg-gray-50 font-bold px-6 py-3"
               >
-                <Link href="/contact">
-                  Have Questions?
-                </Link>
+                <Link href="/contact">Have Questions?</Link>
               </Button>
             </div>
           </div>

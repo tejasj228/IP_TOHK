@@ -4,94 +4,124 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Blog8 } from "@/components/blog";
 import { Button } from "@/components/ui/button";
+import Abhijay from "./alumni_story/Abhijay.jpg";
+import Manan from "./alumni_story/Manan.jpg";
+import Nandini from "./alumni_story/Nandini.jpg";
+import NavyaTEDx from "./alumni_story/Navya.jpg";
+import Nishtha from "./alumni_story/Nishtha.jpg";
+import Reyansh from "./alumni_story/Reyansh.jpg";
+import Tseten from "./alumni_story/Tseten.jpg";
 
 // Constants
-const POSTS_PER_PAGE = 3;
+const POSTS_PER_PAGE = 4;
 
-// YCB-specific blog posts data
+// YCB-specific featured stories data
 const ycbBlogPosts = [
   {
-    id: "youth-leadership-digital-age",
-    title: "Youth Leadership in the Digital Age: Lessons from YCB 2024",
-    summary:
-      "Discover how young changemakers are leveraging digital technologies to create sustainable social impact. Learn from success stories and practical strategies from our Mumbai edition.",
-    label: "Leadership",
-    author: "Priya Sharma",
-    published: "15 Dec 2024",
-    url: "/featured/youth-leadership-digital-age",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tags: ["Leadership", "Digital Innovation", "Youth Empowerment"],
-  },
-  {
-    id: "sustainable-entrepreneurship-guide",
-    title: "Building Sustainable Social Enterprises: A Complete Guide",
-    summary:
-      "A comprehensive guide to creating social enterprises that drive positive change while ensuring long-term sustainability. Insights from YCB 2023 participants and their successful ventures.",
-    label: "Entrepreneurship",
-    author: "Arjun Malhotra",
-    published: "28 Nov 2024",
-    url: "/featured/sustainable-entrepreneurship-guide",
-    image:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tags: ["Social Enterprise", "Sustainability", "Impact"],
-  },
-  {
-    id: "climate-action-youth-movements",
+    id: "nandini-nithyanandh-winter-2023",
     title:
-      "Climate Action Through Youth Movements: The Power of Collective Change",
+      "My Journey at YCB Winter 2023: A Week of Learning, Friendship, and Inspiration",
     summary:
-      "Explore how young activists are mobilizing communities for climate action. Learn from real campaigns and discover strategies for environmental advocacy from YCB 2022 alumni.",
-    label: "Climate Action",
-    author: "Kavya Jain",
-    published: "10 Nov 2024",
-    url: "/featured/climate-action-youth-movements",
-    image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tags: [
-      "Climate Action",
-      "Environmental Advocacy",
-      "Community Mobilization",
-    ],
+      "Seven days filled with learning, laughter, and lifelong connections. A transformative journey that nurtured confidence, creativity, and courage.",
+    label: "Participant Story",
+    author: "Nandini Nithyanandh",
+    location: "Tamil Nadu, Season 2",
+    published: "Winter 2023",
+    url: "/featured/nandini-nithyanandh-winter-2023",
+    image: Nandini.src,
+    tags: ["Participant Journey", "Season 2", "Innovation"],
   },
   {
-    id: "digital-inclusion-rural-communities",
-    title: "Bridging the Digital Divide: Technology for Rural Development",
+    id: "manan-sangtani-mentor",
+    title: "From Ideas to Impact: My Journey as a YCB Mentor",
     summary:
-      "How technology can empower rural communities and create inclusive growth. Learn about innovative solutions developed by YCB participants for digital inclusion.",
-    label: "Technology",
-    author: "Sneha Gupta",
-    published: "25 Oct 2024",
-    url: "/featured/digital-inclusion-rural-communities",
-    image:
-      "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tags: ["Technology", "Rural Development", "Digital Inclusion"],
+      "Stepping into IIT Delhi as a mentor, working with inspiring changemakers, and discovering the true meaning of community and impact.",
+    label: "Mentor Story",
+    author: "Manan Sangtani",
+    location: "BITS Goa",
+    published: "2023",
+    url: "/featured/manan-sangtani-mentor",
+    image: Manan.src,
+    tags: ["Mentor Journey", "IIT Delhi", "Community"],
   },
   {
-    id: "mental-health-youth-advocacy",
-    title: "Mental Health Advocacy: Breaking Stigma Through Youth Voices",
+    id: "tseten-lhamu-bhutia-season-5",
+    title: "Lines of Culture and Lessons of Change: My YCB Experience",
     summary:
-      "Understanding the role of young advocates in mental health awareness. Stories of impact and strategies for creating supportive communities during challenging times.",
-    label: "Mental Health",
-    author: "Aman Verma",
-    published: "12 Oct 2024",
-    url: "/featured/mental-health-youth-advocacy",
-    image:
-      "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tags: ["Mental Health", "Community Support", "Advocacy"],
+      "From quiet strangers to friends creating 'Lines of Culture' - an initiative to combat regional discrimination through real stories and empathy.",
+    label: "Participant Story",
+    author: "Tseten Lhamu Bhutia",
+    location: "Sikkim, Season 5",
+    published: "June 2025",
+    url: "/featured/tseten-lhamu-bhutia-season-5",
+    image: Tseten.src,
+    tags: ["Season 5", "Social Innovation", "Community"],
   },
   {
-    id: "innovation-for-education",
-    title: "Revolutionizing Education: Tech Solutions for Learning Equity",
+    id: "abhijay-srivastava-season-1",
+    title: "100x Learning: How YCB Changed the Way I Think and Create",
     summary:
-      "Explore innovative educational technologies that are making quality learning accessible to all. Discover solutions developed by young innovators for educational equity.",
-    label: "Education",
-    author: "Tanvi Khanna",
-    published: "05 Oct 2024",
-    url: "/featured/innovation-for-education",
+      "An intense week of learning from professors, startup founders, and innovators that gave a 100x head start in thinking and creating.",
+    label: "Participant Story",
+    author: "Abhijay Srivastava",
+    location: "Tamil Nadu, Season 1",
+    published: "Summer 2023",
+    url: "/featured/abhijay-srivastava-season-1",
+    image: Abhijay.src,
+    tags: ["Season 1", "Design Thinking", "Innovation"],
+  },
+  {
+    id: "nishtha-agnihotri-season-2",
+    title: "A Week That Changed How I See the World",
+    summary:
+      "From learning about AI and nanotechnology to understanding that anyone, no matter how young, can make a difference.",
+    label: "Participant Story",
+    author: "Nishtha Agnihotri",
+    location: "Uttar Pradesh, Season 2",
+    published: "Winter 2023",
+    url: "/featured/nishtha-agnihotri-season-2",
+    image: Nishtha.src,
+    tags: ["Season 2", "Technology", "Youth Empowerment"],
+  },
+  {
+    id: "reyansh-juneja-shark-tank",
+    title: "Innovation in Action: Reyansh's MemoTag on Shark Tank",
+    summary:
+      "From YCB Season 2 participant to Shark Tank India Season 4 - Reyansh Juneja's journey of turning ideas into real impact.",
+    label: "Alumni Achievement",
+    author: "YCB Team",
+    location: "Season 2 Alumni",
+    published: "2024",
+    url: "/featured/reyansh-juneja-shark-tank",
+    image: Reyansh.src,
+    tags: ["Alumni Success", "Entrepreneurship", "Shark Tank"],
+  },
+  {
+    id: "navya-nilay-umass",
+    title: "From YCB to UMass: Navya's Next Chapter in Changemaking",
+    summary:
+      "A curious kid from YCB Season 1 selected to pursue Computer Science at the University of Massachusetts, continuing the changemaker journey.",
+    label: "Alumni Achievement",
+    author: "YCB Team",
+    location: "Season 1 Alumni",
+    published: "2024",
+    url: "/featured/navya-nilay-umass",
     image:
       "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tags: ["Education", "EdTech", "Innovation"],
+    tags: ["Alumni Success", "Higher Education", "Computer Science"],
+  },
+  {
+    id: "navya-kautish-tedx",
+    title: "The Audacity of Ambition: YCB Alumna Navya Inspires at TEDx",
+    summary:
+      "From YCB Season 3 to the TEDx stage - Navya Kautish shares her powerful message about dreaming big and pursuing unrealistic goals with courage.",
+    label: "Alumni Achievement",
+    author: "YCB Team",
+    location: "Season 3 Alumni",
+    published: "2024",
+    url: "/featured/navya-kautish-tedx",
+    image: NavyaTEDx.src,
+    tags: ["Alumni Success", "TEDx", "Mental Health Advocacy"],
   },
 ];
 

@@ -229,7 +229,7 @@ const AboutPage = () => {
       title: "Kickoff & Orientation",
       description: [
         "Welcome, icebreakers, campus walk",
-        "Informal interaction with mentors & peers"
+        "Informal interaction with mentors & peers",
       ],
       icon: (
         <Image
@@ -248,7 +248,7 @@ const AboutPage = () => {
       description: [
         "Intro to science & tech, changemaking for a better world",
         "Observation walks, drone demo",
-        "Icebreaker games"
+        "Icebreaker games",
       ],
       icon: <Search className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-green-400 to-green-600",
@@ -260,7 +260,7 @@ const AboutPage = () => {
         "AI/ML & ChatGPT, cognitive psychology",
         "Design & innovation lab visit, 3D printing demo",
         "Entrepreneurship mindset, expressive art",
-        "Web 3.0, movie night"
+        "Web 3.0, movie night",
       ],
       icon: (
         <Image
@@ -279,7 +279,7 @@ const AboutPage = () => {
       description: [
         "Team formation, ideation with mentors",
         "Problem validation, design thinking",
-        "App/web basics, talent night"
+        "App/web basics, talent night",
       ],
       icon: (
         <Image
@@ -298,7 +298,7 @@ const AboutPage = () => {
       description: [
         "Product innovation, unique value proposition",
         "Financial basics, business plan prep",
-        "Pitching practice, storytelling & photography workshop"
+        "Pitching practice, storytelling & photography workshop",
       ],
       icon: (
         <Image
@@ -317,7 +317,7 @@ const AboutPage = () => {
       description: [
         "My Idea for Change Competition, career guidance",
         "Interaction with faculty, mini farewell",
-        "Sports, music & cultural night"
+        "Sports, music & cultural night",
       ],
       icon: <Mic className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-indigo-400 to-indigo-600",
@@ -327,7 +327,7 @@ const AboutPage = () => {
       title: "Closing & Departure",
       description: [
         "Reflections, goodbyes",
-        "Departure with new ideas and lifelong friendships"
+        "Departure with new ideas and lifelong friendships",
       ],
       icon: <GraduationCap className="h-5 w-5 md:h-6 md:w-6" />,
       color: "from-pink-400 to-pink-600",
@@ -422,7 +422,8 @@ const AboutPage = () => {
           "High school students in classes 9–12 (or equivalent), including those who have just completed Class 12 board exams.",
       },
       {
-        question: "Is YCB a partnered program or connected to the host institution?",
+        question:
+          "Is YCB a partnered program or connected to the host institution?",
         answer:
           "No, YCB is an independent program entirely by the Tale of Humankind team. The host institute only provides the venue and is not responsible for design, curriculum, or delivery.",
       },
@@ -481,7 +482,8 @@ const AboutPage = () => {
           "The campus is secure with 24x7 supervision, gender-separate accommodations, and trained team to ensure student safety and comfort.",
       },
       {
-        question: "What level of parental involvement is expected during the program?",
+        question:
+          "What level of parental involvement is expected during the program?",
         answer:
           "Parents are not required to attend. However, they receive regular updates via email and Whatsapp group. They can connect with participants in their break hours.",
       },
@@ -491,19 +493,22 @@ const AboutPage = () => {
           "We accommodate vegetarian, and other dietary requirements, as well as special medical needs if informed in advance. On-site support is available throughout the week.",
       },
       {
-        question: "Is there any difference between day scholars and residential participants?",
+        question:
+          "Is there any difference between day scholars and residential participants?",
         answer:
           "No, all students receive the same program experience. The only difference is that scholars return home daily, while residential students stay on campus.",
       },
       {
-        question: "Will my child have time to rest or relax during the program?",
+        question:
+          "Will my child have time to rest or relax during the program?",
         answer:
           "Yes, the schedule includes breaks, reflection time, and evening activities for relaxation and social interaction.",
       },
     ],
     "Travel & Logistics": [
       {
-        question: "How should students arriving from outside Delhi plan their travel?",
+        question:
+          "How should students arriving from outside Delhi plan their travel?",
         answer:
           "We provide free pick-up and drop services for students from Delhi airports, railway stations, and bus stops for outside Delhi participants. Parents will be informed in advance about travel arrangements.",
       },
@@ -947,8 +952,11 @@ const AboutPage = () => {
                             </div>
                             <ul className="space-y-2 text-gray-600 text-sm leading-relaxed md:text-base">
                               {day.description.map((point, pointIndex) => (
-                                <li key={pointIndex} className="flex items-start gap-2">
-                                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400"></span>
+                                <li
+                                  className="flex items-start gap-2"
+                                  key={pointIndex}
+                                >
+                                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" />
                                   <span>{point}</span>
                                 </li>
                               ))}
@@ -976,7 +984,7 @@ const AboutPage = () => {
                       </p>
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-lg aspect-square">
+                          <div className="flex aspect-square h-12 min-h-12 w-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-lg">
                             A
                           </div>
                           <div>
@@ -990,7 +998,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-600 text-lg aspect-square">
+                          <div className="flex aspect-square h-12 min-h-12 w-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-600 text-lg">
                             D
                           </div>
                           <div>
@@ -1004,7 +1012,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-purple-100 font-bold text-lg text-purple-600 aspect-square">
+                          <div className="flex aspect-square h-12 min-h-12 w-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-purple-100 font-bold text-lg text-purple-600">
                             D
                           </div>
                           <div>
@@ -1018,7 +1026,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all duration-300 hover:shadow-md">
-                          <div className="flex h-12 w-12 min-h-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-orange-100 font-bold text-lg text-orange-600 aspect-square">
+                          <div className="flex aspect-square h-12 min-h-12 w-12 min-w-12 shrink-0 items-center justify-center rounded-full bg-orange-100 font-bold text-lg text-orange-600">
                             R
                           </div>
                           <div>
@@ -1042,9 +1050,7 @@ const AboutPage = () => {
                         className="inline-flex items-center gap-2 rounded-lg bg-[#050a30] px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-[#050a30]/90"
                         href="/network"
                       >
-                        <span>
-                          See our complete mentor and speaker network
-                        </span>
+                        <span>See our complete mentor and speaker network</span>
                         <ArrowRight className="h-4 w-4" />
                       </a>
                     </div>
